@@ -88,6 +88,24 @@ def to_markdown(scorecard: dict, meta: dict) -> str:
     for label in taxonomy.ALL_LABELS:
         lines.append(f"| {label} | {m['error_taxonomy'].get(label, 0)} |")
 
+    types = m.get("by_document_type") or {}
+    if types:
+        lines += ["", "## Other document types (not pooled into the headline)", "",
+                  f"The headline above is {m.get('headline_document_type', 'receipt')}s only. "
+                  "Each type below has its own fields; at small n these are indicative, and "
+                  "their confidence reuses the receipt-fitted model (not calibrated for the type).", "",
+                  "| type | n | doc accuracy | micro F1 | line-item F1 | hallucination | swapped fields | abstention precision kept |",
+                  "|---|--:|--:|--:|--:|--:|--:|--:|"]
+        for name, t in types.items():
+            ab = t.get("abstention") or {}
+            kept = ab.get("precision_kept")
+            lines.append(f"| {name} | {t['n_docs']} | {t['document_accuracy_rate']:.1%} | "
+                         f"{t['micro_f1']:.3f} | {t['line_item_f1']:.3f} | {t['hallucination_rate']:.1%} | "
+                         f"{t['error_taxonomy'].get('swapped_field', 0)} | "
+                         f"{'-' if kept is None else f'{kept:.3f}'} |")
+            lines += ["", f"Per-field ({name}):", "", "| field | support | F1 |", "|---|--:|--:|"]
+            lines += [f"| {f} | {v['support']} | {_num(v['f1'])} |" for f, v in t["per_field"].items()]
+
     bd = m.get("breakdown") or {}
     if bd:
         lines += ["", "## By subset", "",

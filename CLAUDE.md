@@ -109,7 +109,7 @@ docker-compose.yml, Dockerfile, .env.example, README.md, CLAUDE.md
 
 ## Current state
 
-Built and tested (350/350 pytest passing; `python -m agent.offline_e2e` 7/7):
+Built and tested (374/374 pytest passing; `python -m agent.offline_e2e` 7/7):
 - Phase 0-2: `extractor/schema.py`, `extractor/provider.py`, `extractor/extract.py`
   (single-doc walking skeleton, VLM-only).
 - Phase 3: `eval/metrics.py`, `eval/taxonomy.py`, `eval/scorecard.py`, `eval/run.py`,
@@ -138,6 +138,16 @@ Built and tested (350/350 pytest passing; `python -m agent.offline_e2e` 7/7):
   `assign_splits.py` / `degrade.py`, with `eval/tests/test_dataset_converters.py`
   covering normalization, date refusal, row grouping and stratified sampling.
 
+- **Invoices (second document type, DATASETS.md addendum).** 10 real multi-page invoices
+  from RVL-CDIP-N (`scripts/fetch_invoices.py`, pinned + SHA-256); the synthetic HF set
+  was rejected. `Invoice`/`Party` in `extractor/schema.py`; type comes from the `inv_`
+  prefix (`document_type_of`). Pipeline, cascade, API (`document_type` form field) and
+  batch (`--type`) are type-aware; dotted nested fields everywhere. Scorecard reports
+  invoices under `by_document_type`, never pooled into the receipt headline; calibration
+  fits on receipts only (invoice confidence is uncalibrated). Labels are **drafted by the
+  assistant, pending human verification** — see `label_notes`; open decisions: replace
+  inv_0006 (bundle), inv_0005 struck-through row, inv_0003 redacted number, inv_0008
+  "c/o" customer. Tests: `eval/tests/test_invoices.py`.
 - Dataset: 50 of 65 documents built and split (CORD 25 + WildReceipt 25). Retail (15)
   needs a Kaggle token. **Zero documents are hand-verified yet** — until
   `scripts/verify_gt.py --status` reads 100%, the ground truth is a first pass, not

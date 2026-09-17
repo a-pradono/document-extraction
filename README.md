@@ -6,7 +6,7 @@ a confidence score, so the system abstains instead of guessing. The evaluation h
 is the main deliverable: it shows **how** the system fails, not just how often, and it
 blocks a regression before it ships.
 
-> **Status of the numbers.** Everything below is built and tested (350 unit tests plus
+> **Status of the numbers.** Everything below is built and tested (374 unit tests plus
 > a 7-check offline end-to-end run over real HTTP). **No result in this README comes from
 > a real model run yet**, and the 50 ground-truth labels are not yet hand-verified.
 > Results sections say *pending* and give the exact command that fills them. That's
@@ -22,7 +22,7 @@ python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\act
 pip install -r requirements.txt
 cp .env.example .env        # add a Google AI Studio key and an OpenRouter key
 
-pytest eval/tests -q                                 # 350 tests, no keys needed
+pytest eval/tests -q                                 # 374 tests, no keys needed
 python -m agent.offline_e2e                          # whole system over HTTP, no keys needed
 
 python -m extractor.pipeline data/docs/cord_0001.jpg # one receipt -> fields + confidence
@@ -192,6 +192,42 @@ Converter fixes re-convert the **same pinned documents** (`--resample` to redraw
 Otherwise a changed row count would reshuffle which receipts are in the set and
 invalidate every split and every verification. Verification status carries over only
 when a document's labels are byte-identical to what was verified.
+
+### Second document type: invoices
+
+Ten real invoices test two things receipts can't: **multi-page documents** and
+**vendor/customer role resolution**. There are two parties, each with a name, address and
+tax ID, and returning them swapped is the failure that matters.
+
+- **Source: real, not synthetic.** The suggested synthetic set was checked and rejected:
+  one template, Faker data, totals that don't add up, and every document a single page.
+  The ten come from **RVL-CDIP-N multipage** (`jordyvl/rvl_cdip_n_mp`, CC BY-NC 4.0).
+  They are public-records invoices from a police department, TV stations, a school
+  district, law firms, a state agency and small manufacturers, and 1 to 5 pages each.
+  [`scripts/fetch_invoices.py`](scripts/fetch_invoices.py) streams the archive and pulls
+  only the ten pinned files, verified by SHA-256 ([`DATASETS.md`](DATASETS.md) records
+  the search).
+- **Schema:** `Invoice` has `vendor: Party` and `customer: Party` and reuses `LineItem`.
+  Nested fields are scored, calibrated and withheld under dotted names
+  (`customer.name`). `swapped_field` detects vendor↔customer swaps.
+- **Invoice-only validation:** due date ≥ issue date, and the vendor name must differ
+  from the customer name. The arithmetic checks are the same as for receipts. Neither
+  check can prove the roles are the right way round. They only catch documents that
+  are obviously inconsistent, and those go to escalation.
+- **Reported separately, never pooled.** Invoices have their own section under
+  `by_document_type` in the scorecard. The headline numbers are receipts only, and the
+  confidence model is fitted on receipts only. **Confidence is uncalibrated for
+  invoices.** With 3 invoices in calibration and 7 in test, invoice numbers are
+  anecdotes, not rates.
+- **Labels are drafted, pending human verification.** Every judgment call is recorded
+  in `_provenance.json` (`label_notes`). These are the ones to check first:
+  - `inv_0006` is a bundle of three documents, and only invoice 29069 is labeled.
+    Replacing it is the likely fix.
+  - `inv_0005` has a struck-through row. It's kept because the printed total includes it.
+  - `inv_0003`'s invoice number is redacted, so it's labeled null.
+  - `inv_0004` has a printed arithmetic error, which is kept deliberately as a test case.
+- **Privacy:** these are real public records that name private individuals. This is
+  why the repository is private.
 
 ### Metrics that show how it fails
 
@@ -385,9 +421,9 @@ threshold that makes fields abstain.
 ```
 extractor/  schema, provider, extract (pages), pipeline, grounding, confidence, cascade, cost
 api/        app (FastAPI), service, schemas, batch, telemetry
-eval/       run, metrics, taxonomy, scorecard, compare, regression, tests/ (350)
+eval/       run, metrics, taxonomy, scorecard, compare, regression, tests/ (374)
 agent/      stub_provider, offline_e2e          .claude/skills/offline-e2e/SKILL.md
-scripts/    fetch_datasets.sh, convert_*, verify_gt, assign_splits, degrade
+scripts/    fetch_datasets.sh, fetch_invoices, convert_*, verify_gt, audit_gt, assign_splits, degrade
 data/       docs/, ground_truth/ (+ _provenance.json), sets/, README.md
 Dockerfile  docker-compose.yml  .env.example  CLAUDE.md  DATASETS.md
 ```

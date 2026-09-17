@@ -51,7 +51,7 @@ from extractor.cascade import extract_cascade
 from extractor.cost import StageUsage, summarize as summarize_cost
 from extractor.extract import extract as extract_vlm_only
 from extractor.pipeline import extract_with_confidence
-from extractor.schema import Receipt
+from extractor.schema import document_type_of, model_for
 from eval import fingerprint, metrics, taxonomy
 from eval.scorecard import write_scorecard
 
@@ -71,7 +71,7 @@ THRESHOLD = float(os.environ.get("CONFIDENCE_THRESHOLD", "0.5"))
 class Extraction:
     """One document's extraction, whatever source produced it."""
 
-    receipt: Receipt
+    document: BaseModel
     latency_s: float
     confidence: dict[str, float] = dc_field(default_factory=dict)
     signals: dict[str, FieldSignals] = dc_field(default_factory=dict)
@@ -142,9 +142,10 @@ def api_preflight() -> dict:
     return health
 
 
-def _extract_via_api(doc_path: Path) -> Extraction:
+def _extract_via_api(doc_path: Path, doc_type: str = "receipt") -> Extraction:
     with doc_path.open("rb") as fh:
-        resp = api_client().post("/extract", files={"file": (doc_path.name, fh)})
+        resp = api_client().post("/extract", files={"file": (doc_path.name, fh)},
+                                 data={"document_type": doc_type})
     if resp.status_code == 502:
         detail = resp.json().get("detail", {})
         raise RuntimeError(f"API extraction failed: {detail.get('error', detail)}")
@@ -155,13 +156,18 @@ def _extract_via_api(doc_path: Path) -> Extraction:
     # The eval needs them back: abstention is measured as precision on kept vs all
     # fields, and scoring a withheld-but-correct value as "missing" would make an API run
     # disagree with a local run of the very same system.
-    raw = dict(body["receipt"] or {})
+    raw = json.loads(json.dumps(body["document"] or {}))
     for field, value in (body.get("withheld") or {}).items():
-        raw[field] = json.loads(value) if field == "line_items" and value else value
+        restored = json.loads(value) if field == "line_items" and value else value
+        *parents, leaf = field.split(".")                  # "vendor.name" -> raw["vendor"]["name"]
+        target = raw
+        for parent in parents:
+            target = target.setdefault(parent, {}) or {}
+        target[leaf] = restored
     usage = body.get("usage") or {}
     stages = [StageUsage(**s) for s in usage.get("stages", [])]
     return Extraction(
-        receipt=Receipt.model_validate(raw),
+        document=model_for(doc_type).model_validate(raw),
         latency_s=float(usage.get("latency_s", 0.0)),
         confidence=body.get("confidence") or {},
         abstained=body.get("abstained") or [],
@@ -178,18 +184,20 @@ def extract_one(
     conf_model: Optional[ConfidenceModel],
     threshold: float,
     use_cache: bool,
+    doc_type: str = "receipt",
 ) -> Extraction:
     if source == "api":
-        return _extract_via_api(doc_path)
+        return _extract_via_api(doc_path, doc_type)
     if source == "vlm-only":
         start = time.perf_counter()
-        receipt = extract_vlm_only(doc_path)
-        return Extraction(receipt=receipt, latency_s=time.perf_counter() - start)
+        document = extract_vlm_only(doc_path, doc_type=doc_type)
+        return Extraction(document=document, latency_s=time.perf_counter() - start)
 
     extractor = extract_cascade if source == "cascade" else extract_with_confidence
-    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache)
+    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,
+                       doc_type=doc_type)
     return Extraction(
-        receipt=result.receipt,
+        document=result.document,
         latency_s=result.latency_s,
         confidence=result.confidence,
         signals=result.signals,
@@ -234,20 +242,21 @@ def run(set_name: str | None, source: str, version: str, use_cache: bool = True)
     stage_rows: list[list[StageUsage]] = []
     cascades: dict[str, dict] = {}
     for doc_id in ids:
-        gt = Receipt.model_validate_json(_find_gt(doc_id).read_text())
+        doc_type = document_type_of(doc_id)
+        gt = model_for(doc_type).model_validate_json(_find_gt(doc_id).read_text())
         try:
             doc_path = _find_doc(doc_id)
-            ext = extract_one(doc_path, source, conf_model, threshold, use_cache)
+            ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)
         except Exception as exc:  # noqa: BLE001 — one bad document must not kill the batch
             failures.append({"doc_id": doc_id, "error": f"{type(exc).__name__}: {exc}",
                              "traceback": traceback.format_exc(limit=3)})
             print(f"  FAILED {doc_id}: {type(exc).__name__}: {exc}", file=sys.stderr)
             # Score it as an empty extraction: a document we could not read is a recall
             # failure, not a document that quietly disappears from the denominator.
-            ext = Extraction(receipt=Receipt(), latency_s=0.0)
+            ext = Extraction(document=model_for(doc_type)(), latency_s=0.0)
 
         doc = metrics.compare_document(
-            doc_id, ext.receipt, gt, latency_s=ext.latency_s, confidence=ext.confidence
+            doc_id, ext.document, gt, latency_s=ext.latency_s, confidence=ext.confidence
         )
         doc.tokens = ext.tokens or None
         doc.cost_usd = ext.cost_usd or None
@@ -261,8 +270,19 @@ def run(set_name: str | None, source: str, version: str, use_cache: bool = True)
             flag += " | escalated" if ext.cascade.get("escalated") else " | cheap path"
         print(f"  scored {doc_id} ({ext.latency_s:.2f}s){flag}", file=sys.stderr)
 
-    scorecard = metrics.aggregate(results)
-    scorecard["abstention"] = abstention_report(results, threshold)
+    # Receipts are the headline. Other document types are reported alongside, never pooled
+    # in: different fields and difficulty, and at n=10 invoices would distort every number.
+    by_type: dict[str, list[metrics.DocResult]] = {}
+    for r in results:
+        by_type.setdefault(document_type_of(r.doc_id), []).append(r)
+    headline = by_type.get("receipt") or results
+    scorecard = metrics.aggregate(headline)
+    scorecard["headline_document_type"] = "receipt" if "receipt" in by_type else document_type_of(results[0].doc_id)
+    scorecard["by_document_type"] = {
+        t: {**metrics.aggregate(docs), "abstention": abstention_report(docs, threshold)}
+        for t, docs in sorted(by_type.items()) if docs is not headline
+    }
+    scorecard["abstention"] = abstention_report(headline, threshold)
     if stage_rows:
         # Failed documents are excluded from latency (they have none) but are already
         # counted against accuracy above, so they cannot flatter either number.
@@ -402,12 +422,19 @@ def calibrate(target_precision: float, use_cache: bool = True) -> Path:
     The split is held out from `test` by construction (scripts/assign_splits.py), so
     nothing fitted here has seen a document that appears in the reported scorecard.
     """
-    ids = _doc_ids(CALIBRATION_SET)
-    print(f"Calibrating on {len(ids)} documents from '{CALIBRATION_SET}'...", file=sys.stderr)
+    # Receipts only. Three calibration invoices are far too few to fit on, and pooling them
+    # would let a different document type nudge the receipt weights. Invoices reuse the
+    # receipt-fitted model, and their confidence is reported as provisional, not calibrated.
+    all_ids = _doc_ids(CALIBRATION_SET)
+    ids = [d for d in all_ids if document_type_of(d) == "receipt"]
+    skipped = len(all_ids) - len(ids)
+    print(f"Calibrating on {len(ids)} receipts from '{CALIBRATION_SET}'"
+          + (f" ({skipped} non-receipt document(s) excluded)" if skipped else "") + "...",
+          file=sys.stderr)
 
     samples: list[tuple[str, FieldSignals, bool]] = []
     for doc_id in ids:
-        gt = Receipt.model_validate_json(_find_gt(doc_id).read_text())
+        gt = model_for(doc_id).model_validate_json(_find_gt(doc_id).read_text())
         try:
             ext = extract_one(_find_doc(doc_id), "pipeline", None, 0.0, use_cache)
         except Exception as exc:  # noqa: BLE001
@@ -416,7 +443,7 @@ def calibrate(target_precision: float, use_cache: bool = True) -> Path:
         # Correctness comes from the same compare_document the scorecard uses, so the
         # model is fitted on exactly the definition of "correct" it is later judged by.
         judged = {f: ok for f, _, ok in metrics.confidence_observations([
-            metrics.compare_document(doc_id, ext.receipt, gt,
+            metrics.compare_document(doc_id, ext.document, gt,
                                      confidence={f: 0.0 for f in ext.signals})])}
         for field, sig in ext.signals.items():
             if field in judged:
