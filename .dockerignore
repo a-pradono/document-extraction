@@ -1,0 +1,20 @@
+# Secrets never enter the build context, let alone an image layer.
+.env
+.env.*
+!.env.example
+
+# Raw datasets are GBs and never shipped; the curated data/docs + ground truth are.
+data/raw/
+
+# Runtime state is mounted, not baked in.
+.cache/
+outputs/
+
+.git/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.log
+.DS_Store
