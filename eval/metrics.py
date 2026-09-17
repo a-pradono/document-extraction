@@ -19,15 +19,55 @@ from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 from difflib import SequenceMatcher
 from typing import Any, Optional
 
-from extractor.schema import LineItem, Receipt
+from pydantic import BaseModel
+
+from extractor.schema import Invoice, LineItem, Receipt
 from eval import taxonomy
 
 # --- field groups ------------------------------------------------------------
-STRING_FIELDS = ("merchant_name", "merchant_address", "payment_method")
-DATE_FIELDS = ("date",)
+# Scalar fields per document type. Nested invoice parties are flattened to dotted names
+# ("vendor.name") so every comparison, taxonomy label, confidence signal and regression
+# gate works on them unchanged. Crucially, the swapped_field detector sees
+# vendor.name and customer.name as ordinary sibling fields, so a role swap is caught.
+RECEIPT_STRING_FIELDS = ("merchant_name", "merchant_address", "payment_method")
+INVOICE_STRING_FIELDS = ("invoice_number", "purchase_order",
+                         "vendor.name", "vendor.address", "vendor.tax_id",
+                         "customer.name", "customer.address", "customer.tax_id")
+RECEIPT_DATE_FIELDS = ("date",)
+INVOICE_DATE_FIELDS = ("issue_date", "due_date")
 CURRENCY_FIELDS = ("currency",)
-MONEY_FIELDS = ("subtotal", "service_charge", "discount", "tax", "total")
-SCALAR_FIELDS = STRING_FIELDS + DATE_FIELDS + CURRENCY_FIELDS + MONEY_FIELDS
+RECEIPT_MONEY_FIELDS = ("subtotal", "service_charge", "discount", "tax", "total")
+INVOICE_MONEY_FIELDS = ("subtotal", "tax", "total")
+
+FIELDS_BY_TYPE: dict[str, tuple[str, ...]] = {
+    "receipt": RECEIPT_STRING_FIELDS + RECEIPT_DATE_FIELDS + CURRENCY_FIELDS + RECEIPT_MONEY_FIELDS,
+    "invoice": INVOICE_STRING_FIELDS + INVOICE_DATE_FIELDS + CURRENCY_FIELDS + INVOICE_MONEY_FIELDS,
+}
+
+# Unions, for normalization and grouping, which depend only on what a field IS.
+STRING_FIELDS = RECEIPT_STRING_FIELDS + INVOICE_STRING_FIELDS
+DATE_FIELDS = RECEIPT_DATE_FIELDS + INVOICE_DATE_FIELDS
+MONEY_FIELDS = RECEIPT_MONEY_FIELDS
+SCALAR_FIELDS = FIELDS_BY_TYPE["receipt"]          # receipt default, kept for receipt callers
+
+
+def doc_type_of_model(doc: BaseModel) -> str:
+    return "invoice" if isinstance(doc, Invoice) else "receipt"
+
+
+def scalar_fields(doc_or_type: BaseModel | str) -> tuple[str, ...]:
+    doc_type = doc_or_type if isinstance(doc_or_type, str) else doc_type_of_model(doc_or_type)
+    return FIELDS_BY_TYPE[doc_type]
+
+
+def get_field(doc: BaseModel, name: str) -> Any:
+    """Read a possibly dotted field ("vendor.name") from a document."""
+    value: Any = doc
+    for part in name.split("."):
+        value = getattr(value, part, None)
+        if value is None:
+            return None
+    return value
 
 CURRENCY_SYMBOLS = {"$": "USD", "rp": "IDR", "€": "EUR", "£": "GBP", "¥": "JPY"}
 
@@ -190,13 +230,16 @@ class DocResult:
     confidence: dict = dc_field(default_factory=dict)  # field -> conf, Phase 4
 
 
-def _apply_swapped(comparisons: list[FieldComparison], gt: Receipt) -> None:
+def _apply_swapped(comparisons: list[FieldComparison], gt: BaseModel) -> None:
     """Relabel a wrong/missing field as swapped_field when the predicted value
-    actually belongs to a different field (a common, diagnosable error)."""
+    actually belongs to a different field (a common, diagnosable error).
+
+    Works on flattened party fields, so an invoice whose vendor and customer names came
+    back reversed is labeled swapped_field on both, which is role resolution failing."""
     gt_norm = {
-        f: _normalize(f, getattr(gt, f))
-        for f in SCALAR_FIELDS
-        if present(getattr(gt, f))
+        f: _normalize(f, get_field(gt, f))
+        for f in scalar_fields(gt)
+        if present(get_field(gt, f))
     }
     for c in comparisons:
         if c.label not in (taxonomy.WRONG_VALUE, taxonomy.SPURIOUS):
@@ -212,12 +255,15 @@ def _apply_swapped(comparisons: list[FieldComparison], gt: Receipt) -> None:
 
 def compare_document(
     doc_id: str,
-    pred: Receipt,
-    gt: Receipt,
+    pred: BaseModel,
+    gt: BaseModel,
     latency_s: Optional[float] = None,
     confidence: Optional[dict] = None,
 ) -> DocResult:
-    comparisons = [compare_scalar(f, getattr(gt, f), getattr(pred, f)) for f in SCALAR_FIELDS]
+    if type(pred) is not type(gt):
+        raise TypeError(f"{doc_id}: prediction is {type(pred).__name__}, ground truth is "
+                        f"{type(gt).__name__}; a document must be scored against its own type")
+    comparisons = [compare_scalar(f, get_field(gt, f), get_field(pred, f)) for f in scalar_fields(gt)]
     _apply_swapped(comparisons, gt)
     li = score_line_items(gt.line_items, pred.line_items)
     scalars_ok = all(c.label == taxonomy.CORRECT for c in comparisons)
@@ -238,11 +284,22 @@ def _f1(p: float, r: float) -> float:
 
 
 def aggregate(results: list[DocResult]) -> dict:
+    """Aggregate over whatever fields the documents were scored on.
+
+    Callers must not pool document types into one headline (receipts and invoices have
+    different fields and difficulty); eval/run.py aggregates each type separately."""
+    fields: list[str] = []
+    for r in results:
+        for c in r.comparisons:
+            if c.field not in fields:
+                fields.append(c.field)
     per_field: dict[str, dict] = {}
-    for f in SCALAR_FIELDS:
+    for f in fields:
         tp_n = tp_e = pred_pos = gt_pos = 0
         for r in results:
-            c = next(c for c in r.comparisons if c.field == f)
+            c = next((c for c in r.comparisons if c.field == f), None)
+            if c is None:
+                continue
             pred_pos += int(c.pred_present)
             gt_pos += int(c.gt_present)
             if c.gt_present and c.pred_present:
