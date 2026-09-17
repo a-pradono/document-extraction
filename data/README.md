@@ -22,6 +22,7 @@ data/
 | `cord_` | CORD v2 (`naver-clova-ix/cord-v2`, test split) | 25 | Structured backbone: line items, subtotal→total arithmetic. Indonesian, IDR |
 | `wild_` | WildReceipt (openmmlab), test split | 25 | Template diversity, photographed in the wild. Mostly US/English |
 | `retail_` | Kaggle `trainingdatapro/ocr-receipts-text-detection` | 15 | Messiest tier, photographed |
+| `inv_` | RVL-CDIP-N multipage (`jordyvl/rvl_cdip_n_mp`), invoice class | 10 | Second document type: multi-page PDFs (1–5 pages), vendor/customer roles. Labels match `Invoice` |
 
 Three independent sources means two languages and three different label schemas, which
 is the closest substitute we have for owning our own scans — see the README's honest
@@ -34,6 +35,11 @@ note about that forfeited bonus.
 - **WildReceipt** — released for research with the MMOCR toolkit (Apache-2.0).
   Sun et al., *Spatial Dual-Modality Graph Reasoning for Key Information Extraction*,
   arXiv:2103.14470.
+- **RVL-CDIP-N multipage** — CC BY-NC 4.0 (non-commercial). Larson et al.,
+  *Evaluating Out-of-Distribution Performance on Document Image Classifiers*, NeurIPS
+  2022 Datasets and Benchmarks. Fetch with `python scripts/fetch_invoices.py`: it pulls
+  only the ten pinned PDFs, verifies them by SHA-256, and never overwrites labels. These
+  are real public records that name private individuals, so **keep the repo private**.
 - **OCR Receipts text detection** — Kaggle, TrainingData.pro. Requires an API token;
   the download is manual and credentials stay outside the repo. Check the dataset page
   for its current license terms before redistributing the images.
@@ -98,6 +104,7 @@ the hardest documents.
 |---|---:|---:|---:|---:|---|
 | `calibration` | 22 | 9 | 9 | 4 | Fits confidence weights + threshold. **Never reported** |
 | `test` | 43 | 16 | 16 | 11 | The reported scorecard |
+| `invoices` | 10 | — | — | — | All invoices: 3 in `calibration`, 7 in `test`, reported under their own type |
 | `smoke` | 12 | — | — | — | Fast dev loop — drawn **from** `calibration` |
 | `degraded` | ~12 | — | — | — | A tag on the worst documents already **inside** `test` |
 | `synthetic` | opt | — | — | — | Augmented copies. Own tier, never the headline number |
@@ -105,7 +112,9 @@ the hardest documents.
 **Current state: 50 of the 65 documents exist** (CORD 25 + WildReceipt 25). The retail
 tier is missing because it needs a Kaggle API token, so `assign_splits.py` rescaled the
 quotas proportionally and produced calibration 18 / test 32. Re-run it after
-`convert_retail.py` to get the full 22 / 43 split.
+`convert_retail.py` to get the full 22 / 43 split. The invoices add 3 / 7 on top, drawn
+with their own RNG so adding them never moved a receipt between splits. `smoke` and
+`degraded` stay receipts-only.
 
 `smoke` comes from `calibration` because it runs dozens of times during iteration —
 overlapping `test` would quietly overfit the published numbers. Nothing is fitted on

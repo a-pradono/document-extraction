@@ -1,4 +1,4 @@
-# Dataset acquisition — instructions for Claude Code
+# Dataset acquisition 
 
 Build `scripts/fetch_datasets.sh` and the converters described below. Read this whole
 file first; the **Non-negotiables** at the bottom override any convenience shortcut.
@@ -200,6 +200,27 @@ invoices are a co-equal dataset. Report invoice metrics as a **separate breakdow
 never pooled into the headline receipt scorecard.
 
 ## Source selection — read this before picking
+
+> **Verified 2026-09-17 — the source below marked "Preferred" was REJECTED on
+> inspection, and RVL-CDIP-N (multi-page) was chosen instead.** Evidence:
+>
+> - `AlroWilde/invoice-checkmark-annotations` is **synthetic**, not real scans: every
+>   image in all three languages is the same HTML template (identical layout and footer
+>   text), rendered at exactly 800 px wide, with Faker-style data
+>   (`annoying1918@gmail.com`) and digitally overlaid pen marks. It is **single-page
+>   only**, the **vendor has no name** (address only), and its own numbers are
+>   inconsistent (36 × 36.50 printed as 1,314.17; a due date before the issue date).
+>   It is shipped as raw zips, so `load_dataset` does not yield image rows.
+> - `Voxel51/high-quality-invoice-images-for-ocr`: its card says synthetic.
+> - DocILE: real, but access requires a request form and approval.
+> - **Chosen: `jordyvl/rvl_cdip_n_mp`** (RVL-CDIP-N, Larson et al., NeurIPS 2022
+>   Datasets & Benchmarks; CC BY-NC 4.0). Real documents gathered from the web (many
+>   are public-records/FOIA releases), kept as original PDFs. Its invoice class has 57
+>   documents, 16 of them multi-page. 10 chosen, all 2-5 pages, each naming a vendor
+>   and a customer: see `scripts/fetch_invoices.py` for the pinned list and checksums.
+>   They contain real names of private individuals: the repository must stay private.
+>
+> The requirements in the rest of this addendum stand; only the source changed.
 
 **Kaggle is a poor source here.** Checked and rejected:
 
