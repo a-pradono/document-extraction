@@ -102,7 +102,7 @@ class TestBatchEndpoint:
     def test_withholding_applies_to_batch_results_too(self, client, tmp_path):
         files = [("files", ("a.jpg", _jpg(tmp_path), "image/jpeg"))]
         result = client.post("/extract/batch", files=files).json()["results"][0]
-        assert result["receipt"]["total"] is None and result["withheld"] == {"total": "53280"}
+        assert result["document"]["total"] is None and result["withheld"] == {"total": "53280"}
 
 
 # --- /metrics ------------------------------------------------------------------------
@@ -161,7 +161,7 @@ class TestEvalSourceApi:
         path = tmp_path / "r.jpg"
         path.write_bytes(_jpg(tmp_path))
         ext = eval_run.extract_one(path, "api", None, 0.5, True)
-        assert ext.receipt.total == Decimal("53280")
+        assert ext.document.total == Decimal("53280")
         assert ext.abstained == ["total"]
         assert ext.confidence["total"] == 0.31
 

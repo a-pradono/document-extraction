@@ -268,7 +268,7 @@ class TestFingerprint:
             monkeypatch.setattr(eval_run, attr, data / sub)
         monkeypatch.setattr(eval_run, "OUT_ROOT", tmp_path / "out")
         monkeypatch.setattr(eval_run, "extract_with_confidence", lambda *a, **k: PipelineResult(
-            receipt=Receipt(total=Decimal("1")), receipt_b=None, transcription=""))
+            document=Receipt(total=Decimal("1")), document_b=None, transcription=""))
         path = eval_run.run("one", "pipeline", "fp")
         fp = json.loads(path.read_text())["meta"]["fingerprint"]
         assert {"ground_truth", "documents", "prompts", "models", "threshold"} <= set(fp)

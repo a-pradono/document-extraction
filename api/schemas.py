@@ -7,12 +7,12 @@ batch results file are byte-for-byte comparable.
 from __future__ import annotations
 
 import json
-from typing import Optional
+from typing import Optional, Union
 
 from pydantic import BaseModel, Field
 
 from extractor.pipeline import PipelineResult
-from extractor.schema import Receipt
+from extractor.schema import Invoice, Receipt
 
 
 class StageUsageOut(BaseModel):
@@ -36,12 +36,14 @@ class UsageOut(BaseModel):
 class ExtractionOut(BaseModel):
     doc_id: str
     status: str = "ok"
-    receipt: Optional[Receipt] = None
+    document_type: str = "receipt"
+    document: Optional[Union[Invoice, Receipt]] = None
     confidence: dict[str, float] = Field(default_factory=dict)
     abstained: list[str] = Field(
         default_factory=list,
         description="Fields whose confidence fell below the threshold. Their values are "
-                    "withheld (null) in `receipt`; see `withheld` for what was read.",
+                    "withheld (null) in `document`; see `withheld` for what was read. "
+                    "Nested fields use dotted names, e.g. `vendor.name`.",
     )
     withheld: dict[str, Optional[str]] = Field(default_factory=dict)
     threshold: Optional[float] = None
@@ -52,26 +54,34 @@ class ExtractionOut(BaseModel):
     error: Optional[str] = None
 
 
-def from_result(doc_id: str, result: PipelineResult, threshold: float) -> ExtractionOut:
-    """Abstention is applied HERE, at the boundary: a consumer reading `receipt` must
+def from_result(doc_id: str, result: PipelineResult, threshold: float,
+                doc_type: str = "receipt") -> ExtractionOut:
+    """Abstention is applied HERE, at the boundary: a consumer reading `document` must
     never see a value the system is not confident in. The raw value is kept under
     `withheld` so a human reviewer can still see what the model read."""
-    receipt = result.receipt.model_copy(deep=True)
+    document = result.document.model_copy(deep=True)
     withheld: dict[str, Optional[str]] = {}
     for field in result.abstained:
-        value = getattr(receipt, field, None)
+        *parents, leaf = field.split(".")               # "vendor.name" -> document.vendor
+        owner = document
+        for parent in parents:
+            owner = getattr(owner, parent, None)
+        if owner is None:
+            continue
+        value = getattr(owner, leaf, None)
         if field == "line_items":
             # The table is withheld whole (an empty list, never a partial table) and kept
             # as JSON so a reviewer, or the eval harness, can still see every row read.
             withheld[field] = json.dumps([i.model_dump(mode="json") for i in value])
-            setattr(receipt, field, [])
+            setattr(owner, leaf, [])
             continue
         withheld[field] = None if value is None else str(value)
-        setattr(receipt, field, None)
+        setattr(owner, leaf, None)
 
     return ExtractionOut(
         doc_id=doc_id,
-        receipt=receipt,
+        document_type=doc_type,
+        document=document,
         confidence=result.confidence,
         abstained=list(result.abstained),
         withheld=withheld,

@@ -1,4 +1,4 @@
-"""Typed, validated receipt schema (Phase 1).
+"""Typed, validated document schemas: Receipt (primary) and Invoice (second type).
 
 Design rules:
 - Money is Decimal, never float.
@@ -55,3 +55,52 @@ class Receipt(BaseModel):
     total: Optional[Decimal] = None
     payment_method: Optional[str] = None
     line_items: list[LineItem] = Field(default_factory=list)
+
+
+class Party(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    name: Optional[str] = None
+    address: Optional[str] = None
+    tax_id: Optional[str] = None
+
+
+class Invoice(BaseModel):
+    """An invoice. Reuses LineItem so line-item matching and validation are unchanged.
+
+    The graded part is ROLE RESOLUTION: vendor and customer look alike on the page (two
+    names, two addresses) and only position and labelling ("Bill To", "Remit to", "c/o")
+    say which is which. A swap is scored as `swapped_field`.
+    """
+
+    model_config = ConfigDict(extra="ignore")
+
+    invoice_number: Optional[str] = None
+    issue_date: Optional[date_type] = None
+    due_date: Optional[date_type] = None
+    vendor: Party = Field(
+        default_factory=Party,
+        description="The party that ISSUED the invoice and is to be paid (seller/supplier).")
+    customer: Party = Field(
+        default_factory=Party,
+        description="The party BILLED, who is to pay (buyer, 'Bill To'). A 'c/o' or "
+                    "'Attention' person belongs to the customer, not the vendor.")
+    currency: Optional[str] = None
+    subtotal: Optional[Decimal] = None
+    tax: Optional[Decimal] = None
+    total: Optional[Decimal] = None
+    purchase_order: Optional[str] = None
+    line_items: list[LineItem] = Field(default_factory=list)
+
+
+DOCUMENT_MODELS: dict[str, type[BaseModel]] = {"receipt": Receipt, "invoice": Invoice}
+
+
+def document_type_of(doc_id: str) -> str:
+    """The one place a document's type is decided: invoice ids are prefixed `inv_`."""
+    return "invoice" if doc_id.startswith("inv_") else "receipt"
+
+
+def model_for(doc_id_or_type: str) -> type[BaseModel]:
+    key = doc_id_or_type if doc_id_or_type in DOCUMENT_MODELS else document_type_of(doc_id_or_type)
+    return DOCUMENT_MODELS[key]

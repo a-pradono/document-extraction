@@ -35,6 +35,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 from extractor.confidence import (
     ConfidenceModel,
@@ -43,24 +44,24 @@ from extractor.confidence import (
     validate_arithmetic,
 )
 from extractor.cost import StageUsage, stage_usage
-from extractor.extract import NUMBER_RULES, page_note, prepare_pages
-from extractor.output import parse_or_repair, salvage_receipt
+from extractor.extract import INVOICE_RULES, NUMBER_RULES, page_note, prepare_pages
+from extractor.output import is_invalid, parse_or_repair, salvage_receipt
 from extractor.grounding import is_grounded
 from extractor.provider import Provider
-from extractor.schema import Receipt
-from eval.metrics import SCALAR_FIELDS, _normalize, present, score_line_items
+from extractor.schema import DOCUMENT_MODELS
+from eval.metrics import _normalize, get_field, present, scalar_fields, score_line_items
 
 load_dotenv()
 
 CACHE_DIR = Path(os.environ.get("CACHE_DIR", ".cache/extractions"))
 
 VLM_SYSTEM = (
-    "You are a precise receipt reader. Extract only what is visibly present. "
-    "If a field is absent, return null. Never guess or invent values. "
+    "You are a precise document reader for receipts and invoices. Extract only what is "
+    "visibly present. If a field is absent, return null. Never guess or invent values. "
     "Return a single JSON object and nothing else."
 )
 LLM_SYSTEM = (
-    "You are a careful receipt data extractor working from an OCR transcription. "
+    "You are a careful receipt and invoice data extractor working from a transcription. "
     "Extract only values present in the transcription. If a field is absent, return "
     "null. Never invent values. Return a single JSON object and nothing else."
 )
@@ -68,8 +69,8 @@ LLM_SYSTEM = (
 
 @dataclass
 class PipelineResult:
-    receipt: Receipt                      # Model A's fields, the returned answer
-    receipt_b: Optional[Receipt]          # Model B's independent re-extraction
+    document: BaseModel                      # Model A's fields (Receipt or Invoice): the answer
+    document_b: Optional[BaseModel]          # Model B's independent re-extraction
     transcription: str
     confidence: dict[str, float] = dc_field(default_factory=dict)
     abstained: list[str] = dc_field(default_factory=list)
@@ -83,8 +84,8 @@ class PipelineResult:
     cascade: dict = dc_field(default_factory=dict)  # Phase 6: {"escalated", "reasons"}
 
 
-def _schema_prompt() -> str:
-    return json.dumps(Receipt.model_json_schema(), indent=2)
+def _schema_prompt(doc_type: str = "receipt") -> str:
+    return json.dumps(DOCUMENT_MODELS[doc_type].model_json_schema(), indent=2)
 
 
 def _cache_path(tag: str, *parts: bytes | str) -> Path:
@@ -141,17 +142,19 @@ def _self_report(raw: dict) -> dict[str, float]:
 
 
 # --- Model A: VLM reads the image -------------------------------------------
-def _vlm_prompt() -> str:
+def _vlm_prompt(doc_type: str = "receipt") -> str:
     return (
-        "Read this receipt and return ONE JSON object with exactly these keys:\n"
+        f"Read this {doc_type} and return ONE JSON object with exactly these keys:\n"
         '  "transcription": every line of text you can read, in reading order, '
         "preserving line breaks.\n"
         '  "fields": an object matching the schema below.\n'
-        '  "_confidence": an object mapping each field name to your certainty 0.0-1.0.\n'
+        '  "_confidence": an object mapping each field name to your certainty 0.0-1.0 '
+        '(nested fields as dotted names, e.g. "vendor.name").\n'
         "Money as numbers, dates as YYYY-MM-DD, currency as ISO-4217. Include every "
         "line item, including add-on lines printed under an item. Use null for anything "
-        "not present.\n" + NUMBER_RULES + "\n\nSchema for \"fields\":\n"
-        + _schema_prompt()
+        "not present.\n" + NUMBER_RULES + "\n"
+        + (INVOICE_RULES + "\n" if doc_type == "invoice" else "")
+        + "\nSchema for \"fields\":\n" + _schema_prompt(doc_type)
     )
 
 
@@ -162,10 +165,11 @@ def _vlm_max_tokens(n_pages: int) -> int:
     return base + (n_pages - 1) * int(os.environ.get("VLM_MAX_TOKENS_PER_EXTRA_PAGE", "4096"))
 
 
-def run_vlm(pages: Path | list[Path], provider: Provider, use_cache: bool = True):
+def run_vlm(pages: Path | list[Path], provider: Provider, use_cache: bool = True,
+            doc_type: str = "receipt"):
     """Read every page in ONE call. Returns (raw, usage, cached)."""
     pages = [pages] if isinstance(pages, Path) else list(pages)
-    prompt = page_note(len(pages)) + _vlm_prompt()
+    prompt = page_note(len(pages)) + _vlm_prompt(doc_type)
     cache = _cache_path("vlm", *(p.read_bytes() for p in pages), provider.model, VLM_SYSTEM, prompt)
     hit = _read_cache(cache, use_cache)
     if hit:
@@ -187,22 +191,24 @@ def run_vlm(pages: Path | list[Path], provider: Provider, use_cache: bool = True
 
 
 # --- Model B: text LLM re-extracts from the transcription --------------------
-def _llm_prompt(transcription: str) -> str:
+def _llm_prompt(transcription: str, doc_type: str = "receipt") -> str:
     return (
-        "Extract receipt fields from this transcription into a JSON object matching "
+        f"Extract {doc_type} fields from this transcription into a JSON object matching "
         "the schema. Reason about totals: if subtotal and tax are present they should "
         "sum to the total, and line item totals should sum to the subtotal. Do not "
         "alter values to force arithmetic to balance -- report what is written. Use "
-        "null for anything absent.\n" + NUMBER_RULES + "\n\nSchema:\n"
-        + _schema_prompt()
+        "null for anything absent.\n" + NUMBER_RULES + "\n"
+        + (INVOICE_RULES + "\n" if doc_type == "invoice" else "")
+        + "\nSchema:\n" + _schema_prompt(doc_type)
         + "\n\nTranscription:\n"
         + transcription
     )
 
 
-def run_llm(transcription: str, provider: Provider, use_cache: bool = True):
+def run_llm(transcription: str, provider: Provider, use_cache: bool = True,
+            doc_type: str = "receipt"):
     """Returns (raw, usage, cached)."""
-    prompt = _llm_prompt(transcription)
+    prompt = _llm_prompt(transcription, doc_type)
     cache = _cache_path("llm", provider.model, LLM_SYSTEM, prompt)
     hit = _read_cache(cache, use_cache)
     if hit:
@@ -221,21 +227,21 @@ def run_llm(transcription: str, provider: Provider, use_cache: bool = True):
 
 # --- signal assembly ---------------------------------------------------------
 def build_signals(
-    a: Receipt,
-    b: Optional[Receipt],
+    a: BaseModel,
+    b: Optional[BaseModel],
     transcription: str,
     self_report: dict[str, float],
 ) -> dict[str, FieldSignals]:
     validation = validate_arithmetic(a)
     signals: dict[str, FieldSignals] = {}
 
-    for f in SCALAR_FIELDS:
-        av = getattr(a, f, None)
+    for f in scalar_fields(a):
+        av = get_field(a, f)
 
         # agreement: same normalized value from the independent re-extraction
         agreement = 0.0
         if b is not None:
-            bv = getattr(b, f, None)
+            bv = get_field(b, f)
             if not present(av) and not present(bv):
                 agreement = 1.0                      # both say absent -> agree
             elif present(av) and present(bv):
@@ -287,13 +293,13 @@ def table_grounding(items: list, transcription: str) -> float:
     return round(grounded / len(items), 4)
 
 
-def fields_of(raw: dict) -> Any:
+def fields_of(raw: dict, doc_type: str = "receipt") -> Any:
     """The extracted fields from a model response. Models asked for {"fields": {...}}
     sometimes return the fields at the top level instead; reading only "fields" would
-    turn that into an all-null receipt that looks like a legitimately empty one."""
+    turn that into an all-null document that looks like a legitimately empty one."""
     if "fields" in raw:
         return raw["fields"]
-    top_level = {k: v for k, v in raw.items() if k in Receipt.model_fields}
+    top_level = {k: v for k, v in raw.items() if k in DOCUMENT_MODELS[doc_type].model_fields}
     return top_level or None
 
 
@@ -303,24 +309,26 @@ def extract_with_confidence(
     threshold: float = 0.5,
     model: Optional[ConfidenceModel] = None,
     use_cache: bool = True,
+    doc_type: str = "receipt",
 ) -> PipelineResult:
     started = time.perf_counter()
     pages = prepare_pages(path)
     conf_model = model or ConfidenceModel()
-    result = PipelineResult(receipt=Receipt(), receipt_b=None, transcription="")
+    schema = DOCUMENT_MODELS[doc_type]
+    result = PipelineResult(document=schema(), document_b=None, transcription="")
 
     vlm = Provider(
         base_url=os.environ["VLM_A_BASE_URL"],
         api_key=os.environ.get("VLM_A_API_KEY", ""),
         model=os.environ["VLM_A_MODEL"],
     )
-    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache)
+    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)
     result.stages.append(stage_usage("model_a", usage_a, cached_a))
     if usage_a.get("repaired"):
         result.errors.append("model_a_output_repaired: invalid JSON fixed by one text-only call")
     result.transcription = str(raw_a.get("transcription", "") or "")
-    salvaged_a = salvage_receipt(fields_of(raw_a))
-    result.receipt = salvaged_a.receipt
+    salvaged_a = salvage_receipt(fields_of(raw_a, doc_type), schema)
+    result.document = salvaged_a.document
     result.errors.extend(f"model_a_{note}" for note in salvaged_a.notes)
     self_report = _self_report(raw_a)
 
@@ -333,24 +341,24 @@ def extract_with_confidence(
             api_key=os.environ.get("LLM_B_API_KEY", ""),
             model=os.environ["LLM_B_MODEL"],
         )
-        raw_b, usage_b, cached_b = run_llm(result.transcription, llm, use_cache)
+        raw_b, usage_b, cached_b = run_llm(result.transcription, llm, use_cache, doc_type=doc_type)
         result.stages.append(stage_usage("model_b", usage_b, cached_b))
         # B's invalid values just become null for comparison: A's answer is what ships,
         # so a garbled cross-check lowers agreement without forcing an abstention.
-        salvaged_b = salvage_receipt(fields_of(raw_b))
-        result.receipt_b = salvaged_b.receipt
+        salvaged_b = salvage_receipt(fields_of(raw_b, doc_type), schema)
+        result.document_b = salvaged_b.document
         result.errors.extend(f"model_b_{note}" for note in salvaged_b.notes)
     except Exception as exc:  # noqa: BLE001 - resilience is a graded requirement
         result.errors.append(f"model_b_failed: {type(exc).__name__}: {exc}")
 
     result.signals = build_signals(
-        result.receipt, result.receipt_b, result.transcription, self_report
+        result.document, result.document_b, result.transcription, self_report
     )
     for f, sig in result.signals.items():
-        if result.receipt_b is None:
+        if result.document_b is None:
             sig.agreement = 0.5  # unknown, not disagreement
         c = conf_model.score_field(f, sig)
-        if f in salvaged_a.invalid or "*" in salvaged_a.invalid:
+        if is_invalid(f, salvaged_a.invalid):
             c = 0.0              # the model produced garbage here: never ship it, abstain
         result.confidence[f] = round(c, 4)
         if c < threshold:
@@ -370,7 +378,7 @@ if __name__ == "__main__":
         print("usage: python -m extractor.pipeline <path-to-receipt>", file=sys.stderr)
         sys.exit(1)
     r = extract_with_confidence(sys.argv[1])
-    print(r.receipt.model_dump_json(indent=2))
+    print(r.document.model_dump_json(indent=2))
     print("\nconfidence:", json.dumps(r.confidence, indent=2))
     print("abstained:", r.abstained)
     if r.errors:

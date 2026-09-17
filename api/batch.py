@@ -31,6 +31,7 @@ from typing import Callable
 
 from api import service
 from api.schemas import ExtractionOut, from_error
+from extractor.schema import document_type_of
 from extractor.cost import StageUsage, latency_percentiles, summarize
 
 log = logging.getLogger("api.batch")
@@ -195,6 +196,8 @@ def main() -> None:
                     default=int(os.environ.get("BATCH_CONCURRENCY", "3")))
     ap.add_argument("--recursive", action="store_true")
     ap.add_argument("--no-cache", action="store_true")
+    ap.add_argument("--type", default="auto", choices=["auto", "receipt", "invoice"],
+                    help="document type; auto treats files named inv_* as invoices")
     args = ap.parse_args()
 
     if not args.folder.is_dir():
@@ -210,7 +213,10 @@ def main() -> None:
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S")
     out = args.out or Path("outputs") / f"batch_{stamp}"
     use_cache = not args.no_cache
-    doc_fn = lambda p, d: service.extract_document(p, d, use_cache=use_cache)  # noqa: E731
+    def doc_fn(path: Path, doc_id: str):
+        # auto: invoices are recognised by the `inv_` id prefix, everything else is a receipt.
+        doc_type = document_type_of(Path(doc_id).name) if args.type == "auto" else args.type
+        return service.extract_document(path, doc_id, use_cache=use_cache, doc_type=doc_type)
 
     s = run_batch(args.folder, out, concurrency=args.concurrency,
                   recursive=args.recursive, doc_fn=doc_fn)

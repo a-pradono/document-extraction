@@ -34,6 +34,8 @@ import time
 from pathlib import Path
 from typing import Optional
 
+from pydantic import BaseModel
+
 from extractor.confidence import ConfidenceModel, FieldSignals
 from extractor.cost import stage_usage
 from extractor.extract import prepare_pages
@@ -47,12 +49,14 @@ from extractor.pipeline import (
     run_vlm,
 )
 from extractor.provider import Provider
-from extractor.schema import Receipt
-from eval.metrics import MONEY_FIELDS, present
+from extractor.schema import DOCUMENT_MODELS
+from eval.metrics import MONEY_FIELDS, get_field, present
+
+CONSISTENCY_FIELDS = ("issue_date", "due_date", "vendor.name", "customer.name")
 
 
 def escalation_reasons(
-    receipt: Receipt,
+    receipt: BaseModel,
     signals: dict[str, FieldSignals],
     confidence: dict[str, float],
     escalate_below: float,
@@ -61,12 +65,16 @@ def escalation_reasons(
     reasons: list[str] = []
 
     def has(f: str) -> bool:
-        value = getattr(receipt, f, None)
+        value = get_field(receipt, f)
         return present(value) and value != []          # an empty table is absent too
 
     if any(has(f) and signals[f].validated == 0.0
            for f in (*MONEY_FIELDS, "line_items") if f in signals):
         reasons.append("arithmetic_failed")
+
+    # Invoice-only: due date before issue date, or the same name on both parties.
+    if any(has(f) and signals[f].validated == 0.0 for f in CONSISTENCY_FIELDS if f in signals):
+        reasons.append("consistency_failed")
 
     for f, sig in signals.items():
         if has(f) and sig.grounded == 0.0:
@@ -79,7 +87,7 @@ def escalation_reasons(
         if has(f) and c < escalate_below:
             reasons.append(f"low_confidence:{f}")
 
-    if not present(receipt.total) and not receipt.line_items:
+    if not present(getattr(receipt, "total", None)) and not receipt.line_items:
         reasons.append("empty_extraction")
     return reasons
 
@@ -99,6 +107,7 @@ def extract_cascade(
     model: Optional[ConfidenceModel] = None,
     use_cache: bool = True,
     escalate_below: Optional[float] = None,
+    doc_type: str = "receipt",
 ) -> PipelineResult:
     started = time.perf_counter()
     conf_model = model or ConfidenceModel()
@@ -113,10 +122,10 @@ def extract_cascade(
     cheap_stage = None
     try:
         pages = prepare_pages(path)
-        raw, usage, cached = run_vlm(pages, _cheap_provider(), use_cache)
+        raw, usage, cached = run_vlm(pages, _cheap_provider(), use_cache, doc_type=doc_type)
         cheap_stage = stage_usage("cascade", usage, cached)
-        salvaged = salvage_receipt(fields_of(raw))
-        receipt = salvaged.receipt
+        salvaged = salvage_receipt(fields_of(raw, doc_type), DOCUMENT_MODELS[doc_type])
+        receipt = salvaged.document
         transcription = str(raw.get("transcription", "") or "")
 
         signals = build_signals(receipt, None, transcription, _self_report(raw))
@@ -132,8 +141,8 @@ def extract_cascade(
 
     if not reasons:
         return PipelineResult(
-            receipt=receipt,
-            receipt_b=None,
+            document=receipt,
+            document_b=None,
             transcription=transcription,
             confidence=confidence,
             abstained=[f for f, c in confidence.items() if c < threshold],
@@ -146,7 +155,8 @@ def extract_cascade(
             cascade={"escalated": False, "reasons": []},
         )
 
-    full = extract_with_confidence(path, threshold=threshold, model=model, use_cache=use_cache)
+    full = extract_with_confidence(path, threshold=threshold, model=model, use_cache=use_cache,
+                                   doc_type=doc_type)
     if cheap_stage is not None:
         full.stages.insert(0, cheap_stage)        # sunk cost: the escalated doc pays both
     full.latency_s = round(sum(s.latency_s for s in full.stages), 3)

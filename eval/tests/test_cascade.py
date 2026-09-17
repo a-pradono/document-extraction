@@ -83,7 +83,7 @@ def _cheap(fields, text=CLEAN_TEXT):
 
 def _full_result():
     return PipelineResult(
-        receipt=Receipt(total="53280"), receipt_b=None, transcription=CLEAN_TEXT,
+        document=Receipt(total="53280"), document_b=None, transcription=CLEAN_TEXT,
         latency_s=5.0, cost_usd=0.002,
         stages=[StageUsage("model_a", "flash", 1800, 400, 4.0, 0.0015, priced=True),
                 StageUsage("model_b", "qwen", 900, 150, 1.0, 0.0005, priced=True)],
@@ -151,7 +151,7 @@ class TestExtractCascade:
     def test_cascade_uses_its_own_model_not_model_as(self, image, env, monkeypatch):
         seen = []
 
-        def spy(img, provider, use_cache=True):
+        def spy(img, provider, use_cache=True, **_):
             seen.append(provider.model)
             return _cheap(CLEAN_FIELDS)
 

@@ -87,19 +87,19 @@ class TestScoring:
 
 class TestWithholding:
     def _result(self, abstained):
-        return PipelineResult(receipt=Receipt(total="48000", line_items=ROWS), receipt_b=None,
+        return PipelineResult(document=Receipt(total="48000", line_items=ROWS), document_b=None,
                               transcription=TEXT, confidence={"total": 0.9, "line_items": 0.2},
                               abstained=abstained)
 
     def test_abstained_table_is_withheld_whole(self):
         out = from_result("d", self._result(["line_items"]), 0.5)
-        assert out.receipt.line_items == []
+        assert out.document.line_items == []
         rows = json.loads(out.withheld["line_items"])
         assert [r["description"] for r in rows] == ["Es Kopi Susu", "Croissant"]
-        assert out.receipt.total == Decimal("48000")
+        assert out.document.total == Decimal("48000")
 
     def test_confident_table_is_returned(self):
-        assert len(from_result("d", self._result([]), 0.5).receipt.line_items) == 2
+        assert len(from_result("d", self._result([]), 0.5).document.line_items) == 2
 
     def test_withheld_table_round_trips_through_the_eval_client(self, monkeypatch, tmp_path):
         from fastapi.testclient import TestClient
@@ -119,5 +119,5 @@ class TestWithholding:
         Image.new("RGB", (20, 30), "white").save(path)
 
         ext = eval_run.extract_one(path, "api", None, 0.5, True)
-        assert [i.description for i in ext.receipt.line_items] == ["Es Kopi Susu", "Croissant"]
-        assert ext.receipt.line_items[0].line_total == Decimal("36000")
+        assert [i.description for i in ext.document.line_items] == ["Es Kopi Susu", "Croissant"]
+        assert ext.document.line_items[0].line_total == Decimal("36000")

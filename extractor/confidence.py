@@ -191,7 +191,36 @@ def validate_arithmetic(receipt, tolerance: Optional[str] = None) -> dict[str, f
     if present(cur):
         scores["currency"] = 1.0 if len(str(cur).strip()) == 3 else 0.0
 
+    scores.update(_invoice_checks(receipt))
     return scores
+
+
+def _invoice_checks(doc) -> dict[str, float]:
+    """Two model-free checks that only make sense for invoices.
+
+    - due_date before issue_date is impossible on a real invoice, so it means a misread
+      or swapped date. Both dates are blamed, since either could be the wrong one.
+    - vendor and customer with the same name means role resolution failed: one party's
+      details were copied into the other. Both names are blamed. Distinct names earn no
+      credit, since two different names can still be the wrong way round.
+    """
+    scores: dict[str, float] = {}
+    issue, due = getattr(doc, "issue_date", None), getattr(doc, "due_date", None)
+    for name, value in (("issue_date", issue), ("due_date", due)):
+        if value is not None:
+            scores[name] = 1.0
+    if issue is not None and due is not None and due < issue:
+        scores["issue_date"] = scores["due_date"] = 0.0
+
+    vendor, customer = getattr(doc, "vendor", None), getattr(doc, "customer", None)
+    if vendor is not None and customer is not None and vendor.name and customer.name:
+        if norm_party(vendor.name) == norm_party(customer.name):
+            scores["vendor.name"] = scores["customer.name"] = 0.0
+    return scores
+
+
+def norm_party(name: str) -> str:
+    return "".join(ch for ch in name.lower() if ch.isalnum())
 
 
 # --- logistic model ----------------------------------------------------------

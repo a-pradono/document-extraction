@@ -95,25 +95,25 @@ class TestRepair:
 class TestSalvage:
     def test_valid_receipt_passes_through_untouched(self):
         s = salvage_receipt({"total": "53280", "date": "2024-03-12"})
-        assert s.receipt.total == Decimal("53280") and s.invalid == []
+        assert s.document.total == Decimal("53280") and s.invalid == []
 
     def test_one_bad_value_does_not_cost_the_other_fields(self):
         s = salvage_receipt({"merchant_name": "Kopi", "total": "53280", "date": "12 Maret 2024"})
-        assert s.receipt.merchant_name == "Kopi" and s.receipt.total == Decimal("53280")
-        assert s.receipt.date is None
+        assert s.document.merchant_name == "Kopi" and s.document.total == Decimal("53280")
+        assert s.document.date is None
         assert s.invalid == ["date"] and "12 Maret 2024" in s.notes[0]
 
     def test_bad_row_keeps_the_good_rows_but_marks_the_table_invalid(self):
         rows = [{"description": "Kopi", "line_total": "18000"},
                 {"description": "Roti", "line_total": "N/A"}]
         s = salvage_receipt({"total": "18000", "line_items": rows})
-        assert [i.description for i in s.receipt.line_items] == ["Kopi"]
+        assert [i.description for i in s.document.line_items] == ["Kopi"]
         assert "line_items" in s.invalid
 
     @pytest.mark.parametrize("fields", ["a string", [1, 2], 42])
     def test_non_object_fields_mark_everything_invalid(self, fields):
         s = salvage_receipt(fields)
-        assert s.invalid == ["*"] and s.receipt.total is None
+        assert s.invalid == ["*"] and s.document.total is None
 
     def test_none_is_just_empty(self):
         assert salvage_receipt(None).invalid == []
@@ -140,7 +140,7 @@ class TestPipelineIntegration:
         monkeypatch.setattr(pipeline, "run_llm",
                             lambda *a, **k: ({"total": "53280"}, {"latency_s": 0.1}, False))
         r = pipeline.extract_with_confidence(env, threshold=0.5)
-        assert r.receipt.total == Decimal("53280")
+        assert r.document.total == Decimal("53280")
         assert r.confidence["date"] == 0.0 and "date" in r.abstained
         assert any("invalid date" in e for e in r.errors)
 
@@ -152,8 +152,8 @@ class TestPipelineIntegration:
         monkeypatch.setattr(pipeline, "run_llm",
                             lambda *a, **k: ({"total": 53280}, {"latency_s": 0.1}, False))
         r = pipeline.extract_with_confidence(env)
-        assert r.receipt.total == Decimal("53280")
-        assert r.receipt_b.total == Decimal("53280")
+        assert r.document.total == Decimal("53280")
+        assert r.document_b.total == Decimal("53280")
 
     def test_repair_is_surfaced_as_a_warning(self, env, monkeypatch):
         monkeypatch.setattr(pipeline, "run_vlm", lambda *a, **k: (

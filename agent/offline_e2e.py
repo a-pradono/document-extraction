@@ -206,7 +206,7 @@ def main() -> int:
                    f"nothing abstained at threshold 0.99: {one['abstained']}")
             for field in one["abstained"]:
                 expect(field in one["withheld"], f"abstained {field} not reported as withheld")
-                value = one["receipt"].get(field)
+                value = one["document"].get(field)
                 expect(value in (None, []), f"abstained {field} leaked into receipt: {value!r}")
             metrics = api.get("/metrics").json()
             expect(metrics["documents"]["succeeded"] >= 2 and metrics["documents"]["failed"] >= 1,

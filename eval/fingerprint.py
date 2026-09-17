@@ -38,9 +38,11 @@ def documents_sha(doc_ids: list[str], find_doc) -> str:
 
 def prompts_sha() -> str:
     from extractor import extract, pipeline
-    return _sha(p.encode() for p in (pipeline.VLM_SYSTEM, pipeline._vlm_prompt(), pipeline.LLM_SYSTEM,
-                                     pipeline._llm_prompt(""), extract.SYSTEM_PROMPT,
-                                     extract.build_prompt()))
+    prompts = [pipeline.VLM_SYSTEM, pipeline.LLM_SYSTEM, extract.SYSTEM_PROMPT]
+    for doc_type in ("receipt", "invoice"):
+        prompts += [pipeline._vlm_prompt(doc_type), pipeline._llm_prompt("", doc_type),
+                    extract.build_prompt(doc_type)]
+    return _sha(p.encode() for p in prompts)
 
 
 def file_sha(path: Path) -> Optional[str]:

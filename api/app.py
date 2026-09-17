@@ -3,7 +3,7 @@
     uvicorn api.app:app --host 0.0.0.0 --port 8000
 
     GET  /health          liveness + configuration + which models are wired
-    POST /extract         one file (multipart "file")  -> ExtractionOut
+    POST /extract         one file (multipart "file", optional "document_type")
     POST /extract/batch   many files (multipart "files") -> {results, summary}
     GET  /metrics         in-process counters: failures, abstention, escalation, $, latency
 
@@ -24,7 +24,7 @@ import time
 import uuid
 from pathlib import Path
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel
 
@@ -32,6 +32,7 @@ from api import service
 from api.batch import summarize_results
 from api.schemas import ExtractionOut, from_error
 from api.telemetry import Telemetry
+from extractor.schema import DOCUMENT_MODELS
 
 logging.basicConfig(level=os.environ.get("LOG_LEVEL", "INFO"),
                     format="%(asctime)s %(levelname)s %(name)s %(message)s")
@@ -64,9 +65,17 @@ class UploadRejected(Exception):
         self.status, self.message = status, message
 
 
-def _extract_bounded(path: Path, doc_id: str) -> ExtractionOut:
+def _extract_bounded(path: Path, doc_id: str, doc_type: str = "receipt") -> ExtractionOut:
     with _slots:
-        return service.extract_document(path, doc_id)
+        return service.extract_document(path, doc_id, doc_type=doc_type)
+
+
+def _require_document_type(doc_type: str) -> str:
+    if doc_type not in DOCUMENT_MODELS:
+        telemetry.reject()
+        raise HTTPException(400, f"unknown document_type '{doc_type}'; "
+                                 f"expected one of {sorted(DOCUMENT_MODELS)}")
+    return doc_type
 
 
 def _require_config() -> None:
@@ -94,9 +103,9 @@ async def _read_upload(file: UploadFile) -> tuple[Path, str]:
     return tmp, name.stem
 
 
-async def _extract_upload(path: Path, doc_id: str) -> ExtractionOut:
+async def _extract_upload(path: Path, doc_id: str, doc_type: str = "receipt") -> ExtractionOut:
     try:
-        result = await run_in_threadpool(_extract_bounded, path, doc_id)
+        result = await run_in_threadpool(_extract_bounded, path, doc_id, doc_type)
     finally:
         path.unlink(missing_ok=True)
     telemetry.record(result)
@@ -128,16 +137,18 @@ def metrics() -> dict:
 
 
 @app.post("/extract", response_model=ExtractionOut, response_model_exclude_none=False)
-async def extract(file: UploadFile = File(...)) -> ExtractionOut:
+async def extract(file: UploadFile = File(...),
+                  document_type: str = Form("receipt")) -> ExtractionOut:
     telemetry.request()
     _require_config()
+    _require_document_type(document_type)
     try:
         path, doc_id = await _read_upload(file)
     except UploadRejected as exc:
         telemetry.reject()
         raise HTTPException(exc.status, exc.message) from None
 
-    result = await _extract_upload(path, doc_id)
+    result = await _extract_upload(path, doc_id, document_type)
     if result.status == "error":
         # The document was accepted but could not be processed: a failure of this
         # request, not a malformed request, so 502 — with the structured body.
@@ -146,12 +157,14 @@ async def extract(file: UploadFile = File(...)) -> ExtractionOut:
 
 
 @app.post("/extract/batch", response_model=BatchOut)
-async def extract_batch(files: list[UploadFile] = File(...)) -> BatchOut:
+async def extract_batch(files: list[UploadFile] = File(...),
+                        document_type: str = Form("receipt")) -> BatchOut:
     """Always 200 once the batch itself is acceptable. Per-file problems (a bad type, an
     empty file, a failed extraction) come back as status="error" entries in `results`,
     in upload order, so one bad receipt never costs the caller the other nineteen."""
     telemetry.request()
     _require_config()
+    _require_document_type(document_type)
     if len(files) > MAX_BATCH_FILES:
         telemetry.reject()
         raise HTTPException(413, f"{len(files)} files exceeds the batch limit of {MAX_BATCH_FILES}")
@@ -171,7 +184,7 @@ async def extract_batch(files: list[UploadFile] = File(...)) -> BatchOut:
             telemetry.record(rejected)
             jobs.append(asyncio.sleep(0, result=rejected))
             continue
-        jobs.append(_extract_upload(path, doc_id))
+        jobs.append(_extract_upload(path, doc_id, document_type))
 
     results = list(await asyncio.gather(*jobs))
     summary = summarize_results(results, wall_s=time.perf_counter() - started,

@@ -25,8 +25,8 @@ from extractor.schema import Receipt
 
 def fake_result(**overrides) -> PipelineResult:
     result = PipelineResult(
-        receipt=Receipt(merchant_name="Kopi", total=Decimal("53280"), date="2024-03-12"),
-        receipt_b=None,
+        document=Receipt(merchant_name="Kopi", total=Decimal("53280"), date="2024-03-12"),
+        document_b=None,
         transcription="KOPI\nTOTAL 53.280",
         confidence={"merchant_name": 0.92, "total": 0.31, "date": 0.88},
         abstained=["total"],
@@ -71,16 +71,16 @@ class TestService:
         path.write_bytes(_jpeg_bytes(tmp_path))
         out = service.extract_document(path, "r", extractor=lambda *a, **k: fake_result())
         assert out.status == "ok"
-        assert out.receipt.total is None
+        assert out.document.total is None
         assert out.withheld == {"total": "53280"}
-        assert out.receipt.merchant_name == "Kopi"          # confident fields untouched
+        assert out.document.merchant_name == "Kopi"          # confident fields untouched
 
     def test_withholding_does_not_mutate_the_pipeline_result(self, tmp_path):
         path = tmp_path / "r.jpg"
         path.write_bytes(_jpeg_bytes(tmp_path))
         result = fake_result()
         service.extract_document(path, "r", extractor=lambda *a, **k: result)
-        assert result.receipt.total == Decimal("53280")     # eval still needs the raw value
+        assert result.document.total == Decimal("53280")     # eval still needs the raw value
 
     def test_extractor_exception_becomes_an_error_result(self, tmp_path):
         path = tmp_path / "r.jpg"
@@ -190,16 +190,16 @@ class TestApi:
         assert resp.status_code == 200
         body = resp.json()
         assert body["doc_id"] == "r"
-        assert body["receipt"]["total"] is None and body["abstained"] == ["total"]
-        assert body["receipt"]["date"] == "2024-03-12"
+        assert body["document"]["total"] is None and body["abstained"] == ["total"]
+        assert body["document"]["date"] == "2024-03-12"
         assert body["usage"]["stages"][0]["prompt_tokens"] == 1800
 
     def test_money_serializes_without_float_rounding(self, monkeypatch, tmp_path):
-        result = fake_result(abstained=[], receipt=Receipt(total=Decimal("0.30")))
+        result = fake_result(abstained=[], document=Receipt(total=Decimal("0.30")))
         monkeypatch.setattr(service, "extract_with_confidence", lambda *a, **k: result)
         resp = TestClient(app_module.app).post(
             "/extract", files={"file": ("r.jpg", _jpeg_bytes(tmp_path), "image/jpeg")})
-        assert resp.json()["receipt"]["total"] == "0.30"
+        assert resp.json()["document"]["total"] == "0.30"
 
     def test_rejects_unsupported_type(self, client):
         resp = client.post("/extract", files={"file": ("r.gif", b"GIF89a", "image/gif")})

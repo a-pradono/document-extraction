@@ -1,7 +1,7 @@
 """Single-document extraction — the walking skeleton (Phase 2).
 
 image/PDF in -> every page downscaled -> one VLM call (JSON mode) -> validated Receipt
-out, with one corrective retry on invalid JSON. Also home to page preparation, which the
+or Invoice out, with one corrective retry on invalid JSON. Also home to page preparation, which the
 full pipeline and the cascade share.
 
 Run:  python -m extractor.extract data/sample.jpg
@@ -22,10 +22,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from PIL import Image, ImageOps
+from pydantic import BaseModel
 
 from extractor.output import _strip_fences
 from extractor.provider import Provider
-from extractor.schema import Receipt
+from extractor.schema import DOCUMENT_MODELS
 
 load_dotenv()
 
@@ -42,8 +43,18 @@ NUMBER_RULES = (
     "'53,280' both mean 53280, while '53.28' means 53.28."
 )
 
+# Invoice-only guidance. Role resolution is the graded part, and the two parties look
+# alike on the page, so the rule for telling them apart is stated rather than left to the
+# schema description alone.
+INVOICE_RULES = (
+    "This is an INVOICE. vendor = the party that issued it and is to be paid (letterhead, "
+    "'Remit to', 'Make checks payable to'). customer = the party billed ('Bill To', 'To:', "
+    "'Sold To'); a 'c/o' or 'Attention' person belongs to the customer. Never copy one "
+    "party's details into the other. A redacted (blacked-out) value is not visible: null."
+)
+
 SYSTEM_PROMPT = (
-    "You are a precise receipt extraction system. Extract only what is visibly "
+    "You are a precise receipt and invoice extraction system. Extract only what is visibly "
     "present on the document. If a field is not present, return null. Never guess "
     "or invent values. Return a single JSON object and nothing else."
 )
@@ -129,24 +140,26 @@ def page_note(n_pages: int) -> str:
     if n_pages <= 1:
         return ""
     return (f"This document has {n_pages} pages, provided in order as {n_pages} images. "
-            "Treat them as ONE receipt: line items may continue across pages and the "
+            "Treat them as ONE document: line items may continue across pages and the "
             "total is usually on the last page. In the transcription, start each page "
             "with a line '--- page N ---'.\n\n")
 
 
-def build_prompt() -> str:
-    schema = json.dumps(Receipt.model_json_schema(), indent=2)
+def build_prompt(doc_type: str = "receipt") -> str:
+    schema = json.dumps(DOCUMENT_MODELS[doc_type].model_json_schema(), indent=2)
     return (
-        "Extract the receipt fields into a JSON object matching this schema. "
+        f"Extract the {doc_type} fields into a JSON object matching this schema. "
         "Money values as numbers, dates as YYYY-MM-DD, currency as ISO-4217 "
         "(e.g. IDR, USD). Include every line item. Use null for anything not "
-        "present.\n" + NUMBER_RULES + "\n\nJSON schema:\n" + schema
+        "present.\n" + NUMBER_RULES + "\n"
+        + (INVOICE_RULES + "\n" if doc_type == "invoice" else "")
+        + "\nJSON schema:\n" + schema
     )
 
 
-
-
-def extract(path: str | Path) -> Receipt:
+def extract(path: str | Path, doc_type: str = "receipt") -> BaseModel:
+    """VLM-only baseline (Phase 3). No confidence; kept so improvements stay measurable."""
+    schema_model = DOCUMENT_MODELS[doc_type]
     # VLM_A_* is what .env.example defines. The skeleton originally read VLM_BASE_URL /
     # VLM_MODEL / API_KEY, which nothing sets, so the Phase 3 baseline (--source vlm-only)
     # failed every document. The old names still win if present.
@@ -161,7 +174,7 @@ def extract(path: str | Path) -> Receipt:
         {"role": "system", "content": SYSTEM_PROMPT},
         {
             "role": "user",
-            "content": [Provider.text_block(page_note(len(pages)) + build_prompt()),
+            "content": [Provider.text_block(page_note(len(pages)) + build_prompt(doc_type)),
                         *(Provider.image_block(p) for p in pages)],
         },
     ]
@@ -170,26 +183,26 @@ def extract(path: str | Path) -> Receipt:
     raw = _strip_fences(resp.text)
 
     try:
-        receipt = Receipt.model_validate_json(raw)
+        document = schema_model.model_validate_json(raw)
     except Exception:
         # one corrective retry: show the model its bad output and ask for valid JSON
         fix = provider.complete(
             [
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": build_prompt()},
+                {"role": "user", "content": build_prompt(doc_type)},
                 {"role": "assistant", "content": raw},
                 {"role": "user", "content": "That was not valid. Return ONLY the JSON object."},
             ],
             json_mode=True,
         )
-        receipt = Receipt.model_validate_json(_strip_fences(fix.text))
+        document = schema_model.model_validate_json(_strip_fences(fix.text))
 
     print(
         f"[tokens in/out: {resp.prompt_tokens}/{resp.completion_tokens} | "
         f"latency: {resp.latency_s:.2f}s | model: {resp.model}]",
         file=sys.stderr,
     )
-    return receipt
+    return document
 
 
 if __name__ == "__main__":

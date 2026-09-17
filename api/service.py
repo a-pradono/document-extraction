@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 from api.schemas import ExtractionOut, from_error, from_result
 from extractor.cascade import extract_cascade
 from extractor.confidence import ConfidenceModel
+from extractor.schema import DOCUMENT_MODELS
 from extractor.pipeline import PipelineResult, extract_with_confidence
 
 load_dotenv()
@@ -72,6 +73,7 @@ def extract_document(
     *,
     extractor: Optional[Extractor] = None,
     use_cache: bool = True,
+    doc_type: str = "receipt",
 ) -> ExtractionOut:
     """Never raises for a bad document: the failure is returned as a status="error"
     result, so one unreadable receipt cannot take down a batch or a server worker."""
@@ -81,10 +83,14 @@ def extract_document(
                               "cascade": extract_cascade}.get(mode(), extract_with_confidence)
     if path.suffix.lower() not in SUPPORTED_SUFFIXES:
         return from_error(doc_id, ValueError(f"unsupported file type '{path.suffix}'"))
+    if doc_type not in DOCUMENT_MODELS:
+        return from_error(doc_id, ValueError(
+            f"unknown document_type '{doc_type}'; expected one of {sorted(DOCUMENT_MODELS)}"))
     t = threshold()
     try:
-        result = extractor(path, threshold=t, model=confidence_model(), use_cache=use_cache)
+        result = extractor(path, threshold=t, model=confidence_model(), use_cache=use_cache,
+                           doc_type=doc_type)
     except Exception as exc:  # noqa: BLE001 — per-document isolation is the requirement
         log.exception("extraction failed for %s", doc_id)
         return from_error(doc_id, exc)
-    return from_result(doc_id, result, t)
+    return from_result(doc_id, result, t, doc_type)

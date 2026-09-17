@@ -89,30 +89,34 @@ def parse_or_repair(resp: LLMResponse, provider: Provider, usage: dict) -> dict:
 
 @dataclass
 class Salvaged:
-    receipt: Receipt
+    document: BaseModel
     invalid: list[str] = dc_field(default_factory=list)     # field names forced to abstain
     notes: list[str] = dc_field(default_factory=list)
 
 
-def salvage_receipt(fields: Any) -> Salvaged:
-    """Validate field by field so one bad value can't cost the whole document."""
+def salvage_receipt(fields: Any, model: type[BaseModel] = Receipt) -> Salvaged:
+    """Validate field by field so one bad value can't cost the whole document.
+
+    Works for any document model. A nested object (an invoice's `vendor`) is validated as
+    a unit, so an invalid party is marked invalid as `vendor` and every `vendor.*` field
+    it contains is abstained."""
     if fields is None:
-        return Salvaged(Receipt())
+        return Salvaged(model())
     if not isinstance(fields, dict):
-        return Salvaged(Receipt(), invalid=["*"],
+        return Salvaged(model(), invalid=["*"],
                         notes=[f"fields was {type(fields).__name__}, not an object"])
     try:
-        return Salvaged(Receipt.model_validate(fields))
+        return Salvaged(model.model_validate(fields))
     except ValidationError:
         pass
 
     kept: dict[str, Any] = {}
-    out = Salvaged(Receipt())
-    for name in Receipt.model_fields:
+    out = Salvaged(model())
+    for name in model.model_fields:
         if name not in fields or name == "line_items":
             continue
         try:
-            Receipt.model_validate({name: fields[name]})
+            model.model_validate({name: fields[name]})
             kept[name] = fields[name]
         except ValidationError as exc:
             out.invalid.append(name)
@@ -134,5 +138,10 @@ def salvage_receipt(fields: Any) -> Salvaged:
                 out.invalid.append("line_items")
             kept["line_items"] = good
 
-    out.receipt = Receipt.model_validate(kept)
+    out.document = model.model_validate(kept)
     return out
+
+
+def is_invalid(field: str, invalid: list[str]) -> bool:
+    """`vendor.name` is invalid if `vendor` as a whole was, or if everything was."""
+    return "*" in invalid or field in invalid or field.split(".", 1)[0] in invalid
