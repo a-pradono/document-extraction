@@ -1,0 +1,21 @@
+{
+  "merchant_name": "Hillside",
+  "total": "7.90",
+  "line_items": [
+    {
+      "quantity": "1",
+      "description": "DESSERTS",
+      "line_total": "3.95"
+    },
+    {
+      "quantity": "1",
+      "description": "REGULARAMERICANO",
+      "line_total": "1.85"
+    },
+    {
+      "quantity": "1",
+      "description": "SMALLTUB",
+      "line_total": "2.10"
+    }
+  ]
+}

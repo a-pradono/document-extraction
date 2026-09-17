@@ -1,0 +1,25 @@
+{
+  "total": "54000",
+  "line_items": [
+    {
+      "description": "TWIST DONUT",
+      "quantity": "2",
+      "line_total": "18000"
+    },
+    {
+      "description": "BANANA DONUT",
+      "quantity": "1",
+      "line_total": "11000"
+    },
+    {
+      "description": "CREAMCHEESE BREAD",
+      "quantity": "1",
+      "line_total": "13000"
+    },
+    {
+      "description": "FRANKFRUT SAUSAGE ROLL",
+      "quantity": "1",
+      "line_total": "12000"
+    }
+  ]
+}

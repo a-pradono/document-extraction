@@ -1,0 +1,143 @@
+{
+  "merchant_name": "ALMANAMAHYPERMARKET",
+  "merchant_address": "TIMESSQUARECENTER-DUBAI",
+  "date": "2014-10-01",
+  "total": "278.88",
+  "line_items": [
+    {
+      "quantity": "0.48",
+      "description": "COURGETTESGREENESP",
+      "line_total": "7.92"
+    },
+    {
+      "quantity": "0.27",
+      "description": "BROCCOLISPAIN",
+      "line_total": "3.65"
+    },
+    {
+      "quantity": "0.38",
+      "description": "CARROTLOOSEAUST",
+      "line_total": "1.43"
+    },
+    {
+      "quantity": "0.92",
+      "description": "LETTUCE-ICEBERG",
+      "line_total": "12.42"
+    },
+    {
+      "quantity": "0.3",
+      "description": "LYCHEE",
+      "line_total": "3.29"
+    },
+    {
+      "quantity": "1",
+      "description": "MUSHROOM-FINE/SMALL",
+      "line_total": "5.50"
+    },
+    {
+      "quantity": "0.21",
+      "description": "GINGERCHINA",
+      "line_total": "2.84"
+    },
+    {
+      "quantity": "0.43",
+      "description": "ONIONBROWNSPAIN",
+      "line_total": "2.37"
+    },
+    {
+      "quantity": "0.89",
+      "description": "POTATOSAUDI",
+      "line_total": "4.41"
+    },
+    {
+      "quantity": "0.64",
+      "description": "KIWIFRUITITALY",
+      "line_total": "8.00"
+    },
+    {
+      "quantity": "1",
+      "description": "NORLANDERBREAD",
+      "line_total": "6.50"
+    },
+    {
+      "quantity": "1",
+      "description": "YOPLAITF/FYOGHURTS",
+      "line_total": "1.00"
+    },
+    {
+      "quantity": "1",
+      "description": "BANANAPHILIPPINESD",
+      "line_total": "3.75"
+    },
+    {
+      "quantity": "1",
+      "description": "ALRAWABILOWFATMI",
+      "line_total": "10.25"
+    },
+    {
+      "quantity": "1",
+      "description": "ALMARAIUHTLOWFATM",
+      "line_total": "3.75"
+    },
+    {
+      "quantity": "7",
+      "description": "ALALALIWHITEMEATT",
+      "line_total": "31.50"
+    },
+    {
+      "quantity": "1",
+      "description": "FIGAROSTUFDGREENO",
+      "line_total": "7.00"
+    },
+    {
+      "quantity": "1",
+      "description": "PATAKSTANDOORIPAST",
+      "line_total": "13.00"
+    },
+    {
+      "quantity": "1",
+      "description": "FRICOEDAMCHEESE15",
+      "line_total": "10.50"
+    },
+    {
+      "quantity": "1",
+      "description": "SMOKEDSALMONNORWAY",
+      "line_total": "15.90"
+    },
+    {
+      "quantity": "1",
+      "description": "KELLOGGSCORNFLAKES",
+      "line_total": "26.50"
+    },
+    {
+      "quantity": "1",
+      "description": "NATUREVALLEYS/FV/",
+      "line_total": "14.50"
+    },
+    {
+      "quantity": "1",
+      "description": "NATUREVALLEYS/FOAT",
+      "line_total": "14.50"
+    },
+    {
+      "quantity": "0.47",
+      "description": "AUSLAMBRACK",
+      "line_total": "29.43"
+    },
+    {
+      "quantity": "0.39",
+      "description": "AUSCUBEROLLSTEAK",
+      "line_total": "27.24"
+    },
+    {
+      "quantity": "2",
+      "description": "ALAINMINERALWATER",
+      "line_total": "7.00"
+    },
+    {
+      "quantity": "0.31",
+      "description": "CUCUMBERPREPACKED",
+      "line_total": "4.73"
+    }
+  ]
+}

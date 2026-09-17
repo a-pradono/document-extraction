@@ -1,0 +1,33 @@
+{
+  "merchant_name": "ONEMILLSTREET",
+  "subtotal": "105.00",
+  "service_charge": "18.90",
+  "tax": "5.25",
+  "total": "129.15",
+  "line_items": [
+    {
+      "description": "CALAMARIW/MOJO",
+      "line_total": "16.00"
+    },
+    {
+      "quantity": "1",
+      "description": "ARTICHOKES",
+      "line_total": "8.00"
+    },
+    {
+      "quantity": "3",
+      "description": "PORKCHOP@18.00",
+      "line_total": "54.00"
+    },
+    {
+      "quantity": "1",
+      "description": "VFGIESAND",
+      "line_total": "8.00"
+    },
+    {
+      "quantity": "1",
+      "description": "NEWYORKSTRIP",
+      "line_total": "19.00"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "merchant_name": "Breakfast2Breakfast",
+  "merchant_address": "DICBuilding12 Dubai,UAE Dubai",
+  "subtotal": "44.00",
+  "total": "44.00",
+  "line_items": [
+    {
+      "quantity": "1",
+      "description": "Taouk Sandwich",
+      "line_total": "16.00"
+    },
+    {
+      "quantity": "1",
+      "description": "RoastBeefSandwich",
+      "line_total": "17.00"
+    },
+    {
+      "quantity": "1",
+      "description": "FrenchFriesAppetizer",
+      "line_total": "11.00"
+    }
+  ]
+}

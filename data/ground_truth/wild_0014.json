@@ -1,0 +1,27 @@
+{
+  "merchant_name": "Morrisons",
+  "merchant_address": "MorrisonsSupermarketsplcBD37DL Hadleigh-01473827021",
+  "total": "2.19",
+  "line_items": [
+    {
+      "quantity": "1",
+      "description": "MWHOLEMEALOAF",
+      "line_total": "0.50"
+    },
+    {
+      "quantity": "1",
+      "description": "MDOUSLECREAM",
+      "line_total": "0.84"
+    },
+    {
+      "quantity": "1",
+      "description": "MCARROTS1KG",
+      "line_total": "0.47"
+    },
+    {
+      "quantity": "1",
+      "description": "MBROCCOLI",
+      "line_total": "0.38"
+    }
+  ]
+}

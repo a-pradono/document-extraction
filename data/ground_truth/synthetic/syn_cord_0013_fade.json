@@ -1,0 +1,27 @@
+{
+  "subtotal": "303646",
+  "tax": "30365",
+  "total": "334000",
+  "line_items": [
+    {
+      "description": "(TA) NASI GRG TERI MEDAN",
+      "quantity": "4",
+      "line_total": "165460"
+    },
+    {
+      "description": "(TA) BIHUN GORENG SEAFOOD",
+      "quantity": "1",
+      "line_total": "40456"
+    },
+    {
+      "description": "(TA) KWETIAW SEAFOOD SIRAM",
+      "quantity": "1",
+      "line_total": "42274"
+    },
+    {
+      "description": "(TA) NASI GORENG",
+      "quantity": "2",
+      "line_total": "55456"
+    }
+  ]
+}

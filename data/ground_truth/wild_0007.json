@@ -1,0 +1,20 @@
+{
+  "merchant_name": "PRIMEBURGERBAR",
+  "merchant_address": "VIAPRIVATADELLAPASSERELLA,4 20122MILANO",
+  "subtotal": "24.50",
+  "total": "24.50",
+  "line_items": [
+    {
+      "description": "Coperti",
+      "line_total": "1.50"
+    },
+    {
+      "description": "HamburgerBlue-cheddar",
+      "line_total": "11.00"
+    },
+    {
+      "description": "CannoloVenere",
+      "line_total": "12.00"
+    }
+  ]
+}

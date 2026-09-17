@@ -1,0 +1,19 @@
+# Fits confidence weights + abstention threshold. NEVER reported as a result.
+cord_0001
+cord_0003
+cord_0005
+cord_0011
+cord_0012
+cord_0014
+cord_0017
+cord_0019
+cord_0025
+wild_0004
+wild_0005
+wild_0008
+wild_0012
+wild_0018
+wild_0019
+wild_0020
+wild_0024
+wild_0025

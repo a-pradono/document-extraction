@@ -1,0 +1,49 @@
+{
+  "merchant_name": "TheBlueGinger",
+  "merchant_address": "97TanjongPagarRoad",
+  "subtotal": "97.30",
+  "tax": "6.72",
+  "total": "102.75",
+  "line_items": [
+    {
+      "quantity": "1",
+      "description": "AyamPanggang",
+      "line_total": "12.20"
+    },
+    {
+      "quantity": "1",
+      "description": "BeefRendang",
+      "line_total": "12.90"
+    },
+    {
+      "quantity": "1",
+      "description": "Evian",
+      "line_total": "3.50"
+    },
+    {
+      "quantity": "1",
+      "description": "FishHead",
+      "line_total": "28.30"
+    },
+    {
+      "quantity": "1",
+      "description": "HoegaardenBeer",
+      "line_total": "11.00"
+    },
+    {
+      "quantity": "1",
+      "description": "KuehPieTee",
+      "line_total": "7.00"
+    },
+    {
+      "quantity": "1",
+      "description": "NonyaRoll",
+      "line_total": "8.00"
+    },
+    {
+      "quantity": "2",
+      "description": "MiscCharges",
+      "line_total": "4.40"
+    }
+  ]
+}

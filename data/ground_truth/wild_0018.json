@@ -1,0 +1,41 @@
+{
+  "merchant_name": "XINWANG ANCHORPOINT",
+  "merchant_address": "370AlexandraRoad #01-13/14 Anchorpoint",
+  "date": "2016-12-07",
+  "subtotal": "47.30",
+  "service_charge": "4.73",
+  "tax": "3.64",
+  "total": "55.67",
+  "line_items": [
+    {
+      "quantity": "1",
+      "description": "(705)Kopi",
+      "line_total": "1.70"
+    },
+    {
+      "quantity": "1",
+      "description": "(074)WantonSoupNoodle",
+      "line_total": "8.90"
+    },
+    {
+      "quantity": "1",
+      "description": "(503)SpyP,DicesSoupNdl",
+      "line_total": "7.80"
+    },
+    {
+      "quantity": "1",
+      "description": "(043)PorkChopBkRice",
+      "line_total": "12.50"
+    },
+    {
+      "quantity": "1",
+      "description": "(545)ChickenFlosFriedRi",
+      "line_total": "10.50"
+    },
+    {
+      "quantity": "1",
+      "description": "(110)F.ToastPeanutButter",
+      "line_total": "5390"
+    }
+  ]
+}

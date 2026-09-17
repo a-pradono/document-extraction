@@ -1,0 +1,47 @@
+{
+  "subtotal": "132636",
+  "tax": "13264",
+  "total": "145900",
+  "line_items": [
+    {
+      "description": "COLD OCHA",
+      "quantity": "1",
+      "line_total": "10909"
+    },
+    {
+      "description": "BCA PROMO",
+      "quantity": "1",
+      "line_total": "54455"
+    },
+    {
+      "description": "ABURA UDON SPICY",
+      "quantity": "1",
+      "line_total": "0"
+    },
+    {
+      "description": ":-KAKE UDON",
+      "quantity": "1",
+      "line_total": "0"
+    },
+    {
+      "description": "SKEWERED SHUMAI",
+      "quantity": "1",
+      "line_total": "12727"
+    },
+    {
+      "description": "SKEWERED TOFU ROLL",
+      "quantity": "1",
+      "line_total": "12727"
+    },
+    {
+      "description": "EBI TEMPURA",
+      "quantity": "1",
+      "line_total": "13636"
+    },
+    {
+      "description": "KITSUNE UDON (KIDS)",
+      "quantity": "1",
+      "line_total": "28182"
+    }
+  ]
+}

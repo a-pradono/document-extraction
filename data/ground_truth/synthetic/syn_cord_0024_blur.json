@@ -1,0 +1,13 @@
+{
+  "subtotal": "16363",
+  "tax": "1636",
+  "total": "17999",
+  "line_items": [
+    {
+      "description": "THAI ICED TEA (L)",
+      "quantity": "1",
+      "unit_price": "16363",
+      "line_total": "16363"
+    }
+  ]
+}

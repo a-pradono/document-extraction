@@ -1,0 +1,71 @@
+{
+  "merchant_name": "ALDISTORES",
+  "total": "37.98",
+  "line_items": [
+    {
+      "description": "46199BabySoinach120g",
+      "line_total": "1.79"
+    },
+    {
+      "description": "35250CkrBrownRice100g",
+      "line_total": "1.39"
+    },
+    {
+      "description": "37427TortillaWrapsWholemeal",
+      "line_total": "1.99"
+    },
+    {
+      "description": "42335BeetrootSliced450g",
+      "line_total": "0.85"
+    },
+    {
+      "description": "4376PremBakedBeansTom425g",
+      "line_total": "0.89"
+    },
+    {
+      "description": "5336FznMixedBerries500g",
+      "line_total": "4.49"
+    },
+    {
+      "description": "36884Ham4x100g",
+      "line_total": "5.00"
+    },
+    {
+      "description": "1390FrozSteamVeg450g",
+      "line_total": "1.99"
+    },
+    {
+      "description": "41207RiceCrackers200g",
+      "line_total": "1.65"
+    },
+    {
+      "description": "76016PinkLadyApplesperkg",
+      "line_total": "2.64"
+    },
+    {
+      "quantity": "530",
+      "description": "76113Bananas,Caven,750g",
+      "line_total": "2.49"
+    },
+    {
+      "description": "76365GrapesThompson1Kg",
+      "line_total": "1.75"
+    },
+    {
+      "description": "9477NutsRawOSNVar",
+      "line_total": "3.99"
+    },
+    {
+      "description": "43333DipSalsa300g",
+      "line_total": "1.49"
+    },
+    {
+      "description": "3769MayonnaiseSqueeZe",
+      "line_total": "2.59"
+    },
+    {
+      "description": "76490MandarinsH/M,700g",
+      "line_total": "4.99"
+    }
+  ]
+}

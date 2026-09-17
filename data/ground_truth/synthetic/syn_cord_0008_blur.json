@@ -1,0 +1,17 @@
+{
+  "subtotal": "85000",
+  "tax": "8500",
+  "total": "93500",
+  "line_items": [
+    {
+      "description": "Ash Chick Sambal Matah",
+      "quantity": "5",
+      "line_total": "75000"
+    },
+    {
+      "description": "Jamur Goreng",
+      "quantity": "2",
+      "line_total": "10000"
+    }
+  ]
+}

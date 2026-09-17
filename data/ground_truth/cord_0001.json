@@ -1,0 +1,15 @@
+{
+  "subtotal": "100909",
+  "tax": "10091",
+  "total": "111000",
+  "line_items": [
+    {
+      "description": "Kupon 15",
+      "line_total": "100000"
+    },
+    {
+      "description": "ADD CHICKEN BOX",
+      "line_total": "909"
+    }
+  ]
+}

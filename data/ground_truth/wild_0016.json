@@ -1,0 +1,74 @@
+{
+  "merchant_name": "PeterChang",
+  "merchant_address": "2503N.HarrisonStSteE Arlington,VA22207",
+  "date": "2016-05-07",
+  "subtotal": "104.50",
+  "tax": "10.45",
+  "total": "114.95",
+  "line_items": [
+    {
+      "quantity": "1",
+      "description": "21.Dry-FriedEggplant",
+      "line_total": "10.00"
+    },
+    {
+      "quantity": "1",
+      "description": "5.CilantroFishRolls",
+      "line_total": "8.00"
+    },
+    {
+      "quantity": "1",
+      "description": "11.Grandma'sNoodle",
+      "line_total": "7.00"
+    },
+    {
+      "quantity": "1",
+      "description": "24.SzechuanBangBangShrimp",
+      "line_total": "9.00"
+    },
+    {
+      "quantity": "1",
+      "description": "PinotBlanc(g)",
+      "line_total": "8.00"
+    },
+    {
+      "quantity": "1",
+      "description": "TsingTao",
+      "line_total": "4.50"
+    },
+    {
+      "quantity": "2",
+      "description": "TsingTao",
+      "line_total": "9.00"
+    },
+    {
+      "quantity": "1",
+      "description": "40c.BasilChicken",
+      "line_total": "15.00"
+    },
+    {
+      "quantity": "1",
+      "description": "39c.ThreePeppersChicken",
+      "line_total": "15.00"
+    },
+    {
+      "quantity": "1",
+      "description": "35f.FishinHotChiliOil",
+      "line_total": "19.00"
+    },
+    {
+      "quantity": "1",
+      "description": "CustomerDesign"
+    },
+    {
+      "description": ">imaplada"
+    },
+    {
+      "quantity": "1",
+      "description": "CustomerDesign"
+    },
+    {
+      "description": ">ihaveasmallp"
+    }
+  ]
+}

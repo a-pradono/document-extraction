@@ -1,0 +1,25 @@
+{
+  "total": "88000",
+  "line_items": [
+    {
+      "description": "Lemon Tea (L).",
+      "quantity": "1",
+      "line_total": "25000"
+    },
+    {
+      "description": "Mike & Ike Original",
+      "quantity": "1",
+      "line_total": "28000"
+    },
+    {
+      "description": "Mike & Berry",
+      "quantity": "1",
+      "line_total": "28000"
+    },
+    {
+      "description": "Roti Keju Manis.",
+      "quantity": "1",
+      "line_total": "7000"
+    }
+  ]
+}

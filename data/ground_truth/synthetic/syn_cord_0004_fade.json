@@ -1,0 +1,37 @@
+{
+  "subtotal": "91000",
+  "discount": "0",
+  "total": "91000",
+  "line_items": [
+    {
+      "description": "Goblin's Mace",
+      "quantity": "1",
+      "line_total": "25000"
+    },
+    {
+      "description": "Mozarella Hot Dog",
+      "quantity": "2",
+      "line_total": "38000"
+    },
+    {
+      "description": "Chili Pepper Croquette",
+      "quantity": "1",
+      "line_total": "14000"
+    },
+    {
+      "description": "Cheese Croquette",
+      "quantity": "1",
+      "line_total": "14000"
+    },
+    {
+      "description": "Plastik Amook",
+      "quantity": "1",
+      "line_total": "0"
+    },
+    {
+      "description": "Plastik Putih Take Away",
+      "quantity": "1",
+      "line_total": "0"
+    }
+  ]
+}

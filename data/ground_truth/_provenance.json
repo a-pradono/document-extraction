@@ -1,0 +1,1123 @@
+{
+  "cord_0001": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0007.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "6d7274db3425200e"
+  },
+  "cord_0002": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0014.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "5a633ede5afbaf88"
+  },
+  "cord_0003": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0016.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "875160e0a23e5bdc"
+  },
+  "cord_0004": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0017.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "7a41b99f74afd39e"
+  },
+  "cord_0005": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0020.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "39c9aad22657edca"
+  },
+  "cord_0006": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0024.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "00c8798b60da5cb1"
+  },
+  "cord_0007": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0029.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "7fa50279d60bff09"
+  },
+  "cord_0008": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0034.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "915f79ef521e05d5"
+  },
+  "cord_0009": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0035.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "b7f4c623007b0112"
+  },
+  "cord_0010": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0038.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "868caa0c42965ac6"
+  },
+  "cord_0011": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0041.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "1608adac5b46e5ce"
+  },
+  "cord_0012": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0045.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "b783b6e5064f8b3b"
+  },
+  "cord_0013": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0051.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "045177dc73e4c177"
+  },
+  "cord_0014": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0059.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "5bbc11e13020a654"
+  },
+  "cord_0015": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0061.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "74d44c4f9af01ff6"
+  },
+  "cord_0016": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0065.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "4e1f8b945b6c40f0"
+  },
+  "cord_0017": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0069.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "9fe9e5afa6335d17"
+  },
+  "cord_0018": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0070.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "b0cc349dba551530"
+  },
+  "cord_0019": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0073.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "797d9a927798a0a1"
+  },
+  "cord_0020": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0074.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "e31f4fd91a8ff071"
+  },
+  "cord_0021": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0075.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "654b3d3a18e7f307"
+  },
+  "cord_0022": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0080.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "1ad30f0a7d9d0861"
+  },
+  "cord_0023": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0085.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "df6150b46acc26e3"
+  },
+  "cord_0024": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0093.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "12e58b8e308f896e"
+  },
+  "cord_0025": {
+    "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
+    "original_file": "cord_test_0098.jpg",
+    "script_converted_fields": [
+      "discount",
+      "line_items",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "9a9b18e0429e560e"
+  },
+  "wild_0001": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_1/0/40.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "6532383b855cf587"
+  },
+  "wild_0002": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_10/10/2c6512feaa251a848ab63a10b19218af33de89e9.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_name",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "7c9631279edeee89"
+  },
+  "wild_0003": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_19/12/67c10ac3c00c5da07f0600a5a6bfac69062dc5c0.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "d2bb6bf9ff660806"
+  },
+  "wild_0004": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_21/12/d1b85e4417343974227ed6704724f0ce11e0a304.jpeg",
+    "script_converted_fields": [
+      "date",
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "25e2ffb26a63c1f6"
+  },
+  "wild_0005": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_28/14/3823.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "94dff04023966e9f"
+  },
+  "wild_0006": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_31/14/dcdfaa460d28153f9e7370bf9712208132b5bbdf.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "73f02dffb5a2ac20"
+  },
+  "wild_0007": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_37/16/11c9e22d6ba44af50188f615631bf7c273a13ea3.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "4657a62f7210de06"
+  },
+  "wild_0008": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_39/16/62de924d5bad661beca6fc46d0b1d9a262a736ea.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_name",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "43e8648fc1452770"
+  },
+  "wild_0009": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_39/16/781c3816ff9610d68d594041e4dcfa076fac95a6.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "eee4aafd3fb2989b"
+  },
+  "wild_0010": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_39/16/80511fa838d95038c23f2fdc7901b25d6be2203b.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "e3d8046d83338a27"
+  },
+  "wild_0011": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_4/0/d7732d42528decf2645835b7735add65d21d7611.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_name",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "f2c177a5175f1ee4"
+  },
+  "wild_0012": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_42/17/3362036743a6ff98ce65de09973f20b09f481465.jpeg",
+    "script_converted_fields": [
+      "date",
+      "line_items",
+      "merchant_name",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "59c64c91a6cba212"
+  },
+  "wild_0013": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_47/18/565131355216578dd63083b0b93eacd70895b9e3.jpeg",
+    "script_converted_fields": [
+      "date",
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "cd0bd4f7eae6b42c"
+  },
+  "wild_0014": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_5/1/16.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "ec6f54831290d8f1"
+  },
+  "wild_0015": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_51/19/6f16e7e8010b5bc8cba98388c96c770020887656.jpeg",
+    "script_converted_fields": [
+      "date",
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "ccd3aa4d514506fe"
+  },
+  "wild_0016": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_54/2/31069916ee9a545fdf5b3aef0e5be30b0e719e94.jpeg",
+    "script_converted_fields": [
+      "date",
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "7422103cf2afc4d7"
+  },
+  "wild_0017": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_58/20/5953d9c8606a2d7b0e816d0310ce64894ed6f57e.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_name",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8bbe03abc15c85c5"
+  },
+  "wild_0018": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_60/20/e9f70b635326a312059812be1c3642d51cd4d0cc.jpeg",
+    "script_converted_fields": [
+      "date",
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "ff8360a620527261"
+  },
+  "wild_0019": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_68/4/dcff7be58f5c0252fb3c1e89e7602532cc372d79.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "359dc7b55c979c1f"
+  },
+  "wild_0020": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_79/7/36c95886591cc6aea16d3a5f78775a27dd591567.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "71e5102aa388a4ca"
+  },
+  "wild_0021": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_80/7/4381.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "6bb1e2ddffabc872"
+  },
+  "wild_0022": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_80/7/5bab50153bf3d3329d90a6824b4c5bdc070e802f.jpeg",
+    "script_converted_fields": [
+      "date",
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "a65a8f4d8494fc1b"
+  },
+  "wild_0023": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_83/8/0bac2b0f9f7af4742ac3400fecb9f9185ebb310c.jpeg",
+    "script_converted_fields": [
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "date",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "c6fed58e9c3783dd"
+  },
+  "wild_0024": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_84/8/3834.jpeg",
+    "script_converted_fields": [
+      "date",
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "2e1a73bb949c5458"
+  },
+  "wild_0025": {
+    "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
+    "original_file": "image_files/Image_87/8/e6e905ac976a4c241b24b00326f8fb88b31a88a3.jpeg",
+    "script_converted_fields": [
+      "date",
+      "line_items",
+      "merchant_address",
+      "merchant_name",
+      "subtotal",
+      "tax",
+      "total"
+    ],
+    "hand_labeled_fields": [],
+    "needs_hand_label": [
+      "currency",
+      "merchant_address",
+      "merchant_name",
+      "payment_method"
+    ],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "a937b4e1a9d93b78"
+  }
+}

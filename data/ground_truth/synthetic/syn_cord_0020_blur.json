@@ -1,0 +1,28 @@
+{
+  "subtotal": "278000",
+  "service_charge": "22240",
+  "tax": "30024",
+  "total": "330264",
+  "line_items": [
+    {
+      "description": "BLACKCURRANT",
+      "quantity": "1",
+      "line_total": "32000"
+    },
+    {
+      "description": "SPRITE",
+      "quantity": "1",
+      "line_total": "32000"
+    },
+    {
+      "description": "GRILLED CALAMARI",
+      "quantity": "1",
+      "line_total": "85000"
+    },
+    {
+      "description": "DINE FOR 2",
+      "quantity": "1",
+      "line_total": "129000"
+    }
+  ]
+}

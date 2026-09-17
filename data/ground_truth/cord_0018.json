@@ -1,0 +1,72 @@
+{
+  "subtotal": "1343000",
+  "service_charge": "80580",
+  "tax": "142358",
+  "total": "1565938",
+  "line_items": [
+    {
+      "description": "UDANG RE",
+      "quantity": "2",
+      "unit_price": "216000",
+      "line_total": "432000"
+    },
+    {
+      "description": "=*LARGE*==",
+      "quantity": "2"
+    },
+    {
+      "description": "AYM GR JUN NJAN",
+      "quantity": "1",
+      "line_total": "108000"
+    },
+    {
+      "description": "=*MEDIUM*="
+    },
+    {
+      "description": "SAPO TH SEAFOOD",
+      "quantity": "1",
+      "line_total": "172000"
+    },
+    {
+      "description": "=*LARGE*=="
+    },
+    {
+      "description": "POCAI 3",
+      "quantity": "2",
+      "unit_price": "111000",
+      "line_total": "222000"
+    },
+    {
+      "description": "=*MEDIUM*=",
+      "quantity": "2"
+    },
+    {
+      "description": "GURAME FILLET M",
+      "quantity": "1",
+      "line_total": "163000"
+    },
+    {
+      "description": "ASAM MANIS"
+    },
+    {
+      "description": "BIHUN GORENG JJ",
+      "quantity": "1",
+      "line_total": "116000"
+    },
+    {
+      "description": "=*LARGE*=="
+    },
+    {
+      "description": "ICED TEA",
+      "quantity": "5",
+      "unit_price": "12000",
+      "line_total": "60000"
+    },
+    {
+      "description": "NASI PUTIH",
+      "quantity": "7",
+      "unit_price": "10000",
+      "line_total": "70000"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+# SYNTHETIC — augmented copies of clean documents, not real-world variation.
+# Reported as its own tier, never inside the headline scorecard.
+syn_cord_0001_blur
+syn_cord_0002_dim
+syn_cord_0003_jpeg
+syn_cord_0004_fade
+syn_cord_0005_rotate
+syn_cord_0006_rotate
+syn_cord_0007_blur
+syn_cord_0008_blur
+syn_cord_0009_rotate
+syn_cord_0010_rotate
+syn_cord_0011_fade
+syn_cord_0012_dim
+syn_cord_0013_fade
+syn_cord_0014_blur
+syn_cord_0015_rotate
+syn_cord_0016_fade
+syn_cord_0017_blur
+syn_cord_0018_rotate
+syn_cord_0019_jpeg
+syn_cord_0020_blur
+syn_cord_0021_jpeg
+syn_cord_0022_blur
+syn_cord_0023_jpeg
+syn_cord_0024_blur
+syn_cord_0025_dim

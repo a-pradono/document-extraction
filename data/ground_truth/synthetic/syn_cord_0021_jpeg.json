@@ -1,0 +1,37 @@
+{
+  "subtotal": "256363",
+  "tax": "25637",
+  "total": "282000",
+  "line_items": [
+    {
+      "description": "CHOCO PUFF",
+      "quantity": "1",
+      "line_total": "29091"
+    },
+    {
+      "description": "CREAMY BEEF CLS FTC",
+      "quantity": "1",
+      "line_total": "42727"
+    },
+    {
+      "description": "NEW ORIENTAL CHK RICE",
+      "quantity": "1",
+      "line_total": "34545"
+    },
+    {
+      "description": "LIPTON PITCHER",
+      "quantity": "1",
+      "line_total": "54545"
+    },
+    {
+      "description": "SC/P SUPER SUPREME",
+      "quantity": "1",
+      "line_total": "47273"
+    },
+    {
+      "description": "CB/P BLACK PEPP BEEF",
+      "quantity": "1",
+      "line_total": "48182"
+    }
+  ]
+}

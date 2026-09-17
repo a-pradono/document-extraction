@@ -1,0 +1,23 @@
+{
+  "subtotal": "215000",
+  "service_charge": "12900",
+  "tax": "22790",
+  "total": "250690",
+  "line_items": [
+    {
+      "description": "BLACK PAPPER MEATBALL PAS",
+      "quantity": "1",
+      "line_total": "79000"
+    },
+    {
+      "description": "TRUFFLE CREAM",
+      "quantity": "1",
+      "line_total": "77000"
+    },
+    {
+      "description": "EARL GREY MILK TEA",
+      "quantity": "1",
+      "line_total": "59000"
+    }
+  ]
+}

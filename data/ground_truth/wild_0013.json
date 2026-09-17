@@ -1,0 +1,23 @@
+{
+  "merchant_name": "SUPERAFOODS",
+  "merchant_address": "5250YorkBlvd. HighlandPark,CA90042",
+  "date": "2014-12-12",
+  "subtotal": "1.48",
+  "total": "1.48",
+  "line_items": [
+    {
+      "quantity": "2",
+      "description": "ASSORTEDSWEETBREAD",
+      "line_total": "0.80"
+    },
+    {
+      "description": "PAPERBAG",
+      "line_total": "0.10"
+    },
+    {
+      "quantity": "1.76",
+      "description": "ORG-NAVELLARGE",
+      "line_total": "0.58"
+    }
+  ]
+}

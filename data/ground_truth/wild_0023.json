@@ -1,0 +1,78 @@
+{
+  "merchant_name": "TRADERJOE'S",
+  "merchant_address": "2025BondStreet",
+  "subtotal": "96.62",
+  "tax": "1.48",
+  "total": "99.82",
+  "line_items": [
+    {
+      "description": "BALLASTPOINTBREWINGGRAPEFRU",
+      "line_total": "13.99"
+    },
+    {
+      "line_total": "4.99"
+    },
+    {
+      "line_total": "0.79"
+    },
+    {
+      "line_total": "2.99"
+    },
+    {
+      "line_total": "3.99"
+    },
+    {
+      "description": "BALLASTPOINTBREWINGSCULPIN",
+      "line_total": "13.99"
+    },
+    {
+      "description": "CHOCDARKCOVEREDGRAHAMWSEA",
+      "line_total": "3.99"
+    },
+    {
+      "description": "A-PEACHESYELLOW2LBEASTERN",
+      "line_total": "3.49"
+    },
+    {
+      "line_total": "3.16"
+    },
+    {
+      "line_total": "2.99"
+    },
+    {
+      "description": "BANANAS",
+      "line_total": "1.14"
+    },
+    {
+      "quantity": "6",
+      "description": "PIZZAPARLANNOW/SAUSAGE",
+      "line_total": "4.99"
+    },
+    {
+      "description": "FREEZEDRIEDMANGO",
+      "line_total": "3.29"
+    },
+    {
+      "line_total": "2.49"
+    },
+    {
+      "line_total": "2.99"
+    },
+    {
+      "line_total": "6.49"
+    },
+    {
+      "description": "DRIEDBABYSWEETPINEAPPLE",
+      "line_total": "3.99"
+    },
+    {
+      "line_total": "7.99"
+    },
+    {
+      "line_total": "2.89"
+    },
+    {
+      "line_total": "5.99"
+    }
+  ]
+}

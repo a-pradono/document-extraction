@@ -1,0 +1,51 @@
+{
+  "merchant_name": "COSTCO",
+  "merchant_address": "12300WestDodgeRd Omaha,NE68154",
+  "total": "70.34",
+  "line_items": [
+    {
+      "description": "ORGANICPAST",
+      "line_total": "5.99"
+    },
+    {
+      "description": "PELEDCAROTS",
+      "line_total": "5.49"
+    },
+    {
+      "description": "IQFSTRWBRYS",
+      "line_total": "8.99"
+    },
+    {
+      "description": "BROCCOLI",
+      "line_total": "4.79"
+    },
+    {
+      "description": "WATERMELON",
+      "line_total": "5.99"
+    },
+    {
+      "description": "CANTALOUPE",
+      "line_total": "5.49"
+    },
+    {
+      "description": "CUCUMBERS",
+      "line_total": "3.29"
+    },
+    {
+      "description": "BANANAS",
+      "line_total": "1.47"
+    },
+    {
+      "description": "REDPEPPERS",
+      "line_total": "7.49"
+    },
+    {
+      "description": "ORGNCBSTHG",
+      "line_total": "17.56"
+    },
+    {
+      "description": "ROMAINE",
+      "line_total": "3.79"
+    }
+  ]
+}

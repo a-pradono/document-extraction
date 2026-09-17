@@ -1,0 +1,47 @@
+{
+  "subtotal": "316017.00",
+  "service_charge": "48982.68",
+  "total": "365000.00",
+  "line_items": [
+    {
+      "description": "Chicken Maryland",
+      "line_total": "47619.00"
+    },
+    {
+      "description": "Cappucino (Hot/Iced)",
+      "line_total": "30303.00"
+    },
+    {
+      "description": "Naga Lychee Juice",
+      "line_total": "34632.00"
+    },
+    {
+      "description": "Cafe Latte",
+      "line_total": "30303.00"
+    },
+    {
+      "description": "Hot Chocolate Marshmallo",
+      "line_total": "30303.00"
+    },
+    {
+      "description": "Chicken Cesar Salad",
+      "line_total": "43290.00"
+    },
+    {
+      "description": "Mineral Water",
+      "line_total": "12987.00"
+    },
+    {
+      "description": "Mineral Water",
+      "line_total": "12987.00"
+    },
+    {
+      "description": "Lychee/Peach/Lemon/Mango",
+      "line_total": "25974.00"
+    },
+    {
+      "description": "Chicken Maryland",
+      "line_total": "47619.00"
+    }
+  ]
+}

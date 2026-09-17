@@ -1,0 +1,29 @@
+{
+  "merchant_name": "meijer",
+  "merchant_address": "SawmillRd. Dublin.OH-#58",
+  "date": "2012-07-11",
+  "tax": "0.00",
+  "total": "3.00",
+  "line_items": [
+    {
+      "quantity": "1",
+      "description": "CHECKLANECANDY",
+      "line_total": "0.50"
+    },
+    {
+      "quantity": "1",
+      "description": "CHECKLANEANDY",
+      "line_total": "0.50"
+    },
+    {
+      "quantity": "1",
+      "description": "FRUITSNACKS",
+      "line_total": "2.00"
+    },
+    {
+      "quantity": "1",
+      "description": "FRUITSNACKS",
+      "line_total": "2.00"
+    }
+  ]
+}

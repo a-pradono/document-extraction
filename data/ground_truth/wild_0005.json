@@ -1,0 +1,47 @@
+{
+  "merchant_name": "GASTROBAREL GALLO AZUL",
+  "merchant_address": "JEREZDELAFRONTERA",
+  "total": "20.90",
+  "line_items": [
+    {
+      "quantity": "2",
+      "description": "COPARIOJA",
+      "line_total": "4.00"
+    },
+    {
+      "quantity": "2",
+      "description": "CAFESCONLECHE",
+      "line_total": "2.40"
+    },
+    {
+      "quantity": "1",
+      "description": "TAPAMOJAMADEBARBATE",
+      "line_total": "2.50"
+    },
+    {
+      "quantity": "1",
+      "description": "TAPABEREJENASCONSALM",
+      "line_total": "3.00"
+    },
+    {
+      "quantity": "1",
+      "description": "TAPAPATATASALIOLI",
+      "line_total": "2.00"
+    },
+    {
+      "quantity": "1",
+      "description": "PANYPICOSXPERSONA",
+      "line_total": "0.50"
+    },
+    {
+      "quantity": "1",
+      "description": "TAPACARRILLERAIBERICA",
+      "line_total": "2.50"
+    },
+    {
+      "quantity": "1",
+      "description": "SALMOREJO",
+      "line_total": "4.00"
+    }
+  ]
+}

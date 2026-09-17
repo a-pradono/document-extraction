@@ -1,0 +1,20 @@
+{
+  "total": "74000",
+  "line_items": [
+    {
+      "description": "[MD] SOFT MORNING ROLL",
+      "quantity": "1",
+      "line_total": "18000"
+    },
+    {
+      "description": "REAL HONEY PANCAKE BREAD",
+      "quantity": "2",
+      "line_total": "20000"
+    },
+    {
+      "description": "CUSTARD BRIOCHE",
+      "quantity": "4",
+      "line_total": "36000"
+    }
+  ]
+}

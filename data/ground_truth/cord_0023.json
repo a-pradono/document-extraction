@@ -1,0 +1,62 @@
+{
+  "subtotal": "179500",
+  "tax": "17950",
+  "total": "197450",
+  "line_items": [
+    {
+      "description": "Nasi Putih",
+      "quantity": "3",
+      "line_total": "30000"
+    },
+    {
+      "description": "Nasi Tambah",
+      "quantity": "1",
+      "line_total": "7000"
+    },
+    {
+      "description": "Ayam Pop",
+      "quantity": "2",
+      "line_total": "40000"
+    },
+    {
+      "description": "Samabal SP",
+      "quantity": "1",
+      "line_total": "11000"
+    },
+    {
+      "description": "Sambal Gabus Asin Cb",
+      "quantity": "1",
+      "line_total": "18000"
+    },
+    {
+      "description": "Kerupuk Kuah",
+      "quantity": "1",
+      "line_total": "15000"
+    },
+    {
+      "description": "Ikan Bawal Besa",
+      "quantity": "1",
+      "line_total": "28500"
+    },
+    {
+      "description": "Telur Dadar",
+      "quantity": "1",
+      "line_total": "10000"
+    },
+    {
+      "description": "Teh Es",
+      "quantity": "1",
+      "line_total": "7000"
+    },
+    {
+      "description": "Teh Manis",
+      "quantity": "1",
+      "line_total": "9000"
+    },
+    {
+      "description": "Es Batu",
+      "quantity": "1",
+      "line_total": "4000"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "merchant_name": "ELGRECO",
+  "merchant_address": "RueChairatPains, 5Grand place,36 1000Bruxelles",
+  "subtotal": "38.87",
+  "tax": "5.63",
+  "total": "44.50",
+  "line_items": [
+    {
+      "quantity": "4",
+      "description": "Cocacolalight",
+      "line_total": "13.00"
+    },
+    {
+      "quantity": "1",
+      "description": "Filetdepoitrinedepou",
+      "line_total": "14.50"
+    },
+    {
+      "quantity": "1",
+      "description": "Brochetted'agneau",
+      "line_total": "17.00"
+    }
+  ]
+}

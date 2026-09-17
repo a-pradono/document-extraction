@@ -1,0 +1,14 @@
+# A TAG on documents already inside test, for a per-subset breakdown — not a
+# separate held-out set. Seeded by an edge-energy blur proxy; confirm by eye.
+cord_0002
+cord_0004
+cord_0009
+cord_0016
+cord_0021
+cord_0024
+wild_0002
+wild_0006
+wild_0009
+wild_0013
+wild_0014
+wild_0015

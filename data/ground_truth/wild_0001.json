@@ -1,0 +1,88 @@
+{
+  "merchant_name": "DIA%",
+  "merchant_address": "CLATOCHA,22 FACTURASIMPLIFICADA",
+  "tax": "0.03",
+  "total": "19.20",
+  "line_items": [
+    {
+      "description": "REUTILIZABLE",
+      "line_total": "0.05"
+    },
+    {
+      "description": "REUTILIZABLE",
+      "line_total": "0.05"
+    },
+    {
+      "description": "REUTILIZABLE",
+      "line_total": "0.05"
+    },
+    {
+      "description": "ACE.OLIVACARBONELL",
+      "line_total": "2.99"
+    },
+    {
+      "description": "YOGURGRIEGOC/FRUT",
+      "line_total": "1.56"
+    },
+    {
+      "description": "LECHESEMIDBOTEDI",
+      "line_total": "0.71"
+    },
+    {
+      "description": "BARRAPAN6CEREALE",
+      "line_total": "0.65"
+    },
+    {
+      "description": "JAMONSERRANDIA24",
+      "line_total": "3.29"
+    },
+    {
+      "description": "SALCHICHONEXELPOZ",
+      "line_total": "1.00"
+    },
+    {
+      "description": "FILETEPECHUGAPOLL",
+      "line_total": "4.14"
+    },
+    {
+      "description": "PRECIOKILO"
+    },
+    {
+      "description": "CHAMPINONBANDEJA",
+      "line_total": "1.00"
+    },
+    {
+      "description": "SALSABARBACOADIA",
+      "line_total": "0.92"
+    },
+    {
+      "description": "MANZ-ROYALGALAPES",
+      "line_total": "0.52"
+    },
+    {
+      "description": "PRECIOKILO"
+    },
+    {
+      "description": "TOMATEENRAMAPESO",
+      "line_total": "0.29"
+    },
+    {
+      "description": "PRECIOKILO"
+    },
+    {
+      "description": "AGUACATE",
+      "line_total": "0.55"
+    },
+    {
+      "description": "PRECIOKILO"
+    },
+    {
+      "description": "TOMATEFRITOFRASCO",
+      "line_total": "0.65"
+    },
+    {
+      "description": "PLUMASGALLO500GRS",
+      "line_total": "0.78"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "total": "118000",
+  "line_items": [
+    {
+      "description": "5001-Corn Flakes Cookies",
+      "quantity": "1",
+      "unit_price": "56000",
+      "line_total": "56000"
+    },
+    {
+      "description": "5003-Chokoreto Cookies",
+      "quantity": "1",
+      "unit_price": "62000",
+      "line_total": "62000"
+    },
+    {
+      "description": "6002-Plastic Bag Medium",
+      "quantity": "1",
+      "unit_price": "0.0",
+      "line_total": "0.0"
+    }
+  ]
+}

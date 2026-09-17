@@ -1,0 +1,18 @@
+{
+  "merchant_name": "57EXPRESS",
+  "merchant_address": "3111WTEMPLEAVE POMONA,CA",
+  "date": "2015-03-08",
+  "total": "65.19",
+  "line_items": [
+    {
+      "description": "REGULAR",
+      "quantity": "15863"
+    },
+    {
+      "line_total": "3479"
+    },
+    {
+      "line_total": "55.19"
+    }
+  ]
+}

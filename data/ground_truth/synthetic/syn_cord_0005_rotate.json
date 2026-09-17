@@ -1,0 +1,33 @@
+{
+  "subtotal": "325600",
+  "service_charge": "17908",
+  "tax": "34351",
+  "total": "377859",
+  "line_items": [
+    {
+      "description": "cashew nuts chkn",
+      "quantity": "1",
+      "line_total": "64500"
+    },
+    {
+      "description": "garlic pepper beef",
+      "quantity": "1",
+      "line_total": "79500"
+    },
+    {
+      "description": "red curry beef",
+      "quantity": "1",
+      "line_total": "69500"
+    },
+    {
+      "description": "phad thai",
+      "quantity": "1",
+      "line_total": "64500"
+    },
+    {
+      "description": "steamed rice",
+      "quantity": "4",
+      "line_total": "47600"
+    }
+  ]
+}
