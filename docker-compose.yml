@@ -1,0 +1,51 @@
+# docker compose up                   serve the extraction API on http://localhost:8000
+# docker compose run --rm eval        score the running API over the test set -> ./outputs
+#
+# The eval service sits behind the "tools" profile, so `up` starts only the API. `run`
+# names it explicitly, which starts the API first and waits for its healthcheck.
+#
+# Requires Docker Compose >= 2.24 (optional env_file).
+
+x-app: &app
+  build:
+    context: .
+    args:
+      APP_UID: ${APP_UID:-10001}
+  image: receipt-extraction:latest
+  # Optional: without .env the API still boots and /health reports what is missing.
+  env_file:
+    - path: .env
+      required: false
+
+services:
+  api:
+    <<: *app
+    ports:
+      - "8000:8000"
+    environment:
+      CACHE_DIR: /app/.cache/extractions
+      CONFIDENCE_MODEL_PATH: /app/.cache/confidence_model.json
+    volumes:
+      # Bind-mounted, not a named volume. The confidence model fitted by a local
+      # `python -m eval.run --calibrate` is used as-is, and the image-hash cache it warmed
+      # saves free-tier quota instead of re-spending it inside the container.
+      - ./.cache:/app/.cache
+    restart: unless-stopped
+
+  eval:
+    <<: *app
+    profiles: ["tools"]
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      EVAL_API_URL: http://api:8000
+      SET: ${SET:-test}
+      VERSION: ${VERSION:-docker}
+    volumes:
+      - ./outputs:/app/outputs
+      # Host labels win over the baked-in copy, so a ground-truth fix needs no rebuild.
+      - ./data:/app/data:ro
+    # Override the set or version: SET=smoke VERSION=v2 docker compose run --rm eval
+    command: ["sh", "-c", "python -m eval.run --source api --set \"$$SET\" --version \"$$VERSION\""]
+    restart: "no"
