@@ -1,0 +1,185 @@
+"""Human verification of ground truth — mandatory, not optional.
+
+    python scripts/verify_gt.py --html            # contact sheet: image beside its labels
+    python scripts/verify_gt.py                   # interactive pass, records status
+    python scripts/verify_gt.py --status          # how much is verified so far
+
+Script-converted CORD/WildReceipt labels still need eyeballing (~2 min/doc); retail
+needs full hand-labeling of subtotal/tax (~10 min/doc). Verification state lives in
+data/ground_truth/_provenance.json so a reviewer can see exactly which of the 65
+documents a human has actually looked at.
+"""
+
+from __future__ import annotations
+
+import argparse
+import html
+import json
+import webbrowser
+from pathlib import Path
+
+from audit_gt import audit_all
+from gt_common import DOCS_DIR, GT_DIR, PROVENANCE, REPO
+
+SETS_DIR = REPO / "data" / "sets"
+REVIEW_HTML = REPO / "outputs" / "gt_review.html"
+
+
+def _load_provenance() -> dict:
+    return json.loads(PROVENANCE.read_text(encoding="utf-8")) if PROVENANCE.exists() else {}
+
+
+def _save_provenance(data: dict) -> None:
+    PROVENANCE.write_text(
+        json.dumps(dict(sorted(data.items())), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _doc_path(doc_id: str) -> Path | None:
+    hits = sorted(DOCS_DIR.glob(f"{doc_id}.*"))
+    return hits[0] if hits else None
+
+
+def _select(args) -> list[str]:
+    ids = sorted(p.stem for p in GT_DIR.glob("*.json") if not p.stem.startswith("_"))
+    if args.set:
+        manifest = SETS_DIR / f"{args.set}.txt"
+        if manifest.exists():
+            wanted = {ln.strip() for ln in manifest.read_text().splitlines()
+                      if ln.strip() and not ln.startswith("#")}
+            ids = [i for i in ids if i in wanted]
+        else:                                   # --set retail also means "the retail source"
+            ids = [i for i in ids if i.startswith(args.set)]
+    if args.only_unverified:
+        prov = _load_provenance()
+        ids = [i for i in ids if not prov.get(i, {}).get("verified")]
+    return ids
+
+
+def write_html(ids: list[str]) -> Path:
+    prov = _load_provenance()
+    # Audit order: unverified documents with likely-wrong labels first, so review time
+    # goes where the labels are most likely broken (see scripts/audit_gt.py).
+    audit = {d["doc_id"]: d for d in audit_all()}
+    wanted = set(ids)
+    ids = [d for d in audit if d in wanted] + [d for d in ids if d not in audit]
+    rows = []
+    for doc_id in ids:
+        image = _doc_path(doc_id)
+        labels = (GT_DIR / f"{doc_id}.json").read_text(encoding="utf-8")
+        entry = prov.get(doc_id, {})
+        todo = entry.get("needs_hand_label") or []
+        src = html.escape(str(image.resolve().as_uri()) if image else "")
+        badge = "verified" if entry.get("verified") else "unverified"
+        flags = [f for f in audit.get(doc_id, {}).get("flags", []) if f["severity"] != "todo"]
+        flag_html = "".join(
+            f'<li class="{f["severity"]}"><b>{html.escape(f["field"])}</b> '
+            f'{html.escape(f["message"])}</li>' for f in flags)
+        rows.append(f"""
+<section id="{html.escape(doc_id)}">
+  <h2>{html.escape(doc_id)} <span class="badge {badge}">{badge}</span>
+      {f'<span class="badge flagged">{len(flags)} audit flag(s)</span>' if flags else ''}</h2>
+  <div class="meta">{html.escape(entry.get('source', ''))} &middot;
+    {html.escape(entry.get('original_file', ''))}
+    {'&middot; <b>needs hand label:</b> ' + html.escape(', '.join(todo)) if todo else ''}</div>
+  {f'<ul class="flags">{flag_html}</ul>' if flags else ''}
+  <div class="pair">
+    <img src="{src}" alt="{html.escape(doc_id)}">
+    <pre>{html.escape(labels)}</pre>
+  </div>
+</section>""")
+
+    page = f"""<!doctype html><meta charset="utf-8"><title>Ground-truth review</title>
+<style>
+ body{{font:14px/1.5 system-ui,sans-serif;margin:0;padding:24px;background:#111;color:#eee}}
+ h1{{font-size:18px}} h2{{font-size:15px;margin:0 0 4px}}
+ section{{border-top:1px solid #333;padding:20px 0}}
+ .pair{{display:flex;gap:20px;align-items:flex-start}}
+ img{{max-width:46%;max-height:70vh;background:#fff;border-radius:4px}}
+ pre{{flex:1;background:#1b1b1b;padding:12px;border-radius:4px;overflow:auto;max-height:70vh}}
+ .meta{{color:#999;margin-bottom:10px;font-size:12px}}
+ .badge{{font-size:11px;padding:2px 6px;border-radius:3px;vertical-align:middle}}
+ .verified{{background:#164;color:#cfe}} .unverified{{background:#631;color:#fed}}
+ .flagged{{background:#724;color:#fde}}
+ .flags{{margin:0 0 10px;padding-left:18px;font-size:13px}}
+ .flags .error{{color:#f99}} .flags .check{{color:#fc8}}
+</style>
+<h1>Ground-truth review &mdash; {len(ids)} documents</h1>
+<p class="meta">Check every field against the image. Mark status with
+<code>python scripts/verify_gt.py</code>. Never adjust a value to make the arithmetic
+balance &mdash; a receipt whose printed total is genuinely wrong is a valuable test case.</p>
+{''.join(rows)}
+"""
+    REVIEW_HTML.parent.mkdir(parents=True, exist_ok=True)
+    REVIEW_HTML.write_text(page, encoding="utf-8")
+    return REVIEW_HTML
+
+
+def interactive(ids: list[str]) -> None:
+    prov = _load_provenance()
+    print(f"{len(ids)} documents. [y] verified  [n] needs fixing  [s] skip  [q] quit\n")
+    for i, doc_id in enumerate(ids, 1):
+        image = _doc_path(doc_id)
+        print("=" * 70)
+        print(f"[{i}/{len(ids)}] {doc_id}   {image if image else '(image missing!)'}")
+        entry = prov.setdefault(doc_id, {})
+        if entry.get("needs_hand_label"):
+            print(f"  NEEDS HAND LABEL: {', '.join(entry['needs_hand_label'])}")
+        print((GT_DIR / f"{doc_id}.json").read_text(encoding="utf-8"))
+        if image:
+            webbrowser.open(image.resolve().as_uri())
+        answer = input("verified? [y/n/s/q] ").strip().lower()
+        if answer == "q":
+            break
+        if answer == "s":
+            continue
+        entry["verified"] = answer == "y"
+        note = input("note (optional): ").strip()
+        entry["verified_note"] = note or None
+        _save_provenance(prov)
+    _save_provenance(prov)
+
+
+def status() -> None:
+    prov = _load_provenance()
+    if not prov:
+        raise SystemExit("no _provenance.json yet — run the converters first")
+    by_source: dict[str, list[dict]] = {}
+    for doc_id, entry in prov.items():
+        by_source.setdefault(doc_id.split("_")[0], []).append(entry)
+    print(f"{'source':<10}{'verified':>10}{'total':>8}{'pending hand labels':>22}")
+    for source, entries in sorted(by_source.items()):
+        done = sum(1 for e in entries if e.get("verified"))
+        pending = sum(1 for e in entries if e.get("needs_hand_label"))
+        print(f"{source:<10}{done:>10}{len(entries):>8}{pending:>22}")
+    total = len(prov)
+    done = sum(1 for e in prov.values() if e.get("verified"))
+    print(f"\n{done}/{total} verified"
+          + ("  - ground truth is NOT trustworthy until this is 100%" if done < total else ""))
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--set", help="a data/sets manifest name, or a source prefix (cord|wild|retail)")
+    ap.add_argument("--only-unverified", action="store_true")
+    ap.add_argument("--html", action="store_true", help="write a contact sheet and open it")
+    ap.add_argument("--status", action="store_true")
+    args = ap.parse_args()
+
+    if args.status:
+        status()
+        return
+    ids = _select(args)
+    if not ids:
+        raise SystemExit("nothing to review")
+    if args.html:
+        path = write_html(ids)
+        print(f"wrote {path}")
+        webbrowser.open(path.resolve().as_uri())
+    else:
+        interactive(ids)
+
+
+if __name__ == "__main__":
+    main()

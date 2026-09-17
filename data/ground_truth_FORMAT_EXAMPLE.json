@@ -1,0 +1,14 @@
+{
+  "merchant_name": "Kopi Kenangan",
+  "merchant_address": "Jl. Sudirman No. 45, Jakarta",
+  "date": "2024-03-12",
+  "currency": "IDR",
+  "subtotal": "48000",
+  "tax": "5280",
+  "total": "53280",
+  "payment_method": "QRIS",
+  "line_items": [
+    {"description": "Es Kopi Susu", "quantity": "2", "unit_price": "18000", "line_total": "36000"},
+    {"description": "Croissant", "quantity": "1", "unit_price": "12000", "line_total": "12000"}
+  ]
+}
