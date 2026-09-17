@@ -71,6 +71,12 @@ def write_html(ids: list[str]) -> Path:
         entry = prov.get(doc_id, {})
         todo = entry.get("needs_hand_label") or []
         src = html.escape(str(image.resolve().as_uri()) if image else "")
+        # Multi-page invoices are PDFs: embed the whole document so every page is reviewable.
+        viewer = (f'<iframe src="{src}" title="{html.escape(doc_id)}"></iframe>'
+                  if image and image.suffix.lower() == ".pdf"
+                  else f'<img src="{src}" alt="{html.escape(doc_id)}">')
+        pages = f" &middot; {entry['page_count']} pages" if entry.get("page_count") else ""
+        status = f" &middot; <b>{html.escape(entry['label_status'])}</b>" if entry.get("label_status") else ""
         badge = "verified" if entry.get("verified") else "unverified"
         flags = [f for f in audit.get(doc_id, {}).get("flags", []) if f["severity"] != "todo"]
         flag_html = "".join(
@@ -81,11 +87,11 @@ def write_html(ids: list[str]) -> Path:
   <h2>{html.escape(doc_id)} <span class="badge {badge}">{badge}</span>
       {f'<span class="badge flagged">{len(flags)} audit flag(s)</span>' if flags else ''}</h2>
   <div class="meta">{html.escape(entry.get('source', ''))} &middot;
-    {html.escape(entry.get('original_file', ''))}
+    {html.escape(entry.get('original_file', ''))}{pages}{status}
     {'&middot; <b>needs hand label:</b> ' + html.escape(', '.join(todo)) if todo else ''}</div>
   {f'<ul class="flags">{flag_html}</ul>' if flags else ''}
   <div class="pair">
-    <img src="{src}" alt="{html.escape(doc_id)}">
+    {viewer}
     <pre>{html.escape(labels)}</pre>
   </div>
 </section>""")
@@ -97,6 +103,7 @@ def write_html(ids: list[str]) -> Path:
  section{{border-top:1px solid #333;padding:20px 0}}
  .pair{{display:flex;gap:20px;align-items:flex-start}}
  img{{max-width:46%;max-height:70vh;background:#fff;border-radius:4px}}
+ iframe{{width:46%;height:80vh;border:0;background:#fff;border-radius:4px}}
  pre{{flex:1;background:#1b1b1b;padding:12px;border-radius:4px;overflow:auto;max-height:70vh}}
  .meta{{color:#999;margin-bottom:10px;font-size:12px}}
  .badge{{font-size:11px;padding:2px 6px;border-radius:3px;vertical-align:middle}}

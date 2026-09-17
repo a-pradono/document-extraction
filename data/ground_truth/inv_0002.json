@@ -1,0 +1,47 @@
+{
+  "invoice_number": "949838-1",
+  "issue_date": "2012-10-14",
+  "vendor": {
+    "name": "WXII",
+    "address": "700 Coliseum Drive, Winston-Salem, NC 27106"
+  },
+  "customer": {
+    "name": "Crossroads Media",
+    "address": "66 Canal Center Plaza, Suite 555, Alexandria, VA 22314"
+  },
+  "currency": "USD",
+  "subtotal": "6150.00",
+  "total": "5227.50",
+  "line_items": [
+    {
+      "description": "NBC Today Show II",
+      "quantity": "4",
+      "unit_price": "150.00"
+    },
+    {
+      "description": "NBC Today Show II",
+      "quantity": "1",
+      "unit_price": "150.00"
+    },
+    {
+      "description": "DR. OZ",
+      "quantity": "4",
+      "unit_price": "600.00"
+    },
+    {
+      "description": "DR. OZ",
+      "quantity": "1",
+      "unit_price": "600.00"
+    },
+    {
+      "description": "NBC Prime",
+      "quantity": "1",
+      "unit_price": "2000.00"
+    },
+    {
+      "description": "Notre Dame Football",
+      "quantity": "1",
+      "unit_price": "400.00"
+    }
+  ]
+}

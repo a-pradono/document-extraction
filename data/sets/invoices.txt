@@ -1,0 +1,12 @@
+# Second document type (RVL-CDIP-N multi-page invoices). A per-type breakdown
+# tag; invoices are reported separately and never pooled into the receipt headline.
+inv_0001
+inv_0002
+inv_0003
+inv_0004
+inv_0005
+inv_0006
+inv_0007
+inv_0008
+inv_0009
+inv_0010

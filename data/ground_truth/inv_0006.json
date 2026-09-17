@@ -1,0 +1,30 @@
+{
+  "invoice_number": "29069",
+  "issue_date": "2010-12-21",
+  "due_date": "2011-01-20",
+  "vendor": {
+    "name": "groSolar",
+    "address": "601 Old River Road, Suite 3, White River Junction, VT 05001"
+  },
+  "customer": {
+    "name": "SolarDyne, LLC"
+  },
+  "currency": "USD",
+  "subtotal": "408.24",
+  "total": "449.39",
+  "purchase_order": "SMA Sensor Box",
+  "line_items": [
+    {
+      "description": "SMA Ambient Temperature Sensor, for use with Sensor Box",
+      "quantity": "1",
+      "unit_price": "37.38",
+      "line_total": "37.38"
+    },
+    {
+      "description": "SMA Sunny Sensor Box",
+      "quantity": "1",
+      "unit_price": "370.86",
+      "line_total": "370.86"
+    }
+  ]
+}

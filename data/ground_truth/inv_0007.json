@@ -1,0 +1,36 @@
+{
+  "invoice_number": "10202000114",
+  "issue_date": "2020-11-04",
+  "vendor": {
+    "name": "Food and Drug Administration",
+    "address": "P.O Box 979107, St. Louis, MO 63197-9000"
+  },
+  "customer": {
+    "name": "MATTHEW GUENTHER",
+    "address": "411A HIGHLAND AVE, SUITE 302, SOMERVILLE, MA 02144, US"
+  },
+  "currency": "USD",
+  "total": "51.75",
+  "line_items": [
+    {
+      "description": "Reproduction",
+      "line_total": "0.00"
+    },
+    {
+      "description": "Search Time",
+      "line_total": "51.75"
+    },
+    {
+      "description": "Review Time",
+      "line_total": "0.00"
+    },
+    {
+      "description": "Microfiche",
+      "line_total": "0.00"
+    },
+    {
+      "description": "Other",
+      "line_total": "0.00"
+    }
+  ]
+}

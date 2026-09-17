@@ -1,0 +1,38 @@
+{
+  "issue_date": "2011-02-03",
+  "vendor": {
+    "name": "William H. Stewart III",
+    "address": "160 Doc Road, Reidsville, NC 27320"
+  },
+  "customer": {
+    "name": "Plastic Revolutions, Inc."
+  },
+  "currency": "USD",
+  "total": "1867.99",
+  "line_items": [
+    {
+      "description": "William H. Stewart III",
+      "quantity": "3",
+      "unit_price": "25.00",
+      "line_total": "75.00"
+    },
+    {
+      "description": "General Labor",
+      "quantity": "29",
+      "unit_price": "15.00",
+      "line_total": "435.00"
+    },
+    {
+      "description": "Wire(3/0) 135' @ $2.59",
+      "line_total": "350.00"
+    },
+    {
+      "description": "Concrete Anchors",
+      "line_total": "34.33"
+    },
+    {
+      "description": "Wire(Cat5E) (Tilden), Lowes Items (Tilden), Electric Supplies, Grainger Supply",
+      "line_total": "973.66"
+    }
+  ]
+}

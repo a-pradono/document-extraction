@@ -574,6 +574,301 @@
     "verified_note": null,
     "label_sha": "9a9b18e0429e560e"
   },
+  "inv_0001": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "20694747-invoice.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 2,
+    "parties": "City of Richmond Police Department -> MuckRock News (FOIA fees)",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "invoice_number",
+      "line_items",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "The identifier '04-30-2021-03' is labeled invoice_number; no 'Date:' is printed, so issue_date is null even though the number looks date-like.",
+      "Customer is the billed organization (MuckRock News); 'Tom Nash' above it is the attention line.",
+      "'30 minutes' at $40/hr: quantity left null (0.5 would be computed, not read).",
+      "Address prints 'Somerville, VA' (sic, the city is in MA): recorded as printed.",
+      "Page 2 carries only payment notes."
+    ]
+  },
+  "inv_0002": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "600947-american-crossroads-invoice-october-1.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 2,
+    "parties": "WXII-TV -> Crossroads Media (advertiser: American Crossroads)",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "invoice_number",
+      "issue_date",
+      "line_items",
+      "subtotal",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "ROLE TRAP: customer is the billing address (Crossroads Media, the agency), NOT the advertiser American Crossroads.",
+      "subtotal = Gross Total 6,150.00; total = Net Amount Due 5,227.50 after a 922.50 agency commission. The schema has no commission field, so subtotal + tax != total. Recorded as printed.",
+      "No per-line totals are printed (spots x rate only): line_total null.",
+      "'Payment Terms 30 Days' gives no printed due date: null.",
+      "'Order # 949838' is the station's order number, not a customer PO: purchase_order null.",
+      "Line 6 and all totals are on page 2."
+    ]
+  },
+  "inv_0003": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "6768458-Invoice.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 2,
+    "parties": "Flock Safety -> Cobb County Finance Department",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "due_date",
+      "issue_date",
+      "line_items",
+      "purchase_order",
+      "subtotal",
+      "tax",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "Invoice number is REDACTED: null. The footer shows 'DF489FB4-0001', which is probably the same number, but equating them is inference. Decide on verification.",
+      "The PO is redacted near the top but printed in the line item ('PO #33286'): purchase_order = 33286.",
+      "The amount due ($297,500.00) is on page 2."
+    ]
+  },
+  "inv_0004": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "6779372-Invoice.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 2,
+    "parties": "Williamsburg-James City County Public Schools -> MuckRock",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "due_date",
+      "invoice_number",
+      "issue_date",
+      "line_items",
+      "subtotal",
+      "tax",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "PRINTED ARITHMETIC ERROR: rows are 8.05 + 48.51 = 56.56, but SUBTOTAL and TOTAL DUE print 36.59. Recorded as printed; do not correct.",
+      "Due date printed as 'TOTAL DUE BY 3-15-2020'.",
+      "Page 2 is an empty template page ('YOUR LOGO HERE')."
+    ]
+  },
+  "inv_0005": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "1314570-20141016142248.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 3,
+    "parties": "William H. Stewart III -> Plastic Revolutions, Inc. (handwritten annotations)",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "issue_date",
+      "line_items",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "JUDGEMENT CALL: the 'General Labor 29 Hours @ $15/hour $435.00' row is struck through by hand ('duplicate invoicing'), but the PRINTED total $1,867.99 includes it. Labeled the typed invoice as printed (row kept). Confirm on verification.",
+      "Handwriting excluded: '236-51-1751', '/ JDC Mfg', 'pd 2/9/11 ck# 1515 $2502.99'. No printed invoice number: null.",
+      "Pages 2-3 are an attached, rotated U.S. DoL payroll form (WH-347), not invoice content."
+    ]
+  },
+  "inv_0006": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "1314577-20141016142902.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 3,
+    "parties": "groSolar -> SolarDyne, LLC (redactions, handwritten payment note)",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "due_date",
+      "invoice_number",
+      "issue_date",
+      "line_items",
+      "purchase_order",
+      "subtotal",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "BUNDLE, CONSIDER REPLACING: this PDF is three separate documents (p1 invoice 29069, p2 a different invoice 28815, p3 credit memo 3094). Labeled invoice 29069 (page 1) only; the 'one document' target is contestable.",
+      "Bill-to address redacted: null. PO # field literally prints 'SMA Sensor Box'.",
+      "Totals block labels are illegible: 408.24 is the subtotal (sum of rows) and 449.39 is confirmed by the remittance slip, but whether 9.51 or 31.64 is tax is inference, so tax is null.",
+      "Handwriting excluded ('pd 1/13/11 Wire', '$459.90', 'Ref# 110113-006613')."
+    ]
+  },
+  "inv_0007": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "7331212-invoice.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 3,
+    "parties": "U.S. FDA (HHS) -> requester (FOIA form layout)",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "invoice_number",
+      "issue_date",
+      "line_items",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "A genuine single invoice over 3 pages: form, per-month detail (same invoice number), remittance page.",
+      "'Payment is due within 30 days after receipt' gives no printed due date: null."
+    ]
+  },
+  "inv_0008": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "20519891-correll-invoice.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 4,
+    "parties": "Correll Law Group -> National Rifle Association (c/o named officer)",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "invoice_number",
+      "issue_date",
+      "line_items",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "JUDGEMENT CALL, role resolution: 'TO: Wayne LaPierre c/o The National Rifle Association of America, Inc.' 'c/o' means in care of, so the addressee is LaPierre and the NRA is the address. Labeled customer.name = Wayne LaPierre. Confirm on verification.",
+      "Two rows billed 'N/C' (no charge): line_total null, since no number is printed.",
+      "Self-check: the 25 service rows sum to the printed 'Total amount of services' $78,225.00; with the $2,188.92 expense they give the $80,413.92 total. Amount due appears only on page 4.",
+      "'PAYMENT TERMS: DUE ON RECEIPT' gives no printed due date: null."
+    ]
+  },
+  "inv_0009": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "1314575-20141016142748.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 5,
+    "parties": "Circuit Makers Inc. -> Plastic Revolutions (redacted address)",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "invoice_number",
+      "issue_date",
+      "line_items",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "Vendor town line is half-covered by a redaction box but legible; the next line is fully redacted and omitted.",
+      "Handwritten '- Business Owner' annotations are excluded from descriptions.",
+      "Pages 2-5 are attached, rotated U.S. DoL payroll forms (WH-347), not invoice content."
+    ]
+  },
+  "inv_0010": {
+    "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
+    "original_file": "3982955-Invoice.pdf",
+    "document_type": "invoice",
+    "language": "en",
+    "page_count": 5,
+    "parties": "Florida Dept of Agriculture & Consumer Services -> individual (labor table)",
+    "script_converted_fields": [],
+    "hand_labeled_fields": [
+      "currency",
+      "customer",
+      "invoice_number",
+      "line_items",
+      "total",
+      "vendor"
+    ],
+    "label_status": "drafted by assistant from page images; pending human verification",
+    "needs_hand_label": [],
+    "verified": false,
+    "verified_note": null,
+    "label_sha": "8f6f983d087f4f2c",
+    "label_notes": [
+      "225 rows over 5 pages; the total is only on page 5. Self-check: the transcribed line totals sum EXACTLY to the printed $59,403.38, and every row with a quantity satisfies qty x rate = total.",
+      "'Date: Initial Bill Not Yet Sent': issue_date null. '8/1/2017' in the footer is a print date, not the issue date.",
+      "3 rows split across a page break print no quantity on the continuation page: quantity null.",
+      "Descriptions recorded as printed, including the unclosed '(Ranger NAME' parenthesis.",
+      "The audit flags ~26 'identical rows': these are genuine repeated charges (e.g. five identical $57.00 transport rows). All rows are present; the exact sum match confirms it."
+    ]
+  },
   "wild_0001": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
     "original_file": "image_files/Image_1/0/40.jpeg",

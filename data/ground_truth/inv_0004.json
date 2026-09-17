@@ -1,0 +1,30 @@
+{
+  "invoice_number": "00011",
+  "issue_date": "2020-02-14",
+  "due_date": "2020-03-15",
+  "vendor": {
+    "name": "Williamsburg-James City County Public Schools",
+    "address": "117 Ironbound Road, Williamsburg, VA 23185"
+  },
+  "customer": {
+    "name": "Muckrock.com"
+  },
+  "currency": "USD",
+  "subtotal": "36.59",
+  "tax": "0",
+  "total": "36.59",
+  "line_items": [
+    {
+      "description": "R. Showah Form Search",
+      "quantity": ".25",
+      "unit_price": "32.21",
+      "line_total": "8.05"
+    },
+    {
+      "description": "P. Hayworth Website Search, Form Search, FOIA Response Preparation",
+      "quantity": "1.5",
+      "unit_price": "32.34",
+      "line_total": "48.51"
+    }
+  ]
+}

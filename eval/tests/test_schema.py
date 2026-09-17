@@ -65,5 +65,19 @@ class TestGroundTruthFilesLoad:
         files = [p for p in gt_dir.glob("*.json") if not p.stem.startswith("_")]
         if not files:
             pytest.skip("no ground truth generated yet")
+        from extractor.schema import model_for
         for path in files:
-            Receipt.model_validate_json(path.read_text(encoding="utf-8"))
+            # Against the document's OWN type. Validating an invoice label as a Receipt
+            # passes silently (unknown keys are ignored) and proves nothing.
+            model_for(path.stem).model_validate_json(path.read_text(encoding="utf-8"))
+
+    def test_invoice_labels_are_not_empty_shells(self):
+        from pathlib import Path
+        from extractor.schema import Invoice
+        files = sorted(Path("data/ground_truth").glob("inv_*.json"))
+        if not files:
+            pytest.skip("no invoices")
+        for path in files:
+            inv = Invoice.model_validate_json(path.read_text(encoding="utf-8"))
+            assert inv.vendor.name and inv.customer.name, f"{path.stem}: both party roles must be labeled"
+            assert inv.total is not None, f"{path.stem}: total missing"

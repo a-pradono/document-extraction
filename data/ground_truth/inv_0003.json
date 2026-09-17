@@ -1,0 +1,31 @@
+{
+  "issue_date": "2020-01-09",
+  "due_date": "2020-02-08",
+  "vendor": {
+    "name": "Flock Safety",
+    "address": "PO Box 207576, Dallas, TX 75320-7576"
+  },
+  "customer": {
+    "name": "Cobb County Finance Department",
+    "address": "100 Cherokee Street, Ste 410, Marietta, Georgia 30090-9610, United States"
+  },
+  "currency": "USD",
+  "subtotal": "297500.00",
+  "tax": "0.00",
+  "total": "297500.00",
+  "purchase_order": "33286",
+  "line_items": [
+    {
+      "description": "Flock Safety - PO #33286",
+      "quantity": "35",
+      "unit_price": "8500.00",
+      "line_total": "297500.00"
+    },
+    {
+      "description": "Sales tax",
+      "quantity": "1",
+      "unit_price": "0.00",
+      "line_total": "0.00"
+    }
+  ]
+}

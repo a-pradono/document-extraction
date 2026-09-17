@@ -1,0 +1,143 @@
+{
+  "invoice_number": "2020.03.05",
+  "issue_date": "2021-01-13",
+  "vendor": {
+    "name": "Correll Law Group",
+    "address": "250 Park Avenue, 7th Floor, New York, NY 10177"
+  },
+  "customer": {
+    "name": "Wayne LaPierre",
+    "address": "c/o The National Rifle Association of America, Inc., 11250 Waples Mill Road, Fairfax, VA 22030"
+  },
+  "currency": "USD",
+  "total": "80413.92",
+  "line_items": [
+    {
+      "description": "Pursue preparation for oral argument on pending motions to dismiss, transfer or stay in NYAG action, review/analyze Tashenberg and citing references (7.9).",
+      "quantity": "7.90",
+      "line_total": "7110.00"
+    },
+    {
+      "description": "Assist PKC in preparation for oral argument on pending motions in NYAG action (2.5).",
+      "quantity": "2.50",
+      "line_total": "487.50"
+    },
+    {
+      "description": "Pursue dismissal, transfer or stay of NYAG action, review/revise 1/2/21 notes and memos re venue issue and statutory construction issues (0.3); pursue investigation and analysis of director and officer liability issues (0.4); review correspondence from TCC re NYAG comments in national media, review/analyze transcript of same, draft memo based on same (3.6); pursue legal research on statutory construction issues (3.0).",
+      "quantity": "7.30",
+      "line_total": "6570.00"
+    },
+    {
+      "description": "Review correspondence from Court re oral argument and correspond with all counsel re same (0.1); continue research and analysis re statutory construction issues (0.7); pursue preparation for oral argument (0.3).",
+      "quantity": "1.10",
+      "line_total": "990.00"
+    },
+    {
+      "description": "Assist PKC in preparation for oral argument (3.0).",
+      "quantity": "3.00",
+      "line_total": "585.00"
+    },
+    {
+      "description": "Pursue motions to dismiss, transfer and stay and prepare for oral argument (1.3); communicate with SBR re issue relating to WLP employment contract and correspond with SBR re same (0.1); pursue defense of claims relating to WLP employment agreement (5.9).",
+      "quantity": "7.30",
+      "line_total": "6570.00"
+    },
+    {
+      "description": "Assist PKC in preparation for oral argument and defense of claims relating to WLP employment contract (5.5).",
+      "quantity": "5.50",
+      "line_total": "1072.50"
+    },
+    {
+      "description": "Pursue investigation and analysis of NYAG case and motion for dismissal, transfer or stay of causes of action asserted against LaPierre in NYAG action, review and edit 1/3/21 notes and memos and review and revise draft of oral argument (2.1); pursue preparation for oral argument on venue motion (2.2); confer with WLP re status and strategy (0.2); pursue strategy, review email from WAB re transcript of WLP deposition in UWS action and review/analyze transcript (4.0).",
+      "quantity": "8.50",
+      "line_total": "7650.00"
+    },
+    {
+      "description": "Assist PKC with preparation for oral argument on pending motions (0.9).",
+      "quantity": "0.90",
+      "line_total": "175.50"
+    },
+    {
+      "description": "Review/revise 1/4/21 notes and memos re venue issue (0.6); pursue investigation of case (0.6); research/review/analyze relevant background information on key players and potential witnesses (0.7); review 12/1/13 WLP contract, background information on Nonprofit Revitalization Act, prepare for meetings in Dallas re litigation strategy; confer with WAB, SBR, and J. Houser re same (7.0); confer with WLP re strategy (0.1).",
+      "quantity": "9.00",
+      "line_total": "8100.00"
+    },
+    {
+      "description": "Confer with WAB and SBR re strategy (0.5); pursue strategy discussions (0.5).",
+      "quantity": "1.00",
+      "line_total": "900.00"
+    },
+    {
+      "description": "Pursue strategy discussions (3.5).",
+      "quantity": "3.50"
+    },
+    {
+      "description": "Review/revise 1/5/21 notes and memos and pursue analysis of open issues (0.3); pursue preparation for oral argument on motions pending in NYAG case (0.5); review revised draft of new employment agreement for WLP (0.2); confer with SBR re same (0.1); continue review of draft agreement and confer further with SBR re same (0.3); pursue strategy discussions with defense team (3.9); continue review/analysis of transcript of WLP testimony in UWS action and related issues (4.7).",
+      "quantity": "10.00",
+      "line_total": "9000.00"
+    },
+    {
+      "description": "Continue review/analysis of transcript of WLP testimony in UWS action (1.1).",
+      "quantity": "1.10"
+    },
+    {
+      "description": "Pursue strategy (0.2); correspond with W. Davis re new employment agreement for WLP (0.1); analyze governing law issue (0.2); confer with WAB and SBR re status and strategy (0.6); pursue strategy (0.2); review 1/5/21 notes and pursue strategy (1.2); confer with SBR re further changes to new employment agreement and review proposed revisions (0.2); pursue strategy (1.1); review email from SBR re final version of new employment agreement (0.1).",
+      "quantity": "3.90",
+      "line_total": "3510.00"
+    },
+    {
+      "description": "Review correspondence from E. Stern re proposed meet and confer, review and analyze attached discovery proposal and preliminary conference order and confer with SBR re same (1.1); continue review and analysis of OAG proposal re discovery and confer further with SBR re same (1.0); review and respond to email from C. Liggio re scheduling of meet and confer (0.1).",
+      "quantity": "2.20",
+      "line_total": "1980.00"
+    },
+    {
+      "description": "Pursue preparation for oral argument on motions to dismiss, etc, review 1/7/21 notes and prepare memo re same (0.6); review correspondence re oral argument on pending motions (0.1); confer with SBR re strategy (0.1); pursue strategy, confer with MJC re status and strategy, review correspondence from MJC re same (4.2).",
+      "quantity": "5.00",
+      "line_total": "4500.00"
+    },
+    {
+      "description": "Confer with WAB and SBR re oral argument on motions to dismiss and pursue preparation for oral argument (1.7); review and respond to correspondence from SBR re oral argument and pursue strategy (0.3); review and respond to correspondence from W. Fleming re Frazer request for adjournment of oral argument (0.1); review and respond to correspondence from E. Stern re adjournment of oral argument and scheduling conference (0.2).",
+      "quantity": "2.30",
+      "line_total": "2070.00"
+    },
+    {
+      "description": "Pursue investigation of NYAG case (2.8).",
+      "quantity": "2.80",
+      "line_total": "2520.00"
+    },
+    {
+      "description": "Assist PKC in pursuit of strategy and further investigation of NYAG case (2.8).",
+      "quantity": "2.80",
+      "line_total": "546.00"
+    },
+    {
+      "description": "Prepare for conference with Court in NYAG action re pending motions and scheduling order and rework oral argument regarding N-PCL section 1110 issue (0.6); appear for conference before Justice Cohen (0.2); pursue preparation for oral argument, review and respond to correspondence from WBB re review and correction of WLP deposition transcript in UWS case and preparation of errata sheet, pursue analysis of argument and strategy in NYAG case (1.5).",
+      "quantity": "2.30",
+      "line_total": "2070.00"
+    },
+    {
+      "description": "Continue review and analysis of WLP testimony in UWS case and correction of transcript of WLP deposition, supplement timeline, cast of characters and witness profiles and correspond with WBB re same (5.8).",
+      "quantity": "5.80",
+      "line_total": "5220.00"
+    },
+    {
+      "description": "Assist PKC in preparation for court appearance (0.2); monitor conference with the Court (0.2); assist PKC in further analysis/development of argument and strategy in NYAG case (1.4); assist PKC in supplementation of timeline, cast of characters and witness profiles and in preparing errata sheet for WLP deposition transcript in UWS case (1.3).",
+      "quantity": "3.10",
+      "line_total": "604.50"
+    },
+    {
+      "description": "Assist PKC in developing venue argument and in reviewing and correcting WLP transcript in UWS case (0.6); review correspondence from E. Stern and counsel re proposed meet and confer (0.1); research commercial division in Third Judicial District, review 2021 Judicial Assignments Book and Albany County commercial division Justice Platkin bio (0.3); revise errata sheet (0.2).",
+      "quantity": "1.20",
+      "line_total": "234.00"
+    },
+    {
+      "description": "Review 1/11/21 notes and memos and revise argument re venue (1.6); review and respond to email from WBB re additions to errata sheet (0.1); review and respond to email from E. Stern re rescheduling of meet and confer (0.1) pursue review and analysis of WLP testimony in UWS case, correspond with WAB and SBR re status and strategy, correspond with WBB re exhibits, video and updated errata sheet (4.2); review/analyze bio of Justice Platkin (0.2); confer with SBR re status and strategy (0.2).",
+      "quantity": "6.40",
+      "line_total": "5760.00"
+    },
+    {
+      "description": "Hotel/Meals in Dallas 1/5/21 - 1/9/21",
+      "line_total": "2188.92"
+    }
+  ]
+}

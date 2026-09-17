@@ -28,6 +28,7 @@ from extractor.confidence import (  # noqa: E402 — gt_common puts the repo on 
     RECONCILIATION_FIELDS,
     expected_total,
     money_tolerance,
+    norm_party,
     reconciles,
 )
 
@@ -115,8 +116,13 @@ def audit_receipt(label: dict) -> list[dict]:
         except ValueError:
             flag(ERROR, "date", f"not YYYY-MM-DD: {label['date']!r}")
 
-    for text_field in ("merchant_name", "merchant_address"):
-        value = str(label.get(text_field) or "")
+    text_fields = [("merchant_name", label.get("merchant_name")),
+                   ("merchant_address", label.get("merchant_address"))]
+    for role in ("vendor", "customer"):
+        party = label.get(role) or {}
+        text_fields += [(f"{role}.name", party.get("name")), (f"{role}.address", party.get("address"))]
+    for text_field, raw in text_fields:
+        value = str(raw or "")
         # WildReceipt strips spaces: "CaltexCentralMyrtleford". A long unbroken token with
         # internal capitals or digit/letter joins is almost never how a store name prints.
         for token in value.split():
@@ -124,6 +130,36 @@ def audit_receipt(label: dict) -> list[dict]:
                 flag(CHECK, text_field, f"looks space-stripped: {token!r}")
                 break
 
+    flags += audit_invoice(label)
+    return flags
+
+
+def audit_invoice(label: dict) -> list[dict]:
+    """Invoice-only label checks: the same two consistency rules the extractor's validation
+    signal uses, plus the fields that make an invoice label usable at all."""
+    if "vendor" not in label and "customer" not in label and "issue_date" not in label:
+        return []
+    flags: list[dict] = []
+    dates = {}
+    for field in ("issue_date", "due_date"):
+        if label.get(field):
+            try:
+                dates[field] = date.fromisoformat(str(label[field]))
+            except ValueError:
+                flags.append({"severity": ERROR, "field": field,
+                              "message": f"not YYYY-MM-DD: {label[field]!r}"})
+    if len(dates) == 2 and dates["due_date"] < dates["issue_date"]:
+        flags.append({"severity": ERROR, "field": "due_date",
+                      "message": f"due {dates['due_date']} is before issue {dates['issue_date']}"})
+    vendor, customer = label.get("vendor") or {}, label.get("customer") or {}
+    if vendor.get("name") and customer.get("name") and \
+            norm_party(vendor["name"]) == norm_party(customer["name"]):
+        flags.append({"severity": ERROR, "field": "customer.name",
+                      "message": f"vendor and customer have the same name ({vendor['name']!r}): roles unresolved"})
+    for role, party in (("vendor", vendor), ("customer", customer)):
+        if not party.get("name"):
+            flags.append({"severity": CHECK, "field": f"{role}.name",
+                          "message": f"no {role} name: redacted or genuinely absent? Role resolution needs both"})
     return flags
 
 
@@ -134,9 +170,18 @@ def audit_all() -> list[dict]:
         if path.stem.startswith("_"):
             continue
         label = json.loads(path.read_text(encoding="utf-8"))
-        flags = audit_receipt(label)
         entry = provenance.get(path.stem, {})
+        if path.stem.startswith("inv_") and set(label) <= {"document_type"}:
+            flags = [{"severity": TODO, "field": "*", "message": "invoice not labeled yet"}]
+        else:
+            flags = audit_receipt(label)
+            if entry.get("label_status", "").startswith("drafted"):
+                flags.append({"severity": TODO, "field": "*",
+                              "message": "labels DRAFTED by the assistant from the page images: "
+                                         "check every field against the document"})
         for pending in entry.get("needs_hand_label", []):
+            if pending == "*":
+                continue
             flags.append({"severity": TODO, "field": pending,
                           "message": "not annotated by the source dataset; label from the image"})
         docs.append({"doc_id": path.stem, "verified": bool(entry.get("verified")), "flags": flags})

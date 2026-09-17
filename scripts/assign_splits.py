@@ -2,8 +2,9 @@
 
     python scripts/assign_splits.py [--seed 20240917]
 
-    calibration  22   (cord 9,  wild 9,  retail 4)   fits confidence weights + threshold
-    test         43   (cord 16, wild 16, retail 11)  the reported scorecard
+    calibration  25   (cord 9,  wild 9,  retail 4, inv 3)   fits confidence (receipts only)
+    test         50   (cord 16, wild 16, retail 11, inv 7)  the reported scorecard
+    invoices     10   a TAG listing the invoices, reported as their own breakdown
     smoke        12   drawn FROM calibration          fast dev loop
     degraded     ~12  a TAG on documents inside test  per-subset breakdown
 
@@ -29,8 +30,8 @@ SETS_DIR = REPO / "data" / "sets"
 DOCS_DIR = REPO / "data" / "docs"
 
 QUOTAS = {
-    "calibration": {"cord": 9, "wild": 9, "retail": 4},
-    "test": {"cord": 16, "wild": 16, "retail": 11},
+    "calibration": {"cord": 9, "wild": 9, "retail": 4, "inv": 3},
+    "test": {"cord": 16, "wild": 16, "retail": 11, "inv": 7},
 }
 SMOKE_N = 12
 DEGRADED_N = 12
@@ -70,7 +71,6 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=20240917)
     args = ap.parse_args()
 
-    rng = random.Random(args.seed)
     by_source = _ids_by_source()
     if not by_source:
         raise SystemExit(f"no ground truth in {GT_DIR} — run the converters first")
@@ -78,7 +78,11 @@ def main() -> None:
     assigned: dict[str, list[str]] = {"calibration": [], "test": []}
     for source, ids in sorted(by_source.items()):
         pool = sorted(ids)
-        rng.shuffle(pool)
+        # One generator PER SOURCE, seeded from (seed, source). A single shared generator
+        # meant adding the invoices, which sort between "cord" and "wild", consumed random
+        # draws and reshuffled the WildReceipt split. Adding a source must never move the
+        # documents of another, or every earlier run stops being comparable.
+        random.Random(f"{args.seed}:{source}").shuffle(pool)
         want = {s: QUOTAS[s].get(source, 0) for s in assigned}
         have = len(pool)
         if have < sum(want.values()):
@@ -97,7 +101,11 @@ def main() -> None:
     _write("test", assigned["test"],
            "The reported scorecard. Nothing is ever fitted on these documents.")
 
-    smoke = rng.sample(assigned["calibration"], min(SMOKE_N, len(assigned["calibration"])))
+    # Receipts only, with its own generator: the dev loop tracks the headline document type,
+    # and a new source or document type must not change which documents it contains.
+    receipt_calibration = sorted(d for d in assigned["calibration"] if not d.startswith("inv_"))
+    smoke = random.Random(f"{args.seed}:smoke").sample(
+        receipt_calibration, min(SMOKE_N, len(receipt_calibration)))
     _write("smoke", smoke,
            "Fast dev loop. Drawn FROM calibration so heavy iteration cannot overfit test.")
 
@@ -110,7 +118,9 @@ def main() -> None:
     by_source_scores: dict[str, list[tuple[float, str]]] = {}
     for doc_id in assigned["test"]:
         hits = list(DOCS_DIR.glob(f"{doc_id}.*"))
-        if not hits:
+        # The degraded tag is about photo quality in the headline receipt set; invoices
+        # are clean PDFs with their own breakdown.
+        if not hits or doc_id.startswith("inv_"):
             continue
         try:
             by_source_scores.setdefault(doc_id.split("_")[0], []).append(
@@ -126,6 +136,12 @@ def main() -> None:
     _write("degraded", degraded,
            "A TAG on documents already inside test, for a per-subset breakdown — not a\n"
            "separate held-out set. Seeded by an edge-energy blur proxy; confirm by eye.")
+
+    invoices = sorted(d for d in assigned["calibration"] + assigned["test"] if d.startswith("inv_"))
+    if invoices:
+        _write("invoices", invoices,
+               "Second document type (RVL-CDIP-N multi-page invoices). A per-type breakdown\n"
+               "tag; invoices are reported separately and never pooled into the receipt headline.")
 
     overlap = set(assigned["calibration"]) & set(assigned["test"])
     assert not overlap, f"calibration/test overlap: {overlap}"

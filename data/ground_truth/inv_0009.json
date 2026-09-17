@@ -1,0 +1,32 @@
+{
+  "invoice_number": "501",
+  "issue_date": "2011-01-11",
+  "vendor": {
+    "name": "Circuit Makers Inc.",
+    "address": "PO Box 886, Eden NC 27288"
+  },
+  "customer": {
+    "name": "Plastic Revolutions",
+    "address": "PO Box 1616, Reidsville, NC 27323"
+  },
+  "currency": "USD",
+  "total": "8840.00",
+  "line_items": [
+    {
+      "description": "Solar Installation Labor Tilden",
+      "line_total": "3405.00"
+    },
+    {
+      "description": "Solar Installation Labor Keith",
+      "line_total": "3240.00"
+    },
+    {
+      "description": "Solar Installation Labor Will",
+      "line_total": "1620.00"
+    },
+    {
+      "description": "Solar Installation Materials and Bucket Truck",
+      "line_total": "575.00"
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 # Fast dev loop. Drawn FROM calibration so heavy iteration cannot overfit test.
 cord_0001
-cord_0003
-cord_0005
-cord_0011
-cord_0012
-cord_0017
-cord_0019
-cord_0025
-wild_0008
-wild_0012
+cord_0002
+cord_0014
+cord_0015
+cord_0021
+cord_0024
+wild_0001
+wild_0005
+wild_0006
+wild_0015
 wild_0020
 wild_0024

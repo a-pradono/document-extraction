@@ -1,0 +1,26 @@
+{
+  "invoice_number": "04-30-2021-03",
+  "vendor": {
+    "name": "City of Richmond Police Department",
+    "address": "200 West Grace Street, Richmond, VA 23220"
+  },
+  "customer": {
+    "name": "MuckRock News",
+    "address": "DEPT MR 70546, 411 A Highland Avenue, Somerville, VA 02144-2516"
+  },
+  "currency": "USD",
+  "total": "100.00",
+  "line_items": [
+    {
+      "description": "Major Crimes",
+      "quantity": "2",
+      "unit_price": "40.00",
+      "line_total": "80.00"
+    },
+    {
+      "description": "Internal Affairs",
+      "unit_price": "40.00",
+      "line_total": "20.00"
+    }
+  ]
+}

@@ -1,0 +1,1362 @@
+{
+  "invoice_number": "S16947",
+  "vendor": {
+    "name": "Florida Department of Agriculture and Consumer Services",
+    "address": "P.O. Box 6720, Tallahassee, FL 32314-6720"
+  },
+  "customer": {
+    "name": "Brian Sparks",
+    "address": "1505 Wills Lane, Bryceville, Fl 32009"
+  },
+  "currency": "USD",
+  "total": "59403.38",
+  "line_items": [
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HEAD",
+      "quantity": "13.25",
+      "unit_price": "22.00",
+      "line_total": "291.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HEAD",
+      "quantity": "5.50",
+      "unit_price": "22.00",
+      "line_total": "121.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger DAVIDSON",
+      "quantity": "10.00",
+      "unit_price": "22.00",
+      "line_total": "220.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger DAVIDSON",
+      "quantity": "9.75",
+      "unit_price": "22.00",
+      "line_total": "214.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger PALMER",
+      "quantity": "8.00",
+      "unit_price": "22.00",
+      "line_total": "176.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WYATT",
+      "quantity": "4.75",
+      "unit_price": "22.00",
+      "line_total": "104.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WYATT",
+      "quantity": "7.50",
+      "unit_price": "22.00",
+      "line_total": "165.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WYATT",
+      "quantity": "2.25",
+      "unit_price": "22.00",
+      "line_total": "49.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WYATT",
+      "quantity": "10.50",
+      "unit_price": "22.00",
+      "line_total": "231.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WYATT",
+      "quantity": "7.00",
+      "unit_price": "22.00",
+      "line_total": "154.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HOEPKER",
+      "quantity": "7.75",
+      "unit_price": "22.00",
+      "line_total": "170.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HERNANDEZ",
+      "quantity": "6.00",
+      "unit_price": "22.00",
+      "line_total": "132.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HERNANDEZ",
+      "quantity": "11.25",
+      "unit_price": "22.00",
+      "line_total": "247.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HERNANDEZ",
+      "quantity": "3.00",
+      "unit_price": "22.00",
+      "line_total": "66.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HERNANDEZ",
+      "quantity": "12.25",
+      "unit_price": "22.00",
+      "line_total": "269.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HERNANDEZ",
+      "quantity": "3.00",
+      "unit_price": "22.00",
+      "line_total": "66.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BLACKWELL",
+      "quantity": "4.50",
+      "unit_price": "22.00",
+      "line_total": "99.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BLACKWELL",
+      "quantity": "4.00",
+      "unit_price": "22.00",
+      "line_total": "88.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BLACKWELL",
+      "quantity": "2.25",
+      "unit_price": "22.00",
+      "line_total": "49.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BLACKWELL",
+      "quantity": "7.25",
+      "unit_price": "22.00",
+      "line_total": "159.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BLACKWELL",
+      "quantity": "9.75",
+      "unit_price": "22.00",
+      "line_total": "214.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BLACKWELL",
+      "quantity": "9.25",
+      "unit_price": "22.00",
+      "line_total": "203.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BLACKWELL",
+      "quantity": "10.00",
+      "unit_price": "22.00",
+      "line_total": "220.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BLACKWELL",
+      "quantity": "10.00",
+      "unit_price": "22.00",
+      "line_total": "220.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger DORSA",
+      "quantity": "10.00",
+      "unit_price": "22.00",
+      "line_total": "220.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger DORSA",
+      "quantity": "9.75",
+      "unit_price": "22.00",
+      "line_total": "214.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger COOPER",
+      "quantity": "5.50",
+      "unit_price": "22.00",
+      "line_total": "121.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger VIGNOLA",
+      "quantity": "9.75",
+      "unit_price": "22.00",
+      "line_total": "214.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger VIGNOLA",
+      "quantity": "3.50",
+      "unit_price": "22.00",
+      "line_total": "77.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger VIGNOLA",
+      "quantity": "1.50",
+      "unit_price": "22.00",
+      "line_total": "33.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger DOWIE",
+      "quantity": "12.00",
+      "unit_price": "22.00",
+      "line_total": "264.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger DOWIE",
+      "quantity": "10.25",
+      "unit_price": "22.00",
+      "line_total": "225.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WALLS",
+      "quantity": "2.75",
+      "unit_price": "22.00",
+      "line_total": "60.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger MASON",
+      "quantity": "8.00",
+      "unit_price": "22.00",
+      "line_total": "176.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger STEED",
+      "quantity": "13.25",
+      "unit_price": "22.00",
+      "line_total": "291.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger HART",
+      "quantity": "6.00",
+      "unit_price": "30.00",
+      "line_total": "180.00"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger HART",
+      "quantity": "3.25",
+      "unit_price": "30.00",
+      "line_total": "97.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger HART",
+      "quantity": "2.00",
+      "unit_price": "30.00",
+      "line_total": "60.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger ORR",
+      "quantity": "2.00",
+      "unit_price": "22.00",
+      "line_total": "44.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger ORR",
+      "quantity": "9.25",
+      "unit_price": "22.00",
+      "line_total": "203.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger ORR",
+      "quantity": "7.75",
+      "unit_price": "22.00",
+      "line_total": "170.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger SMITH",
+      "quantity": "6.00",
+      "unit_price": "22.00",
+      "line_total": "132.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger SMITH",
+      "quantity": "7.50",
+      "unit_price": "22.00",
+      "line_total": "165.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger ABBOTT",
+      "quantity": "13.25",
+      "unit_price": "22.00",
+      "line_total": "291.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger ABBOTT",
+      "quantity": "13.50",
+      "unit_price": "22.00",
+      "line_total": "297.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger ABBOTT",
+      "quantity": "6.00",
+      "unit_price": "22.00",
+      "line_total": "132.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger ABBOTT",
+      "quantity": "10.25",
+      "unit_price": "22.00",
+      "line_total": "225.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger DREW",
+      "quantity": "16.50",
+      "unit_price": "22.00",
+      "line_total": "363.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger LEWIS",
+      "quantity": "9.00",
+      "unit_price": "22.00",
+      "line_total": "198.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HAMLIN",
+      "quantity": "10.00",
+      "unit_price": "22.00",
+      "line_total": "220.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HAMLIN",
+      "quantity": "9.75",
+      "unit_price": "22.00",
+      "line_total": "214.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger NORMAN",
+      "quantity": "30.00",
+      "unit_price": "22.00",
+      "line_total": "660.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger CHANAKI",
+      "quantity": "14.50",
+      "unit_price": "22.00",
+      "line_total": "319.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger SLUSKI",
+      "quantity": "7.25",
+      "unit_price": "22.00",
+      "line_total": "159.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger GARRARD",
+      "quantity": "2.25",
+      "unit_price": "22.00",
+      "line_total": "49.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger GARRARD",
+      "quantity": "10.25",
+      "unit_price": "22.00",
+      "line_total": "225.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger WORK",
+      "quantity": "2.25",
+      "unit_price": "30.00",
+      "line_total": "67.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger WORK",
+      "quantity": "13.25",
+      "unit_price": "30.00",
+      "line_total": "397.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger WORK",
+      "quantity": "2.50",
+      "unit_price": "30.00",
+      "line_total": "75.00"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger WORK",
+      "quantity": "8.25",
+      "unit_price": "30.00",
+      "line_total": "247.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger WORK",
+      "quantity": "14.00",
+      "unit_price": "30.00",
+      "line_total": "420.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger HOLLEY",
+      "quantity": "3.00",
+      "unit_price": "22.00",
+      "line_total": "66.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger MEREDITH",
+      "quantity": "4.75",
+      "unit_price": "22.00",
+      "line_total": "104.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger MEREDITH",
+      "quantity": "4.00",
+      "unit_price": "22.00",
+      "line_total": "88.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger MEREDITH",
+      "quantity": "2.25",
+      "unit_price": "22.00",
+      "line_total": "49.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger MEREDITH",
+      "quantity": "4.75",
+      "unit_price": "22.00",
+      "line_total": "104.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger MEREDITH",
+      "quantity": "3.50",
+      "unit_price": "22.00",
+      "line_total": "77.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger MEREDITH",
+      "quantity": "10.50",
+      "unit_price": "22.00",
+      "line_total": "231.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger MEREDITH",
+      "quantity": "3.00",
+      "unit_price": "22.00",
+      "line_total": "66.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger NEELY",
+      "quantity": "9.75",
+      "unit_price": "22.00",
+      "line_total": "214.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger NEELY",
+      "quantity": "6.00",
+      "unit_price": "22.00",
+      "line_total": "132.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger NEELY",
+      "quantity": "7.25",
+      "unit_price": "22.00",
+      "line_total": "159.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger NEELY",
+      "quantity": "3.00",
+      "unit_price": "22.00",
+      "line_total": "66.00"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "3.00",
+      "unit_price": "30.00",
+      "line_total": "90.00"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "12.75",
+      "unit_price": "30.00",
+      "line_total": "382.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "2.50",
+      "unit_price": "30.00",
+      "line_total": "75.00"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "1.25",
+      "unit_price": "30.00",
+      "line_total": "37.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "1.00",
+      "unit_price": "30.00",
+      "line_total": "30.00"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "1.75",
+      "unit_price": "30.00",
+      "line_total": "52.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "12.00",
+      "unit_price": "30.00",
+      "line_total": "360.00"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "4.25",
+      "unit_price": "30.00",
+      "line_total": "127.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "13.50",
+      "unit_price": "30.00",
+      "line_total": "405.00"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "2.50",
+      "unit_price": "30.00",
+      "line_total": "75.00"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "1.25",
+      "unit_price": "30.00",
+      "line_total": "37.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "8.25",
+      "unit_price": "30.00",
+      "line_total": "247.50"
+    },
+    {
+      "description": "SUPERVISORY LABOR (Ranger TAYLOR",
+      "quantity": "2.75",
+      "unit_price": "30.00",
+      "line_total": "82.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WINTER",
+      "quantity": "13.00",
+      "unit_price": "22.00",
+      "line_total": "286.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WINTER",
+      "quantity": "10.75",
+      "unit_price": "22.00",
+      "line_total": "236.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WINTER",
+      "quantity": "7.50",
+      "unit_price": "22.00",
+      "line_total": "165.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger CROCKER",
+      "quantity": "9.75",
+      "unit_price": "22.00",
+      "line_total": "214.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger CROCKER",
+      "quantity": "1.50",
+      "unit_price": "22.00",
+      "line_total": "33.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger KLINDT",
+      "quantity": "13.50",
+      "unit_price": "22.00",
+      "line_total": "297.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger KLINDT",
+      "quantity": "11.50",
+      "unit_price": "22.00",
+      "line_total": "253.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger KLINDT",
+      "quantity": "15.25",
+      "unit_price": "22.00",
+      "line_total": "335.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger NELSON",
+      "quantity": "9.75",
+      "unit_price": "22.00",
+      "line_total": "214.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger NELSON",
+      "quantity": "13.25",
+      "unit_price": "22.00",
+      "line_total": "291.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger SEYMOUR",
+      "quantity": "11.25",
+      "unit_price": "22.00",
+      "line_total": "247.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger SEYMOUR",
+      "quantity": "8.50",
+      "unit_price": "22.00",
+      "line_total": "187.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WEST",
+      "unit_price": "22.00",
+      "line_total": "181.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger SCHEIDER",
+      "quantity": "11.25",
+      "unit_price": "22.00",
+      "line_total": "247.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BATTON",
+      "quantity": "10.00",
+      "unit_price": "22.00",
+      "line_total": "220.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger BATTON",
+      "quantity": "9.75",
+      "unit_price": "22.00",
+      "line_total": "214.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger ROWE",
+      "quantity": "8.00",
+      "unit_price": "22.00",
+      "line_total": "176.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger GRIFFIS",
+      "quantity": "14.50",
+      "unit_price": "22.00",
+      "line_total": "319.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger JOSEPH",
+      "quantity": "10.25",
+      "unit_price": "22.00",
+      "line_total": "225.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger NESS",
+      "quantity": "12.25",
+      "unit_price": "22.00",
+      "line_total": "269.50"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger JOHNSON",
+      "quantity": "6.50",
+      "unit_price": "22.00",
+      "line_total": "143.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger WALL",
+      "quantity": "14.50",
+      "unit_price": "22.00",
+      "line_total": "319.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger CLAYTON",
+      "quantity": "12.00",
+      "unit_price": "22.00",
+      "line_total": "264.00"
+    },
+    {
+      "description": "NON-SUPERVISORY LABOR (Ranger CLAYTON",
+      "quantity": "10.25",
+      "unit_price": "22.00",
+      "line_total": "225.50"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T439)",
+      "quantity": "7.00",
+      "unit_price": "108.00",
+      "line_total": "756.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS11924)",
+      "quantity": "10.25",
+      "unit_price": "17.00",
+      "line_total": "174.25"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS31210)",
+      "quantity": "6.00",
+      "unit_price": "48.00",
+      "line_total": "288.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS31210)",
+      "quantity": "11.25",
+      "unit_price": "48.00",
+      "line_total": "540.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS31210)",
+      "quantity": "5.50",
+      "unit_price": "48.00",
+      "line_total": "264.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS31410)",
+      "quantity": "16.50",
+      "unit_price": "17.00",
+      "line_total": "280.50"
+    },
+    {
+      "description": "Personnel Transportation (ACS11586)",
+      "quantity": "11.25",
+      "unit_price": "17.00",
+      "line_total": "191.25"
+    },
+    {
+      "description": "Personnel Transportation (ACS28255)",
+      "quantity": "3.00",
+      "unit_price": "17.00",
+      "line_total": "51.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS27587)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS27587)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS27587)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS27587)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS27587)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-2 (ACS28822)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-2 (ACS28822)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS28842)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS29651)",
+      "quantity": "9.75",
+      "unit_price": "17.00",
+      "line_total": "165.75"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T771)",
+      "quantity": "9.00",
+      "unit_price": "108.00",
+      "line_total": "972.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T771)",
+      "quantity": "9.00",
+      "unit_price": "108.00",
+      "line_total": "972.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T771)",
+      "quantity": "9.50",
+      "unit_price": "108.00",
+      "line_total": "1026.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T771)",
+      "quantity": "6.50",
+      "unit_price": "108.00",
+      "line_total": "702.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T771)",
+      "quantity": "9.50",
+      "unit_price": "108.00",
+      "line_total": "1026.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-2 (ACS29294)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-2 (ACS29294)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS29283)",
+      "quantity": "13.25",
+      "unit_price": "48.00",
+      "line_total": "636.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS29283)",
+      "quantity": "12.00",
+      "unit_price": "48.00",
+      "line_total": "576.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS29283)",
+      "quantity": "6.00",
+      "unit_price": "48.00",
+      "line_total": "288.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS29283)",
+      "quantity": "7.50",
+      "unit_price": "48.00",
+      "line_total": "360.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACST0889)",
+      "quantity": "12.00",
+      "unit_price": "108.00",
+      "line_total": "1296.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACST0889)",
+      "quantity": "6.00",
+      "unit_price": "108.00",
+      "line_total": "648.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACSM1506)",
+      "quantity": "3.00",
+      "unit_price": "108.00",
+      "line_total": "324.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACSM1506)",
+      "quantity": "6.75",
+      "unit_price": "108.00",
+      "line_total": "729.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS29400)",
+      "quantity": "2.25",
+      "unit_price": "17.00",
+      "line_total": "38.25"
+    },
+    {
+      "description": "Personnel Transportation (ACS29400)",
+      "quantity": "13.25",
+      "unit_price": "17.00",
+      "line_total": "225.25"
+    },
+    {
+      "description": "Personnel Transportation (ACS29400)",
+      "quantity": "2.50",
+      "unit_price": "17.00",
+      "line_total": "42.50"
+    },
+    {
+      "description": "Personnel Transportation (ACS29400)",
+      "quantity": "8.25",
+      "unit_price": "17.00",
+      "line_total": "140.25"
+    },
+    {
+      "description": "Personnel Transportation (ACS29400)",
+      "quantity": "14.00",
+      "unit_price": "17.00",
+      "line_total": "238.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-2 (ACS31945)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS31230)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS31230)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS31230)",
+      "quantity": "2.25",
+      "unit_price": "57.00",
+      "line_total": "128.25"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS31230)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "ATV, 4-Wheel (ACS78871)",
+      "quantity": "2.25",
+      "unit_price": "12.00",
+      "line_total": "27.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-1 (ACS28313)",
+      "quantity": "7.75",
+      "unit_price": "57.00",
+      "line_total": "441.75"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T862)",
+      "quantity": "13.00",
+      "unit_price": "108.00",
+      "line_total": "1404.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T862)",
+      "quantity": "6.50",
+      "unit_price": "108.00",
+      "line_total": "702.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-3 (ACS0T564)",
+      "quantity": "3.50",
+      "unit_price": "96.00",
+      "line_total": "336.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-3 (ACS0T564)",
+      "unit_price": "96.00",
+      "line_total": "864.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-3 (ACS0T564)",
+      "quantity": "2.50",
+      "unit_price": "96.00",
+      "line_total": "240.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-3 (ACS0T564)",
+      "quantity": "7.00",
+      "unit_price": "96.00",
+      "line_total": "672.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T478)",
+      "quantity": "8.50",
+      "unit_price": "108.00",
+      "line_total": "918.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T478)",
+      "quantity": "6.00",
+      "unit_price": "108.00",
+      "line_total": "648.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-1 (ACS11819)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Fixed Wing Aircraft, Type-3 (N151FC)",
+      "quantity": "5.00",
+      "unit_price": "110.00",
+      "line_total": "550.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T768)",
+      "quantity": "9.00",
+      "unit_price": "108.00",
+      "line_total": "972.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T768)",
+      "quantity": "8.50",
+      "unit_price": "108.00",
+      "line_total": "918.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T768)",
+      "quantity": "2.00",
+      "unit_price": "108.00",
+      "line_total": "216.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T768)",
+      "quantity": "9.50",
+      "unit_price": "108.00",
+      "line_total": "1026.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10522)",
+      "quantity": "10.00",
+      "unit_price": "48.00",
+      "line_total": "480.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10522)",
+      "quantity": "9.75",
+      "unit_price": "48.00",
+      "line_total": "468.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-3 (ACS0T316)",
+      "quantity": "6.00",
+      "unit_price": "96.00",
+      "line_total": "576.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "4.75",
+      "unit_price": "48.00",
+      "line_total": "228.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "4.00",
+      "unit_price": "48.00",
+      "line_total": "192.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "13.25",
+      "unit_price": "48.00",
+      "line_total": "636.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "2.25",
+      "unit_price": "48.00",
+      "line_total": "108.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "4.75",
+      "unit_price": "48.00",
+      "line_total": "228.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "3.50",
+      "unit_price": "48.00",
+      "line_total": "168.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "9.00",
+      "unit_price": "48.00",
+      "line_total": "432.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "6.50",
+      "unit_price": "48.00",
+      "line_total": "312.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "10.50",
+      "unit_price": "48.00",
+      "line_total": "504.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS10674)",
+      "quantity": "3.00",
+      "unit_price": "48.00",
+      "line_total": "144.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T284)",
+      "quantity": "5.00",
+      "unit_price": "108.00",
+      "line_total": "540.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T286)",
+      "quantity": "7.00",
+      "unit_price": "108.00",
+      "line_total": "756.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-2 (ACS12033)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-2 (ACS12033)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS11784)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS11784)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS28265)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS28265)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS28265)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS28265)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS28265)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS28265)",
+      "quantity": "1.00",
+      "unit_price": "57.00",
+      "line_total": "57.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS31209)",
+      "quantity": "10.00",
+      "unit_price": "48.00",
+      "line_total": "480.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS31209)",
+      "quantity": "9.75",
+      "unit_price": "48.00",
+      "line_total": "468.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS28142)",
+      "quantity": "6.00",
+      "unit_price": "17.00",
+      "line_total": "102.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS28142)",
+      "quantity": "3.25",
+      "unit_price": "17.00",
+      "line_total": "55.25"
+    },
+    {
+      "description": "Personnel Transportation (ACS29241)",
+      "quantity": "3.00",
+      "unit_price": "17.00",
+      "line_total": "51.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS29241)",
+      "quantity": "12.75",
+      "unit_price": "17.00",
+      "line_total": "216.75"
+    },
+    {
+      "description": "Personnel Transportation (ACS29241)",
+      "quantity": "2.50",
+      "unit_price": "17.00",
+      "line_total": "42.50"
+    },
+    {
+      "description": "Personnel Transportation (ACS29241)",
+      "quantity": "12.00",
+      "unit_price": "17.00",
+      "line_total": "204.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS29241)",
+      "quantity": "4.25",
+      "unit_price": "17.00",
+      "line_total": "72.25"
+    },
+    {
+      "description": "Personnel Transportation (ACS29241)",
+      "quantity": "13.50",
+      "unit_price": "17.00",
+      "line_total": "229.50"
+    },
+    {
+      "description": "Personnel Transportation (ACS29241)",
+      "quantity": "2.50",
+      "unit_price": "17.00",
+      "line_total": "42.50"
+    },
+    {
+      "description": "Personnel Transportation (ACS29241)",
+      "quantity": "8.25",
+      "unit_price": "17.00",
+      "line_total": "140.25"
+    },
+    {
+      "description": "Personnel Transportation (ACS29241)",
+      "quantity": "2.75",
+      "unit_price": "17.00",
+      "line_total": "46.75"
+    },
+    {
+      "description": "Trailer (ACS31558)",
+      "quantity": "7.75",
+      "unit_price": "0.00",
+      "line_total": "0.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS09549)",
+      "quantity": "4.50",
+      "unit_price": "17.00",
+      "line_total": "76.50"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS28808)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-3 (ACS28808)",
+      "quantity": "3.00",
+      "unit_price": "57.00",
+      "line_total": "171.00"
+    },
+    {
+      "description": "Mechanic Truck w/Tools (ACS29214)",
+      "quantity": "8.25",
+      "unit_price": "15.50",
+      "line_total": "127.88"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS28888)",
+      "quantity": "12.25",
+      "unit_price": "48.00",
+      "line_total": "588.00"
+    },
+    {
+      "description": "Engine, Wildland, Type-6 (ACS28888)",
+      "quantity": "3.00",
+      "unit_price": "48.00",
+      "line_total": "144.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS29618)",
+      "quantity": "2.25",
+      "unit_price": "17.00",
+      "line_total": "38.25"
+    },
+    {
+      "description": "Personnel Transportation (ACS29007)",
+      "quantity": "13.00",
+      "unit_price": "17.00",
+      "line_total": "221.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS29007)",
+      "quantity": "10.75",
+      "unit_price": "17.00",
+      "line_total": "182.75"
+    },
+    {
+      "description": "Personnel Transportation (ACS29007)",
+      "unit_price": "17.00",
+      "line_total": "127.50"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-2 (ACS31288)",
+      "quantity": "2.00",
+      "unit_price": "57.00",
+      "line_total": "114.00"
+    },
+    {
+      "description": "Transport, Heavy Equip Type-2 (ACS31288)",
+      "quantity": "2.00",
+      "unit_price": "57.00",
+      "line_total": "114.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T537)",
+      "quantity": "13.00",
+      "unit_price": "108.00",
+      "line_total": "1404.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T537)",
+      "quantity": "6.50",
+      "unit_price": "108.00",
+      "line_total": "702.00"
+    },
+    {
+      "description": "Personnel Transportation (ACS28274)",
+      "quantity": "11.50",
+      "unit_price": "17.00",
+      "line_total": "195.50"
+    },
+    {
+      "description": "Personnel Transportation (ACS28274)",
+      "quantity": "15.25",
+      "unit_price": "17.00",
+      "line_total": "259.25"
+    },
+    {
+      "description": "Dozer/Plow, Type-1 (ACS0T829)",
+      "quantity": "6.00",
+      "unit_price": "124.00",
+      "line_total": "744.00"
+    },
+    {
+      "description": "Dozer/Plow, Type-2 (ACS0T414)",
+      "quantity": "3.50",
+      "unit_price": "108.00",
+      "line_total": "378.00"
+    }
+  ]
+}
