@@ -281,7 +281,12 @@ def compare_document(
     if type(pred) is not type(gt):
         raise TypeError(f"{doc_id}: prediction is {type(pred).__name__}, ground truth is "
                         f"{type(gt).__name__}; a document must be scored against its own type")
-    skip = set(unscored)
+    # Only skip a flagged field that has NO label. The flag means "a human still needs to
+    # look at this", which covers two different situations: CORD never annotated the field
+    # at all (null - unscorable), while WildReceipt did annotate it and only the spacing is
+    # wrong ("COSTCO", "XINWANG ANCHORPOINT" - perfectly scorable). Skipping both threw
+    # away every WildReceipt merchant label and left the string group with 3 samples.
+    skip = {f for f in unscored if not present(get_field(gt, f))}
     comparisons = [compare_scalar(f, get_field(gt, f), get_field(pred, f))
                    for f in scalar_fields(gt) if f not in skip]
     _apply_swapped(comparisons, gt)
@@ -295,7 +300,7 @@ def compare_document(
         document_correct=document_correct,
         latency_s=latency_s,
         confidence=confidence or {},
-        unscored=sorted(skip & set(scalar_fields(gt))),
+        unscored=sorted(skip & set(scalar_fields(gt))),   # unlabeled, hence unscorable
     )
 
 
