@@ -43,6 +43,19 @@ NUMBER_RULES = (
     "'53,280' both mean 53280, while '53.28' means 53.28."
 )
 
+# Measured on the first real test run: 12 of 13 hallucinated values were an INFERRED
+# currency - "IDR" written onto CORD receipts that print no symbol at all. Precision on
+# that field was 0.56 against recall 1.00, i.e. it never missed a printed currency, it
+# only invented absent ones. "Never guess" was too weak, because a currency IS inferable
+# from the language and the amount format; the rule has to name the inference and forbid
+# it. The same trap applies to any field a model can deduce rather than read.
+CURRENCY_RULE = (
+    "currency: ONLY when a symbol or code is printed on the document (Rp, $, EUR, GBP, "
+    "AED...). Do NOT infer it from the language, the country, the tax name or the amount "
+    "format. An Indonesian receipt that prints no symbol has currency null. Reporting a "
+    "currency nobody printed is a hallucination, and a null here is a correct answer."
+)
+
 # Invoice-only guidance. Role resolution is the graded part, and the two parties look
 # alike on the page, so the rule for telling them apart is stated rather than left to the
 # schema description alone.
@@ -151,7 +164,7 @@ def build_prompt(doc_type: str = "receipt") -> str:
         f"Extract the {doc_type} fields into a JSON object matching this schema. "
         "Money values as numbers, dates as YYYY-MM-DD, currency as ISO-4217 "
         "(e.g. IDR, USD). Include every line item. Use null for anything not "
-        "present.\n" + NUMBER_RULES + "\n"
+        "present.\n" + NUMBER_RULES + "\n" + CURRENCY_RULE + "\n"
         + (INVOICE_RULES + "\n" if doc_type == "invoice" else "")
         + "\nJSON schema:\n" + schema
     )

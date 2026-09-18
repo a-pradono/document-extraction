@@ -1,0 +1,152 @@
+{
+  "doc_id": "wild_0009",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "Breakfast 2 Breakfast",
+    "merchant_address": "DIC Building 12\nDubai, UAE",
+    "date": null,
+    "currency": "AED",
+    "subtotal": "44",
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "44",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8434,
+    "merchant_address": 0.8439,
+    "payment_method": 0.8568,
+    "date": 0.7719,
+    "currency": 0.9941,
+    "subtotal": 0.9376,
+    "service_charge": 0.8894,
+    "discount": 0.8894,
+    "tax": 0.8894,
+    "total": 0.9376,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "line_items"
+  ],
+  "withheld": {
+    "line_items": "[{\"description\": \"Taouk Sandwich\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"16\"}, {\"description\": \"Roast Beef Sandwich\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"17\"}, {\"description\": \"French Fries Appetizer\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"11\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "Breakfast 2 Breakfast\nDIC Building 12\nDubai, UAE\nTable Q # 1\nTrans#: 406403 Serv: Queenie\n# Cust:1\n-----------------------------------\nQuan Descript Cost\n-----------------------------------\n1 Taouk Sandwich AED 16.00\n1 Roast Beef Sandwich AED 17.00\n1 French Fries Appetizer AED 11.00\n-----------------------------------\nNet Total: AED 44.00\n===================================\nTOTAL: AED 44.00\nFood: AED 44.00\n-----------------------------------\nTelephone:\nDubai\n-----------------------------------\nFor DELIVERY\n04-3912177/3912175",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 12.73,
+    "wall_s": 0.0,
+    "cost_usd": 0.0033871,
+    "stages": [
+      {
+        "stage": "cascade",
+        "model": "gemini-3.5-flash-lite",
+        "prompt_tokens": 2831,
+        "completion_tokens": 768,
+        "latency_s": 3.120500000019092,
+        "cost_usd": 0.0005903,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2831,
+        "completion_tokens": 779,
+        "latency_s": 9.609647799981758,
+        "cost_usd": 0.0027968,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": {
+    "escalated": true,
+    "reasons": [
+      "low_confidence:line_items"
+    ]
+  },
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199501, Requested 2141. Please try again in 11m49.344s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

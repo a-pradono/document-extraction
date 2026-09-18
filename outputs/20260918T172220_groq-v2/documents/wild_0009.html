@@ -1,0 +1,39 @@
+<!doctype html><meta charset="utf-8"><title>wild_0009</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>wild_0009</h1><p class=k>receipt &middot; status: ok &middot; threshold 0.85 &middot; 4 field(s) abstained</p><h2>Problems</h2><ul><li class=wrong>model_b_failed: RateLimitError: Error code: 429 - {&#x27;error&#x27;: {&#x27;message&#x27;: &#x27;Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199883, Requested 2035. Please try again in 13m48.575999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing&#x27;, &#x27;type&#x27;: &#x27;tokens&#x27;, &#x27;code&#x27;: &#x27;rate_limit_exceeded&#x27;}}</li></ul><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>merchant_name</td><td><span class=abst>Breakfast 2 Breakfast</span></td><td>0.84</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>merchant_address</td><td><span class=abst>DIC Building 12
+Dubai, UAE</span></td><td>0.84</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>date</td><td><span class=abst>&mdash;</span></td><td>0.77</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>currency</td><td>AED</td><td>0.99</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.98"><td>subtotal</td><td>44</td><td>0.94</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>service_charge</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>discount</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>tax</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>total</td><td>44</td><td>0.94</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>payment_method</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>Taouk Sandwich</td><td>1</td><td>&mdash;</td><td>16</td></tr><tr><td>2</td><td>Roast Beef Sandwich</td><td>1</td><td>&mdash;</td><td>17</td></tr><tr><td>3</td><td>French Fries Appetizer</td><td>1</td><td>&mdash;</td><td>11</td></tr><tr class=sum><td colspan=4>sum</td><td><b>44.00</b> &#10003; matches subtotal</td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip pass">subtotal_plus_tax_equals_total &#10003;</span><span class="chip pass">line_items_sum_to_subtotal &#10003;</span><span class="chip na">rows_multiply_out n/a</span><span class="chip na">date_parses n/a</span><span class="chip pass">currency_is_iso &#10003;</span><h2>Cost and latency</h2><p class=k>9.61s model time &middot; 2831 prompt + 779 completion tokens &middot; $0.00280 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>2831</td><td>779</td><td>9.61</td><td>$0.00280</td><td></td></tr></table><details><summary>Transcription (530 chars) &mdash; the grounding source</summary><pre>Breakfast 2 Breakfast
+DIC Building 12
+Dubai, UAE
+Table Q # 1
+Trans#: 406403 Serv: Queenie
+# Cust:1
+-----------------------------------
+Quan Descript Cost
+-----------------------------------
+1 Taouk Sandwich AED 16.00
+1 Roast Beef Sandwich AED 17.00
+1 French Fries Appetizer AED 11.00
+-----------------------------------
+Net Total: AED 44.00
+===================================
+TOTAL: AED 44.00
+Food: AED 44.00
+-----------------------------------
+Telephone:
+Dubai
+-----------------------------------
+For DELIVERY
+04-3912177/3912175</pre></details>

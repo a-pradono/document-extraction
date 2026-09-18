@@ -3,10 +3,11 @@
 > **Status, 18 September 2026.** The system is built and tested (435 unit tests, offline
 > end-to-end 7/7). **Ground truth is fully verified — 60 of 60 documents checked against
 > their images by a human**, a pass that corrected five money-field errors (§2.4). The
-> **confidence model is fitted** on a real run of the calibration split (§4.2). **The
-> `test` split has not been run yet**, so there is still no accuracy scorecard: §4.5 is
-> empty and says so. Nothing in §4 is a placeholder — every table is either a measurement
-> or explicitly marked not-yet-run.
+> **confidence model is fitted** on a real run of the calibration split (§4.2), and the
+> **`test` split has been run**: micro F1 0.918, hallucination rate 0.63%, abstention
+> keeping 87.5% of fields at 95.5% precision (§4.5). The cascade optimization was measured
+> and **does not pay** — 100% escalation, +17% cost, no accuracy gain (§4.7). Every table
+> in §4 is now a measurement.
 
 ---
 
@@ -380,8 +381,8 @@ arithmetic verdicts come from the payload, so a page and the API can never disag
 | Calibration run (18 receipts, `pipeline`) | **Done** — §4.2 |
 | Extraction over all 60 documents for the dashboard | **Done** — §4.4 |
 | Cost measurement from real token counts | **Done** — §4.6 |
-| **Accuracy scorecard on `test`** | **Not run** — §4.5 |
-| Cascade before/after | **Not run** — §4.7 |
+| **Accuracy scorecard on `test`** | **Done** — §4.5 |
+| Cascade before/after | **Done** — §4.7, a measured negative result |
 | Synthetic robustness curve | **Not run** |
 
 ### 4.2 Confidence quality — measured
@@ -471,24 +472,72 @@ normal-looking confidence built on three signals instead of four. They are badge
 dashboard and say so in words. Re-running them needs only Model B calls; the vision side
 is cached.
 
-### 4.5 Accuracy — NOT YET MEASURED
+### 4.5 Accuracy — measured
 
-No `test` run has been executed, so there is **no** Document Accuracy Rate, per-field
-F1, line-item F1 or hallucination rate to report. The tables below stay empty
-deliberately rather than carrying invented numbers.
+Run `groq-v3`, `test` split (39 documents: 32 receipts + 7 invoices), Gemini 3.6 Flash +
+GPT-OSS 120B, threshold 0.75, every label human-verified.
 
-```bash
-python -m eval.run --set test                      # fills §4.5
-python -m eval.run --set test --source cascade     # fills §4.7
-python -m eval.compare outputs/<v1> outputs/<v2>
-```
+| Metric | Receipts (headline, n=32) | Invoices (n=7, separate) |
+|---|--:|--:|
+| Document accuracy | **21.9%** | 14.3% |
+| Micro F1 | **0.918** | 0.800 |
+| Macro F1 | 0.917 | — |
+| Line-item F1 | **0.951** | — |
+| Hallucination rate | **0.63%** | 4.8% |
+| Latency p50 / p95 | 16.1 s / 39.9 s | — |
+| Cost per document | $0.0058 (list-price equivalent) | — |
 
-Two conditions must hold before those numbers mean anything:
+**Abstention, the central claim of the design, holds on held-out data.** Keeping 87.5% of
+fields raises precision from **0.906 to 0.955** — the risk–coverage curve was fitted for
+95% and the held-out result landed at 95.5%.
 
-1. ~~Ground-truth verification~~ — **done, 60/60** (§2.4).
-2. **Model B quota** must allow 39 calls for the pipeline run plus roughly 16 more for
-   cascade escalations — above OpenRouter's 50/day free cap, so either spread the runs
-   across two days or add credits.
+**Per field** (normalised / exact F1): `total` 1.00 / 0.81, `date` 1.00 / 1.00,
+`currency` 1.00 / 1.00, `service_charge` 1.00 / 0.86, `subtotal` 0.95 / 0.64,
+`tax` 0.94 / 0.94, `payment_method` 0.83 / 0.50, `merchant_name` 0.80 / 0.70,
+`merchant_address` 0.46 / 0.46. The gap between normalised and exact on `subtotal`
+(0.95 vs 0.64) and `payment_method` (0.83 vs 0.50) is **format, not content** — which is
+exactly why the harness reports both and why `format_error` is a separate label.
+
+**Failures by kind** (receipts): 305 correct, 6 `wrong_value`, 5 `format_error`,
+2 `missing`, 1 `spurious`, 1 `swapped_field`. The single swap is on an invoice party —
+the failure invoices were added to detect.
+
+**Document accuracy of 21.9% is strict by construction**: every field and every line item
+must be right. Micro F1 is the number that describes field-level behaviour. At n=32 one
+document moves document accuracy by 3.1 pp, so treat it as coarse.
+
+#### What the harness caught, and the fix it verified
+
+The first real run reported a **7.65% hallucination rate** against a design that promises
+approximately zero. The drill-down located it immediately: **12 of 13 spurious values were
+an inferred `currency`** — "IDR" written onto CORD receipts that print no symbol at all.
+Precision on that field was 0.56 against recall 1.00: the model never missed a printed
+currency, it only invented absent ones.
+
+The prompt already said "never guess or invent values", which was too weak, because a
+currency *is* deducible from the language and the amount format — the model was not
+inventing in its own terms. The rule now names the inference and forbids it:
+
+> currency: ONLY when a symbol or code is printed on the document (Rp, $, EUR, GBP,
+> AED...). Do NOT infer it from the language, the country, the tax name or the amount
+> format. An Indonesian receipt that prints no symbol has currency null. Reporting a
+> currency nobody printed is a hallucination, and a null here is a correct answer.
+
+| | before the fix | after |
+|---|--:|--:|
+| Hallucination rate | 7.65% | **0.63%** |
+| Spurious values | 13 | **1** |
+| Currency F1 (P / R) | 0.71 (0.56 / 1.00) | **1.00 (1.00 / 1.00)** |
+| Micro F1 | 0.866 | **0.918** |
+| Document accuracy | 15.6% | **21.9%** |
+
+Recall on `currency` stayed at 1.00, so the rule removed the inferences without making the
+model refuse currencies that *are* printed — the specific way such a fix can overshoot.
+
+The same run also failed `inv_0010` (225 line items over 5 pages) with `TruncatedResponse`
+at 24,576 output tokens: loudly, as designed, and scored as an empty extraction rather
+than a silent truncation. The budget is now 16,384 + 8,192 per extra page, and the
+document extracts.
 
 ### 4.6 Cost and latency — measured
 
@@ -507,24 +556,43 @@ baseline — is **$0.40**, or about **$0.80** allowing a 2× margin for re-runs.
 Cost is reported as a **list-price equivalent** rather than actual spend, so free-tier
 and paid runs produce the same $/doc figure and the cascade comparison stays meaningful.
 
-### 4.7 Optimization: confidence cascade — NOT YET MEASURED
+### 4.7 Optimization: confidence cascade — measured, and it does not pay
 
-The machinery is built and tested: a cheap first pass (`gemini-3.5-flash-lite`)
-escalating to the full pipeline on `arithmetic_failed`, `ungrounded:<field>`,
-`low_confidence:<field>`, `consistency_failed` or an empty extraction. An escalated
-document is billed for **both** paths — the cheap call is sunk cost, and hiding that
-would flatter the result.
+Cheap first pass (`gemini-3.5-flash-lite`), escalating to the full pipeline on
+`arithmetic_failed`, `ungrounded:<field>`, `low_confidence:<field>`, `consistency_failed`
+or an empty extraction. Same 39 documents, same labels.
 
-| | Baseline | Cascade | Δ |
-|---|---|---|---|
-| Cost per document | not run | not run | — |
-| Latency p50 / p95 | not run | not run | — |
-| Micro F1 | not run | not run | — |
-| Document accuracy | not run | not run | — |
+| | Pipeline (`groq-v3`) | Cascade | Δ |
+|---|--:|--:|--:|
+| Cost per document | $0.00579 | $0.00679 | **+17.3%** |
+| Tokens per document | 5,884 | 10,857 | **+84.5%** |
+| Latency p50 | 16.1 s | 20.4 s | +27.1% |
+| Latency p95 | 39.9 s | 49.4 s | +23.7% |
+| Micro F1 | 0.918 | 0.918 | 0 |
+| Document accuracy | 21.9% | 21.9% | 0 |
+| Hallucination rate | 0.63% | 0.63% | 0 |
+| **Escalation rate** | — | **100%** | — |
 
-**The accuracy rows matter as much as the cost rows.** A cost reduction that quietly
-degrades quality is not an optimization, which is why `eval/compare.py` reports both and
-states the one-document noise floor.
+**Every document escalated**, so the cascade paid for a cheap pass that was then thrown
+away, and the result is strictly worse: more cost, more tokens, more latency, identical
+accuracy. Reported as a **negative result**, because a measured failure is the outcome the
+harness exists to produce and burying it would make the other numbers less trustworthy.
+
+Escalation reasons across the 39 documents: `low_confidence` 38, `ungrounded` 9,
+`arithmetic_failed` 3, `invalid_output` 1 (a document can raise several). The gate fires
+on `low_confidence` for almost everything because `CASCADE_ESCALATE_BELOW` defaults to the
+abstention threshold, 0.75 — a bar the cheap model rarely clears on at least one field of
+a real receipt. Two changes would make the idea testable rather than dead:
+
+1. **Separate the escalation threshold from the abstention threshold.** They answer
+   different questions: "should a human see this?" against "is the cheap read good
+   enough?". Fitting the second on the calibration split is the honest version.
+2. **Escalate on the model-free checks alone** (`arithmetic_failed`, `invalid_output`,
+   `ungrounded`), which fired on 13 documents rather than 38. That would accept roughly
+   two-thirds of documents from the cheap model, which is where a saving could exist.
+
+Neither was measured, so neither is claimed. What is claimed is the negative: **as
+configured, the cascade costs 17% more for no accuracy gain.**
 
 ### 4.8 Statistical honesty
 

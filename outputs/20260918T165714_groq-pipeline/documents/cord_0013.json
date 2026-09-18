@@ -1,0 +1,147 @@
+{
+  "doc_id": "cord_0013",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "SOLARIA",
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "303646",
+    "service_charge": null,
+    "discount": null,
+    "tax": "30365",
+    "total": "334000",
+    "payment_method": "DEBIT BCA",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.9126,
+    "merchant_address": 0.9355,
+    "payment_method": 0.9064,
+    "date": 0.9264,
+    "currency": 0.2775,
+    "subtotal": 0.9628,
+    "service_charge": 0.8521,
+    "discount": 0.926,
+    "tax": 0.9227,
+    "total": 0.9628,
+    "line_items": 0.6826
+  },
+  "abstained": [
+    "currency",
+    "line_items"
+  ],
+  "withheld": {
+    "currency": "IDR",
+    "line_items": "[{\"description\": \"(TA) NASI ORG TERI MEDAN\", \"quantity\": \"4\", \"unit_price\": null, \"line_total\": \"165460\"}, {\"description\": \"(TA) BIHUN GORENG SEAFOOD\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"40456\"}, {\"description\": \"(TA) KWETIAW SEAFOOD SIRAM\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"42274\"}, {\"description\": \"(TA) NASI GORENG\", \"quantity\": \"2\", \"unit_price\": null, \"line_total\": \"55456\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.9
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "currency": {
+      "agreement": 0.0,
+      "grounded": 0.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "service_charge": {
+      "agreement": 0.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "tax": {
+      "agreement": 0.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 0.25,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "SOLARIA\nNo\ntraining\nCustomer:\n(TA) NASI ORG TERI 4 165,460\nMEDAN\n(TA) BIHUN GORENG 1 40,456\nSEAFOOD\n(TA) KWETIAW SEAFOOD 1 42,274\nSIRAM\n(TA) NASI GORENG 2 55,456\nITEMS: 8 303,646\nPB1 10% 30,365\nBefore Rounding 334,011\nRounding -11\nTotal 334,000\nDEBIT BCA 334,000\nAtas kunjungan",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 23.436,
+    "wall_s": 0.0,
+    "cost_usd": 0.0039412,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2778,
+        "completion_tokens": 937,
+        "latency_s": 9.856758299982175,
+        "cost_usd": 0.0031759,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1598,
+        "completion_tokens": 876,
+        "latency_s": 13.578887299983762,
+        "cost_usd": 0.0007653,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

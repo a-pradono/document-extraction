@@ -224,10 +224,11 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);
 <p><strong>Status, 18 September 2026.</strong> The system is built and tested (435 unit tests, offline
 end-to-end 7/7). <strong>Ground truth is fully verified — 60 of 60 documents checked against
 their images by a human</strong>, a pass that corrected five money-field errors (§2.4). The
-<strong>confidence model is fitted</strong> on a real run of the calibration split (§4.2). <strong>The
-<code>test</code> split has not been run yet</strong>, so there is still no accuracy scorecard: §4.5 is
-empty and says so. Nothing in §4 is a placeholder — every table is either a measurement
-or explicitly marked not-yet-run.</p>
+<strong>confidence model is fitted</strong> on a real run of the calibration split (§4.2), and the
+<strong><code>test</code> split has been run</strong>: micro F1 0.918, hallucination rate 0.63%, abstention
+keeping 87.5% of fields at 95.5% precision (§4.5). The cascade optimization was measured
+and <strong>does not pay</strong> — 100% escalation, +17% cost, no accuracy gain (§4.7). Every table
+in §4 is now a measurement.</p>
 </blockquote>
 <hr />
 <h2 id="1-introduction">1. Introduction</h2>
@@ -565,8 +566,8 @@ transcription  ──► Model B (LLM)  ──► document  (independent re-extr
 </tr>
 <tr>
 <td>Model B — LLM reasoner</td>
-<td><code>nvidia/nemotron-3-super-120b-a12b:free</code></td>
-<td>Cross-section reasoning and normalisation, text-only and cheap. <strong>Different family on purpose</strong></td>
+<td><code>openai/gpt-oss-120b</code> (Groq)</td>
+<td>Cross-section reasoning and normalisation, text-only and cheap. Open-weights, and a <strong>different family from Model A on purpose</strong></td>
 </tr>
 <tr>
 <td>Cascade first pass</td>
@@ -666,10 +667,15 @@ swappable via <code>.env</code> with no code change — which is what makes a lo
 a config change given a GPU.</p>
 <p><strong>Caching by input + model + prompt hash</strong> keeps API calls to one per document across
 repeated eval runs. Re-running the harness after a metrics change costs zero calls.</p>
-<p><strong>Measured free-tier limits</strong> (not documentation, observation): Google's free tier
-allows <strong>20 requests per model per day</strong> — not the 250 the docs suggested — which
-stopped a calibration run at 8 of 18 documents. Billing was enabled to lift it.
-OpenRouter's free tier allows <strong>50 requests per day</strong> and capped a later run.</p>
+<p><strong>Measured free-tier limits</strong> (observation, not documentation). Google's free tier
+allows <strong>20 requests per model per day</strong> — not the 250 its docs suggested — which stopped
+a calibration run at 8 of 18 documents; billing was enabled to lift it. OpenRouter's free
+tier allows <strong>50 requests per day account-wide</strong>, which cannot cover a single 39-document
+test run, so Model B moved to <strong>Groq</strong>: 1000 requests/day at 8,000 tokens/minute, and
+1–2 s per call against nemotron's 18–22 s. The token window, not the daily cap, is what
+now paces a run — roughly 2–3 documents per minute. A model slug must be checked against
+the key's own catalogue before it is pinned: <code>llama-3.3-70b-versatile</code> 404s on this
+account, which cost a cycle to discover.</p>
 <h3 id="36-production-surface">3.6 Production surface</h3>
 <p><code>docker compose up</code> serves the API; <code>docker compose run --rm eval</code> waits for the
 healthcheck and runs the harness <strong>against that running service</strong>, so the harness scores
@@ -746,11 +752,11 @@ arithmetic verdicts come from the payload, so a page and the API can never disag
 </tr>
 <tr>
 <td><strong>Accuracy scorecard on <code>test</code></strong></td>
-<td><strong>Not run</strong> — §4.5</td>
+<td><strong>Done</strong> — §4.5</td>
 </tr>
 <tr>
 <td>Cascade before/after</td>
-<td><strong>Not run</strong> — §4.7</td>
+<td><strong>Done</strong> — §4.7, a measured negative result</td>
 </tr>
 <tr>
 <td>Synthetic robustness curve</td>
@@ -961,21 +967,127 @@ signal does not fail — it defaults to a neutral 0.50 — so those documents ca
 normal-looking confidence built on three signals instead of four. They are badged on the
 dashboard and say so in words. Re-running them needs only Model B calls; the vision side
 is cached.</p>
-<h3 id="45-accuracy-not-yet-measured">4.5 Accuracy — NOT YET MEASURED</h3>
-<p>No <code>test</code> run has been executed, so there is <strong>no</strong> Document Accuracy Rate, per-field
-F1, line-item F1 or hallucination rate to report. The tables below stay empty
-deliberately rather than carrying invented numbers.</p>
-<pre><code class="language-bash">python -m eval.run --set test                      # fills §4.5
-python -m eval.run --set test --source cascade     # fills §4.7
-python -m eval.compare outputs/&lt;v1&gt; outputs/&lt;v2&gt;
-</code></pre>
-<p>Two conditions must hold before those numbers mean anything:</p>
-<ol>
-<li>~~Ground-truth verification~~ — <strong>done, 60/60</strong> (§2.4).</li>
-<li><strong>Model B quota</strong> must allow 39 calls for the pipeline run plus roughly 16 more for
-   cascade escalations — above OpenRouter's 50/day free cap, so either spread the runs
-   across two days or add credits.</li>
-</ol>
+<h3 id="45-accuracy-measured">4.5 Accuracy — measured</h3>
+<p>Run <code>groq-v3</code>, <code>test</code> split (39 documents: 32 receipts + 7 invoices), Gemini 3.6 Flash +
+GPT-OSS 120B, threshold 0.75, every label human-verified.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Receipts (headline, n=32)</th>
+<th style="text-align: right;">Invoices (n=7, separate)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Document accuracy</td>
+<td style="text-align: right;"><strong>21.9%</strong></td>
+<td style="text-align: right;">14.3%</td>
+</tr>
+<tr>
+<td>Micro F1</td>
+<td style="text-align: right;"><strong>0.918</strong></td>
+<td style="text-align: right;">0.800</td>
+</tr>
+<tr>
+<td>Macro F1</td>
+<td style="text-align: right;">0.917</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>Line-item F1</td>
+<td style="text-align: right;"><strong>0.951</strong></td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>Hallucination rate</td>
+<td style="text-align: right;"><strong>0.63%</strong></td>
+<td style="text-align: right;">4.8%</td>
+</tr>
+<tr>
+<td>Latency p50 / p95</td>
+<td style="text-align: right;">16.1 s / 39.9 s</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>Cost per document</td>
+<td style="text-align: right;">$0.0058 (list-price equivalent)</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Abstention, the central claim of the design, holds on held-out data.</strong> Keeping 87.5% of
+fields raises precision from <strong>0.906 to 0.955</strong> — the risk–coverage curve was fitted for
+95% and the held-out result landed at 95.5%.</p>
+<p><strong>Per field</strong> (normalised / exact F1): <code>total</code> 1.00 / 0.81, <code>date</code> 1.00 / 1.00,
+<code>currency</code> 1.00 / 1.00, <code>service_charge</code> 1.00 / 0.86, <code>subtotal</code> 0.95 / 0.64,
+<code>tax</code> 0.94 / 0.94, <code>payment_method</code> 0.83 / 0.50, <code>merchant_name</code> 0.80 / 0.70,
+<code>merchant_address</code> 0.46 / 0.46. The gap between normalised and exact on <code>subtotal</code>
+(0.95 vs 0.64) and <code>payment_method</code> (0.83 vs 0.50) is <strong>format, not content</strong> — which is
+exactly why the harness reports both and why <code>format_error</code> is a separate label.</p>
+<p><strong>Failures by kind</strong> (receipts): 305 correct, 6 <code>wrong_value</code>, 5 <code>format_error</code>,
+2 <code>missing</code>, 1 <code>spurious</code>, 1 <code>swapped_field</code>. The single swap is on an invoice party —
+the failure invoices were added to detect.</p>
+<p><strong>Document accuracy of 21.9% is strict by construction</strong>: every field and every line item
+must be right. Micro F1 is the number that describes field-level behaviour. At n=32 one
+document moves document accuracy by 3.1 pp, so treat it as coarse.</p>
+<h4 id="what-the-harness-caught-and-the-fix-it-verified">What the harness caught, and the fix it verified</h4>
+<p>The first real run reported a <strong>7.65% hallucination rate</strong> against a design that promises
+approximately zero. The drill-down located it immediately: <strong>12 of 13 spurious values were
+an inferred <code>currency</code></strong> — "IDR" written onto CORD receipts that print no symbol at all.
+Precision on that field was 0.56 against recall 1.00: the model never missed a printed
+currency, it only invented absent ones.</p>
+<p>The prompt already said "never guess or invent values", which was too weak, because a
+currency <em>is</em> deducible from the language and the amount format — the model was not
+inventing in its own terms. The rule now names the inference and forbids it:</p>
+<blockquote>
+<p>currency: ONLY when a symbol or code is printed on the document (Rp, $, EUR, GBP,
+AED...). Do NOT infer it from the language, the country, the tax name or the amount
+format. An Indonesian receipt that prints no symbol has currency null. Reporting a
+currency nobody printed is a hallucination, and a null here is a correct answer.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">before the fix</th>
+<th style="text-align: right;">after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hallucination rate</td>
+<td style="text-align: right;">7.65%</td>
+<td style="text-align: right;"><strong>0.63%</strong></td>
+</tr>
+<tr>
+<td>Spurious values</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;"><strong>1</strong></td>
+</tr>
+<tr>
+<td>Currency F1 (P / R)</td>
+<td style="text-align: right;">0.71 (0.56 / 1.00)</td>
+<td style="text-align: right;"><strong>1.00 (1.00 / 1.00)</strong></td>
+</tr>
+<tr>
+<td>Micro F1</td>
+<td style="text-align: right;">0.866</td>
+<td style="text-align: right;"><strong>0.918</strong></td>
+</tr>
+<tr>
+<td>Document accuracy</td>
+<td style="text-align: right;">15.6%</td>
+<td style="text-align: right;"><strong>21.9%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Recall on <code>currency</code> stayed at 1.00, so the rule removed the inferences without making the
+model refuse currencies that <em>are</em> printed — the specific way such a fix can overshoot.</p>
+<p>The same run also failed <code>inv_0010</code> (225 line items over 5 pages) with <code>TruncatedResponse</code>
+at 24,576 output tokens: loudly, as designed, and scored as an empty extraction rather
+than a silent truncation. The budget is now 16,384 + 8,192 per extra page, and the
+document extracts.</p>
 <h3 id="46-cost-and-latency-measured">4.6 Cost and latency — measured</h3>
 <p>Median per-call figures from real token counts, priced at list rates from <code>.env</code>:</p>
 <table>
@@ -1013,51 +1125,89 @@ full remaining programme — calibration, the test run, a cascade run and a VLM-
 baseline — is <strong>$0.40</strong>, or about <strong>$0.80</strong> allowing a 2× margin for re-runs.</p>
 <p>Cost is reported as a <strong>list-price equivalent</strong> rather than actual spend, so free-tier
 and paid runs produce the same $/doc figure and the cascade comparison stays meaningful.</p>
-<h3 id="47-optimization-confidence-cascade-not-yet-measured">4.7 Optimization: confidence cascade — NOT YET MEASURED</h3>
-<p>The machinery is built and tested: a cheap first pass (<code>gemini-3.5-flash-lite</code>)
-escalating to the full pipeline on <code>arithmetic_failed</code>, <code>ungrounded:&lt;field&gt;</code>,
-<code>low_confidence:&lt;field&gt;</code>, <code>consistency_failed</code> or an empty extraction. An escalated
-document is billed for <strong>both</strong> paths — the cheap call is sunk cost, and hiding that
-would flatter the result.</p>
+<h3 id="47-optimization-confidence-cascade-measured-and-it-does-not-pay">4.7 Optimization: confidence cascade — measured, and it does not pay</h3>
+<p>Cheap first pass (<code>gemini-3.5-flash-lite</code>), escalating to the full pipeline on
+<code>arithmetic_failed</code>, <code>ungrounded:&lt;field&gt;</code>, <code>low_confidence:&lt;field&gt;</code>, <code>consistency_failed</code>
+or an empty extraction. Same 39 documents, same labels.</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Baseline</th>
-<th>Cascade</th>
-<th>Δ</th>
+<th style="text-align: right;">Pipeline (<code>groq-v3</code>)</th>
+<th style="text-align: right;">Cascade</th>
+<th style="text-align: right;">Δ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Cost per document</td>
-<td>not run</td>
-<td>not run</td>
-<td>—</td>
+<td style="text-align: right;">$0.00579</td>
+<td style="text-align: right;">$0.00679</td>
+<td style="text-align: right;"><strong>+17.3%</strong></td>
 </tr>
 <tr>
-<td>Latency p50 / p95</td>
-<td>not run</td>
-<td>not run</td>
-<td>—</td>
+<td>Tokens per document</td>
+<td style="text-align: right;">5,884</td>
+<td style="text-align: right;">10,857</td>
+<td style="text-align: right;"><strong>+84.5%</strong></td>
+</tr>
+<tr>
+<td>Latency p50</td>
+<td style="text-align: right;">16.1 s</td>
+<td style="text-align: right;">20.4 s</td>
+<td style="text-align: right;">+27.1%</td>
+</tr>
+<tr>
+<td>Latency p95</td>
+<td style="text-align: right;">39.9 s</td>
+<td style="text-align: right;">49.4 s</td>
+<td style="text-align: right;">+23.7%</td>
 </tr>
 <tr>
 <td>Micro F1</td>
-<td>not run</td>
-<td>not run</td>
-<td>—</td>
+<td style="text-align: right;">0.918</td>
+<td style="text-align: right;">0.918</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr>
 <td>Document accuracy</td>
-<td>not run</td>
-<td>not run</td>
-<td>—</td>
+<td style="text-align: right;">21.9%</td>
+<td style="text-align: right;">21.9%</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Hallucination rate</td>
+<td style="text-align: right;">0.63%</td>
+<td style="text-align: right;">0.63%</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Escalation rate</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><strong>100%</strong></td>
+<td style="text-align: right;">—</td>
 </tr>
 </tbody>
 </table>
-<p><strong>The accuracy rows matter as much as the cost rows.</strong> A cost reduction that quietly
-degrades quality is not an optimization, which is why <code>eval/compare.py</code> reports both and
-states the one-document noise floor.</p>
+<p><strong>Every document escalated</strong>, so the cascade paid for a cheap pass that was then thrown
+away, and the result is strictly worse: more cost, more tokens, more latency, identical
+accuracy. Reported as a <strong>negative result</strong>, because a measured failure is the outcome the
+harness exists to produce and burying it would make the other numbers less trustworthy.</p>
+<p>Escalation reasons across the 39 documents: <code>low_confidence</code> 38, <code>ungrounded</code> 9,
+<code>arithmetic_failed</code> 3, <code>invalid_output</code> 1 (a document can raise several). The gate fires
+on <code>low_confidence</code> for almost everything because <code>CASCADE_ESCALATE_BELOW</code> defaults to the
+abstention threshold, 0.75 — a bar the cheap model rarely clears on at least one field of
+a real receipt. Two changes would make the idea testable rather than dead:</p>
+<ol>
+<li><strong>Separate the escalation threshold from the abstention threshold.</strong> They answer
+   different questions: "should a human see this?" against "is the cheap read good
+   enough?". Fitting the second on the calibration split is the honest version.</li>
+<li><strong>Escalate on the model-free checks alone</strong> (<code>arithmetic_failed</code>, <code>invalid_output</code>,
+   <code>ungrounded</code>), which fired on 13 documents rather than 38. That would accept roughly
+   two-thirds of documents from the cheap model, which is where a saving could exist.</li>
+</ol>
+<p>Neither was measured, so neither is claimed. What is claimed is the negative: <strong>as
+configured, the cascade costs 17% more for no accuracy gain.</strong></p>
 <h3 id="48-statistical-honesty">4.8 Statistical honesty</h3>
 <ul>
 <li><strong>DAR is binary per document</strong>, so at n=39 in <code>test</code> its 95% CI is roughly ±8pp. Two

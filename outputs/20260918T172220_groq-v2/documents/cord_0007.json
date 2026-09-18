@@ -1,0 +1,145 @@
+{
+  "doc_id": "cord_0007",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "132636",
+    "service_charge": null,
+    "discount": null,
+    "tax": "13264",
+    "total": "145900",
+    "payment_method": "BCA EDC",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.9494,
+    "merchant_address": 0.9494,
+    "payment_method": 0.9207,
+    "date": 0.9288,
+    "currency": 0.982,
+    "subtotal": 0.9638,
+    "service_charge": 0.9392,
+    "discount": 0.9392,
+    "tax": 0.9638,
+    "total": 0.9638,
+    "line_items": 0.4677
+  },
+  "abstained": [
+    "line_items"
+  ],
+  "withheld": {
+    "line_items": "[{\"description\": \"COLD OCHA\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"10909\"}, {\"description\": \"BCA PROMO\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"54455\"}, {\"description\": \"1-ABURA UDON SPICY\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"0\"}, {\"description\": \"!-KAKE UDON\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"0\"}, {\"description\": \"SKEWERED SHUMAI\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"12727\"}, {\"description\": \"SKEWERED TOFU ROLL\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"12727\"}, {\"description\": \"EBI TEMPURA\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"13636\"}, {\"description\": \"KITSUNE UDON (KIDS)\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"28182\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "currency": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "0\n\nCOLD OCHA 1 10,909\nBCA PROMO 1 54,455\n1-ABURA UDON SPICY 1 0\n!-KAKE UDON 1 0\nSKEWERED SHUMAI 1 12,727\nSKEWERED TOFU ROLL 1 12,727\nEBI TEMPURA 1 13,636\nKITSUNE UDON (KIDS) 1 28,182\n\nSUB. TOTAL 132,636\nRESTAURANT TAX 13,264\n\nGRAND TOTAL\n~BCA EDC ..[145,900] 145,900\n",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 21.849,
+    "wall_s": 0.0,
+    "cost_usd": 0.0051678,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2831,
+        "completion_tokens": 1392,
+        "latency_s": 18.886275299999397,
+        "cost_usd": 0.0043293,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1674,
+        "completion_tokens": 979,
+        "latency_s": 2.9628933999920264,
+        "cost_usd": 0.0008385,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

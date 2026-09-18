@@ -1,0 +1,192 @@
+{
+  "doc_id": "inv_0001",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": "04-30-2021-03",
+    "issue_date": null,
+    "due_date": null,
+    "vendor": {
+      "name": "City of Richmond Police Department",
+      "address": "200 West Grace Street, Richmond, VA 23220",
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Tom Nash",
+      "address": "DEPT MR 70546, 411 A Highland Avenue, Somerville, VA 02144-2516",
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": "100.0",
+    "tax": null,
+    "total": "100.0",
+    "purchase_order": null,
+    "line_items": []
+  },
+  "confidence": {
+    "invoice_number": 0.8439,
+    "purchase_order": 0.8568,
+    "vendor.name": 0.8439,
+    "vendor.address": 0.8439,
+    "vendor.tax_id": 0.8568,
+    "customer.name": 0.8439,
+    "customer.address": 0.8439,
+    "customer.tax_id": 0.8568,
+    "issue_date": 0.7446,
+    "due_date": 0.7719,
+    "currency": 0.9941,
+    "subtotal": 0.9376,
+    "tax": 0.8894,
+    "total": 0.9376,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "issue_date",
+    "line_items"
+  ],
+  "withheld": {
+    "issue_date": "2021-04-30",
+    "line_items": "[{\"description\": \"Major Crimes\", \"quantity\": \"2.0\", \"unit_price\": \"40.0\", \"line_total\": \"80.0\"}, {\"description\": \"Internal Affairs\", \"quantity\": \"0.5\", \"unit_price\": \"40.0\", \"line_total\": \"20.0\"}]"
+  },
+  "signals": {
+    "invoice_number": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "purchase_order": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "vendor.name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "vendor.address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "vendor.tax_id": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "customer.address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "customer.tax_id": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "issue_date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "due_date": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": null,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {},
+  "transcription": "--- page 1 ---\nRICHMOND\nVIRGINIA\nCITY OF RICHMOND\nPOLICE DEPARTMENT\nCHIEF GERALD M. SMITH\nCHIEF OF POLICE\n\nINVOICE\n04-30-2021-03\n\nTom Nash\nMuckRock News\nDEPT MR 70546\n411 A Highland Avenue\nSomerville, VA 02144-2516\n87633-07684322@requests.muckrock.com\n\nRE: FOIA Request:\nThe total number of use of force incidents, separated by year and by type of force used from 2013-2019; total number of civilian complaints reported and the total number sustained, separated by year; total number of use of force complaints reported and the total number sustained from 2013-2019, separated by year; total number of biased policing or discrimination/profiling complaints reported and the total number sustained from 2013-2019, separated by year; a spreadsheet or list with dates (month/day/year and time available), race of subjects involved, and injuries/death sustained in all officer-involved shooting incidents (excluding shootings of animals) from 2013-2019, separated by year\n\nTimekeeper\nRate\nHours/Quantities\nFee\n\nMajor Crimes\n$40.00 p/hr.\n2 hours\n$80.00\n\nInternal Affairs\n$40.00 p/hr.\n30 minutes\n$20.00\n\nTotal Expenses\n$100.00\n\nTotal This Invoice\n$100.00\n\nPLEASE REMIT PAYMENT TO THE FOLLOWING ADDRESS:\n\nRichmond Police Department\nCentral Records Unit\n200 West Grace Street\nRichmond, VA 23220\n\nPLEASE INCLUDE A COPY OF THIS INVOICE WITH YOUR PAYMENT\n\n200 W. GRACE STREET - RICHMOND, VA 23220 - 804.646.6700 - FAX 804.646.3974 - WWW.CI.RICHMOND.VA.US/POLICE/\n\n--- page 2 ---\nNOTE:\nAccepted payment methods: Certified Check, Money Order and Cash\n~ Please do not mail in cash ~\n\nCity of Richmond\nPolice Department\nGerald M. Smith\nChief of Police\n\n200 W. GRACE STREET - RICHMOND, VA 23220 - 804.646.6700 - FAX 804.646.3974 - WWW.CI.RICHMOND.VA.US/POLICE/",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 24.676,
+    "wall_s": 0.0,
+    "cost_usd": 0.0054764,
+    "stages": [
+      {
+        "stage": "cascade",
+        "model": "gemini-3.5-flash-lite",
+        "prompt_tokens": 4254,
+        "completion_tokens": 1262,
+        "latency_s": 4.35791269998299,
+        "cost_usd": 0.0009302,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 4254,
+        "completion_tokens": 1308,
+        "latency_s": 20.3183894000249,
+        "cost_usd": 0.0045462,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": {
+    "escalated": true,
+    "reasons": [
+      "invalid_output:line_items"
+    ]
+  },
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199778, Requested 3452. Please try again in 23m15.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

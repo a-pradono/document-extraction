@@ -1,0 +1,152 @@
+{
+  "doc_id": "wild_0011",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "ALDI STORES",
+    "merchant_address": "CARINDALE",
+    "date": null,
+    "currency": "AUD",
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "37.98",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8439,
+    "merchant_address": 0.8455,
+    "payment_method": 0.8568,
+    "date": 0.7719,
+    "currency": 0.994,
+    "subtotal": 0.8894,
+    "service_charge": 0.8894,
+    "discount": 0.8894,
+    "tax": 0.8894,
+    "total": 0.9305,
+    "line_items": 0.557
+  },
+  "abstained": [
+    "line_items"
+  ],
+  "withheld": {
+    "line_items": "[{\"description\": \"46199 Baby Spinach 120g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"1.79\"}, {\"description\": \"35250 Ckr Brown Rice 100g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"1.39\"}, {\"description\": \"37427 Tortilla Wraps Wholemeal\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"1.99\"}, {\"description\": \"42335 Beetroot Sliced 450g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"0.85\"}, {\"description\": \"4376 PremBakedBeansTom425g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"0.89\"}, {\"description\": \"5336 Fzr Mixed Berries 500g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"4.49\"}, {\"description\": \"36884 Ham 4x100g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"5.0\"}, {\"description\": \"1390 Froz Steam Veg 450g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"1.99\"}, {\"description\": \"41207 Rice Crackers 200g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"1.65\"}, {\"description\": \"76016 Pink Lady Apples per kg\", \"quantity\": \"0.53\", \"unit_price\": \"4.99\", \"line_total\": \"2.64\"}, {\"description\": \"76113 Bananas, Caven, 750g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"2.49\"}, {\"description\": \"Price Over $ 1.49\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"-1.0\"}, {\"description\": \"76365 Grapes Thompson 1kg\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"1.75\"}, {\"description\": \"9477 Nuts Raw OSN Var\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"3.99\"}, {\"description\": \"43333 Dip Salsa 300g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"1.49\"}, {\"description\": \"3769 Mayonnaise Squeeze\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"2.59\"}, {\"description\": \"76490 Mandarins H/M, 700g\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"4.99\"}, {\"description\": \"Price Over $ 3.99\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"-1.0\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 0.8889,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "ALDI STORES\nA LIMITED PARTNERSHIP\nCARINDALE\nABN: 90 196 565 019\n\nTAX INVOICE\n$\n46199 Baby Spinach 120g 1.79 A\n35250 Ckr Brown Rice 100g 1.39 B\n\n37427 Tortilla Wraps Wholemeal 1.99 A\n42335 Beetroot Sliced 450g 0.85 A\n4376 PremBakedBeansTom425g 0.89 A\n5336 Fzr Mixed Berries 500g 4.49 A\n36884 Ham 4x100g 5.00 A\n\n1390 Froz Steam Veg 450g 1.99 A\n\n41207 Rice Crackers 200g 1.65 B\n76016 Pink Lady Apples per kg 2.64 A\n0.530 kg Net @ 4.99 $/kg\n76113 Bananas, Caven, 750g 2.49 A\nPrice Over $ 1.49 -1.00 A\n76365 Grapes Thompson 1kg 1.75 A\n\n9477 Nuts Raw OSN Var 3.99 A\n43333 Dip Salsa 300g 1.49 A\n3769 Mayonnaise Squeeze 2.59 A\n\n76490 Mandarins H/M, 700g 4.99 A\nPrice Over $ 3.99 -1.00 A\nTotal = $37.98",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 30.593,
+    "wall_s": 0.0,
+    "cost_usd": 0.0090965,
+    "stages": [
+      {
+        "stage": "cascade",
+        "model": "gemini-3.5-flash-lite",
+        "prompt_tokens": 2831,
+        "completion_tokens": 1529,
+        "latency_s": 4.85788580001099,
+        "cost_usd": 0.0008947,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2831,
+        "completion_tokens": 2941,
+        "latency_s": 25.73462240002118,
+        "cost_usd": 0.0082018,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": {
+    "escalated": true,
+    "reasons": [
+      "low_confidence:line_items"
+    ]
+  },
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199480, Requested 2326. Please try again in 13m0.192s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

@@ -1,0 +1,155 @@
+{
+  "doc_id": "wild_0025",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "Chick-fil-A",
+    "merchant_address": "Fern Park, FL",
+    "date": null,
+    "currency": "USD",
+    "subtotal": "11.55",
+    "service_charge": null,
+    "discount": null,
+    "tax": "0.81",
+    "total": "12.36",
+    "payment_method": "Visa",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8434,
+    "merchant_address": 0.8455,
+    "payment_method": 0.8439,
+    "date": 0.7385,
+    "currency": 0.9941,
+    "subtotal": 0.9376,
+    "service_charge": 0.8894,
+    "discount": 0.8894,
+    "tax": 0.9376,
+    "total": 0.9376,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "date",
+    "line_items"
+  ],
+  "withheld": {
+    "date": "2018-03-07",
+    "line_items": "[{\"description\": \"Grill Sand\", \"quantity\": \"1\", \"unit_price\": \"4.75\", \"line_total\": \"4.75\"}, {\"description\": \"Grl SpcyDlx+CJ\", \"quantity\": \"1\", \"unit_price\": \"5.05\", \"line_total\": \"5.05\"}, {\"description\": \"Fries MD\", \"quantity\": \"1\", \"unit_price\": \"1.75\", \"line_total\": \"1.75\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "Welcome to Chick-fil-A\nCasselberry FSU (# 03270)\nFern Park, FL\nOperator: Billy McClarnon\n321-444-6536\n\nCUSTOMER COPY\n3/7/2018 12:07:17 PM\nCARRY OUT\nOrder Number: 2632318\n\n1 Grill Sand 4.75\n1 Grl SpcyDlx+CJ 5.05\n1 Fries MD 1.75\n\nSub. Total: $11.55\nTax: $0.81\nTotal: $12.36\n\nChange $0.00\nVisa: $12.36\nRegister:1 Tran Seq No: 2632318\nCashier:Chuck Norris\nIt was a pleasure serving you!\nHave a wonderful day.\none.chick-fil-a.com/forgot2scan",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 14.024,
+    "wall_s": 0.0,
+    "cost_usd": 0.0034698,
+    "stages": [
+      {
+        "stage": "cascade",
+        "model": "gemini-3.5-flash-lite",
+        "prompt_tokens": 2815,
+        "completion_tokens": 672,
+        "latency_s": 4.04425119998632,
+        "cost_usd": 0.0005503,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2815,
+        "completion_tokens": 830,
+        "latency_s": 9.979488100041635,
+        "cost_usd": 0.0029195,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": {
+    "escalated": true,
+    "reasons": [
+      "low_confidence:date",
+      "low_confidence:line_items"
+    ]
+  },
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199386, Requested 2227. Please try again in 11m36.815999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

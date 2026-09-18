@@ -1,0 +1,50 @@
+<!doctype html><meta charset="utf-8"><title>wild_0023</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>wild_0023</h1><p class=k>receipt &middot; status: ok &middot; threshold 0.85 &middot; 6 field(s) abstained</p><h2>Problems</h2><ul><li class=wrong>model_b_failed: RateLimitError: Error code: 429 - {&#x27;error&#x27;: {&#x27;message&#x27;: &#x27;Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199506, Requested 2446. Please try again in 14m3.264s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing&#x27;, &#x27;type&#x27;: &#x27;tokens&#x27;, &#x27;code&#x27;: &#x27;rate_limit_exceeded&#x27;}}</li></ul><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>merchant_name</td><td><span class=abst>TRADER JOE&#x27;S</span></td><td>0.84</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>merchant_address</td><td><span class=abst>2025 Bond Street, Charlottesville VA 22901</span></td><td>0.84</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>date</td><td><span class=abst>&mdash;</span></td><td>0.77</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>currency</td><td>USD</td><td>0.99</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>subtotal</td><td>96.62</td><td>0.94</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>service_charge</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>discount</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.00 | validated: 1.00 | self_report: 0.98"><td>tax</td><td><span class=abst>3.2</span></td><td>0.84</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>total</td><td>99.82</td><td>0.94</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>payment_method</td><td><span class=abst>DEBIT</span></td><td>0.84</td><td class=abst>abstained</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>BALLAST POINT BREWING GRAPEFRU</td><td>&mdash;</td><td>&mdash;</td><td>13.99</td></tr><tr><td>2</td><td>NUT ALMOND GOCHUJANG</td><td>&mdash;</td><td>&mdash;</td><td>4.99</td></tr><tr><td>3</td><td>SPARKLING SPRING WATER CRAN CL</td><td>&mdash;</td><td>&mdash;</td><td>0.79</td></tr><tr><td>4</td><td>ORGANIC CARROT JUICE PTS</td><td>&mdash;</td><td>&mdash;</td><td>2.99</td></tr><tr><td>5</td><td>CHOCOLATE CHIP COOKIES</td><td>&mdash;</td><td>&mdash;</td><td>3.99</td></tr><tr><td>6</td><td>BALLAST POINT BREWING SCULPIN</td><td>&mdash;</td><td>&mdash;</td><td>13.99</td></tr><tr><td>7</td><td>CHOC DARK COVERED GRAHAM W SEA</td><td>&mdash;</td><td>&mdash;</td><td>3.99</td></tr><tr><td>8</td><td>A-PEACHES YELLOW 2 LB EASTERN</td><td>&mdash;</td><td>&mdash;</td><td>3.49</td></tr><tr><td>9</td><td>SPARKLING SPRING WATER CRAN CL</td><td>4</td><td>0.79</td><td>3.16</td></tr><tr><td>10</td><td>MANGO STICKY RICE SPRING ROLLS</td><td>&mdash;</td><td>&mdash;</td><td>2.99</td></tr><tr><td>11</td><td>BANANAS</td><td>6</td><td>0.19</td><td>1.14</td></tr><tr><td>12</td><td>PIZZA PARLANNO W/SAUSAGE</td><td>&mdash;</td><td>&mdash;</td><td>4.99</td></tr><tr><td>13</td><td>FREEZE DRIED MANGO</td><td>&mdash;</td><td>&mdash;</td><td>3.29</td></tr><tr><td>14</td><td>TJ&#x27;S SOFT 10 GRAIN BREAD</td><td>&mdash;</td><td>&mdash;</td><td>2.49</td></tr><tr><td>15</td><td>ROLLS FOCCACINI WITH CHEESE</td><td>&mdash;</td><td>&mdash;</td><td>2.99</td></tr><tr><td>16</td><td>STEAK &amp; STOUT PIES</td><td>&mdash;</td><td>&mdash;</td><td>6.49</td></tr><tr><td>17</td><td>DRIED BABYSWEET PINEAPPLE</td><td>&mdash;</td><td>&mdash;</td><td>3.99</td></tr><tr><td>18</td><td>A-CITRUS JOSIE&#x27;S MANDARINS 5 L</td><td>&mdash;</td><td>&mdash;</td><td>7.99</td></tr><tr><td>19</td><td>MILK GAL WHOLE</td><td>&mdash;</td><td>&mdash;</td><td>2.89</td></tr><tr><td>20</td><td>MILK GAL ORG WHOLE</td><td>&mdash;</td><td>&mdash;</td><td>5.99</td></tr><tr class=sum><td colspan=4>sum</td><td><b>96.62</b> &#10003; matches subtotal</td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip pass">subtotal_plus_tax_equals_total &#10003;</span><span class="chip pass">line_items_sum_to_subtotal &#10003;</span><span class="chip pass">rows_multiply_out &#10003;</span><span class="chip na">date_parses n/a</span><span class="chip pass">currency_is_iso &#10003;</span><h2>Cost and latency</h2><p class=k>23.17s model time &middot; 2815 prompt + 2780 completion tokens &middot; $0.00779 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>2815</td><td>2780</td><td>23.17</td><td>$0.00779</td><td></td></tr></table><details><summary>Transcription (862 chars) &mdash; the grounding source</summary><pre>TRADER JOE&#x27;S
+2025 Bond Street
+Charlottesville VA 22901
+Store #651 - (434) 974-1466
+
+OPEN 8:00AM TO 9:00PM DAILY
+
+BALLAST POINT BREWING GRAPEFRU 13.99
+NUT ALMOND GOCHUJANG 4.99 T
+SPARKLING SPRING WATER CRAN CL 0.79 T
+ORGANIC CARROT JUICE PTS 2.99 T
+CHOCOLATE CHIP COOKIES 3.99 T
+BALLAST POINT BREWING SCULPIN 13.99
+CHOC DARK COVERED GRAHAM W SEA 3.99 T
+A-PEACHES YELLOW 2 LB EASTERN 3.49 T
+SPARKLING SPRING WATER CRAN CL 3.16 T
+4FL OZ @ 0.79/FL OZ
+MANGO STICKY RICE SPRING ROLLS 2.99 T
+BANANAS 1.14 T
+6EA @ 0.19/EA
+PIZZA PARLANNO W/SAUSAGE 4.99 T
+FREEZE DRIED MANGO 3.29 T
+TJ&#x27;S SOFT 10 GRAIN BREAD 2.49 T
+ROLLS FOCCACINI WITH CHEESE 2.99 T
+STEAK &amp; STOUT PIES 6.49 T
+DRIED BABYSWEET PINEAPPLE 3.99 T
+A-CITRUS JOSIE&#x27;S MANDARINS 5 L 7.99 T
+MILK GAL WHOLE 2.89 T
+MILK GAL ORG WHOLE 5.99 T
+
+SUBTOTAL $96.62
+STATE TAX 1 $1.72
+STATE TAX 2 $1.48
+TOTAL $99.82
+DEBIT $99.82</pre></details>

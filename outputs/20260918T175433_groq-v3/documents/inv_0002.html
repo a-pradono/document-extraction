@@ -1,0 +1,149 @@
+<!doctype html><meta charset="utf-8"><title>inv_0002</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>inv_0002</h1><p class=k>invoice &middot; status: ok &middot; threshold 0.75 &middot; 2 field(s) abstained</p><h2>Problems</h2><ul><li class=wrong>model_b_failed: RateLimitError: Error code: 429 - {&#x27;error&#x27;: {&#x27;message&#x27;: &#x27;Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199998, Requested 3361. Please try again in 24m11.088s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing&#x27;, &#x27;type&#x27;: &#x27;tokens&#x27;, &#x27;code&#x27;: &#x27;rate_limit_exceeded&#x27;}}</li></ul><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>invoice_number</td><td>949838-1</td><td>0.84</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>issue_date</td><td><span class=abst>2012-10-14</span></td><td>0.74</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 0.90"><td>due_date</td><td>&mdash;</td><td>0.79</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>vendor.name</td><td>WXII</td><td>0.84</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>vendor.address</td><td>700 Coliseum Drive
+Winston-Salem, NC 27106</td><td>0.84</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 0.90"><td>vendor.tax_id</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>customer.name</td><td>Crossroads Media</td><td>0.84</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>customer.address</td><td>66 Canal Center Plaza
+Suite 555
+Alexandria, VA 22314</td><td>0.84</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 0.90"><td>customer.tax_id</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.98"><td>currency</td><td>USD</td><td>0.99</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.00 | self_report: 0.98"><td>subtotal</td><td>6150.0</td><td>0.92</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 0.90"><td>tax</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.00 | self_report: 0.99"><td>total</td><td>5227.5</td><td>0.92</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>purchase_order</td><td>949838</td><td>0.84</td><td class=ok>ok</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>NBC Today Show II</td><td>4</td><td>150.0</td><td>&mdash;</td></tr><tr><td>2</td><td>NBC Today Show II</td><td>1</td><td>150.0</td><td>&mdash;</td></tr><tr><td>3</td><td>DR. OZ</td><td>4</td><td>600.0</td><td>&mdash;</td></tr><tr><td>4</td><td>DR. OZ</td><td>1</td><td>600.0</td><td>&mdash;</td></tr><tr><td>5</td><td>NBC Prime</td><td>1</td><td>2000.0</td><td>&mdash;</td></tr><tr><td>6</td><td>Notre Dame Football</td><td>1</td><td>400.0</td><td>&mdash;</td></tr><tr class=sum><td colspan=4>sum</td><td><b>&mdash;</b> <span class=k>(no subtotal to check against)</span></td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip fail" title="6,150.00 != 5,227.50 - off by 922.50">subtotal_plus_tax_equals_total &#10007;</span><span class="chip na">line_items_sum_to_subtotal n/a</span><span class="chip na">rows_multiply_out n/a</span><span class="chip pass">date_parses &#10003;</span><span class="chip pass">currency_is_iso &#10003;</span><span class="chip na">due_date_after_issue_date n/a</span><span class="chip pass">vendor_differs_from_customer &#10003;</span><ul><li class=wrong>subtotal_plus_tax_equals_total: 6,150.00 != 5,227.50 - off by 922.50</li></ul><h2>Cost and latency</h2><p class=k>39.94s model time &middot; 4254 prompt + 2819 completion tokens &middot; $0.00832 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>4254</td><td>2819</td><td>39.94</td><td>$0.00832</td><td>cached</td></tr></table><details><summary>Transcription (4339 chars) &mdash; the grounding source</summary><pre>--- page 1 ---
+Page 1 of 2
+DUPLICATE INVOICE
+12 WXII
+WXII
+700 Coliseum Drive
+Winston-Salem, NC 27106
+Main: (336)721-9944
+Billing: (410)338-6432
+www.wxii12.com
+Billing Address:
+Crossroads Media
+Attention: Accounts Payable
+66 Canal Center Plaza
+Suite 555
+Alexandria, VA 22314
+Send Payment To:
+WXII
+PO Box 26888
+Lehigh Valley, PA 18002-6888
+Invoice #
+949838-1
+Invoice Date
+10/14/12
+Invoice Month
+October 2012
+Invoice Period
+10/01/12 - 10/08/12
+Station
+WXII
+Account Executive
+Jamie Andrus
+Sales Office
+Eagle-Washingto
+Sales Region
+National
+Advertiser
+American Crossroads
+Product
+American Crossroads
+Estimate Number
+953
+Flight Dates
+10/02/12 - 10/08/12
+Order #
+949838
+Alt Order #
+07901801
+Billing Calendar
+Broadcast
+Billing Type
+Cash
+Deal #
+Special Handling
+IDB #
+Advertiser Code
+11
+Product Code
+27
+Agency Ref
+Advertiser Ref
+Line Start Date End Date Description Start/End Time MTWTFSS Length Spots/ Week Rate Type
+1 10/02/12 10/05/12 NBC Today Show II 10A-12N -TWTF-- :30 4 $150.00 NM
+Weeks: Start Date End Date MTWTFSS Spots/Week Rate
+10/01/12 10/07/12 -TWTF-- 4 $150.00
+Spots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type
+2 WXII Tu 10/02/12 11:58 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM
+1 WXII W 10/03/12 11:51 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM
+4 WXII Th 10/04/12 11:27 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM
+3 WXII F 10/05/12 10:59 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM
+2 10/08/12 10/08/12 NBC Today Show II 10A-12N M------ :30 1 $150.00 NM
+Weeks: Start Date End Date MTWTFSS Spots/Week Rate
+10/08/12 10/14/12 M------ 1 $150.00
+Spots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type
+1 WXII M 10/08/12 10:59 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM
+3 10/02/12 10/05/12 DR. OZ M-F 4-5p -TWTF-- :30 4 $600.00 NM
+Weeks: Start Date End Date MTWTFSS Spots/Week Rate
+10/01/12 10/07/12 -TWTF-- 4 $600.00
+Spots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type
+2 WXII Tu 10/02/12 4:41 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM
+3 WXII W 10/03/12 4:39 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM
+4 WXII Th 10/04/12 4:40 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM
+1 WXII F 10/05/12 4:39 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM
+4 10/08/12 10/08/12 DR. OZ M-F 4-5p M------ :30 1 $600.00 NM
+Weeks: Start Date End Date MTWTFSS Spots/Week Rate
+10/08/12 10/14/12 M------ 1 $600.00
+Spots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type
+1 WXII M 10/08/12 4:27 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM
+5 10/05/12 10/05/12 NBC Prime 10-11pm ----F-- :30 1 $2,000.00 NM
+Weeks: Start Date End Date MTWTFSS Spots/Week Rate
+10/01/12 10/07/12 ----F-- 1 $2,000.00
+Spots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type
+1 WXII F 10/05/12 10:30 PM NBC Prime 10-11pm :30 USPRTV19ACH $2,000.00 NM
+This invoice is subject to Hearst Television&#x27;s Terms and Conditions which can be reviewed on our company website at www.hearsttelevision.com/for_advertisers
+We warrant that the actual broadcast information shown on this invoice was taken from the program log
+--- page 2 ---
+Page 2 of 2
+DUPLICATE INVOICE
+Send Payment To:
+WXII
+PO Box 26888
+Lehigh Valley, PA 18002-6888
+Invoice #
+949838-1
+Invoice Date
+10/14/12
+Invoice Month
+October 2012
+Invoice Period
+10/01/12 - 10/08/12
+Advertiser
+American Crossroads
+Product
+American Crossroads
+Estimate Number
+953
+www.wxii12.com
+Line Start Date End Date Description Start/End Time MTWTFSS Length Spots/ Week Rate Type
+5 10/05/12 10/05/12 NBC Prime 10-11pm ----F-- :30 1 $2,000.00 NM
+6 10/06/12 10/06/12 Notre Dame Football ND Football -----S- :30 1 $400.00 NM
+Weeks: Start Date End Date MTWTFSS Spots/Week Rate
+10/01/12 10/07/12 -----S- 1 $400.00
+Spots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type
+1 WXII Sa 10/06/12 7:37 PM Notre Dame Football ND Football :30 USPRTV19ACH $400.00 NM
+Total Spots 12
+Payment Terms 30 Days
+Gross Total $6,150.00
+Agency Commission $922.50
+Net Amount Due $5,227.50
+This invoice is subject to Hearst Television&#x27;s Terms and Conditions which can be reviewed on our company website at www.hearsttelevision.com/for_advertisers
+We warrant that the actual broadcast information shown on this invoice was taken from the program log</pre></details>

@@ -1,0 +1,141 @@
+{
+  "doc_id": "cord_0017",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "74000",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8985,
+    "merchant_address": 0.8985,
+    "payment_method": 0.8455,
+    "date": 0.7446,
+    "currency": 0.9874,
+    "subtotal": 0.8971,
+    "service_charge": 0.8971,
+    "discount": 0.8971,
+    "tax": 0.8971,
+    "total": 0.9305,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "payment_method",
+    "date",
+    "line_items"
+  ],
+  "withheld": {
+    "payment_method": "cash",
+    "date": "2017-10-23",
+    "line_items": "[{\"description\": \"[MD] SOFT MORNING ROLL\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"18000\"}, {\"description\": \"REAL HONEY PANCAKE BREAD\", \"quantity\": \"2\", \"unit_price\": null, \"line_total\": \"20000\"}, {\"description\": \"CUSTARD BRIOCHE\", \"quantity\": \"4\", \"unit_price\": null, \"line_total\": \"36000\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "23/10/2017\n========================================\n1 [MD] SOFT MORNING ROLL 18,000\n2 REAL HONEY PANCAKE BREAD 20,000\n4 CUSTARD BRIOCHE 36,000\n----------------------------------------\nTOTAL 74,000\nCASH 100,000\nCHANGE 26,000\nThar <",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 10.437,
+    "wall_s": 0.0,
+    "cost_usd": 0.0026453,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2851,
+        "completion_tokens": 716,
+        "latency_s": 10.436795699992217,
+        "cost_usd": 0.0026453,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198767, Requested 3055. Please try again in 13m7.104s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

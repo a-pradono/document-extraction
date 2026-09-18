@@ -1,0 +1,139 @@
+{
+  "doc_id": "wild_0017",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "Hillside",
+    "merchant_address": null,
+    "date": null,
+    "currency": "GBP",
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "7.9",
+    "payment_method": "CREDIT CARD",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8439,
+    "merchant_address": 0.8568,
+    "payment_method": 0.8439,
+    "date": 0.7385,
+    "currency": 0.9941,
+    "subtotal": 0.8894,
+    "service_charge": 0.8894,
+    "discount": 0.8894,
+    "tax": 0.8894,
+    "total": 0.9305,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "date",
+    "line_items"
+  ],
+  "withheld": {
+    "date": "2016-12-01",
+    "line_items": "[{\"description\": \"DESSERTS\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"3.95\"}, {\"description\": \"REGULAR AMERICANO\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"1.85\"}, {\"description\": \"SMALL TUB\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"2.1\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "Hillside\nWe've been growing since 1921!\nTELEPHONE - 02890863161\nwww.hillsidenurserycentre.com\nLike us on facebook\nSANTA ARRIVES SATURDAY 19TH NOVEMBER\nKIRSTY REG TERMINAL 6\nTHURSDAY 1 DECEMBER 2016 14:34 135861\n1 DESSERTS \u00a33.95\n1 REGULAR AMERICANO \u00a31.85\n1 SMALL TUB \u00a32.10\n3 No\nTOTAL \u00a37.90\nCREDIT CARD \u00a37.90\nRETURNS POLICY-28 Days to exchange goods\nor receive a credit note provided a\nvalid receipt is produced and goods are\nin their original condition. T&C Apply",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 9.591,
+    "wall_s": 0.0,
+    "cost_usd": 0.0027103,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2851,
+        "completion_tokens": 742,
+        "latency_s": 9.591053600015584,
+        "cost_usd": 0.0027103,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199987, Requested 2883. Please try again in 20m39.84s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

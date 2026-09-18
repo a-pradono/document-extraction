@@ -1,0 +1,248 @@
+<!doctype html><meta charset="utf-8"><title>inv_0009</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>inv_0009</h1><p class=k>invoice &middot; status: ok &middot; threshold 0.85 &middot; 8 field(s) abstained</p><h2>Problems</h2><ul><li class=wrong>model_b_failed: RateLimitError: Error code: 429 - {&#x27;error&#x27;: {&#x27;message&#x27;: &#x27;Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198289, Requested 7062. Please try again in 38m31.632s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing&#x27;, &#x27;type&#x27;: &#x27;tokens&#x27;, &#x27;code&#x27;: &#x27;rate_limit_exceeded&#x27;}}</li></ul><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 1.00"><td>invoice_number</td><td><span class=abst>501</span></td><td>0.84</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 1.00"><td>issue_date</td><td><span class=abst>2011-01-11</span></td><td>0.74</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>due_date</td><td><span class=abst>&mdash;</span></td><td>0.77</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>vendor.name</td><td><span class=abst>Circuit Makers Inc.</span></td><td>0.85</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>vendor.address</td><td><span class=abst>PO Box 886
+Eden NC 27288</span></td><td>0.85</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>vendor.tax_id</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>customer.name</td><td><span class=abst>Plastic Revolutions</span></td><td>0.85</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>customer.address</td><td><span class=abst>PO Box 1616
+Reidsville, NC 27323</span></td><td>0.85</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>customer.tax_id</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 1.00"><td>currency</td><td>USD</td><td>0.99</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>subtotal</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>tax</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 1.00"><td>total</td><td>8840.0</td><td>0.93</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>purchase_order</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>Solar Installation Labor Tilden</td><td>&mdash;</td><td>&mdash;</td><td>3405.0</td></tr><tr><td>2</td><td>Solar Installation Labor Keith - Business Owner</td><td>&mdash;</td><td>&mdash;</td><td>3240.0</td></tr><tr><td>3</td><td>Solar Installation Labor Will - Business Owner</td><td>&mdash;</td><td>&mdash;</td><td>1620.0</td></tr><tr><td>4</td><td>Solar Installation Materials and Bucket Truck</td><td>&mdash;</td><td>&mdash;</td><td>575.0</td></tr><tr class=sum><td colspan=4>sum</td><td><b>8,840.00</b> &#10003; matches subtotal</td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip na">subtotal_plus_tax_equals_total n/a</span><span class="chip pass">line_items_sum_to_subtotal &#10003;</span><span class="chip na">rows_multiply_out n/a</span><span class="chip pass">date_parses &#10003;</span><span class="chip pass">currency_is_iso &#10003;</span><span class="chip na">due_date_after_issue_date n/a</span><span class="chip pass">vendor_differs_from_customer &#10003;</span><h2>Cost and latency</h2><p class=k>25.96s model time &middot; 7560 prompt + 3602 completion tokens &middot; $0.01127 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>7560</td><td>3602</td><td>25.96</td><td>$0.01127</td><td></td></tr></table><details><summary>Transcription (8492 chars) &mdash; the grounding source</summary><pre>--- page 1 ---
+Circuit Makers Inc.
+PO Box 886
+Eden NC 27288
+CIRCUIT MAKERS
+ELECTRICAL CONTRACTORS
+Invoice
+DATE INVOICE #
+1/11/2011 501
+BILL TO
+Plastic Revolutions
+PO Box 1616
+Reidsville, NC 27323
+DESCRIPTION SERVICED AMOUNT
+Solar Installation Labor Tilden 1/11/2011 3,405.00
+Solar Installation Labor Keith - Business Owner 1/11/2011 3,240.00
+Solar Installation Labor Will - Business Owner 1/11/2011 1,620.00
+Solar Installation Materials and Bucket Truck 1/11/2011 575.00
+Thank you for your business. Total $8,840.00
+--- page 2 ---
+U.S. Department of Labor
+Wage and Hour Division
+PAYROLL
+(For Contractor&#x27;s Optional Use; See Instructions at www.dol.gov/whd/forms/wh347instr.htm)
+Persons are not required to respond to the collection of information unless it displays a currently valid OMB control number.
+WHD
+U.S. Wage and Hour Division
+Rev. Dec. 2008
+OMB No.: 1215-0149
+Expires: 12/31/2011
+NAME OF CONTRACTOR OR SUBCONTRACTOR
+Circuitmakers Inc.
+ADDRESS PO Box 886 Eden NC 27288
+PROJECT AND LOCATION
+Plastic Revolutions Array Reidsville NC
+PROJECT OR CONTRACT NO.
+JDC Manufacturing LLC
+PAYROLL NO.
+1
+FOR WEEK ENDING
+12/11/2010
+(1) NAME AND INDIVIDUAL IDENTIFYING NUMBER (e.g., LAST FOUR DIGITS OF SOCIAL SECURITY NUMBER) OF WORKER
+Tilden Hagan ***-**-6616
+(2) NO. OF WITHHOLDING EXEMPTIONS
+0
+(3) WORK CLASSIFICATION
+Electrician
+(4) DAY AND DATE
+OT OR ST
+S
+S
+Fr
+12/10
+5.00
+Sa
+12/11
+9.00
+HOURS WORKED EACH DAY
+TOTAL HOURS
+14.00
+(5) RATE OF PAY
+30.00
+(6) GROSS AMOUNT EARNED
+$420.00
+(7) DEDUCTIONS
+FICA $0.00
+WITH-HOLDING TAX $0.00
+OTHER $0.00
+TOTAL DEDUCTIONS $0.00
+(8) NET WAGES PAID FOR WEEK
+$420.00
+(9)
+While completion of Form WH-347 is optional, it is mandatory for covered contractors and subcontractors performing work on Federally financed or assisted construction contracts to respond to the information collection contained in 29 C.F.R. §§ 3.3, 5.5(a). The Copeland Act (40 U.S.C. § 3145) contractors and subcontractors performing work on Federally financed or assisted construction contracts to &quot;furnish weekly a statement with respect to the wages paid each employee during the preceding week.&quot; U.S. Department of Labor (DOL) regulations at 29 C.F.R. § 5.5(a)(3)(ii) require contractors to submit weekly a copy of all payrolls to the Federal agency contracting for or financing the construction project, accompanied by a signed &quot;Statement of Compliance&quot; indicating that the payrolls are correct and complete and that each laborer or mechanic has been paid not less than the proper Davis-Bacon prevailing wage rate for the work performed. DOL and federal contracting agencies receiving this information review the information to determine that employees have received legally required wages and fringe benefits.
+Public Burden Statement
+We estimate that it will take an average of 55 minutes to complete this collection, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. If you have any comments regarding these estimates or any other aspect of this collection, including suggestions for reducing this burden, send them to the Administrator, Wage and Hour Division, U.S. Department of Labor, Room S3502, 200 Constitution Avenue, N.W., Washington, D.C. 20210
+(over)
+--- page 3 ---
+U.S. Department of Labor
+Wage and Hour Division
+PAYROLL
+(For Contractor&#x27;s Optional Use; See Instructions at www.dol.gov/whd/forms/wh347instr.htm)
+Persons are not required to respond to the collection of information unless it displays a currently valid OMB control number.
+WHD
+U.S. Wage and Hour Division
+Rev. Dec. 2008
+OMB No.: 1215-0149
+Expires: 12/31/2011
+NAME OF CONTRACTOR OR SUBCONTRACTOR
+Circuitmakers Inc.
+ADDRESS PO Box 886 Eden NC 27288
+PROJECT AND LOCATION
+Plastic Revolutions Array Reidsville NC
+PROJECT OR CONTRACT NO.
+JDC Manufacturing LLC
+PAYROLL NO.
+2
+FOR WEEK ENDING
+12/18/2010
+(1) NAME AND INDIVIDUAL IDENTIFYING NUMBER (e.g., LAST FOUR DIGITS OF SOCIAL SECURITY NUMBER) OF WORKER
+Tilden Hagan ***-**-6616
+(2) NO. OF WITHHOLDING EXEMPTIONS
+0
+(3) WORK CLASSIFICATION
+Electrician
+(4) DAY AND DATE
+OT OR ST
+S
+S
+Sa
+12/12
+7.00
+Sa
+12/18
+5.00
+HOURS WORKED EACH DAY
+TOTAL HOURS
+12.00
+(5) RATE OF PAY
+30.00
+(6) GROSS AMOUNT EARNED
+$360.00
+(7) DEDUCTIONS
+FICA $0.00
+WITH-HOLDING TAX $0.00
+OTHER $0.00
+TOTAL DEDUCTIONS $0.00
+(8) NET WAGES PAID FOR WEEK
+$360.00
+(9)
+--- page 4 ---
+U.S. Department of Labor
+Wage and Hour Division
+PAYROLL
+(For Contractor&#x27;s Optional Use; See Instructions at www.dol.gov/whd/forms/wh347instr.htm)
+Persons are not required to respond to the collection of information unless it displays a currently valid OMB control number.
+WHD
+U.S. Wage and Hour Division
+Rev. Dec. 2008
+OMB No.: 1215-0149
+Expires: 12/31/2011
+NAME OF CONTRACTOR OR SUBCONTRACTOR
+Circuitmakers Inc.
+ADDRESS PO Box 886 Eden NC 27288
+PROJECT AND LOCATION
+Plastic Revolutions Array Reidsville NC
+PROJECT OR CONTRACT NO.
+JDC Manufacturing LLC
+PAYROLL NO.
+6
+FOR WEEK ENDING
+01/15/2011
+(1) NAME AND INDIVIDUAL IDENTIFYING NUMBER (e.g., LAST FOUR DIGITS OF SOCIAL SECURITY NUMBER) OF WORKER
+Tilden Hagan ***-**-6616
+(2) NO. OF WITHHOLDING EXEMPTIONS
+0
+(3) WORK CLASSIFICATION
+Electrician
+(4) DAY AND DATE
+OT OR ST
+S
+Sa
+1/9
+3.00
+HOURS WORKED EACH DAY
+TOTAL HOURS
+3.00
+(5) RATE OF PAY
+30.00
+(6) GROSS AMOUNT EARNED
+$0.00
+$90.00
+(7) DEDUCTIONS
+FICA $0.00
+WITH-HOLDING TAX $0.00
+OTHER $0.00
+TOTAL DEDUCTIONS $0.00
+(8) NET WAGES PAID FOR WEEK
+$90.00
+(9)
+--- page 5 ---
+Date 1-9-2011
+I, Keith Elliott President
+(Name of Signatory Party) (Title)
+do hereby state:
+(1) That I pay or supervise the payment of the persons employed by
+Circuitmakers Inc.
+(Contractor or Subcontractor) on the
+Plastic Revolutions Array ; that during the payroll period commencing on the
+(Building or Work)
+10 day of 12 2010 , and ending the 9 day of 1 2011
+all persons employed on said project have been paid the full weekly wages earned, that no rebates have
+been or will be made either directly or indirectly to or on behalf of said
+Circuitmakers Inc.
+(Contractor or Subcontractor) from the full
+weekly wages earned by any person and that no deductions have been made either directly or indirectly
+from the full wages earned by any person, other than permissible deductions as defined in Regulations, Part
+3 (29 C.F.R. Subtitle A), issued by the Secretary of Labor under the Copeland Act, as amended (48 Stat. 948,
+63 Stat. 108, 72 Stat. 967; 76 Stat. 357; 40 U.S.C. § 3145), and described below:
+(b) WHERE FRINGE BENEFITS ARE PAID IN CASH
+- Each laborer or mechanic listed in the above referenced payroll has been paid,
+as indicated on the payroll, an amount not less than the sum of the applicable
+basic hourly wage rate plus the amount of the required fringe benefits as listed
+in the contract, except as noted in section 4(c) below.
+(c) EXCEPTIONS
+EXCEPTION (CRAFT) EXPLANATION
+REMARKS:
+(2) That any payrolls otherwise under this contract required to be submitted for the above period are
+correct and complete; that the wage rates for laborers or mechanics contained therein are not less than the
+applicable wage rates contained in any wage determination incorporated into the contract; that the
+classifications set forth therein for each laborer or mechanic conform with the work he performed.
+(3) That any apprentices employed in the above period are duly registered in a bona fide
+apprenticeship program registered with a State apprenticeship agency recognized by the Bureau of
+Apprenticeship and Training, United States Department of Labor, or if no such recognized agency exists in a
+State, are registered with the Bureau of Apprenticeship and Training, United States Department of Labor.
+(4) That:
+(a) WHERE FRINGE BENEFITS ARE PAID TO APPROVED PLANS, FUNDS, OR PROGRAMS
+- in addition to the basic hourly wage rates paid to each laborer or mechanic listed in
+the above referenced payroll, payments of fringe benefits as listed in the contract
+have been or will be made to appropriate programs for the benefit of such
+employees, except as noted in section 4(c) below.
+NAME AND TITLE
+Keith Elliott President
+SIGNATURE
+Keith Elliott
+Digitally signed by Keith Elliott
+DN: cn=Keith Elliott, o=Circuit Makers Inc, ou,
+email=keith@circuitmakersinc.com, c=US
+Date: 2011.01.13 08:42:03 -05&#x27;00&#x27;
+THE WILLFUL FALSIFICATION OF ANY OF THE ABOVE STATEMENTS MAY SUBJECT THE CONTRACTOR OR
+SUBCONTRACTOR TO CIVIL OR CRIMINAL PROSECUTION. SEE SECTION 1001 OF TITLE 18 AND SECTION 231 OF TITLE
+31 OF THE UNITED STATES CODE.</pre></details>

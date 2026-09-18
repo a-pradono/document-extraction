@@ -1,0 +1,147 @@
+{
+  "doc_id": "cord_0004",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": "IDR",
+    "subtotal": "91000",
+    "service_charge": null,
+    "discount": "0",
+    "tax": null,
+    "total": "91000",
+    "payment_method": "Debit",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.766,
+    "merchant_address": 0.927,
+    "payment_method": 0.9207,
+    "date": 0.8547,
+    "currency": 0.9965,
+    "subtotal": 0.9638,
+    "service_charge": 0.9345,
+    "discount": 0.9638,
+    "tax": 0.9345,
+    "total": 0.9638,
+    "line_items": 0.4121
+  },
+  "abstained": [
+    "merchant_name",
+    "line_items"
+  ],
+  "withheld": {
+    "merchant_name": "\uc0bc\uc9c4\uc5b4\ubb35",
+    "line_items": "[{\"description\": \"Goblin's Mace\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"25000\"}, {\"description\": \"Mozarella Hot Dog\", \"quantity\": \"2\", \"unit_price\": null, \"line_total\": \"38000\"}, {\"description\": \"Chili Pepper Croquette\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"14000\"}, {\"description\": \"Cheese Croquette\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"14000\"}, {\"description\": \"Plastik Amook\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"0\"}, {\"description\": \"Plastik Putih Take Away\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"0\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.0,
+      "grounded": 0.0,
+      "validated": 0.5,
+      "self_report": 0.9
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 0.3333,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "\uc0bc\uc9c4\n\uc5b4\ubb35\nGoblin's Mace 1 25,000\nMozarella Hot 2 38,000\nDog\nChili Pepper 1 14,000\nCroquette\nCheese 1 14,000\nCroquette\nPlastik Amook 1 0\nPlastik Putih 1 0\nTake Away\nSubtotal 91,000\nDiscount (0)\nTOTAL Rp. 91,000\nDebit 91,000",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 13.457,
+    "wall_s": 0.0,
+    "cost_usd": 0.00415515,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2815,
+        "completion_tokens": 990,
+        "latency_s": 10.516625600052066,
+        "cost_usd": 0.0033195,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1635,
+        "completion_tokens": 984,
+        "latency_s": 2.9400277999811806,
+        "cost_usd": 0.00083565,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

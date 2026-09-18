@@ -104,3 +104,45 @@ class TestPrepareImage:
         assert len(set(outs)) == 12
         for i, out in enumerate(outs):
             assert Image.open(out).getpixel((0, 0)) == (i, i, i)
+
+
+class TestPromptsCarryTheMeasuredRules:
+    """The first real test run produced 13 hallucinations, 12 of which were an INFERRED
+    currency on receipts that print no symbol. 'Never guess' was not enough, because a
+    currency is deducible from the language and the amount format; the rule has to name
+    that inference and forbid it. Every prompt that asks for fields must carry it."""
+
+    def test_every_prompt_forbids_inferring_a_currency(self):
+        from extractor import extract, pipeline
+        prompts = {
+            "vlm receipt": pipeline._vlm_prompt("receipt"),
+            "vlm invoice": pipeline._vlm_prompt("invoice"),
+            "llm receipt": pipeline._llm_prompt("transcription", "receipt"),
+            "llm invoice": pipeline._llm_prompt("transcription", "invoice"),
+            "vlm-only baseline": extract.build_prompt("receipt"),
+        }
+        for name, text in prompts.items():
+            assert "Do NOT infer it from the language" in text, f"{name} lost the currency rule"
+            assert "null" in text
+
+    def test_the_rule_names_the_failure_it_prevents(self):
+        from extractor.extract import CURRENCY_RULE
+        assert "hallucination" in CURRENCY_RULE and "Rp" in CURRENCY_RULE
+
+
+class TestTokenBudget:
+    """inv_0010 (225 line items over 5 pages) hit the ceiling and failed as
+    TruncatedResponse - correctly loud, but it scored as an empty extraction."""
+
+    def test_a_five_page_document_gets_room_for_a_long_table(self, monkeypatch):
+        from extractor import pipeline
+        monkeypatch.setenv("VLM_MAX_TOKENS", "16384")
+        monkeypatch.setenv("VLM_MAX_TOKENS_PER_EXTRA_PAGE", "8192")
+        assert pipeline._vlm_max_tokens(5) == 16384 + 4 * 8192      # 49,152
+        assert pipeline._vlm_max_tokens(5) > 24576                  # what inv_0010 needed
+
+    def test_the_budget_still_scales_with_pages(self, monkeypatch):
+        from extractor import pipeline
+        monkeypatch.setenv("VLM_MAX_TOKENS", "16384")
+        monkeypatch.setenv("VLM_MAX_TOKENS_PER_EXTRA_PAGE", "8192")
+        assert pipeline._vlm_max_tokens(1) < pipeline._vlm_max_tokens(3)

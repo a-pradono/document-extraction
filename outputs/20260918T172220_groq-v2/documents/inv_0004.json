@@ -1,0 +1,189 @@
+{
+  "doc_id": "inv_0004",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": null,
+    "issue_date": null,
+    "due_date": null,
+    "vendor": {
+      "name": null,
+      "address": null,
+      "tax_id": null
+    },
+    "customer": {
+      "name": null,
+      "address": null,
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": "36.59",
+    "tax": "0",
+    "total": "36.59",
+    "purchase_order": null,
+    "line_items": []
+  },
+  "confidence": {
+    "invoice_number": 0.8429,
+    "purchase_order": 0.8568,
+    "vendor.name": 0.8455,
+    "vendor.address": 0.8455,
+    "vendor.tax_id": 0.8568,
+    "customer.name": 0.8455,
+    "customer.address": 0.8568,
+    "customer.tax_id": 0.8568,
+    "issue_date": 0.7369,
+    "due_date": 0.7369,
+    "currency": 0.9939,
+    "subtotal": 0.923,
+    "tax": 0.9378,
+    "total": 0.9378,
+    "line_items": 0.2438
+  },
+  "abstained": [
+    "invoice_number",
+    "vendor.name",
+    "vendor.address",
+    "customer.name",
+    "issue_date",
+    "due_date",
+    "line_items"
+  ],
+  "withheld": {
+    "invoice_number": "00011",
+    "vendor.name": "Williamsburg-James City County Public Schools",
+    "vendor.address": "117 Ironbound Road, Williamsburg, VA 23185",
+    "customer.name": "Tom Nash",
+    "issue_date": "2020-02-14",
+    "due_date": "2020-03-15",
+    "line_items": "[{\"description\": \"R. Showah Form Search\", \"quantity\": \"0.25\", \"unit_price\": \"32.21\", \"line_total\": \"8.05\"}, {\"description\": \"P. Hayworth Website Search, Form Search, FOIA Response Preparation\", \"quantity\": \"1.5\", \"unit_price\": \"32.34\", \"line_total\": \"48.51\"}]"
+  },
+  "signals": {
+    "invoice_number": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "purchase_order": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "vendor.name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "vendor.address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "vendor.tax_id": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "customer.address": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.tax_id": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "issue_date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "due_date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.0,
+      "self_report": 0.95
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": false,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": true,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {
+    "line_items_sum_to_subtotal": "rows sum to 56.56 != 36.59 - off by 19.97"
+  },
+  "transcription": "--- page 1 ---\nWilliamsburg-James City County Public Schools\nRecords Administration & Division FOIA Officer\n117 Ironbound Road, Williamsburg, VA 23185\n757-603-6517\n\nINVOICE 00011 2-14-2020\n\nBILL TO\nTom Nash\nMuckrock.com\n87620-\n92544075@muckrock.com\n\nSHIP TO\nSame as recipient\n\nINSTRUCTIONS\nMake checks payable to \u201cWJCC Public Schools\u201d\nMail to Attention: Pamela S. Hayworth\n\nQUANTITY DESCRIPTION UNIT PRICE TOTAL\n.25 Hours R. Showah Form Search $32.21/hour $8.05\n1.5 Hours P. Hayworth Website Search, Form Search, $32.34/hour $48.51\nFOIA Response Preparation\n\nSUBTOTAL $36.59\nSALES TAX 0\nSHIPPING & HANDLING 0\nTOTAL DUE BY 3-15-2020 $36.59\n\nThank you for your business!\n\n--- page 2 ---\nYOUR LOGO\nHERE\n\nPage 2",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 19.024,
+    "wall_s": 0.0,
+    "cost_usd": 0.0036512,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 4254,
+        "completion_tokens": 950,
+        "latency_s": 19.02426140004536,
+        "cost_usd": 0.0036512,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198403, Requested 4423. Please try again in 20m20.832s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

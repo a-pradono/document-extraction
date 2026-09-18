@@ -1,0 +1,143 @@
+{
+  "doc_id": "wild_0008",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": "USD",
+    "subtotal": "105.0",
+    "service_charge": "18.9",
+    "discount": null,
+    "tax": "5.25",
+    "total": "129.15",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8439,
+    "merchant_address": 0.8455,
+    "payment_method": 0.8568,
+    "date": 0.7747,
+    "currency": 0.9941,
+    "subtotal": 0.9376,
+    "service_charge": 0.9376,
+    "discount": 0.8894,
+    "tax": 0.9376,
+    "total": 0.9376,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "merchant_name",
+    "merchant_address",
+    "date",
+    "line_items"
+  ],
+  "withheld": {
+    "merchant_name": "ONE MILL STREET",
+    "merchant_address": "ONE MILL STREET",
+    "date": "2003-01-09",
+    "line_items": "[{\"description\": \"CALAMARI W/ MOJO\", \"quantity\": \"2\", \"unit_price\": \"8.0\", \"line_total\": \"16.0\"}, {\"description\": \"ARTICHOKES\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"8.0\"}, {\"description\": \"PORK CHOP\", \"quantity\": \"3\", \"unit_price\": \"18.0\", \"line_total\": \"54.0\"}, {\"description\": \"VFC..IE SAND\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"8.0\"}, {\"description\": \"NEW YORK STRIP\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"19.0\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 0.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "ONE MILL STREET\n@ ONE MILL STREET\n(978) 738-8900\n419 JOHN 1\n20/1 2655 GST 6\nJAN09'03 9:03PM\n2 @ 8.00\nCALAMARI W/ MOJO 16.00\n1 ARTICHOKES 8.00\n3 PORK CHOP @ 18.00 54.00\n1 VFC..IE SAND 8.00\n1 NEW YORK STRIP 19.00\n18.00 %\nGRATUITY 18.90\nFOOD TOTAL 105.00\nSVC CHG TOTAL 18.90\nTAX 5.25\nTOTAL DUE $129.15\n\nTHANK YOU AND COME AGAIN SOON\nPLEASE PAY YOUR SERVER",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 20.323,
+    "wall_s": 0.0,
+    "cost_usd": 0.0033654,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2843,
+        "completion_tokens": 1005,
+        "latency_s": 20.322978499985766,
+        "cost_usd": 0.0033654,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199906, Requested 2166. Please try again in 14m55.103999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

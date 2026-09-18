@@ -1,0 +1,297 @@
+<!doctype html><meta charset="utf-8"><title>inv_0010</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>inv_0010</h1><p class=k>invoice &middot; status: ok &middot; threshold 0.85 &middot; 8 field(s) abstained</p><h2>Problems</h2><ul><li class=wrong>model_b_failed: RateLimitError: Error code: 429 - {&#x27;error&#x27;: {&#x27;message&#x27;: &#x27;Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197766, Requested 8022. Please try again in 41m40.416s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing&#x27;, &#x27;type&#x27;: &#x27;tokens&#x27;, &#x27;code&#x27;: &#x27;rate_limit_exceeded&#x27;}}</li></ul><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 1.00"><td>invoice_number</td><td><span class=abst>S16947</span></td><td>0.84</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 0.90"><td>issue_date</td><td><span class=abst>&mdash;</span></td><td>0.79</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 0.90"><td>due_date</td><td><span class=abst>&mdash;</span></td><td>0.79</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>vendor.name</td><td><span class=abst>Florida Department of Agriculture and Consumer Services</span></td><td>0.85</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>vendor.address</td><td><span class=abst>P.O. Box 6720 Tallahassee, FL 32314-6720</span></td><td>0.85</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>vendor.tax_id</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>customer.name</td><td><span class=abst>Brian Sparks</span></td><td>0.85</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>customer.address</td><td><span class=abst>1505 Wills Lane Bryceville, Fl 32009</span></td><td>0.85</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>customer.tax_id</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 1.00"><td>currency</td><td>USD</td><td>0.99</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 0.90"><td>subtotal</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 0.90"><td>tax</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>total</td><td>59403.38</td><td>0.93</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>purchase_order</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>NON-SUPERVISORY LABOR (Ranger HEAD</td><td>13.25</td><td>22.0</td><td>291.5</td></tr><tr><td>2</td><td>NON-SUPERVISORY LABOR (Ranger HEAD</td><td>5.5</td><td>22.0</td><td>121.0</td></tr><tr><td>3</td><td>NON-SUPERVISORY LABOR (Ranger DAVIDSON</td><td>10.0</td><td>22.0</td><td>220.0</td></tr><tr><td>4</td><td>NON-SUPERVISORY LABOR (Ranger DAVIDSON</td><td>9.75</td><td>22.0</td><td>214.5</td></tr><tr><td>5</td><td>NON-SUPERVISORY LABOR (Ranger PALMER</td><td>8.0</td><td>22.0</td><td>176.0</td></tr><tr><td>6</td><td>NON-SUPERVISORY LABOR (Ranger WYATT</td><td>4.75</td><td>22.0</td><td>104.5</td></tr><tr><td>7</td><td>NON-SUPERVISORY LABOR (Ranger WYATT</td><td>7.5</td><td>22.0</td><td>165.0</td></tr><tr><td>8</td><td>NON-SUPERVISORY LABOR (Ranger WYATT</td><td>2.25</td><td>22.0</td><td>49.5</td></tr><tr><td>9</td><td>NON-SUPERVISORY LABOR (Ranger WYATT</td><td>10.5</td><td>22.0</td><td>231.0</td></tr><tr><td>10</td><td>NON-SUPERVISORY LABOR (Ranger WYATT</td><td>7.0</td><td>22.0</td><td>154.0</td></tr><tr><td>11</td><td>NON-SUPERVISORY LABOR (Ranger HOEPKER</td><td>7.75</td><td>22.0</td><td>170.5</td></tr><tr><td>12</td><td>NON-SUPERVISORY LABOR (Ranger HERNANDEZ</td><td>6.0</td><td>22.0</td><td>132.0</td></tr><tr><td>13</td><td>NON-SUPERVISORY LABOR (Ranger HERNANDEZ</td><td>11.25</td><td>22.0</td><td>247.5</td></tr><tr><td>14</td><td>NON-SUPERVISORY LABOR (Ranger HERNANDEZ</td><td>3.0</td><td>22.0</td><td>66.0</td></tr><tr><td>15</td><td>NON-SUPERVISORY LABOR (Ranger HERNANDEZ</td><td>12.25</td><td>22.0</td><td>269.5</td></tr><tr><td>16</td><td>NON-SUPERVISORY LABOR (Ranger HERNANDEZ</td><td>3.0</td><td>22.0</td><td>66.0</td></tr><tr><td>17</td><td>NON-SUPERVISORY LABOR (Ranger BLACKWELL</td><td>4.5</td><td>22.0</td><td>99.0</td></tr><tr><td>18</td><td>NON-SUPERVISORY LABOR (Ranger BLACKWELL</td><td>4.0</td><td>22.0</td><td>88.0</td></tr><tr><td>19</td><td>NON-SUPERVISORY LABOR (Ranger BLACKWELL</td><td>2.25</td><td>22.0</td><td>49.5</td></tr><tr><td>20</td><td>NON-SUPERVISORY LABOR (Ranger BLACKWELL</td><td>7.25</td><td>22.0</td><td>159.5</td></tr><tr><td>21</td><td>NON-SUPERVISORY LABOR (Ranger BLACKWELL</td><td>9.75</td><td>22.0</td><td>214.5</td></tr><tr><td>22</td><td>NON-SUPERVISORY LABOR (Ranger BLACKWELL</td><td>9.25</td><td>22.0</td><td>203.5</td></tr><tr><td>23</td><td>NON-SUPERVISORY LABOR (Ranger BLACKWELL</td><td>10.0</td><td>22.0</td><td>220.0</td></tr><tr><td>24</td><td>NON-SUPERVISORY LABOR (Ranger BLACKWELL</td><td>10.0</td><td>22.0</td><td>220.0</td></tr><tr><td>25</td><td>NON-SUPERVISORY LABOR (Ranger DORSA</td><td>10.0</td><td>22.0</td><td>220.0</td></tr><tr><td>26</td><td>NON-SUPERVISORY LABOR (Ranger DORSA</td><td>9.75</td><td>22.0</td><td>214.5</td></tr><tr><td>27</td><td>NON-SUPERVISORY LABOR (Ranger COOPER</td><td>5.5</td><td>22.0</td><td>121.0</td></tr><tr><td>28</td><td>NON-SUPERVISORY LABOR (Ranger VIGNOLA</td><td>9.75</td><td>22.0</td><td>214.5</td></tr><tr><td>29</td><td>NON-SUPERVISORY LABOR (Ranger VIGNOLA</td><td>3.5</td><td>22.0</td><td>77.0</td></tr><tr><td>30</td><td>NON-SUPERVISORY LABOR (Ranger VIGNOLA</td><td>1.5</td><td>22.0</td><td>33.0</td></tr><tr><td>31</td><td>NON-SUPERVISORY LABOR (Ranger DOWIE</td><td>12.0</td><td>22.0</td><td>264.0</td></tr><tr><td>32</td><td>NON-SUPERVISORY LABOR (Ranger DOWIE</td><td>10.25</td><td>22.0</td><td>225.5</td></tr><tr><td>33</td><td>NON-SUPERVISORY LABOR (Ranger WALLS</td><td>2.75</td><td>22.0</td><td>60.5</td></tr><tr><td>34</td><td>NON-SUPERVISORY LABOR (Ranger MASON</td><td>8.0</td><td>22.0</td><td>176.0</td></tr><tr><td>35</td><td>NON-SUPERVISORY LABOR (Ranger STEED</td><td>13.25</td><td>22.0</td><td>291.5</td></tr><tr><td>36</td><td>SUPERVISORY LABOR (Ranger HART</td><td>6.0</td><td>30.0</td><td>180.0</td></tr><tr><td>37</td><td>SUPERVISORY LABOR (Ranger HART</td><td>3.25</td><td>30.0</td><td>97.5</td></tr><tr><td>38</td><td>SUPERVISORY LABOR (Ranger HART</td><td>2.0</td><td>30.0</td><td>60.0</td></tr><tr><td>39</td><td>NON-SUPERVISORY LABOR (Ranger ORR</td><td>2.0</td><td>22.0</td><td>44.0</td></tr><tr><td>40</td><td>NON-SUPERVISORY LABOR (Ranger ORR</td><td>9.25</td><td>22.0</td><td>203.5</td></tr><tr><td>41</td><td>NON-SUPERVISORY LABOR (Ranger ORR</td><td>7.75</td><td>22.0</td><td>170.5</td></tr><tr><td>42</td><td>NON-SUPERVISORY LABOR (Ranger SMITH</td><td>6.0</td><td>22.0</td><td>132.0</td></tr><tr><td>43</td><td>NON-SUPERVISORY LABOR (Ranger SMITH</td><td>7.5</td><td>22.0</td><td>165.0</td></tr><tr><td>44</td><td>NON-SUPERVISORY LABOR (Ranger ABBOTT</td><td>13.25</td><td>22.0</td><td>291.5</td></tr><tr><td>45</td><td>NON-SUPERVISORY LABOR (Ranger ABBOTT</td><td>13.5</td><td>22.0</td><td>297.0</td></tr><tr><td>46</td><td>NON-SUPERVISORY LABOR (Ranger ABBOTT</td><td>6.0</td><td>22.0</td><td>132.0</td></tr><tr><td>47</td><td>NON-SUPERVISORY LABOR (Ranger ABBOTT</td><td>10.25</td><td>22.0</td><td>225.5</td></tr><tr><td>48</td><td>NON-SUPERVISORY LABOR (Ranger DREW</td><td>16.5</td><td>22.0</td><td>363.0</td></tr><tr><td>49</td><td>NON-SUPERVISORY LABOR (Ranger LEWIS</td><td>9.0</td><td>22.0</td><td>198.0</td></tr><tr><td>50</td><td>NON-SUPERVISORY LABOR (Ranger HAMLIN</td><td>10.0</td><td>22.0</td><td>220.0</td></tr><tr><td>51</td><td>NON-SUPERVISORY LABOR (Ranger HAMLIN</td><td>9.75</td><td>22.0</td><td>214.5</td></tr><tr><td>52</td><td>NON-SUPERVISORY LABOR (Ranger NORMAN</td><td>30.0</td><td>22.0</td><td>660.0</td></tr><tr><td>53</td><td>NON-SUPERVISORY LABOR (Ranger CHANAKI</td><td>14.5</td><td>22.0</td><td>319.0</td></tr><tr><td>54</td><td>NON-SUPERVISORY LABOR (Ranger SLUSKI</td><td>7.25</td><td>22.0</td><td>159.5</td></tr><tr><td>55</td><td>NON-SUPERVISORY LABOR (Ranger GARRARD</td><td>2.25</td><td>22.0</td><td>49.5</td></tr><tr><td>56</td><td>NON-SUPERVISORY LABOR (Ranger GARRARD</td><td>10.25</td><td>22.0</td><td>225.5</td></tr><tr><td>57</td><td>SUPERVISORY LABOR (Ranger WORK</td><td>2.25</td><td>30.0</td><td>67.5</td></tr><tr><td>58</td><td>SUPERVISORY LABOR (Ranger WORK</td><td>13.25</td><td>30.0</td><td>397.5</td></tr><tr><td>59</td><td>SUPERVISORY LABOR (Ranger WORK</td><td>2.5</td><td>30.0</td><td>75.0</td></tr><tr><td>60</td><td>SUPERVISORY LABOR (Ranger WORK</td><td>8.25</td><td>30.0</td><td>247.5</td></tr><tr><td>61</td><td>SUPERVISORY LABOR (Ranger WORK</td><td>14.0</td><td>30.0</td><td>420.0</td></tr><tr><td>62</td><td>NON-SUPERVISORY LABOR (Ranger HOLLEY</td><td>3.0</td><td>22.0</td><td>66.0</td></tr><tr><td>63</td><td>NON-SUPERVISORY LABOR (Ranger MEREDITH</td><td>4.75</td><td>22.0</td><td>104.5</td></tr><tr><td>64</td><td>NON-SUPERVISORY LABOR (Ranger MEREDITH</td><td>4.0</td><td>22.0</td><td>88.0</td></tr><tr><td>65</td><td>NON-SUPERVISORY LABOR (Ranger MEREDITH</td><td>2.25</td><td>22.0</td><td>49.5</td></tr><tr><td>66</td><td>NON-SUPERVISORY LABOR (Ranger MEREDITH</td><td>4.75</td><td>22.0</td><td>104.5</td></tr><tr><td>67</td><td>NON-SUPERVISORY LABOR (Ranger MEREDITH</td><td>3.5</td><td>22.0</td><td>77.0</td></tr><tr><td>68</td><td>NON-SUPERVISORY LABOR (Ranger MEREDITH</td><td>10.5</td><td>22.0</td><td>231.0</td></tr><tr><td>69</td><td>NON-SUPERVISORY LABOR (Ranger MEREDITH</td><td>3.0</td><td>22.0</td><td>66.0</td></tr><tr><td>70</td><td>NON-SUPERVISORY LABOR (Ranger NEELY</td><td>9.75</td><td>22.0</td><td>214.5</td></tr><tr><td>71</td><td>NON-SUPERVISORY LABOR (Ranger NEELY</td><td>6.0</td><td>22.0</td><td>132.0</td></tr><tr><td>72</td><td>NON-SUPERVISORY LABOR (Ranger NEELY</td><td>7.25</td><td>22.0</td><td>159.5</td></tr><tr><td>73</td><td>NON-SUPERVISORY LABOR (Ranger NEELY</td><td>3.0</td><td>22.0</td><td>66.0</td></tr><tr><td>74</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>3.0</td><td>30.0</td><td>90.0</td></tr><tr><td>75</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>12.75</td><td>30.0</td><td>382.5</td></tr><tr><td>76</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>2.5</td><td>30.0</td><td>75.0</td></tr><tr><td>77</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>1.25</td><td>30.0</td><td>37.5</td></tr><tr><td>78</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>1.0</td><td>30.0</td><td>30.0</td></tr><tr><td>79</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>1.75</td><td>30.0</td><td>52.5</td></tr><tr><td>80</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>12.0</td><td>30.0</td><td>360.0</td></tr><tr><td>81</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>4.25</td><td>30.0</td><td>127.5</td></tr><tr><td>82</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>13.5</td><td>30.0</td><td>405.0</td></tr><tr><td>83</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>2.5</td><td>30.0</td><td>75.0</td></tr><tr><td>84</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>1.25</td><td>30.0</td><td>37.5</td></tr><tr><td>85</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>8.25</td><td>30.0</td><td>247.5</td></tr><tr><td>86</td><td>SUPERVISORY LABOR (Ranger TAYLOR</td><td>2.75</td><td>30.0</td><td>82.5</td></tr><tr><td>87</td><td>NON-SUPERVISORY LABOR (Ranger WINTER</td><td>13.0</td><td>22.0</td><td>286.0</td></tr><tr><td>88</td><td>NON-SUPERVISORY LABOR (Ranger WINTER</td><td>10.75</td><td>22.0</td><td>236.5</td></tr><tr><td>89</td><td>NON-SUPERVISORY LABOR (Ranger WINTER</td><td>7.5</td><td>22.0</td><td>165.0</td></tr><tr><td>90</td><td>NON-SUPERVISORY LABOR (Ranger CROCKER</td><td>9.75</td><td>22.0</td><td>214.5</td></tr><tr><td>91</td><td>NON-SUPERVISORY LABOR (Ranger CROCKER</td><td>1.5</td><td>22.0</td><td>33.0</td></tr><tr><td>92</td><td>NON-SUPERVISORY LABOR (Ranger KLINDT</td><td>13.5</td><td>22.0</td><td>297.0</td></tr><tr><td>93</td><td>NON-SUPERVISORY LABOR (Ranger KLINDT</td><td>11.5</td><td>22.0</td><td>253.0</td></tr><tr><td>94</td><td>NON-SUPERVISORY LABOR (Ranger KLINDT</td><td>15.25</td><td>22.0</td><td>335.5</td></tr><tr><td>95</td><td>NON-SUPERVISORY LABOR (Ranger NELSON</td><td>9.75</td><td>22.0</td><td>214.5</td></tr><tr><td>96</td><td>NON-SUPERVISORY LABOR (Ranger NELSON</td><td>13.25</td><td>22.0</td><td>291.5</td></tr><tr><td>97</td><td>NON-SUPERVISORY LABOR (Ranger SEYMOUR</td><td>11.25</td><td>22.0</td><td>247.5</td></tr><tr><td>98</td><td>NON-SUPERVISORY LABOR (Ranger SEYMOUR</td><td>8.5</td><td>22.0</td><td>187.0</td></tr><tr><td>99</td><td>NON-SUPERVISORY LABOR (Ranger WEST</td><td>&mdash;</td><td>22.0</td><td>181.5</td></tr><tr><td>100</td><td>NON-SUPERVISORY LABOR (Ranger SCHEIDER</td><td>11.25</td><td>22.0</td><td>247.5</td></tr><tr><td>101</td><td>NON-SUPERVISORY LABOR (Ranger BATTON</td><td>10.0</td><td>22.0</td><td>220.0</td></tr><tr><td>102</td><td>NON-SUPERVISORY LABOR (Ranger BATTON</td><td>9.75</td><td>22.0</td><td>214.5</td></tr><tr><td>103</td><td>NON-SUPERVISORY LABOR (Ranger ROWE</td><td>8.0</td><td>22.0</td><td>176.0</td></tr><tr><td>104</td><td>NON-SUPERVISORY LABOR (Ranger GRIFFIS</td><td>14.5</td><td>22.0</td><td>319.0</td></tr><tr><td>105</td><td>NON-SUPERVISORY LABOR (Ranger JOSEPH</td><td>10.25</td><td>22.0</td><td>225.5</td></tr><tr><td>106</td><td>NON-SUPERVISORY LABOR (Ranger NESS</td><td>12.25</td><td>22.0</td><td>269.5</td></tr><tr><td>107</td><td>NON-SUPERVISORY LABOR (Ranger JOHNSON</td><td>6.5</td><td>22.0</td><td>143.0</td></tr><tr><td>108</td><td>NON-SUPERVISORY LABOR (Ranger WALL</td><td>14.5</td><td>22.0</td><td>319.0</td></tr><tr><td>109</td><td>NON-SUPERVISORY LABOR (Ranger CLAYTON</td><td>12.0</td><td>22.0</td><td>264.0</td></tr><tr><td>110</td><td>NON-SUPERVISORY LABOR (Ranger CLAYTON</td><td>10.25</td><td>22.0</td><td>225.5</td></tr><tr><td>111</td><td>Dozer/Plow, Type-2 (ACS0T439)</td><td>7.0</td><td>108.0</td><td>756.0</td></tr><tr><td>112</td><td>Personnel Transportation (ACS11924)</td><td>10.25</td><td>17.0</td><td>174.25</td></tr><tr><td>113</td><td>Engine, Wildland, Type-6 (ACS31210)</td><td>6.0</td><td>48.0</td><td>288.0</td></tr><tr><td>114</td><td>Engine, Wildland, Type-6 (ACS31210)</td><td>11.25</td><td>48.0</td><td>540.0</td></tr><tr><td>115</td><td>Engine, Wildland, Type-6 (ACS31210)</td><td>5.5</td><td>48.0</td><td>264.0</td></tr><tr><td>116</td><td>Personnel Transportation (ACS31410)</td><td>16.5</td><td>17.0</td><td>280.5</td></tr><tr><td>117</td><td>Personnel Transportation (ACS11586)</td><td>11.25</td><td>17.0</td><td>191.25</td></tr><tr><td>118</td><td>Personnel Transportation (ACS28255)</td><td>3.0</td><td>17.0</td><td>51.0</td></tr><tr><td>119</td><td>Transport, Heavy Equip Type-3 (ACS27587)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>120</td><td>Transport, Heavy Equip Type-3 (ACS27587)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>121</td><td>Transport, Heavy Equip Type-3 (ACS27587)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>122</td><td>Transport, Heavy Equip Type-3 (ACS27587)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>123</td><td>Transport, Heavy Equip Type-3 (ACS27587)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>124</td><td>Transport, Heavy Equip Type-2 (ACS28822)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>125</td><td>Transport, Heavy Equip Type-2 (ACS28822)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>126</td><td>Transport, Heavy Equip Type-3 (ACS28842)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>127</td><td>Personnel Transportation (ACS29651)</td><td>9.75</td><td>17.0</td><td>165.75</td></tr><tr><td>128</td><td>Dozer/Plow, Type-2 (ACS0T771)</td><td>9.0</td><td>108.0</td><td>972.0</td></tr><tr><td>129</td><td>Dozer/Plow, Type-2 (ACS0T771)</td><td>9.0</td><td>108.0</td><td>972.0</td></tr><tr><td>130</td><td>Dozer/Plow, Type-2 (ACS0T771)</td><td>9.5</td><td>108.0</td><td>1026.0</td></tr><tr><td>131</td><td>Dozer/Plow, Type-2 (ACS0T771)</td><td>6.5</td><td>108.0</td><td>702.0</td></tr><tr><td>132</td><td>Dozer/Plow, Type-2 (ACS0T771)</td><td>9.5</td><td>108.0</td><td>1026.0</td></tr><tr><td>133</td><td>Transport, Heavy Equip Type-2 (ACS29294)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>134</td><td>Transport, Heavy Equip Type-2 (ACS29294)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>135</td><td>Engine, Wildland, Type-6 (ACS29283)</td><td>13.25</td><td>48.0</td><td>636.0</td></tr><tr><td>136</td><td>Engine, Wildland, Type-6 (ACS29283)</td><td>12.0</td><td>48.0</td><td>576.0</td></tr><tr><td>137</td><td>Engine, Wildland, Type-6 (ACS29283)</td><td>6.0</td><td>48.0</td><td>288.0</td></tr><tr><td>138</td><td>Engine, Wildland, Type-6 (ACS29283)</td><td>7.5</td><td>48.0</td><td>360.0</td></tr><tr><td>139</td><td>Dozer/Plow, Type-2 (ACST0889)</td><td>12.0</td><td>108.0</td><td>1296.0</td></tr><tr><td>140</td><td>Dozer/Plow, Type-2 (ACST0889)</td><td>6.0</td><td>108.0</td><td>648.0</td></tr><tr><td>141</td><td>Dozer/Plow, Type-2 (ACSM1506)</td><td>3.0</td><td>108.0</td><td>324.0</td></tr><tr><td>142</td><td>Dozer/Plow, Type-2 (ACSM1506)</td><td>6.75</td><td>108.0</td><td>729.0</td></tr><tr><td>143</td><td>Personnel Transportation (ACS29400)</td><td>2.25</td><td>17.0</td><td>38.25</td></tr><tr><td>144</td><td>Personnel Transportation (ACS29400)</td><td>13.25</td><td>17.0</td><td>225.25</td></tr><tr><td>145</td><td>Personnel Transportation (ACS29400)</td><td>2.5</td><td>17.0</td><td>42.5</td></tr><tr><td>146</td><td>Personnel Transportation (ACS29400)</td><td>8.25</td><td>17.0</td><td>140.25</td></tr><tr><td>147</td><td>Personnel Transportation (ACS29400)</td><td>14.0</td><td>17.0</td><td>238.0</td></tr><tr><td>148</td><td>Transport, Heavy Equip Type-2 (ACS31945)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>149</td><td>Transport, Heavy Equip Type-3 (ACS31230)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>150</td><td>Transport, Heavy Equip Type-3 (ACS31230)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>151</td><td>Transport, Heavy Equip Type-3 (ACS31230)</td><td>2.25</td><td>57.0</td><td>128.25</td></tr><tr><td>152</td><td>Transport, Heavy Equip Type-3 (ACS31230)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>153</td><td>ATV, 4-Wheel (ACS78871)</td><td>2.25</td><td>12.0</td><td>27.0</td></tr><tr><td>154</td><td>Transport, Heavy Equip Type-1 (ACS28313)</td><td>7.75</td><td>57.0</td><td>441.75</td></tr><tr><td>155</td><td>Dozer/Plow, Type-2 (ACS0T862)</td><td>13.0</td><td>108.0</td><td>1404.0</td></tr><tr><td>156</td><td>Dozer/Plow, Type-2 (ACS0T862)</td><td>6.5</td><td>108.0</td><td>702.0</td></tr><tr><td>157</td><td>Dozer/Plow, Type-3 (ACS0T564)</td><td>3.5</td><td>96.0</td><td>336.0</td></tr><tr><td>158</td><td>Dozer/Plow, Type-3 (ACS0T564)</td><td>&mdash;</td><td>96.0</td><td>864.0</td></tr><tr><td>159</td><td>Dozer/Plow, Type-3 (ACS0T564)</td><td>2.5</td><td>96.0</td><td>240.0</td></tr><tr><td>160</td><td>Dozer/Plow, Type-3 (ACS0T564)</td><td>7.0</td><td>96.0</td><td>672.0</td></tr><tr><td>161</td><td>Dozer/Plow, Type-2 (ACS0T478)</td><td>8.5</td><td>108.0</td><td>918.0</td></tr><tr><td>162</td><td>Dozer/Plow, Type-2 (ACS0T478)</td><td>6.0</td><td>108.0</td><td>648.0</td></tr><tr><td>163</td><td>Transport, Heavy Equip Type-1 (ACS11819)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>164</td><td>Fixed Wing Aircraft, Type-3 (N151FC)</td><td>5.0</td><td>110.0</td><td>550.0</td></tr><tr><td>165</td><td>Dozer/Plow, Type-2 (ACS0T768)</td><td>9.0</td><td>108.0</td><td>972.0</td></tr><tr><td>166</td><td>Dozer/Plow, Type-2 (ACS0T768)</td><td>8.5</td><td>108.0</td><td>918.0</td></tr><tr><td>167</td><td>Dozer/Plow, Type-2 (ACS0T768)</td><td>2.0</td><td>108.0</td><td>216.0</td></tr><tr><td>168</td><td>Dozer/Plow, Type-2 (ACS0T768)</td><td>9.5</td><td>108.0</td><td>1026.0</td></tr><tr><td>169</td><td>Engine, Wildland, Type-6 (ACS10522)</td><td>10.0</td><td>48.0</td><td>480.0</td></tr><tr><td>170</td><td>Engine, Wildland, Type-6 (ACS10522)</td><td>9.75</td><td>48.0</td><td>468.0</td></tr><tr><td>171</td><td>Dozer/Plow, Type-3 (ACS0T316)</td><td>6.0</td><td>96.0</td><td>576.0</td></tr><tr><td>172</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>4.75</td><td>48.0</td><td>228.0</td></tr><tr><td>173</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>4.0</td><td>48.0</td><td>192.0</td></tr><tr><td>174</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>13.25</td><td>48.0</td><td>636.0</td></tr><tr><td>175</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>2.25</td><td>48.0</td><td>108.0</td></tr><tr><td>176</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>4.75</td><td>48.0</td><td>228.0</td></tr><tr><td>177</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>3.5</td><td>48.0</td><td>168.0</td></tr><tr><td>178</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>9.0</td><td>48.0</td><td>432.0</td></tr><tr><td>179</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>6.5</td><td>48.0</td><td>312.0</td></tr><tr><td>180</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>10.5</td><td>48.0</td><td>504.0</td></tr><tr><td>181</td><td>Engine, Wildland, Type-6 (ACS10674)</td><td>3.0</td><td>48.0</td><td>144.0</td></tr><tr><td>182</td><td>Dozer/Plow, Type-2 (ACS0T284)</td><td>5.0</td><td>108.0</td><td>540.0</td></tr><tr><td>183</td><td>Dozer/Plow, Type-2 (ACS0T286)</td><td>7.0</td><td>108.0</td><td>756.0</td></tr><tr><td>184</td><td>Transport, Heavy Equip Type-2 (ACS12033)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>185</td><td>Transport, Heavy Equip Type-2 (ACS12033)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>186</td><td>Transport, Heavy Equip Type-3 (ACS11784)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>187</td><td>Transport, Heavy Equip Type-3 (ACS11784)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>188</td><td>Transport, Heavy Equip Type-3 (ACS28265)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>189</td><td>Transport, Heavy Equip Type-3 (ACS28265)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>190</td><td>Transport, Heavy Equip Type-3 (ACS28265)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>191</td><td>Transport, Heavy Equip Type-3 (ACS28265)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>192</td><td>Transport, Heavy Equip Type-3 (ACS28265)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>193</td><td>Transport, Heavy Equip Type-3 (ACS28265)</td><td>1.0</td><td>57.0</td><td>57.0</td></tr><tr><td>194</td><td>Engine, Wildland, Type-6 (ACS31209)</td><td>10.0</td><td>48.0</td><td>480.0</td></tr><tr><td>195</td><td>Engine, Wildland, Type-6 (ACS31209)</td><td>9.75</td><td>48.0</td><td>468.0</td></tr><tr><td>196</td><td>Personnel Transportation (ACS28142)</td><td>6.0</td><td>17.0</td><td>102.0</td></tr><tr><td>197</td><td>Personnel Transportation (ACS28142)</td><td>3.25</td><td>17.0</td><td>55.25</td></tr><tr><td>198</td><td>Personnel Transportation (ACS29241)</td><td>3.0</td><td>17.0</td><td>51.0</td></tr><tr><td>199</td><td>Personnel Transportation (ACS29241)</td><td>12.75</td><td>17.0</td><td>216.75</td></tr><tr><td>200</td><td>Personnel Transportation (ACS29241)</td><td>2.5</td><td>17.0</td><td>42.5</td></tr><tr><td>201</td><td>Personnel Transportation (ACS29241)</td><td>12.0</td><td>17.0</td><td>204.0</td></tr><tr><td>202</td><td>Personnel Transportation (ACS29241)</td><td>4.25</td><td>17.0</td><td>72.25</td></tr><tr><td>203</td><td>Personnel Transportation (ACS29241)</td><td>13.5</td><td>17.0</td><td>229.5</td></tr><tr><td>204</td><td>Personnel Transportation (ACS29241)</td><td>2.5</td><td>17.0</td><td>42.5</td></tr><tr><td>205</td><td>Personnel Transportation (ACS29241)</td><td>8.25</td><td>17.0</td><td>140.25</td></tr><tr><td>206</td><td>Personnel Transportation (ACS29241)</td><td>2.75</td><td>17.0</td><td>46.75</td></tr><tr><td>207</td><td>Trailer (ACS31558)</td><td>7.75</td><td>0.0</td><td>0.0</td></tr><tr><td>208</td><td>Personnel Transportation (ACS09549)</td><td>4.5</td><td>17.0</td><td>76.5</td></tr><tr><td>209</td><td>Transport, Heavy Equip Type-3 (ACS28808)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>210</td><td>Transport, Heavy Equip Type-3 (ACS28808)</td><td>3.0</td><td>57.0</td><td>171.0</td></tr><tr><td>211</td><td>Mechanic Truck w/Tools (ACS29214)</td><td>8.25</td><td>15.5</td><td>127.88</td></tr><tr><td>212</td><td>Engine, Wildland, Type-6 (ACS28888)</td><td>12.25</td><td>48.0</td><td>588.0</td></tr><tr><td>213</td><td>Engine, Wildland, Type-6 (ACS28888)</td><td>3.0</td><td>48.0</td><td>144.0</td></tr><tr><td>214</td><td>Personnel Transportation (ACS29618)</td><td>2.25</td><td>17.0</td><td>38.25</td></tr><tr><td>215</td><td>Personnel Transportation (ACS29007)</td><td>13.0</td><td>17.0</td><td>221.0</td></tr><tr><td>216</td><td>Personnel Transportation (ACS29007)</td><td>10.75</td><td>17.0</td><td>182.75</td></tr><tr><td>217</td><td>Personnel Transportation (ACS29007)</td><td>&mdash;</td><td>17.0</td><td>127.5</td></tr><tr><td>218</td><td>Transport, Heavy Equip Type-2 (ACS31288)</td><td>2.0</td><td>57.0</td><td>114.0</td></tr><tr><td>219</td><td>Transport, Heavy Equip Type-2 (ACS31288)</td><td>2.0</td><td>57.0</td><td>114.0</td></tr><tr><td>220</td><td>Dozer/Plow, Type-2 (ACS0T537)</td><td>13.0</td><td>108.0</td><td>1404.0</td></tr><tr><td>221</td><td>Dozer/Plow, Type-2 (ACS0T537)</td><td>6.5</td><td>108.0</td><td>702.0</td></tr><tr><td>222</td><td>Personnel Transportation (ACS28274)</td><td>11.5</td><td>17.0</td><td>195.5</td></tr><tr><td>223</td><td>Personnel Transportation (ACS28274)</td><td>15.25</td><td>17.0</td><td>259.25</td></tr><tr><td>224</td><td>Dozer/Plow, Type-1 (ACS0T829)</td><td>6.0</td><td>124.0</td><td>744.0</td></tr><tr><td>225</td><td>Dozer/Plow, Type-2 (ACS0T414)</td><td>3.5</td><td>108.0</td><td>378.0</td></tr><tr class=sum><td colspan=4>sum</td><td><b>59,403.38</b> &#10003; matches subtotal</td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip na">subtotal_plus_tax_equals_total n/a</span><span class="chip pass">line_items_sum_to_subtotal &#10003;</span><span class="chip pass">rows_multiply_out &#10003;</span><span class="chip na">date_parses n/a</span><span class="chip pass">currency_is_iso &#10003;</span><span class="chip na">due_date_after_issue_date n/a</span><span class="chip pass">vendor_differs_from_customer &#10003;</span><h2>Cost and latency</h2><p class=k>225.65s model time &middot; 7560 prompt + 21836 completion tokens &middot; $0.05686 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>7560</td><td>21836</td><td>225.65</td><td>$0.05686</td><td></td></tr></table><details><summary>Transcription (13622 chars) &mdash; the grounding source</summary><pre>--- page 1 ---
+Invoice: S16947
+Florida Department of
+Agriculture and Consumer Services
+Florida Forest Service
+INVOICE
+Section 589.04, F.S.
+Adam H. Putnam
+Commissioner
+Contact Name &amp; Phone
+No.:
+Jacksonville
+District
+(904) 266-8350
+Make check or money order payable
+to FDACS
+Remit payment and invoice to:
+Florida Department of
+Agriculture &amp; Consumer Services
+P.O. Box 6720
+Tallahassee, FL 32314-6720
+To : Brian Sparks
+1505 Wills Lane
+Bryceville, Fl 32009
+Date: Initial Bill Not Yet Sent
+Terms: Invoice due upon receipt
+Quantity
+(Hours)
+Description of Materials or Services
+Amount
+Total
+13.25 NON-SUPERVISORY LABOR (Ranger HEAD $22.00 $291.50
+5.50 NON-SUPERVISORY LABOR (Ranger HEAD $22.00 $121.00
+10.00 NON-SUPERVISORY LABOR (Ranger DAVIDSON $22.00 $220.00
+9.75 NON-SUPERVISORY LABOR (Ranger DAVIDSON $22.00 $214.50
+8.00 NON-SUPERVISORY LABOR (Ranger PALMER $22.00 $176.00
+4.75 NON-SUPERVISORY LABOR (Ranger WYATT $22.00 $104.50
+7.50 NON-SUPERVISORY LABOR (Ranger WYATT $22.00 $165.00
+2.25 NON-SUPERVISORY LABOR (Ranger WYATT $22.00 $49.50
+10.50 NON-SUPERVISORY LABOR (Ranger WYATT $22.00 $231.00
+7.00 NON-SUPERVISORY LABOR (Ranger WYATT $22.00 $154.00
+7.75 NON-SUPERVISORY LABOR (Ranger HOEPKER $22.00 $170.50
+6.00 NON-SUPERVISORY LABOR (Ranger HERNANDEZ $22.00 $132.00
+11.25 NON-SUPERVISORY LABOR (Ranger HERNANDEZ $22.00 $247.50
+3.00 NON-SUPERVISORY LABOR (Ranger HERNANDEZ $22.00 $66.00
+12.25 NON-SUPERVISORY LABOR (Ranger HERNANDEZ $22.00 $269.50
+3.00 NON-SUPERVISORY LABOR (Ranger HERNANDEZ $22.00 $66.00
+4.50 NON-SUPERVISORY LABOR (Ranger BLACKWELL $22.00 $99.00
+4.00 NON-SUPERVISORY LABOR (Ranger BLACKWELL $22.00 $88.00
+2.25 NON-SUPERVISORY LABOR (Ranger BLACKWELL $22.00 $49.50
+7.25 NON-SUPERVISORY LABOR (Ranger BLACKWELL $22.00 $159.50
+9.75 NON-SUPERVISORY LABOR (Ranger BLACKWELL $22.00 $214.50
+9.25 NON-SUPERVISORY LABOR (Ranger BLACKWELL $22.00 $203.50
+10.00 NON-SUPERVISORY LABOR (Ranger BLACKWELL $22.00 $220.00
+10.00 NON-SUPERVISORY LABOR (Ranger BLACKWELL $22.00 $220.00
+10.00 NON-SUPERVISORY LABOR (Ranger DORSA $22.00 $220.00
+9.75 NON-SUPERVISORY LABOR (Ranger DORSA $22.00 $214.50
+5.50 NON-SUPERVISORY LABOR (Ranger COOPER $22.00 $121.00
+9.75 NON-SUPERVISORY LABOR (Ranger VIGNOLA $22.00 $214.50
+3.50 NON-SUPERVISORY LABOR (Ranger VIGNOLA $22.00 $77.00
+1.50 NON-SUPERVISORY LABOR (Ranger VIGNOLA $22.00 $33.00
+12.00 NON-SUPERVISORY LABOR (Ranger DOWIE $22.00 $264.00
+10.25 NON-SUPERVISORY LABOR (Ranger DOWIE $22.00 $225.50
+2.75 NON-SUPERVISORY LABOR (Ranger WALLS $22.00 $60.50
+8.00 NON-SUPERVISORY LABOR (Ranger MASON $22.00 $176.00
+13.25 NON-SUPERVISORY LABOR (Ranger STEED $22.00 $291.50
+6.00 SUPERVISORY LABOR (Ranger HART $30.00 $180.00
+3.25 SUPERVISORY LABOR (Ranger HART $30.00 $97.50
+2.00 SUPERVISORY LABOR (Ranger HART $30.00 $60.00
+2.00 NON-SUPERVISORY LABOR (Ranger ORR $22.00 $44.00
+8/1/2017
+--- page 2 ---
+9.25 NON-SUPERVISORY LABOR (Ranger ORR $22.00 $203.50
+7.75 NON-SUPERVISORY LABOR (Ranger ORR $22.00 $170.50
+6.00 NON-SUPERVISORY LABOR (Ranger SMITH $22.00 $132.00
+7.50 NON-SUPERVISORY LABOR (Ranger SMITH $22.00 $165.00
+13.25 NON-SUPERVISORY LABOR (Ranger ABBOTT $22.00 $291.50
+13.50 NON-SUPERVISORY LABOR (Ranger ABBOTT $22.00 $297.00
+6.00 NON-SUPERVISORY LABOR (Ranger ABBOTT $22.00 $132.00
+10.25 NON-SUPERVISORY LABOR (Ranger ABBOTT $22.00 $225.50
+16.50 NON-SUPERVISORY LABOR (Ranger DREW $22.00 $363.00
+9.00 NON-SUPERVISORY LABOR (Ranger LEWIS $22.00 $198.00
+10.00 NON-SUPERVISORY LABOR (Ranger HAMLIN $22.00 $220.00
+9.75 NON-SUPERVISORY LABOR (Ranger HAMLIN $22.00 $214.50
+30.00 NON-SUPERVISORY LABOR (Ranger NORMAN $22.00 $660.00
+14.50 NON-SUPERVISORY LABOR (Ranger CHANAKI $22.00 $319.00
+7.25 NON-SUPERVISORY LABOR (Ranger SLUSKI $22.00 $159.50
+2.25 NON-SUPERVISORY LABOR (Ranger GARRARD $22.00 $49.50
+10.25 NON-SUPERVISORY LABOR (Ranger GARRARD $22.00 $225.50
+2.25 SUPERVISORY LABOR (Ranger WORK $30.00 $67.50
+13.25 SUPERVISORY LABOR (Ranger WORK $30.00 $397.50
+2.50 SUPERVISORY LABOR (Ranger WORK $30.00 $75.00
+8.25 SUPERVISORY LABOR (Ranger WORK $30.00 $247.50
+14.00 SUPERVISORY LABOR (Ranger WORK $30.00 $420.00
+3.00 NON-SUPERVISORY LABOR (Ranger HOLLEY $22.00 $66.00
+4.75 NON-SUPERVISORY LABOR (Ranger MEREDITH $22.00 $104.50
+4.00 NON-SUPERVISORY LABOR (Ranger MEREDITH $22.00 $88.00
+2.25 NON-SUPERVISORY LABOR (Ranger MEREDITH $22.00 $49.50
+4.75 NON-SUPERVISORY LABOR (Ranger MEREDITH $22.00 $104.50
+3.50 NON-SUPERVISORY LABOR (Ranger MEREDITH $22.00 $77.00
+10.50 NON-SUPERVISORY LABOR (Ranger MEREDITH $22.00 $231.00
+3.00 NON-SUPERVISORY LABOR (Ranger MEREDITH $22.00 $66.00
+9.75 NON-SUPERVISORY LABOR (Ranger NEELY $22.00 $214.50
+6.00 NON-SUPERVISORY LABOR (Ranger NEELY $22.00 $132.00
+7.25 NON-SUPERVISORY LABOR (Ranger NEELY $22.00 $159.50
+3.00 NON-SUPERVISORY LABOR (Ranger NEELY $22.00 $66.00
+3.00 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $90.00
+12.75 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $382.50
+2.50 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $75.00
+1.25 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $37.50
+1.00 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $30.00
+1.75 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $52.50
+12.00 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $360.00
+4.25 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $127.50
+13.50 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $405.00
+2.50 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $75.00
+1.25 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $37.50
+8.25 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $247.50
+2.75 SUPERVISORY LABOR (Ranger TAYLOR $30.00 $82.50
+13.00 NON-SUPERVISORY LABOR (Ranger WINTER $22.00 $286.00
+10.75 NON-SUPERVISORY LABOR (Ranger WINTER $22.00 $236.50
+7.50 NON-SUPERVISORY LABOR (Ranger WINTER $22.00 $165.00
+9.75 NON-SUPERVISORY LABOR (Ranger CROCKER $22.00 $214.50
+1.50 NON-SUPERVISORY LABOR (Ranger CROCKER $22.00 $33.00
+13.50 NON-SUPERVISORY LABOR (Ranger KLINDT $22.00 $297.00
+11.50 NON-SUPERVISORY LABOR (Ranger KLINDT $22.00 $253.00
+15.25 NON-SUPERVISORY LABOR (Ranger KLINDT $22.00 $335.50
+9.75 NON-SUPERVISORY LABOR (Ranger NELSON $22.00 $214.50
+13.25 NON-SUPERVISORY LABOR (Ranger NELSON $22.00 $291.50
+11.25 NON-SUPERVISORY LABOR (Ranger SEYMOUR $22.00 $247.50
+8.50 NON-SUPERVISORY LABOR (Ranger SEYMOUR $22.00 $187.00
+8/1/2017
+--- page 3 ---
+NON-SUPERVISORY LABOR (Ranger WEST $22.00 $181.50
+11.25 NON-SUPERVISORY LABOR (Ranger SCHEIDER $22.00 $247.50
+10.00 NON-SUPERVISORY LABOR (Ranger BATTON $22.00 $220.00
+9.75 NON-SUPERVISORY LABOR (Ranger BATTON $22.00 $214.50
+8.00 NON-SUPERVISORY LABOR (Ranger ROWE $22.00 $176.00
+14.50 NON-SUPERVISORY LABOR (Ranger GRIFFIS $22.00 $319.00
+10.25 NON-SUPERVISORY LABOR (Ranger JOSEPH $22.00 $225.50
+12.25 NON-SUPERVISORY LABOR (Ranger NESS $22.00 $269.50
+6.50 NON-SUPERVISORY LABOR (Ranger JOHNSON $22.00 $143.00
+14.50 NON-SUPERVISORY LABOR (Ranger WALL $22.00 $319.00
+12.00 NON-SUPERVISORY LABOR (Ranger CLAYTON $22.00 $264.00
+10.25 NON-SUPERVISORY LABOR (Ranger CLAYTON $22.00 $225.50
+7.00 Dozer/Plow, Type-2 (ACS0T439) $108.00 $756.00
+10.25 Personnel Transportation (ACS11924) $17.00 $174.25
+6.00 Engine, Wildland, Type-6 (ACS31210) $48.00 $288.00
+11.25 Engine, Wildland, Type-6 (ACS31210) $48.00 $540.00
+5.50 Engine, Wildland, Type-6 (ACS31210) $48.00 $264.00
+16.50 Personnel Transportation (ACS31410) $17.00 $280.50
+11.25 Personnel Transportation (ACS11586) $17.00 $191.25
+3.00 Personnel Transportation (ACS28255) $17.00 $51.00
+1.00 Transport, Heavy Equip Type-3 (ACS27587) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS27587) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS27587) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS27587) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS27587) $57.00 $57.00
+3.00 Transport, Heavy Equip Type-2 (ACS28822) $57.00 $171.00
+3.00 Transport, Heavy Equip Type-2 (ACS28822) $57.00 $171.00
+1.00 Transport, Heavy Equip Type-3 (ACS28842) $57.00 $57.00
+9.75 Personnel Transportation (ACS29651) $17.00 $165.75
+9.00 Dozer/Plow, Type-2 (ACS0T771) $108.00 $972.00
+9.00 Dozer/Plow, Type-2 (ACS0T771) $108.00 $972.00
+9.50 Dozer/Plow, Type-2 (ACS0T771) $108.00 $1,026.00
+6.50 Dozer/Plow, Type-2 (ACS0T771) $108.00 $702.00
+9.50 Dozer/Plow, Type-2 (ACS0T771) $108.00 $1,026.00
+3.00 Transport, Heavy Equip Type-2 (ACS29294) $57.00 $171.00
+3.00 Transport, Heavy Equip Type-2 (ACS29294) $57.00 $171.00
+13.25 Engine, Wildland, Type-6 (ACS29283) $48.00 $636.00
+12.00 Engine, Wildland, Type-6 (ACS29283) $48.00 $576.00
+6.00 Engine, Wildland, Type-6 (ACS29283) $48.00 $288.00
+7.50 Engine, Wildland, Type-6 (ACS29283) $48.00 $360.00
+12.00 Dozer/Plow, Type-2 (ACST0889) $108.00 $1,296.00
+6.00 Dozer/Plow, Type-2 (ACST0889) $108.00 $648.00
+3.00 Dozer/Plow, Type-2 (ACSM1506) $108.00 $324.00
+6.75 Dozer/Plow, Type-2 (ACSM1506) $108.00 $729.00
+2.25 Personnel Transportation (ACS29400) $17.00 $38.25
+13.25 Personnel Transportation (ACS29400) $17.00 $225.25
+2.50 Personnel Transportation (ACS29400) $17.00 $42.50
+8.25 Personnel Transportation (ACS29400) $17.00 $140.25
+14.00 Personnel Transportation (ACS29400) $17.00 $238.00
+3.00 Transport, Heavy Equip Type-2 (ACS31945) $57.00 $171.00
+1.00 Transport, Heavy Equip Type-3 (ACS31230) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS31230) $57.00 $57.00
+2.25 Transport, Heavy Equip Type-3 (ACS31230) $57.00 $128.25
+1.00 Transport, Heavy Equip Type-3 (ACS31230) $57.00 $57.00
+2.25 ATV, 4-Wheel (ACS78871) $12.00 $27.00
+7.75 Transport, Heavy Equip Type-1 (ACS28313) $57.00 $441.75
+13.00 Dozer/Plow, Type-2 (ACS0T862) $108.00 $1,404.00
+6.50 Dozer/Plow, Type-2 (ACS0T862) $108.00 $702.00
+3.50 Dozer/Plow, Type-3 (ACS0T564) $96.00 $336.00
+8/1/2017
+--- page 4 ---
+Dozer/Plow, Type-3 (ACS0T564) $96.00 $864.00
+2.50 Dozer/Plow, Type-3 (ACS0T564) $96.00 $240.00
+7.00 Dozer/Plow, Type-3 (ACS0T564) $96.00 $672.00
+8.50 Dozer/Plow, Type-2 (ACS0T478) $108.00 $918.00
+6.00 Dozer/Plow, Type-2 (ACS0T478) $108.00 $648.00
+3.00 Transport, Heavy Equip Type-1 (ACS11819) $57.00 $171.00
+5.00 Fixed Wing Aircraft, Type-3 (N151FC) $110.00 $550.00
+9.00 Dozer/Plow, Type-2 (ACS0T768) $108.00 $972.00
+8.50 Dozer/Plow, Type-2 (ACS0T768) $108.00 $918.00
+2.00 Dozer/Plow, Type-2 (ACS0T768) $108.00 $216.00
+9.50 Dozer/Plow, Type-2 (ACS0T768) $108.00 $1,026.00
+10.00 Engine, Wildland, Type-6 (ACS10522) $48.00 $480.00
+9.75 Engine, Wildland, Type-6 (ACS10522) $48.00 $468.00
+6.00 Dozer/Plow, Type-3 (ACS0T316) $96.00 $576.00
+4.75 Engine, Wildland, Type-6 (ACS10674) $48.00 $228.00
+4.00 Engine, Wildland, Type-6 (ACS10674) $48.00 $192.00
+13.25 Engine, Wildland, Type-6 (ACS10674) $48.00 $636.00
+2.25 Engine, Wildland, Type-6 (ACS10674) $48.00 $108.00
+4.75 Engine, Wildland, Type-6 (ACS10674) $48.00 $228.00
+3.50 Engine, Wildland, Type-6 (ACS10674) $48.00 $168.00
+9.00 Engine, Wildland, Type-6 (ACS10674) $48.00 $432.00
+6.50 Engine, Wildland, Type-6 (ACS10674) $48.00 $312.00
+10.50 Engine, Wildland, Type-6 (ACS10674) $48.00 $504.00
+3.00 Engine, Wildland, Type-6 (ACS10674) $48.00 $144.00
+5.00 Dozer/Plow, Type-2 (ACS0T284) $108.00 $540.00
+7.00 Dozer/Plow, Type-2 (ACS0T286) $108.00 $756.00
+3.00 Transport, Heavy Equip Type-2 (ACS12033) $57.00 $171.00
+3.00 Transport, Heavy Equip Type-2 (ACS12033) $57.00 $171.00
+1.00 Transport, Heavy Equip Type-3 (ACS11784) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS11784) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS28265) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS28265) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS28265) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS28265) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS28265) $57.00 $57.00
+1.00 Transport, Heavy Equip Type-3 (ACS28265) $57.00 $57.00
+10.00 Engine, Wildland, Type-6 (ACS31209) $48.00 $480.00
+9.75 Engine, Wildland, Type-6 (ACS31209) $48.00 $468.00
+6.00 Personnel Transportation (ACS28142) $17.00 $102.00
+3.25 Personnel Transportation (ACS28142) $17.00 $55.25
+3.00 Personnel Transportation (ACS29241) $17.00 $51.00
+12.75 Personnel Transportation (ACS29241) $17.00 $216.75
+2.50 Personnel Transportation (ACS29241) $17.00 $42.50
+12.00 Personnel Transportation (ACS29241) $17.00 $204.00
+4.25 Personnel Transportation (ACS29241) $17.00 $72.25
+13.50 Personnel Transportation (ACS29241) $17.00 $229.50
+2.50 Personnel Transportation (ACS29241) $17.00 $42.50
+8.25 Personnel Transportation (ACS29241) $17.00 $140.25
+2.75 Personnel Transportation (ACS29241) $17.00 $46.75
+7.75 Trailer (ACS31558) $0.00 $0.00
+4.50 Personnel Transportation (ACS09549) $17.00 $76.50
+3.00 Transport, Heavy Equip Type-3 (ACS28808) $57.00 $171.00
+3.00 Transport, Heavy Equip Type-3 (ACS28808) $57.00 $171.00
+8.25 Mechanic Truck w/Tools (ACS29214) $15.50 $127.88
+12.25 Engine, Wildland, Type-6 (ACS28888) $48.00 $588.00
+3.00 Engine, Wildland, Type-6 (ACS28888) $48.00 $144.00
+2.25 Personnel Transportation (ACS29618) $17.00 $38.25
+13.00 Personnel Transportation (ACS29007) $17.00 $221.00
+10.75 Personnel Transportation (ACS29007) $17.00 $182.75
+8/1/2017
+--- page 5 ---
+Personnel Transportation (ACS29007) $17.00 $127.50
+2.00 Transport, Heavy Equip Type-2 (ACS31288) $57.00 $114.00
+2.00 Transport, Heavy Equip Type-2 (ACS31288) $57.00 $114.00
+13.00 Dozer/Plow, Type-2 (ACS0T537) $108.00 $1,404.00
+6.50 Dozer/Plow, Type-2 (ACS0T537) $108.00 $702.00
+11.50 Personnel Transportation (ACS28274) $17.00 $195.50
+15.25 Personnel Transportation (ACS28274) $17.00 $259.25
+6.00 Dozer/Plow, Type-1 (ACS0T829) $124.00 $744.00
+3.50 Dozer/Plow, Type-2 (ACS0T414) $108.00 $378.00
+SUPPRESSION OF FIRE #2017-07-0202
+PLEASE RETURN A COPY OF THIS INVOICE WITH YOUR
+REMITTANCE
+Total $59,403.38
+State of Florida Agencies should journal transfer to:
+Account Code:
+Object
+Code:
+Org Code:
+42110902007
+EO: IT
+Object Code:
+001071
+Amt: $59403.38
+Department Use Only
+Do Not Write in This Space
+DACS-11385 04/10
+8/1/2017</pre></details>

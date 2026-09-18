@@ -1,0 +1,149 @@
+{
+  "doc_id": "wild_0017",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": "GBP",
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "7.9",
+    "payment_method": "Credit Card",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.6129,
+    "merchant_address": 0.8633,
+    "payment_method": 0.9071,
+    "date": 0.831,
+    "currency": 0.9191,
+    "subtotal": 0.9305,
+    "service_charge": 0.9305,
+    "discount": 0.9305,
+    "tax": 0.9305,
+    "total": 0.9579,
+    "line_items": 0.6841
+  },
+  "abstained": [
+    "merchant_name",
+    "date",
+    "line_items"
+  ],
+  "withheld": {
+    "merchant_name": "Hillside Nursery Centre",
+    "date": "2016-12-01",
+    "line_items": "[{\"description\": \"DESSERTS\", \"quantity\": \"1\", \"unit_price\": \"3.95\", \"line_total\": \"3.95\"}, {\"description\": \"REGULAR AMERICANO\", \"quantity\": \"1\", \"unit_price\": \"1.85\", \"line_total\": \"1.85\"}, {\"description\": \"SMALL TUB\", \"quantity\": \"1\", \"unit_price\": \"2.1\", \"line_total\": \"2.1\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.0,
+      "grounded": 0.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "Hillside\nWe've been growing since 1921!\nTELEPHONE - 02890863161\nwww.hillsidenurserycentre.com\nLike us on facebook\nSANTA ARRIVES SATURDAY 19TH NOVEMBER\nKIRSTY REG TERMINAL 6\nTHURSDAY 1 DECEMBER 2016 14:34 135861\n1 DESSERTS \u00a33.95\n1 REGULAR AMERICANO \u00a31.85\n1 SMALL TUB \u00a32.10\n3 No\nTOTAL \u00a37.90\nCREDIT CARD \u00a37.90\nRETURNS POLICY-28 Days to exchange goods\nor receive a credit note provided a\nvalid receipt is produced and goods are\nin their original condition. T&C Apply",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 29.189,
+    "wall_s": 0.0,
+    "cost_usd": 0.0032533,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2778,
+        "completion_tokens": 742,
+        "latency_s": 8.228017099958379,
+        "cost_usd": 0.0026884,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1618,
+        "completion_tokens": 537,
+        "latency_s": 20.96104139997624,
+        "cost_usd": 0.0005649,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

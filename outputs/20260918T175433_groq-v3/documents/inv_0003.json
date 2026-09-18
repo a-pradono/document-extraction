@@ -1,0 +1,179 @@
+{
+  "doc_id": "inv_0003",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": null,
+    "issue_date": null,
+    "due_date": null,
+    "vendor": {
+      "name": "Flock Safety",
+      "address": "PO Box 20756, Dallas, TX 75320-7576",
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Cobb County Finance Department",
+      "address": "100 Cherokee Street, Ste 410, Marietta, Georgia 30090-9610, United States",
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": "297500",
+    "tax": "0",
+    "total": "297500",
+    "purchase_order": "33286",
+    "line_items": []
+  },
+  "confidence": {
+    "invoice_number": 0.8568,
+    "purchase_order": 0.8455,
+    "vendor.name": 0.8429,
+    "vendor.address": 0.848,
+    "vendor.tax_id": 0.8568,
+    "customer.name": 0.8429,
+    "customer.address": 0.8429,
+    "customer.tax_id": 0.8568,
+    "issue_date": 0.7369,
+    "due_date": 0.7369,
+    "currency": 0.9941,
+    "subtotal": 0.9375,
+    "tax": 0.9375,
+    "total": 0.9375,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "issue_date",
+    "due_date",
+    "line_items"
+  ],
+  "withheld": {
+    "issue_date": "2020-01-09",
+    "due_date": "2020-02-08",
+    "line_items": "[{\"description\": \"Flock Safety - PO #33286\", \"quantity\": \"35\", \"unit_price\": \"8500\", \"line_total\": \"297500\"}, {\"description\": \"Sales tax\", \"quantity\": \"1\", \"unit_price\": \"0\", \"line_total\": \"0\"}]"
+  },
+  "signals": {
+    "invoice_number": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "purchase_order": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "vendor.name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "vendor.address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.9
+    },
+    "vendor.tax_id": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.tax_id": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "issue_date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "due_date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": true,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {},
+  "transcription": "--- page 1 ---\nFlock Safety\nInvoice\n\n+1 844-900-0732\nbilling@flocksafety.com\n\nInvoice number\nDate of issue Jan 9, 2020\nDate due Feb 8, 2020\n\nBill to\nCobb County Finance Department\nAccounts Payable Division\n100 Cherokee Street, Ste 410\nMarietta, Georgia 30090-9610\nUnited States\naccounts.payable@cobbcounty.org\n\n$297,500.00 due February 8, 2020\n\nAutomatic License Plate Reader with 5 Year Maintenance Warranty\n35 License Plate Readers\nPO #\n\nIf you have any questions about your installation, please reach out to your account manager.\n\nIf needed, you can find our W9 at https://bit.ly/2V41AkX and our COI at https://bit.ly/2VjEjk0\n\nDescription Qty Unit price Amount\nFlock Safety - PO #33286 35 $8,500.00 $297,500.00\nSales tax 1 $0.00 $0.00\n\nSubtotal $297,500.00\n\nPay $297,500.00 with ACH or wire transfer\nBank WELLS FARGO BANK, N.A.\nRouting\nAccount\nSWIFT WFBIUS6S\n\nPay $297,500.00 with mailed check\nPayable to Flock Safety\nMemo DF489FB4-0001\nMail to PO Box 20756\nDallas, TX 75320-7576\n\nPlease include a copy of this PDF.\nPayment should be sent via USPS.\n\nPay $297,500.00 with card\nVisit pay.stripe.com/invoice/invst_xt\nHBoOf0U4ARonFcdRTn4qjww8\n\nQuestions? Contact Flock Safety at billing@flocksafety.com or call at +1 844-900-0732. DF489FB4-0001 \u2013 Page 1 of 2\n--- page 2 ---\nAmount due $297,500.00\n\nPay $297,500.00 with ACH or wire transfer\nBank WELLS FARGO BANK, N.A.\nRouting\nAccount\nSWIFT WFBIUS6S\n\nPay $297,500.00 with mailed check\nPayable to Flock Safety\nMemo DF489FB4-0001\nMail to PO Box 20756\nDallas, TX 75320-7576\n\nPlease include a copy of this PDF.\nPayment should be sent via USPS.\n\nPay $297,500.00 with card\nVisit pay.stripe.com/invoice/invst_xt\nHBoOf0U4ARonFcdRTn4qjww8\n\nQuestions? Contact Flock Safety at billing@flocksafety.com or call at +1 844-900-0732. DF489FB4-0001 \u2013 Page 2 of 2",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 23.433,
+    "wall_s": 0.0,
+    "cost_usd": 0.0049587,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 4254,
+        "completion_tokens": 1473,
+        "latency_s": 23.433452699973714,
+        "cost_usd": 0.0049587,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199998, Requested 2991. Please try again in 21m31.248s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

@@ -1,0 +1,187 @@
+{
+  "doc_id": "inv_0009",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": "501",
+    "issue_date": null,
+    "due_date": null,
+    "vendor": {
+      "name": "Circuit Makers Inc.",
+      "address": "PO Box 886\nEden NC 27288",
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Plastic Revolutions",
+      "address": "PO Box 1616\nReidsville, NC 27323",
+      "tax_id": null
+    },
+    "currency": null,
+    "subtotal": null,
+    "tax": null,
+    "total": "8840.0",
+    "purchase_order": null,
+    "line_items": []
+  },
+  "confidence": {
+    "invoice_number": 0.9064,
+    "purchase_order": 0.8633,
+    "vendor.name": 0.9064,
+    "vendor.address": 0.9092,
+    "vendor.tax_id": 0.8633,
+    "customer.name": 0.9064,
+    "customer.address": 0.9064,
+    "customer.tax_id": 0.8633,
+    "issue_date": 0.8321,
+    "due_date": 0.8585,
+    "currency": 0.7113,
+    "subtotal": 0.9305,
+    "tax": 0.9305,
+    "total": 0.9579,
+    "line_items": 0.6841
+  },
+  "abstained": [
+    "issue_date",
+    "currency",
+    "line_items"
+  ],
+  "withheld": {
+    "issue_date": "2011-01-11",
+    "currency": "USD",
+    "line_items": "[{\"description\": \"Solar Installation Labor Tilden\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"3405.0\"}, {\"description\": \"Solar Installation Labor Keith - Business Owner\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"3240.0\"}, {\"description\": \"Solar Installation Labor Will - Business Owner\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"1620.0\"}, {\"description\": \"Solar Installation Materials and Bucket Truck\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"575.0\"}]"
+  },
+  "signals": {
+    "invoice_number": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "purchase_order": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "vendor.name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "vendor.address": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "vendor.tax_id": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "customer.address": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "customer.tax_id": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "issue_date": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "due_date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": null,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {},
+  "transcription": "--- page 1 ---\nCircuit Makers Inc.\nPO Box 886\nEden NC 27288\n\nCIRCUIT MAKERS\nELECTRICAL CONTRACTORS\n\nInvoice\n\nDATE INVOICE #\n1/11/2011 501\n\nBILL TO\nPlastic Revolutions\nPO Box 1616\nReidsville, NC 27323\n\nDESCRIPTION SERVICED AMOUNT\nSolar Installation Labor Tilden 1/11/2011 3,405.00\nSolar Installation Labor Keith - Business Owner 1/11/2011 3,240.00\nSolar Installation Labor Will - Business Owner 1/11/2011 1,620.00\nSolar Installation Materials and Bucket Truck 1/11/2011 575.00\n\nThank you for your business.\nTotal $8,840.00\n\n--- page 2 ---\nU.S. Department of Labor\nWage and Hour Division\nPAYROLL\n(For Contractor's Optional Use; See Instructions at www.dol.gov/whd/forms/wh347instr.htm)\nPersons are not required to respond to the collection of information unless it displays a currently valid OMB control number.\nWHD U.S. Wage and Hour Division\nRev. Dec. 2008\nOMB No.: 1215-0149\nExpires: 12/31/2011\n\nNAME OF CONTRACTOR OR SUBCONTRACTOR\nCircuitmakers Inc.\n\nADDRESS PO Box 886 Eden NC 27288\n\nPROJECT AND LOCATION\nPlastic Revolutions Array Reidsville NC\n\nPROJECT OR CONTRACT NO.\nJDC Manufacturing LLC\n\nPAYROLL NO. 1\nFOR WEEK ENDING 12/11/2010\n\n(1) NAME AND INDIVIDUAL IDENTIFYING NUMBER (e.g., LAST FOUR DIGITS OF SOCIAL SECURITY NUMBER) OF WORKER\nTilden Hagan ***-**-6616\n(2) NO. OF WITHHOLDING EXEMPTIONS 0\n(3) WORK CLASSIFICATION Electrician\n(4) DAY AND DATE\nOT OR ST\nO\nS\n12/10 12/11\n5.00 9.00\n(5) TOTAL HOURS 14.00\n(6) RATE OF PAY 30.00\n(7) GROSS AMOUNT EARNED $420.00\n(8) DEDUCTIONS\nFICA $0.00\nWITH-HOLDING TAX $0.00\nOTHER\nTOTAL DEDUCTIONS $0.00\n(9) NET WAGES PAID FOR WEEK $420.00\n\nPublic Burden Statement\nWhile completion of Form WH-347 is optional, it is mandatory for covered contractors and subcontractors performing work on Federally financed or assisted construction contracts to respond to the information collection contained in 29 C.F.R. \u00a7\u00a7 3.3, 5.5(a). The Copeland Act (40 U.S.C. \u00a7 3145) contractors and subcontractors performing work on Federally financed or assisted construction contracts to \"furnish weekly a statement with respect to the wages paid each employee during the preceding week.\" U.S. Department of Labor (DOL) regulations at 29 C.F.R. \u00a7 5.5(a)(3)(ii) require contractors to submit weekly a copy of all payrolls to the Federal agency contracting for or financing the construction project, accompanied by a signed \"Statement of Compliance\" indicating that the payrolls are correct and complete and that each laborer or mechanic has been paid not less than the proper Davis-Bacon prevailing wage rate for the work performed. DOL and federal contracting agencies receiving this information review the information to determine that employees have received legally required wages and fringe benefits.\nWe estimate that it will take an average of 55 minutes to complete this collection, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. If you have any comments regarding these estimates or any other aspect of this collection, including suggestions for reducing this burden, send them to the Administrator, Wage and Hour Division, U.S. Department of Labor, Room S3502, 200 Constitution Avenue, N.W. Washington, D.C. 20210\n(over)\n\n--- page 3 ---\nU.S. Department of Labor\nWage and Hour Division\nPAYROLL\n(For Contractor's Optional Use; See Instructions at www.dol.gov/whd/forms/wh347instr.htm)\nPersons are not required to respond to the collection of information unless it displays a currently valid OMB control number.\nWHD U.S. Wage and Hour Division\nRev. Dec. 2008\nOMB No.: 1215-0149\nExpires: 12/31/2011\n\nNAME OF CONTRACTOR OR SUBCONTRACTOR\nCircuitmakers Inc.\n\nADDRESS PO Box 886 Eden NC 27288\n\nPROJECT AND LOCATION\nPlastic Revolutions Array Reidsville NC\n\nPROJECT OR CONTRACT NO.\nJDC Manufacturing LLC\n\nPAYROLL NO. 2\nFOR WEEK ENDING 12/18/2010\n\n(1) NAME AND INDIVIDUAL IDENTIFYING NUMBER (e.g., LAST FOUR DIGITS OF SOCIAL SECURITY NUMBER) OF WORKER\nTilden Hagan ***-**-6616\n(2) NO. OF WITHHOLDING EXEMPTIONS 0\n(3) WORK CLASSIFICATION Electrician\n(4) DAY AND DATE\nOT OR ST\nO\nS\n12/12 12/18\n7.00 5.00\n(5) TOTAL HOURS 12.00\n(6) RATE OF PAY 30.00\n(7) GROSS AMOUNT EARNED $360.00\n(8) DEDUCTIONS\nFICA $0.00\nWITH-HOLDING TAX $0.00\nOTHER\nTOTAL DEDUCTIONS $0.00\n(9) NET WAGES PAID FOR WEEK $360.00\n\nPublic Burden Statement\nWhile completion of Form WH-347 is optional, it is mandatory for covered contractors and subcontractors performing work on Federally financed or assisted construction contracts to respond to the information collection contained in 29 C.F.R. \u00a7\u00a7 3.3, 5.5(a). The Copeland Act (40 U.S.C. \u00a7 3145) contractors and subcontractors performing work on Federally financed or assisted construction contracts to \"furnish weekly a statement with respect to the wages paid each employee during the preceding week.\" U.S. Department of Labor (DOL) regulations at 29 C.F.R. \u00a7 5.5(a)(3)(ii) require contractors to submit weekly a copy of all payrolls to the Federal agency contracting for or financing the construction project, accompanied by a signed \"Statement of Compliance\" indicating that the payrolls are correct and complete and that each laborer or mechanic has been paid not less than the proper Davis-Bacon prevailing wage rate for the work performed. DOL and federal contracting agencies receiving this information review the information to determine that employees have received legally required wages and fringe benefits.\nWe estimate that it will take an average of 55 minutes to complete this collection, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. If you have any comments regarding these estimates or any other aspect of this collection, including suggestions for reducing this burden, send them to the Administrator, Wage and Hour Division, U.S. Department of Labor, Room S3502, 200 Constitution Avenue, N.W. Washington, D.C. 20210\n(over)\n\n--- page 4 ---\nU.S. Department of Labor\nWage and Hour Division\nPAYROLL\n(For Contractor's Optional Use; See Instructions at www.dol.gov/whd/forms/wh347instr.htm)\nPersons are not required to respond to the collection of information unless it displays a currently valid OMB control number.\nWHD U.S. Wage and Hour Division\nRev. Dec. 2008\nOMB No.: 1215-0149\nExpires: 12/31/2011\n\nNAME OF CONTRACTOR OR SUBCONTRACTOR\nCircuitmakers Inc.\n\nADDRESS PO Box 886 Eden NC 27288\n\nPROJECT AND LOCATION\nPlastic Revolutions Array Reidsville NC\n\nPROJECT OR CONTRACT NO.\nJDC Manufacturing LLC\n\nPAYROLL NO. 6\nFOR WEEK ENDING 01/15/2011\n\n(1) NAME AND INDIVIDUAL IDENTIFYING NUMBER (e.g., LAST FOUR DIGITS OF SOCIAL SECURITY NUMBER) OF WORKER\nTilden Hagan ***-**-6616\n(2) NO. OF WITHHOLDING EXEMPTIONS 0\n(3) WORK CLASSIFICATION Electrician\n(4) DAY AND DATE\nOT OR ST\nO\nS\n1/9\n3.00\n(5) TOTAL HOURS 3.00\n(6) RATE OF PAY $0.00 30.00\n(7) GROSS AMOUNT EARNED $90.00\n(8) DEDUCTIONS\nFICA $0.00\nWITH-HOLDING TAX $0.00\nOTHER\nTOTAL DEDUCTIONS $0.00\n(9) NET WAGES PAID FOR WEEK $90.00\n\nPublic Burden Statement\nWhile completion of Form WH-347 is optional, it is mandatory for covered contractors and subcontractors performing work on Federally financed or assisted construction contracts to respond to the information collection contained in 29 C.F.R. \u00a7\u00a7 3.3, 5.5(a). The Copeland Act (40 U.S.C. \u00a7 3145) contractors and subcontractors performing work on Federally financed or assisted construction contracts to \"furnish weekly a statement with respect to the wages paid each employee during the preceding week.\" U.S. Department of Labor (DOL) regulations at 29 C.F.R. \u00a7 5.5(a)(3)(ii) require contractors to submit weekly a copy of all payrolls to the Federal agency contracting for or financing the construction project, accompanied by a signed \"Statement of Compliance\" indicating that the payrolls are correct and complete and that each laborer or mechanic has been paid not less than the proper Davis-Bacon prevailing wage rate for the work performed. DOL and federal contracting agencies receiving this information review the information to determine that employees have received legally required wages and fringe benefits.\nWe estimate that it will take an average of 55 minutes to complete this collection, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. If you have any comments regarding these estimates or any other aspect of this collection, including suggestions for reducing this burden, send them to the Administrator, Wage and Hour Division, U.S. Department of Labor, Room S3502, 200 Constitution Avenue, N.W. Washington, D.C. 20210\n(over)\n\n--- page 5 ---\nDate 1-9-2011\nI, Keith Elliott President\n(Name of Signatory Party) (Title)\ndo hereby state:\n(1) That I pay or supervise the payment of the persons employed by Circuitmakers Inc.\n(Contractor or Subcontractor)\non the Plastic Revolutions Array; that during the payroll period commencing on the\n10 day of 12 2010, and ending the 9 day of 1 2011\nall persons employed on said project have been paid the full weekly wages earned, that no rebates have\nbeen or will be made either directly or indirectly to or on behalf of said\nCircuitmakers Inc.\n(Contractor or Subcontractor) from the full\nweekly wages earned by any person and that no deductions have been made either directly or indirectly\nfrom the full wages earned by any person, other than permissible deductions as defined in Regulations, Part\n3 (29 C.F.R. Subtitle A), issued by the Secretary of Labor under the Copeland Act, as amended (48 Stat. 948,\n63 Start. 108, 72 Stat. 967; 76 Stat. 357; 40 U.S.C. \u00a7 3145), and described below:\n(b) WHERE FRINGE BENEFITS ARE PAID IN CASH\nEach laborer or mechanic listed in the above referenced payroll has been paid,\nas indicated on the payroll, an amount not less than the sum of the applicable\nbasic hourly wage rate plus the amount of the required fringe benefits as listed\nin the contract, except as noted in section 4(c) below.\n(c) EXCEPTIONS\nEXCEPTION (CRAFT) EXPLANATION\nREMARKS:\n(2) That any payrolls otherwise under this contract required to be submitted for the above period are\ncorrect and complete; that the wage rates for laborers or mechanics contained therein are not less than the\napplicable wage rates contained in any wage determination incorporated into the contract; that the\nclassifications set forth therein for each laborer or mechanic conform with the work he performed.\n(3) That any apprentices employed in the above period are duly registered in a bona fide\napprenticeship program registered with a State apprenticeship agency recognized by the Bureau of\nApprenticeship and Training, United States Department of Labor, or if no such recognized agency exists in a\nState, are registered with the Bureau of Apprenticeship and Training, United States Department of Labor.\n(4) That:\n(a) WHERE FRINGE BENEFITS ARE PAID TO APPROVED PLANS, FUNDS, OR PROGRAMS\nin addition to the basic hourly wage rates paid to each laborer or mechanic listed in\nthe above referenced payroll, payments of fringe benefits as listed in the contract\nhave been or will be made to appropriate programs for the benefit of such\nemployees, except as noted in section 4(c) below.\nNAME AND TITLE\nKeith Elliott President\nSIGNATURE\nKeith Elliott\nDigitally signed by Keith Elliott\nDN: cn=Keith Elliott, o=Circuitmakers Inc,\nemail=circuitmakers@embarqmail.com, c=US\nDate: 2011.01.13 08:42:03 -05'00'\nTHE WILLFUL FALSIFICATION OF ANY OF THE ABOVE STATEMENTS MAY SUBJECT THE CONTRACTOR OR\nSUBCONTRACTOR TO CIVIL OR CRIMINAL PROSECUTION. SEE SECTION 1001 OF TITLE 18 AND SECTION 231 OF TITLE\n31 OF THE UNITED STATES CODE.",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 85.262,
+    "wall_s": 0.0,
+    "cost_usd": 0.01415815,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 7487,
+        "completion_tokens": 4288,
+        "latency_s": 42.190153900010046,
+        "cost_usd": 0.0129661,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 4671,
+        "completion_tokens": 819,
+        "latency_s": 43.0713812999893,
+        "cost_usd": 0.00119205,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

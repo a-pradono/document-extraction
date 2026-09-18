@@ -1,0 +1,137 @@
+{
+  "doc_id": "cord_0018",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "1343000",
+    "service_charge": "80580",
+    "discount": null,
+    "tax": "142358",
+    "total": "1565938",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8985,
+    "merchant_address": 0.8985,
+    "payment_method": 0.8985,
+    "date": 0.8824,
+    "currency": 0.9701,
+    "subtotal": 0.9376,
+    "service_charge": 0.9376,
+    "discount": 0.8971,
+    "tax": 0.9376,
+    "total": 0.9376,
+    "line_items": 0.5032
+  },
+  "abstained": [
+    "line_items"
+  ],
+  "withheld": {
+    "line_items": "[{\"description\": \"UDANG RE\\n=*LARGE*==\", \"quantity\": \"2\", \"unit_price\": \"216000\", \"line_total\": \"432000\"}, {\"description\": \"AYM GR JUN NJAN\\n=*MEDIUM*=\", \"quantity\": \"1\", \"unit_price\": \"108000\", \"line_total\": \"108000\"}, {\"description\": \"SAPO TH SEAFOOD\\n=*LARGE*==\", \"quantity\": \"1\", \"unit_price\": \"172000\", \"line_total\": \"172000\"}, {\"description\": \"POCAI 3\\n=*MEDIUM*=\", \"quantity\": \"2\", \"unit_price\": \"111000\", \"line_total\": \"222000\"}, {\"description\": \"GURAME FILLET M\\nASAM MANIS\", \"quantity\": \"1\", \"unit_price\": \"163000\", \"line_total\": \"163000\"}, {\"description\": \"BIHUN GORENG JJ\\n=*LARGE*==\", \"quantity\": \"1\", \"unit_price\": \"116000\", \"line_total\": \"116000\"}, {\"description\": \"ICED TEA\", \"quantity\": \"5\", \"unit_price\": \"12000\", \"line_total\": \"60000\"}, {\"description\": \"NASI PUTIH\", \"quantity\": \"7\", \"unit_price\": \"10000\", \"line_total\": \"70000\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 0.25,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "2 UDANG RE 216,000 432,000\n2 =*LARGE*==\n1 AYM GR JUN NJAN 108,000\n=*MEDIUM*=\n1 SAPO TH SEAFOOD 172,000\n=*LARGE*==\n2 POCAI 3 111,000 222,000\n2 =*MEDIUM*=\n1 GURAME FILLET M 163,000\nASAM MANIS\n1 BIHUN GORENG JJ 116,000\n=*LARGE*==\n5 ICED TEA 12,000 60,000\n7 NASI PUTIH 10,000 70,000\nFOOD 1,213,000\nBEVERAGES 60,000\nOTHERS 70,000\nSUBTOTAL 1,343,000\nSERVICE CHARGE 80,580\nTax 10% 142,358\nDU 1,565,938",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 16.54,
+    "wall_s": 0.0,
+    "cost_usd": 0.004792,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2815,
+        "completion_tokens": 1579,
+        "latency_s": 16.53954570001224,
+        "cost_usd": 0.004792,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198729, Requested 4174. Please try again in 20m54.096s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

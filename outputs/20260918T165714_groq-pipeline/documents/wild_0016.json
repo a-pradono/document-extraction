@@ -1,0 +1,149 @@
+{
+  "doc_id": "wild_0016",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "Peter Chang",
+    "merchant_address": "2503 N. Harrison St Ste E, Arlington, VA 22207",
+    "date": null,
+    "currency": null,
+    "subtotal": "104.5",
+    "service_charge": null,
+    "discount": null,
+    "tax": "10.45",
+    "total": "114.95",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.9057,
+    "merchant_address": 0.9057,
+    "payment_method": 0.8633,
+    "date": 0.831,
+    "currency": 0.2706,
+    "subtotal": 0.9629,
+    "service_charge": 0.9305,
+    "discount": 0.9305,
+    "tax": 0.9629,
+    "total": 0.9629,
+    "line_items": 0.5325
+  },
+  "abstained": [
+    "date",
+    "currency",
+    "line_items"
+  ],
+  "withheld": {
+    "date": "2016-05-07",
+    "currency": "USD",
+    "line_items": "[{\"description\": \"21.Dry-Fried Eggplant\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"10.0\"}, {\"description\": \"5.Cilantro Fish Rolls\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"8.0\"}, {\"description\": \"11.Grandma`s Noodle\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"7.0\"}, {\"description\": \"24.Szechuan Bang Bang Shrimp\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"9.0\"}, {\"description\": \"Pinot Blanc(g)\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"8.0\"}, {\"description\": \"Tsing Tao\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"4.5\"}, {\"description\": \"Tsing Tao\", \"quantity\": \"2\", \"unit_price\": null, \"line_total\": \"9.0\"}, {\"description\": \"40c.Basil Chicken\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"15.0\"}, {\"description\": \"39c.Three Peppers Chicken\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"15.0\"}, {\"description\": \"35f.Fish in Hot Chili Oil\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"19.0\"}, {\"description\": \"Customer Design\\n>im a plad a\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": null}, {\"description\": \"Customer Design\\n>i have a small p\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": null}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.0,
+      "grounded": 0.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "line_items": {
+      "agreement": 0.9091,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": null,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "Peter Chang\n2503 N. Harrison St Ste E\nArlington, VA 22207\n(703)538-6688\nOrder#: 0182 Save#:5\nDineIn\nServer: Guests:4 T#: B7\n1 21.Dry-Fried Eggplant 10.00\n1 5.Cilantro Fish Rolls 8.00\n1 11.Grandma`s Noodle 7.00\n1 24.Szechuan Bang Bang Shrimp 9.00\n1 Pinot Blanc(g) 8.00\n1 Tsing Tao 4.50\n2 Tsing Tao 9.00\n1 40c.Basil Chicken 15.00\n1 39c.Three Peppers Chicken 15.00\n1 35f.Fish in Hot Chili Oil 19.00\n1 Customer Design\n>im a plad a\n1 Customer Design\n>i have a small p\nSubTotal: 104.50\nTax: 10.45\nAmount: 114.95\nEven Split (4): 28.74\n05/07/2016 07:48 PM\nThank You!",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 37.996,
+    "wall_s": 0.0,
+    "cost_usd": 0.0068923,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2780,
+        "completion_tokens": 1996,
+        "latency_s": 19.14948700001696,
+        "cost_usd": 0.005824,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1706,
+        "completion_tokens": 1354,
+        "latency_s": 18.846563900006004,
+        "cost_usd": 0.0010683,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

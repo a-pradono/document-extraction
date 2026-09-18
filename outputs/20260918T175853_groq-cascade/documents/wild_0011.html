@@ -1,0 +1,47 @@
+<!doctype html><meta charset="utf-8"><title>wild_0011</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>wild_0011</h1><p class=k>receipt &middot; status: ok &middot; threshold 0.75 &middot; 1 field(s) abstained</p><h2>Problems</h2><ul><li class=wrong>model_b_failed: RateLimitError: Error code: 429 - {&#x27;error&#x27;: {&#x27;message&#x27;: &#x27;Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199480, Requested 2326. Please try again in 13m0.192s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing&#x27;, &#x27;type&#x27;: &#x27;tokens&#x27;, &#x27;code&#x27;: &#x27;rate_limit_exceeded&#x27;}}</li></ul><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>merchant_name</td><td>ALDI STORES</td><td>0.84</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>merchant_address</td><td>CARINDALE</td><td>0.85</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>date</td><td>&mdash;</td><td>0.77</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.98"><td>currency</td><td>AUD</td><td>0.99</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>subtotal</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>service_charge</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>discount</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>tax</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>total</td><td>37.98</td><td>0.93</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>payment_method</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>46199 Baby Spinach 120g</td><td>&mdash;</td><td>&mdash;</td><td>1.79</td></tr><tr><td>2</td><td>35250 Ckr Brown Rice 100g</td><td>&mdash;</td><td>&mdash;</td><td>1.39</td></tr><tr><td>3</td><td>37427 Tortilla Wraps Wholemeal</td><td>&mdash;</td><td>&mdash;</td><td>1.99</td></tr><tr><td>4</td><td>42335 Beetroot Sliced 450g</td><td>&mdash;</td><td>&mdash;</td><td>0.85</td></tr><tr><td>5</td><td>4376 PremBakedBeansTom425g</td><td>&mdash;</td><td>&mdash;</td><td>0.89</td></tr><tr><td>6</td><td>5336 Fzr Mixed Berries 500g</td><td>&mdash;</td><td>&mdash;</td><td>4.49</td></tr><tr><td>7</td><td>36884 Ham 4x100g</td><td>&mdash;</td><td>&mdash;</td><td>5.0</td></tr><tr><td>8</td><td>1390 Froz Steam Veg 450g</td><td>&mdash;</td><td>&mdash;</td><td>1.99</td></tr><tr><td>9</td><td>41207 Rice Crackers 200g</td><td>&mdash;</td><td>&mdash;</td><td>1.65</td></tr><tr><td>10</td><td>76016 Pink Lady Apples per kg</td><td>0.53</td><td>4.99</td><td>2.64</td></tr><tr><td>11</td><td>76113 Bananas, Caven, 750g</td><td>&mdash;</td><td>&mdash;</td><td>2.49</td></tr><tr><td>12</td><td>Price Over $ 1.49</td><td>&mdash;</td><td>&mdash;</td><td>-1.0</td></tr><tr><td>13</td><td>76365 Grapes Thompson 1kg</td><td>&mdash;</td><td>&mdash;</td><td>1.75</td></tr><tr><td>14</td><td>9477 Nuts Raw OSN Var</td><td>&mdash;</td><td>&mdash;</td><td>3.99</td></tr><tr><td>15</td><td>43333 Dip Salsa 300g</td><td>&mdash;</td><td>&mdash;</td><td>1.49</td></tr><tr><td>16</td><td>3769 Mayonnaise Squeeze</td><td>&mdash;</td><td>&mdash;</td><td>2.59</td></tr><tr><td>17</td><td>76490 Mandarins H/M, 700g</td><td>&mdash;</td><td>&mdash;</td><td>4.99</td></tr><tr><td>18</td><td>Price Over $ 3.99</td><td>&mdash;</td><td>&mdash;</td><td>-1.0</td></tr><tr class=sum><td colspan=4>sum</td><td><b>37.98</b> &#10003; matches subtotal</td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip na">subtotal_plus_tax_equals_total n/a</span><span class="chip pass">line_items_sum_to_subtotal &#10003;</span><span class="chip pass">rows_multiply_out &#10003;</span><span class="chip na">date_parses n/a</span><span class="chip pass">currency_is_iso &#10003;</span><h2>Cost and latency</h2><p class=k>30.59s model time &middot; 5662 prompt + 4470 completion tokens &middot; $0.00910 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>cascade</td><td>gemini-3.5-flash-lite</td><td>2831</td><td>1529</td><td>4.86</td><td>$0.00089</td><td></td></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>2831</td><td>2941</td><td>25.73</td><td>$0.00820</td><td>cached</td></tr></table><details><summary>Transcription (693 chars) &mdash; the grounding source</summary><pre>ALDI STORES
+A LIMITED PARTNERSHIP
+CARINDALE
+ABN: 90 196 565 019
+
+TAX INVOICE
+$
+46199 Baby Spinach 120g 1.79 A
+35250 Ckr Brown Rice 100g 1.39 B
+
+37427 Tortilla Wraps Wholemeal 1.99 A
+42335 Beetroot Sliced 450g 0.85 A
+4376 PremBakedBeansTom425g 0.89 A
+5336 Fzr Mixed Berries 500g 4.49 A
+36884 Ham 4x100g 5.00 A
+
+1390 Froz Steam Veg 450g 1.99 A
+
+41207 Rice Crackers 200g 1.65 B
+76016 Pink Lady Apples per kg 2.64 A
+0.530 kg Net @ 4.99 $/kg
+76113 Bananas, Caven, 750g 2.49 A
+Price Over $ 1.49 -1.00 A
+76365 Grapes Thompson 1kg 1.75 A
+
+9477 Nuts Raw OSN Var 3.99 A
+43333 Dip Salsa 300g 1.49 A
+3769 Mayonnaise Squeeze 2.59 A
+
+76490 Mandarins H/M, 700g 4.99 A
+Price Over $ 3.99 -1.00 A
+Total = $37.98</pre></details>

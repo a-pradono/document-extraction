@@ -1,0 +1,160 @@
+{
+  "doc_id": "cord_0010",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "561800",
+    "service_charge": "42135",
+    "discount": null,
+    "tax": "60394",
+    "total": "664329",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.9494,
+    "merchant_address": 0.9494,
+    "payment_method": 0.9494,
+    "date": 0.9288,
+    "currency": 0.982,
+    "subtotal": 0.9638,
+    "service_charge": 0.9638,
+    "discount": 0.9392,
+    "tax": 0.8944,
+    "total": 0.9638,
+    "line_items": 0.4677
+  },
+  "abstained": [
+    "line_items"
+  ],
+  "withheld": {
+    "line_items": "[{\"description\": \"XLB Org Pork 10x\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"78000\"}, {\"description\": \"Sicito Babi\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"65000\"}, {\"description\": \"Hotplate Tahu\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"58000\"}, {\"description\": \"DF Fish Fillet Garlic\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"108000\"}, {\"description\": \"LM Pork Belly\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"88000\"}, {\"description\": \"Siew Mai\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"38800\"}, {\"description\": \"Kwan Yin Cup\", \"quantity\": \"5\", \"unit_price\": null, \"line_total\": \"50000\"}, {\"description\": \"Herbal Jelly\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"38000\"}, {\"description\": \"Onde-Onde\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"38000\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "currency": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "tax": {
+      "agreement": 0.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "1 XLB Org Pork 10x 78,000\n1 Sicito Babi 65,000\n1 Hotplate Tahu 58,000\n1 DF Fish Fillet Garlic 108,000\n1 LM Pork Belly 88,000\n1 Siew Mai 38,800\n5 Kwan Yin Cup 50,000\n1 Herbal Jelly 38,000\n1 Onde-Onde 38,000\nITEMS :13 561,800\nService charge 42,135\nPB1 60,394\nTotal......... 664,329",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 24.295,
+    "wall_s": 0.0,
+    "cost_usd": 0.00566265,
+    "stages": [
+      {
+        "stage": "cascade",
+        "model": "gemini-3.5-flash-lite",
+        "prompt_tokens": 2851,
+        "completion_tokens": 909,
+        "latency_s": 4.38156320003327,
+        "cost_usd": 0.0006487,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2851,
+        "completion_tokens": 1334,
+        "latency_s": 17.053732900007162,
+        "cost_usd": 0.0041903,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1651,
+        "completion_tokens": 960,
+        "latency_s": 2.8594426999916323,
+        "cost_usd": 0.00082365,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": {
+    "escalated": true,
+    "reasons": [
+      "low_confidence:line_items"
+    ]
+  },
+  "warnings": [],
+  "error": null
+}

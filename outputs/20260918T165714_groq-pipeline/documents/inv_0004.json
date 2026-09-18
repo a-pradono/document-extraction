@@ -1,0 +1,193 @@
+{
+  "doc_id": "inv_0004",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": "00011",
+    "issue_date": null,
+    "due_date": null,
+    "vendor": {
+      "name": "Williamsburg-James City County Public Schools",
+      "address": "117 Ironbound Road, Williamsburg, VA 23185",
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Tom Nash",
+      "address": null,
+      "tax_id": null
+    },
+    "currency": null,
+    "subtotal": "36.59",
+    "tax": "0",
+    "total": "36.59",
+    "purchase_order": null,
+    "line_items": []
+  },
+  "confidence": {
+    "invoice_number": 0.9064,
+    "purchase_order": 0.8633,
+    "vendor.name": 0.9064,
+    "vendor.address": 0.9064,
+    "vendor.tax_id": 0.8633,
+    "customer.name": 0.9064,
+    "customer.address": 0.6979,
+    "customer.tax_id": 0.8633,
+    "issue_date": 0.8321,
+    "due_date": 0.8321,
+    "currency": 0.7113,
+    "subtotal": 0.9523,
+    "tax": 0.9628,
+    "total": 0.9628,
+    "line_items": 0.3649
+  },
+  "abstained": [
+    "customer.address",
+    "issue_date",
+    "due_date",
+    "currency",
+    "line_items"
+  ],
+  "withheld": {
+    "customer.address": null,
+    "issue_date": "2020-02-14",
+    "due_date": "2020-03-15",
+    "currency": "USD",
+    "line_items": "[{\"description\": \"R. Showah Form Search\", \"quantity\": \"0.25\", \"unit_price\": \"32.21\", \"line_total\": \"8.05\"}, {\"description\": \"P. Hayworth Website Search, Form Search, FOIA Response Preparation\", \"quantity\": \"1.5\", \"unit_price\": \"32.34\", \"line_total\": \"48.51\"}]"
+  },
+  "signals": {
+    "invoice_number": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "purchase_order": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "vendor.name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "vendor.address": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "vendor.tax_id": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "customer.address": {
+      "agreement": 0.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.tax_id": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "issue_date": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "due_date": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "currency": {
+      "agreement": 0.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.0,
+      "self_report": 0.99
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": false,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": true,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {
+    "line_items_sum_to_subtotal": "rows sum to 56.56 != 36.59 - off by 19.97"
+  },
+  "transcription": "--- page 1 ---\nWilliamsburg-James City County Public Schools\nRecords Administration & Division FOIA Officer\n117 Ironbound Road, Williamsburg, VA 23185\n757-603-6517\nINVOICE 00011\n2-14-2020\nBILL TO\nTom Nash\nMuckrock.com\n87620-\n92544075@muckrock.com\nSHIP TO\nSame as recipient\nINSTRUCTIONS\nMake checks payable to \u201cWJCC Public Schools\u201d\nMail to Attention: Pamela S. Hayworth\nQUANTITY\nDESCRIPTION\nUNIT PRICE\nTOTAL\n.25 Hours\nR. Showah Form Search\n$32.21/hour\n$8.05\n1.5 Hours\nP. Hayworth Website Search, Form Search,\nFOIA Response Preparation\n$32.34/hour\n$48.51\nSUBTOTAL\n$36.59\nSALES TAX\n0\nSHIPPING & HANDLING\n0\nTOTAL DUE BY 3-15-2020\n$36.59\nThank you for your business!\n--- page 2 ---\nYOUR LOGO\nHERE\nPage 2",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 35.297,
+    "wall_s": 0.0,
+    "cost_usd": 0.0044034,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 4181,
+        "completion_tokens": 957,
+        "latency_s": 16.696565499994904,
+        "cost_usd": 0.0036468,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1916,
+        "completion_tokens": 782,
+        "latency_s": 18.599962100037374,
+        "cost_usd": 0.0007566,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

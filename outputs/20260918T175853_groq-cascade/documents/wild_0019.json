@@ -1,0 +1,155 @@
+{
+  "doc_id": "wild_0019",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "The Blue Ginger",
+    "merchant_address": "97 Tanjong Pagar Road",
+    "date": null,
+    "currency": "SGD",
+    "subtotal": "87.3",
+    "service_charge": "8.73",
+    "discount": null,
+    "tax": "6.72",
+    "total": "102.75",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8429,
+    "merchant_address": 0.8455,
+    "payment_method": 0.8792,
+    "date": 0.7369,
+    "currency": 0.9939,
+    "subtotal": 0.9375,
+    "service_charge": 0.9375,
+    "discount": 0.8894,
+    "tax": 0.9375,
+    "total": 0.9375,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "date",
+    "line_items"
+  ],
+  "withheld": {
+    "date": "2012-11-15",
+    "line_items": "[{\"description\": \"Ayam Panggang\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"12.2\"}, {\"description\": \"Beef Rendang\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"12.9\"}, {\"description\": \"Evian\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"3.5\"}, {\"description\": \"Fish Head\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"28.3\"}, {\"description\": \"Hoegaarden Beer\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"11.0\"}, {\"description\": \"Kueh Pie Tee\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"7.0\"}, {\"description\": \"Nonya Roll\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"8.0\"}, {\"description\": \"Misc Charges\", \"quantity\": \"2\", \"unit_price\": null, \"line_total\": \"4.4\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.5
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 1.0
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "The Blue Ginger\n97 Tanjong Pagar Road\nGST REG NO: 20-0201085-W\n\nTABLE:10\nPax:2 OP:\nPOS Title: POS:POS002\nRcpt#:A12000011205 15/11/2012 22:23\n1 Ayam Panggang $12.20\n1 Beef Rendang $12.90\n1 Evian $3.50\n1 Fish Head $28.30\n1 Hoegaarden Beer $11.00\n1 Kueh Pie Tee $7.00\n1 Nonya Roll $8.00\n2 Misc Charges $4.40\nSUBTOTAL $87.30\nSV CHG 10% $8.73\nGST 7% $6.72\nTOTAL $102.75\n$102.75\nSignature:\nReservation : 6222-3928 Fax : 6222-38\nCatering Enquiry : 6224-4028 or 975586\nhttp://www.theblueginger.com",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 20.434,
+    "wall_s": 0.0,
+    "cost_usd": 0.0048302,
+    "stages": [
+      {
+        "stage": "cascade",
+        "model": "gemini-3.5-flash-lite",
+        "prompt_tokens": 2815,
+        "completion_tokens": 973,
+        "latency_s": 4.0126214000047185,
+        "cost_usd": 0.0006707,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2815,
+        "completion_tokens": 1326,
+        "latency_s": 16.42186160001438,
+        "cost_usd": 0.0041595,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": {
+    "escalated": true,
+    "reasons": [
+      "low_confidence:date",
+      "low_confidence:line_items"
+    ]
+  },
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199426, Requested 2230. Please try again in 11m55.392s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

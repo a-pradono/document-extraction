@@ -1,0 +1,44 @@
+<!doctype html><meta charset="utf-8"><title>wild_0016</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>wild_0016</h1><p class=k>receipt &middot; status: ok &middot; threshold 0.75 &middot; 2 field(s) abstained</p><h2>Problems</h2><ul><li class=wrong>model_b_failed: RateLimitError: Error code: 429 - {&#x27;error&#x27;: {&#x27;message&#x27;: &#x27;Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199443, Requested 1783. Please try again in 8m49.631999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing&#x27;, &#x27;type&#x27;: &#x27;tokens&#x27;, &#x27;code&#x27;: &#x27;rate_limit_exceeded&#x27;}}</li></ul><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>merchant_name</td><td>Peter Chang</td><td>0.84</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>merchant_address</td><td>2503 N. Harrison St Ste E, Arlington, VA 22207</td><td>0.84</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>date</td><td><span class=abst>2016-05-07</span></td><td>0.74</td><td class=abst>abstained</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 0.99"><td>currency</td><td>&mdash;</td><td>0.99</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>subtotal</td><td>104.5</td><td>0.94</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>service_charge</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>discount</td><td>&mdash;</td><td>0.89</td><td class=absent>absent</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>tax</td><td>10.45</td><td>0.94</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>total</td><td>114.95</td><td>0.94</td><td class=ok>ok</td></tr><tr title="agreement: 0.50 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>payment_method</td><td>&mdash;</td><td>0.86</td><td class=absent>absent</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>21.Dry-Fried Eggplant</td><td>1</td><td>10.0</td><td>10.0</td></tr><tr><td>2</td><td>5.Cilantro Fish Rolls</td><td>1</td><td>8.0</td><td>8.0</td></tr><tr><td>3</td><td>11.Grandma&#x27;s Noodle</td><td>1</td><td>7.0</td><td>7.0</td></tr><tr><td>4</td><td>24.Szechuan Bang Bang Shrimp</td><td>1</td><td>9.0</td><td>9.0</td></tr><tr><td>5</td><td>Pinot Blanc(g)</td><td>1</td><td>8.0</td><td>8.0</td></tr><tr><td>6</td><td>Tsing Tao</td><td>1</td><td>4.5</td><td>4.5</td></tr><tr><td>7</td><td>Tsing Tao</td><td>2</td><td>&mdash;</td><td>9.0</td></tr><tr><td>8</td><td>40c.Basil Chicken</td><td>1</td><td>15.0</td><td>15.0</td></tr><tr><td>9</td><td>39c.Three Peppers Chicken</td><td>1</td><td>15.0</td><td>15.0</td></tr><tr><td>10</td><td>35f.Fish in Hot Chili Oil</td><td>1</td><td>19.0</td><td>19.0</td></tr><tr><td>11</td><td>Customer Design
+&gt;im a plad a</td><td>1</td><td>&mdash;</td><td>&mdash;</td></tr><tr><td>12</td><td>Customer Design
+&gt;i have a small p</td><td>1</td><td>&mdash;</td><td>&mdash;</td></tr><tr class=sum><td colspan=4>sum</td><td><b>&mdash;</b> <span class=k>(no subtotal to check against)</span></td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip pass">subtotal_plus_tax_equals_total &#10003;</span><span class="chip na">line_items_sum_to_subtotal n/a</span><span class="chip pass">rows_multiply_out &#10003;</span><span class="chip pass">date_parses &#10003;</span><span class="chip na">currency_is_iso n/a</span><h2>Cost and latency</h2><p class=k>23.18s model time &middot; 5706 prompt + 3304 completion tokens &middot; $0.00682 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>cascade</td><td>gemini-3.5-flash-lite</td><td>2853</td><td>1227</td><td>4.18</td><td>$0.00078</td><td></td></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>2853</td><td>2077</td><td>19.00</td><td>$0.00605</td><td>cached</td></tr></table><details><summary>Transcription (558 chars) &mdash; the grounding source</summary><pre>Peter Chang
+2503 N. Harrison St Ste E
+Arlington, VA 22207
+(703)538-6688
+Order#: 0182 Save#:5
+DineIn
+Server: Guests:4 T#: B7
+1 21.Dry-Fried Eggplant 10.00
+1 5.Cilantro Fish Rolls 8.00
+1 11.Grandma&#x27;s Noodle 7.00
+1 24.Szechuan Bang Bang Shrimp 9.00
+1 Pinot Blanc(g) 8.00
+1 Tsing Tao 4.50
+2 Tsing Tao 9.00
+1 40c.Basil Chicken 15.00
+1 39c.Three Peppers Chicken 15.00
+1 35f.Fish in Hot Chili Oil 19.00
+1 Customer Design
+&gt;im a plad a
+1 Customer Design
+&gt;i have a small p
+SubTotal: 104.50
+Tax: 10.45
+Amount: 114.95
+Even Split (4): 28.74
+05/07/2016 07:48 PM
+Thank You!</pre></details>

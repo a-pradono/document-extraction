@@ -1,0 +1,155 @@
+{
+  "doc_id": "wild_0022",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "AL MANAMA HYPERMARKET",
+    "merchant_address": "TIMES SQUARE CENTER - DUBAI",
+    "date": null,
+    "currency": "AED",
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "278.88",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8434,
+    "merchant_address": 0.8439,
+    "payment_method": 0.8985,
+    "date": 0.74,
+    "currency": 0.9941,
+    "subtotal": 0.8971,
+    "service_charge": 0.8971,
+    "discount": 0.8971,
+    "tax": 0.8971,
+    "total": 0.9305,
+    "line_items": 0.545
+  },
+  "abstained": [
+    "date",
+    "line_items"
+  ],
+  "withheld": {
+    "date": "2014-01-10",
+    "line_items": "[{\"description\": \"COURGETTES GREEN ESP\", \"quantity\": \"0.48\", \"unit_price\": null, \"line_total\": \"7.92\"}, {\"description\": \"BROCCOLI SPAIN\", \"quantity\": \"0.27\", \"unit_price\": null, \"line_total\": \"3.65\"}, {\"description\": \"CARROT LOOSE AUST\", \"quantity\": \"0.38\", \"unit_price\": null, \"line_total\": \"1.43\"}, {\"description\": \"LETTUCE - ICEBERG -\", \"quantity\": \"0.92\", \"unit_price\": null, \"line_total\": \"12.42\"}, {\"description\": \"LYCHEE\", \"quantity\": \"0.3\", \"unit_price\": null, \"line_total\": \"3.29\"}, {\"description\": \"PK MUSHROOM-FINE/SMALL\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"5.5\"}, {\"description\": \"GINGER CHINA\", \"quantity\": \"0.21\", \"unit_price\": null, \"line_total\": \"2.84\"}, {\"description\": \"ONION BROWN SPAIN\", \"quantity\": \"0.43\", \"unit_price\": null, \"line_total\": \"2.37\"}, {\"description\": \"POTATO SAUDI\", \"quantity\": \"0.89\", \"unit_price\": null, \"line_total\": \"4.41\"}, {\"description\": \"KIWIFRUIT ITALY\", \"quantity\": \"0.64\", \"unit_price\": null, \"line_total\": \"8.0\"}, {\"description\": \"PC NORLANDER BREAD\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"6.5\"}, {\"description\": \"PC YOPLAIT F/F YOGHURTS\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"1.0\"}, {\"description\": \"PK BANANA PHILIPPINES D\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"3.75\"}, {\"description\": \"BT AL RAWABI LOW FAT MI\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"10.25\"}, {\"description\": \"PK ALMARAI UHT LOWFAT M\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"3.75\"}, {\"description\": \"TN ALALALI WHITE MEAT T\", \"quantity\": \"7\", \"unit_price\": null, \"line_total\": \"31.5\"}, {\"description\": \"BT FIGARO STUFD GREEN O\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"7.0\"}, {\"description\": \"PC PATAKS TANDOORI PAST\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"13.0\"}, {\"description\": \"PC FRICO EDAM CHEESE 15\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"10.5\"}, {\"description\": \"PK SMOKED SALMON NORWAY\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"15.9\"}, {\"description\": \"PK KELLOGGS CORNFLAKES\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"26.5\"}, {\"description\": \"PC NATURE VALLEY S/F V/\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"14.5\"}, {\"description\": \"PC NATURE VALLEY S/FOAT\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"14.5\"}, {\"description\": \"AUS LAMB RACK\", \"quantity\": \"0.47\", \"unit_price\": null, \"line_total\": \"29.43\"}, {\"description\": \"AUS CUBE ROLL STEAK\", \"quantity\": \"0.39\", \"unit_price\": null, \"line_total\": \"27.24\"}, {\"description\": \"BT AL AIN MINERAL WATER\", \"quantity\": \"2\", \"unit_price\": null, \"line_total\": \"7.0\"}, {\"description\": \"CUCUMBER PREPACKED\", \"quantity\": \"0.31\", \"unit_price\": null, \"line_total\": \"4.73\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "AL MANAMA HYPERMARKET\nTIMES SQUARE CENTER - DUBAI\nPhone:04-3466046\n********************************\nDate: 10/01/14 14:03 Slip: 01D0069729\nStaff: DANNY ROSE Trans: 74420\n--------------------------------\nQty. Description Amount\n--------------------------------\n0.48 COURGETTES GREEN ESP 7.92\n0.27 BROCCOLI SPAIN 3.65\n0.38 CARROT LOOSE AUST 1.43\n0.92 LETTUCE - ICEBERG - 12.42\n0.3 LYCHEE 3.29\n1 PK MUSHROOM-FINE/SMALL 5.50\n0.21 GINGER CHINA 2.84\n0.43 ONION BROWN SPAIN 2.37\n0.89 POTATO SAUDI 4.41\n0.64 KIWIFRUIT ITALY 8.00\n1 PC NORLANDER BREAD 6.50\n1 PC YOPLAIT F/F YOGHURTS 1.00\n1 PK BANANA PHILIPPINES D 3.75\n1 BT AL RAWABI LOW FAT MI 10.25\n1 PK ALMARAI UHT LOWFAT M 3.75\n7 TN ALALALI WHITE MEAT T 31.50\n1 BT FIGARO STUFD GREEN O 7.00\n1 PC PATAKS TANDOORI PAST 13.00\n1 PC FRICO EDAM CHEESE 15 10.50\n1 PK SMOKED SALMON NORWAY 15.90\n1 PK KELLOGGS CORNFLAKES 26.50\n1 PC NATURE VALLEY S/F V/ 14.50\n1 PC NATURE VALLEY S/FOAT 14.50\n0.47 AUS LAMB RACK 29.43\n0.39 AUS CUBE ROLL STEAK 27.24\n2 BT AL AIN MINERAL WATER 7.00\n0.31 CUCUMBER PREPACKED 4.73\n--------------------------------\nTotal AED 278.88\n-278.88\n--------------------------------\nProduce Bill For Exchange Within 24 Hrs\nNo Cash Refund",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 28.272,
+    "wall_s": 0.0,
+    "cost_usd": 0.0075485,
+    "stages": [
+      {
+        "stage": "cascade",
+        "model": "gemini-3.5-flash-lite",
+        "prompt_tokens": 2829,
+        "completion_tokens": 2236,
+        "latency_s": 6.162515300035011,
+        "cost_usd": 0.0011773,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2829,
+        "completion_tokens": 2209,
+        "latency_s": 22.10981360002188,
+        "cost_usd": 0.0063712,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": {
+    "escalated": true,
+    "reasons": [
+      "low_confidence:date",
+      "low_confidence:line_items"
+    ]
+  },
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199411, Requested 2024. Please try again in 10m19.92s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

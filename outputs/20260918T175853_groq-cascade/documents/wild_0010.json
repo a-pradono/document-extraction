@@ -1,0 +1,156 @@
+{
+  "doc_id": "wild_0010",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "EL GRECO",
+    "merchant_address": "Rue Chair et Pains, 5 Grand place, 36 1000 Bruxelles",
+    "date": "2016-06-23",
+    "currency": null,
+    "subtotal": "38.87",
+    "service_charge": null,
+    "discount": null,
+    "tax": "5.63",
+    "total": "44.5",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8434,
+    "merchant_address": 0.8439,
+    "payment_method": 0.8568,
+    "date": 0.7733,
+    "currency": 0.9874,
+    "subtotal": 0.9228,
+    "service_charge": 0.8894,
+    "discount": 0.8894,
+    "tax": 0.9376,
+    "total": 0.9376,
+    "line_items": 0.2763
+  },
+  "abstained": [
+    "line_items"
+  ],
+  "withheld": {
+    "line_items": "[{\"description\": \"Coca cola light\", \"quantity\": \"4\", \"unit_price\": \"3.25\", \"line_total\": \"13.0\"}, {\"description\": \"Filet de poitrine de pou\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"14.5\"}, {\"description\": \"Brochette d'agneau\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"17.0\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 0.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.0,
+      "self_report": 0.98
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": false,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": null
+  },
+  "validation_notes": {
+    "line_items_sum_to_subtotal": "rows sum to 44.50 != 38.87 - off by 5.63"
+  },
+  "transcription": "EL GRECO\nRue Chair et Pains, 5 Grand place, 36\n1000 Bruxelles\nTel: 02/511.89.82 Fax: 02/424.31.97\nouvert 7 jours sur 7\nMaison fond\u00e9e en 1973\nInfo@resto.be www.deltaweb.be\njeudi 23 juin 2016 14:42\nTABLE 6 Couvert(s) 2\n4 Coca cola light 3.25 13.00\n1 Filet de poitrine de pou 14.50\n1 Brochette d'agneau 17.00\nTOTAL 44.50\nHTVA TAXE TVAC\nTVA 21.00% BOISSONS 10.74 2.26 13.00\nTVA 12.00% CUISINE 28.12 3.38 31.50\nTOTAL 38.87 5.63 44.50\nMerci de votre visite\nFacture simplifi\u00e9e (Tbl) No. : 67545",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 13.562,
+    "wall_s": 0.0,
+    "cost_usd": 0.003818,
+    "stages": [
+      {
+        "stage": "cascade",
+        "model": "gemini-3.5-flash-lite",
+        "prompt_tokens": 2853,
+        "completion_tokens": 892,
+        "latency_s": 3.514676699996926,
+        "cost_usd": 0.0006421,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2853,
+        "completion_tokens": 928,
+        "latency_s": 10.047674900037237,
+        "cost_usd": 0.0031759,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": {
+    "escalated": true,
+    "reasons": [
+      "arithmetic_failed",
+      "ungrounded:date",
+      "low_confidence:line_items"
+    ]
+  },
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199492, Requested 1761. Please try again in 9m1.295999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

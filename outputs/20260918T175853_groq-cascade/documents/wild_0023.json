@@ -1,0 +1,153 @@
+{
+  "doc_id": "wild_0023",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "TRADER JOE'S",
+    "merchant_address": "2025 Bond Street, Charlottesville VA 22901",
+    "date": null,
+    "currency": "USD",
+    "subtotal": "96.62",
+    "service_charge": null,
+    "discount": null,
+    "tax": "3.2",
+    "total": "99.82",
+    "payment_method": "DEBIT",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8434,
+    "merchant_address": 0.8439,
+    "payment_method": 0.8439,
+    "date": 0.7719,
+    "currency": 0.9941,
+    "subtotal": 0.9376,
+    "service_charge": 0.8894,
+    "discount": 0.8894,
+    "tax": 0.8444,
+    "total": 0.9376,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "line_items"
+  ],
+  "withheld": {
+    "line_items": "[{\"description\": \"BALLAST POINT BREWING GRAPEFRU\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"13.99\"}, {\"description\": \"NUT ALMOND GOCHUJANG\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"4.99\"}, {\"description\": \"SPARKLING SPRING WATER CRAN CL\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"0.79\"}, {\"description\": \"ORGANIC CARROT JUICE PTS\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"2.99\"}, {\"description\": \"CHOCOLATE CHIP COOKIES\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"3.99\"}, {\"description\": \"BALLAST POINT BREWING SCULPIN\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"13.99\"}, {\"description\": \"CHOC DARK COVERED GRAHAM W SEA\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"3.99\"}, {\"description\": \"A-PEACHES YELLOW 2 LB EASTERN\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"3.49\"}, {\"description\": \"SPARKLING SPRING WATER CRAN CL\", \"quantity\": \"4\", \"unit_price\": \"0.79\", \"line_total\": \"3.16\"}, {\"description\": \"MANGO STICKY RICE SPRING ROLLS\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"2.99\"}, {\"description\": \"BANANAS\", \"quantity\": \"6\", \"unit_price\": \"0.19\", \"line_total\": \"1.14\"}, {\"description\": \"PIZZA PARLANNO W/SAUSAGE\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"4.99\"}, {\"description\": \"FREEZE DRIED MANGO\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"3.29\"}, {\"description\": \"TJ'S SOFT 10 GRAIN BREAD\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"2.49\"}, {\"description\": \"ROLLS FOCCACINI WITH CHEESE\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"2.99\"}, {\"description\": \"STEAK & STOUT PIES\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"6.49\"}, {\"description\": \"DRIED BABYSWEET PINEAPPLE\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"3.99\"}, {\"description\": \"A-CITRUS JOSIE'S MANDARINS 5 L\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"7.99\"}, {\"description\": \"MILK GAL WHOLE\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"2.89\"}, {\"description\": \"MILK GAL ORG WHOLE\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"5.99\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 0.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "TRADER JOE'S\n2025 Bond Street\nCharlottesville VA 22901\nStore #651 - (434) 974-1466\n\nOPEN 8:00AM TO 9:00PM DAILY\n\nBALLAST POINT BREWING GRAPEFRU 13.99\nNUT ALMOND GOCHUJANG 4.99 T\nSPARKLING SPRING WATER CRAN CL 0.79 T\nORGANIC CARROT JUICE PTS 2.99 T\nCHOCOLATE CHIP COOKIES 3.99 T\nBALLAST POINT BREWING SCULPIN 13.99\nCHOC DARK COVERED GRAHAM W SEA 3.99 T\nA-PEACHES YELLOW 2 LB EASTERN 3.49 T\nSPARKLING SPRING WATER CRAN CL 3.16 T\n4FL OZ @ 0.79/FL OZ\nMANGO STICKY RICE SPRING ROLLS 2.99 T\nBANANAS 1.14 T\n6EA @ 0.19/EA\nPIZZA PARLANNO W/SAUSAGE 4.99 T\nFREEZE DRIED MANGO 3.29 T\nTJ'S SOFT 10 GRAIN BREAD 2.49 T\nROLLS FOCCACINI WITH CHEESE 2.99 T\nSTEAK & STOUT PIES 6.49 T\nDRIED BABYSWEET PINEAPPLE 3.99 T\nA-CITRUS JOSIE'S MANDARINS 5 L 7.99 T\nMILK GAL WHOLE 2.89 T\nMILK GAL ORG WHOLE 5.99 T\n\nSUBTOTAL $96.62\nSTATE TAX 1 $1.72\nSTATE TAX 2 $1.48\nTOTAL $99.82\nDEBIT $99.82",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 29.526,
+    "wall_s": 0.0,
+    "cost_usd": 0.0087868,
+    "stages": [
+      {
+        "stage": "cascade",
+        "model": "gemini-3.5-flash-lite",
+        "prompt_tokens": 2815,
+        "completion_tokens": 1777,
+        "latency_s": 6.355855900037568,
+        "cost_usd": 0.0009923,
+        "cached": false,
+        "priced": true
+      },
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2815,
+        "completion_tokens": 2780,
+        "latency_s": 23.170402200019453,
+        "cost_usd": 0.0077945,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": {
+    "escalated": true,
+    "reasons": [
+      "ungrounded:tax",
+      "low_confidence:line_items"
+    ]
+  },
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199396, Requested 2459. Please try again in 13m21.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

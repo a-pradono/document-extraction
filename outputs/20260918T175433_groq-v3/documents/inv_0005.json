@@ -1,0 +1,177 @@
+{
+  "doc_id": "inv_0005",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": null,
+    "issue_date": null,
+    "due_date": null,
+    "vendor": {
+      "name": "WILLIAM H. STEWART III",
+      "address": "160 Doc Road, Reidsville, NC 27320",
+      "tax_id": "238-51-1751"
+    },
+    "customer": {
+      "name": "Plastic Revolutions, Inc. / JDC Mfg",
+      "address": null,
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": null,
+    "tax": null,
+    "total": "1867.99",
+    "purchase_order": null,
+    "line_items": []
+  },
+  "confidence": {
+    "invoice_number": 0.8568,
+    "purchase_order": 0.8568,
+    "vendor.name": 0.8439,
+    "vendor.address": 0.8439,
+    "vendor.tax_id": 0.8505,
+    "customer.name": 0.8455,
+    "customer.address": 0.8568,
+    "customer.tax_id": 0.8568,
+    "issue_date": 0.74,
+    "due_date": 0.7719,
+    "currency": 0.994,
+    "subtotal": 0.8894,
+    "tax": 0.8894,
+    "total": 0.9306,
+    "line_items": 0.5496
+  },
+  "abstained": [
+    "issue_date",
+    "line_items"
+  ],
+  "withheld": {
+    "issue_date": "2011-02-03",
+    "line_items": "[{\"description\": \"William H. Stewart III 3 Hours @ $25/ hour\", \"quantity\": \"3\", \"unit_price\": \"25.0\", \"line_total\": \"75.0\"}, {\"description\": \"General Labor 29 Hours @ $15/hour from 12/31/10 Invoice duplicate invoicing\", \"quantity\": \"29\", \"unit_price\": \"15.0\", \"line_total\": \"435.0\"}, {\"description\": \"Materials Wire(3/0) 135' @ $2.59\", \"quantity\": \"135\", \"unit_price\": \"2.59\", \"line_total\": \"350.0\"}, {\"description\": \"Concrete Anchors\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"34.33\"}, {\"description\": \"Wire(Cat5E) (Tilden)\\nLowes Items (Tilden)\\nElectric Supplies\\nGrainger Supply\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"973.66\"}]"
+  },
+  "signals": {
+    "invoice_number": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "purchase_order": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "vendor.name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "vendor.address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "vendor.tax_id": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.85
+    },
+    "customer.name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "customer.address": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.tax_id": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "issue_date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "due_date": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 0.8,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": null,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {},
+  "transcription": "--- page 1 ---\nWILLIAM H. STEWART III\n160 Doc Road\nReidsville, NC 27320\n\nInvoice\nFor Contracting Services\n\nFebruary 3, 2011\n\n238-51-1751\n\nTo: Plastic Revolutions, Inc. / JDC Mfg\n\nRe: Contract dated December 5, 2010, for services in connection with the assembly and installation of a solar system on the roof of a building located at 1704 Barnes Street, Reidsville, NC (the \"Project\").\n\nFor services rendered in connection with the Project:\n\nWilliam H. Stewart III 3 Hours @ $25/ hour $75.00\nGeneral Labor 29 Hours @ $15/hour from 12/31/10 $435.00\nInvoice duplicate invoicing\nMaterials Wire(3/0) 135' @ $2.59 $350.00\nConcrete Anchors $34.33\nWire(Cat5E) (Tilden)\nLowes Items (Tilden)\nElectric Supplies\nGrainger Supply $973.66\n\nTotal for services rendered: $1867.99\n\nPayable upon receipt. Make payment to William H. Stewart III and send to 160 Doc Road, Reidsville, NC 27320.\n\npd 2/9/11 ck# 1515 JDC\n$ 2502.99\n\n120813v1\n\n--- page 2 ---\nU.S. Department of Labor\nWage and Hour Division\nPAYROLL\n(For Contractor's Optional Use; See Instructions at www.dol.gov/whd/forms/wh347instr.htm)\nPersons are not required to respond to the collection of information unless it displays a currently valid OMB control number.\nNAME OF CONTRACTOR \u2610 OR SUBCONTRACTOR \u2611 William H. Stewart III\nADDRESS 160 Doc Rd.\nReidsville, NC 27320\nPAYROLL NO. 5\nFOR WEEK ENDING 01/14/2011\nPROJECT AND LOCATION\nPROJECT OR CONTRACT NO.\n(1) NAME AND INDIVIDUAL IDENTIFYING NUMBER (e.g., LAST FOUR DIGITS OF SOCIAL SECURITY NUMBER) OF WORKER\nWilliam H. Stewart 1751\n(2) NO. OF WITHHOLDING EXEMPTIONS\n(3) WORK CLASSIFICATION General Labor\n(4) DAY AND DATE\nS M T W T F S\n3\n(5) TOTAL HOURS 3\n(6) RATE OF PAY 25\n(7) GROSS AMOUNT EARNED $75\nWITHHOLDING TAX\nFICA\n(8) DEDUCTIONS\nOTHER\nTOTAL DEDUCTIONS $0.00\n(9) NET WAGES PAID FOR WEEK 0\nPublic Burden Statement\n(over)\n\n--- page 3 ---\nDate 2/14/11\nI, William H. Stewart III Sole Proprietor\n(Name of Signatory Party) (Title)\ndo hereby state:\n(1) That I pay or supervise the payment of the persons employed by William H. Stewart III on the JDC Manufacturing; that during the payroll period commencing on the 7 day of January 2011, and ending the 14 day of January 2011, all persons employed on said project have been paid the full weekly wages earned, that no rebates have been made either directly or indirectly to or on behalf of said William H. Stewart III from the full weekly wages earned by any person...\nREMARKS:\nNAME AND TITLE William H Stewart/Sole Proprietor\nSIGNATURE William H Stewart III",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 22.875,
+    "wall_s": 0.0,
+    "cost_usd": 0.0063218,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 5356,
+        "completion_tokens": 1886,
+        "latency_s": 22.874701599997934,
+        "cost_usd": 0.0063218,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199997, Requested 2969. Please try again in 21m21.312s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

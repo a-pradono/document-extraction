@@ -44,7 +44,13 @@ from extractor.confidence import (
     validate_arithmetic,
 )
 from extractor.cost import StageUsage, stage_usage
-from extractor.extract import INVOICE_RULES, NUMBER_RULES, page_note, prepare_pages
+from extractor.extract import (
+    CURRENCY_RULE,
+    INVOICE_RULES,
+    NUMBER_RULES,
+    page_note,
+    prepare_pages,
+)
 from extractor.output import is_invalid, parse_or_repair, salvage_receipt
 from extractor.grounding import is_grounded
 from extractor.provider import Provider
@@ -152,7 +158,7 @@ def _vlm_prompt(doc_type: str = "receipt") -> str:
         '(nested fields as dotted names, e.g. "vendor.name").\n'
         "Money as numbers, dates as YYYY-MM-DD, currency as ISO-4217. Include every "
         "line item, including add-on lines printed under an item. Use null for anything "
-        "not present.\n" + NUMBER_RULES + "\n"
+        "not present.\n" + NUMBER_RULES + "\n" + CURRENCY_RULE + "\n"
         + (INVOICE_RULES + "\n" if doc_type == "invoice" else "")
         + "\nSchema for \"fields\":\n" + _schema_prompt(doc_type)
     )
@@ -197,7 +203,7 @@ def _llm_prompt(transcription: str, doc_type: str = "receipt") -> str:
         "the schema. Reason about totals: if subtotal and tax are present they should "
         "sum to the total, and line item totals should sum to the subtotal. Do not "
         "alter values to force arithmetic to balance -- report what is written. Use "
-        "null for anything absent.\n" + NUMBER_RULES + "\n"
+        "null for anything absent.\n" + NUMBER_RULES + "\n" + CURRENCY_RULE + "\n"
         + (INVOICE_RULES + "\n" if doc_type == "invoice" else "")
         + "\nSchema:\n" + _schema_prompt(doc_type)
         + "\n\nTranscription:\n"

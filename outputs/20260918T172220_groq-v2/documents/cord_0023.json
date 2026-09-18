@@ -1,0 +1,139 @@
+{
+  "doc_id": "cord_0023",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "179500",
+    "service_charge": null,
+    "discount": null,
+    "tax": "17950",
+    "total": "197450",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8985,
+    "merchant_address": 0.8985,
+    "payment_method": 0.8439,
+    "date": 0.8824,
+    "currency": 0.9701,
+    "subtotal": 0.9376,
+    "service_charge": 0.8971,
+    "discount": 0.8971,
+    "tax": 0.9376,
+    "total": 0.9376,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "payment_method",
+    "line_items"
+  ],
+  "withheld": {
+    "payment_method": "Cash",
+    "line_items": "[{\"description\": \"Nasi Putih\", \"quantity\": \"3\", \"unit_price\": null, \"line_total\": \"30000\"}, {\"description\": \"Nasi Tambah\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"7000\"}, {\"description\": \"Ayam Pop\", \"quantity\": \"2\", \"unit_price\": null, \"line_total\": \"40000\"}, {\"description\": \"Samabal SP\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"11000\"}, {\"description\": \"Sambal Gabus Asin Cb\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"18000\"}, {\"description\": \"Kerupuk Kuah\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"15000\"}, {\"description\": \"Ikan Bawal Besa\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"28500\"}, {\"description\": \"Telur Dadar\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"10000\"}, {\"description\": \"Teh Es\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"7000\"}, {\"description\": \"Teh Manis\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"9000\"}, {\"description\": \"Es Batu\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"4000\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "***********************************\n3 Nasi Putih 30.000\n1 Nasi Tambah 7.000\n2 Ayam Pop 40.000\n1 Samabal SP 11.000\n1 Sambal Gabus Asin Cb\n18.000\n1 Kerupuk Kuah 15.000\n1 Ikan Bawal Besa 28.500\n1 Telur Dadar 10.000\n1 Teh Es 7.000\n1 Teh Manis 9.000\n1 Es Batu 4.000\n-----------------------------------\nSubtotal 179.500\nPajak Rest. 10% 17.950\n14 Total 197.450\nTtl Makanan 159.500\nTtl Minuman 20.000\nCash 197.450",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 15.919,
+    "wall_s": 0.0,
+    "cost_usd": 0.0048045,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2815,
+        "completion_tokens": 1584,
+        "latency_s": 15.918910300009884,
+        "cost_usd": 0.0048045,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198672, Requested 4632. Please try again in 23m47.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

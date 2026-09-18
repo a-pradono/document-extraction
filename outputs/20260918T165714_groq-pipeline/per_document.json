@@ -1,0 +1,5194 @@
+[
+  {
+    "doc_id": "cord_0003",
+    "document_correct": false,
+    "latency_s": 22.781,
+    "cost_usd": 0.0039166,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2758,
+        "completion_tokens": 904,
+        "latency_s": 18.728466400003526,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1560,
+        "completion_tokens": 992,
+        "latency_s": 4.052814399998169,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "payment_method",
+        "gt": "Cash",
+        "pred": "cash",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9071
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8585
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2775
+      },
+      {
+        "field": "subtotal",
+        "gt": "63636",
+        "pred": "63636",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "6364",
+        "pred": "6364",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9227
+      },
+      {
+        "field": "total",
+        "gt": "70000",
+        "pred": "70000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 5,
+      "n_pred": 5,
+      "matched": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.6,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0004",
+    "document_correct": false,
+    "latency_s": 13.455,
+    "cost_usd": 0.00388675,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2742,
+        "completion_tokens": 991,
+        "latency_s": 11.625235700048506,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1563,
+        "completion_tokens": 587,
+        "latency_s": 1.8293814999633469,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "\u00ec\u201a\u00bc\u00ec\u00a7\u201e\u00ec\u2013\u00b4\u00eb\u00ac\u00b5",
+        "pred": "\uc0bc\uc9c4\uc5b4\ubb35",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.6129
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "payment_method",
+        "gt": "Debit",
+        "pred": "Debit",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8585
+      },
+      {
+        "field": "currency",
+        "gt": "IDR",
+        "pred": "IDR",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9216
+      },
+      {
+        "field": "subtotal",
+        "gt": "91000",
+        "pred": "91000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": "0",
+        "pred": "0",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9627
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "91000",
+        "pred": "91000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 6,
+      "n_pred": 6,
+      "matched": 6,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "cord_0005",
+    "document_correct": false,
+    "latency_s": 19.896,
+    "cost_usd": 0.0038925,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2758,
+        "completion_tokens": 957,
+        "latency_s": 12.65433499997016,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1536,
+        "completion_tokens": 737,
+        "latency_s": 7.241552499996033,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2775
+      },
+      {
+        "field": "subtotal",
+        "gt": "325600",
+        "pred": "325600",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": "17908",
+        "pred": "17908",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8521
+      },
+      {
+        "field": "tax",
+        "gt": "34351",
+        "pred": "34351",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9227
+      },
+      {
+        "field": "total",
+        "gt": "377859",
+        "pred": "377859",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 5,
+      "n_pred": 5,
+      "matched": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "cord_0006",
+    "document_correct": true,
+    "latency_s": 31.837,
+    "cost_usd": 0.0028389,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2758,
+        "completion_tokens": 531,
+        "latency_s": 14.170447999960743,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1540,
+        "completion_tokens": 755,
+        "latency_s": 17.666681100032292,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": "Debet Card",
+        "pred": "Debet Card",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": "IDR",
+        "pred": "IDR",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9216
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "total",
+        "gt": "118000",
+        "pred": "118000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9578
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 3,
+      "matched": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "cord_0007",
+    "document_correct": false,
+    "latency_s": 23.099,
+    "cost_usd": 0.0048433,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2758,
+        "completion_tokens": 1273,
+        "latency_s": 14.714746699959505,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1616,
+        "completion_tokens": 985,
+        "latency_s": 8.384549600013997,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": "BCA EDC",
+        "pred": "BCA EDC",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2775
+      },
+      {
+        "field": "subtotal",
+        "gt": "132636",
+        "pred": "132636",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "13264",
+        "pred": "13264",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "145900",
+        "pred": "145900",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 8,
+      "n_pred": 8,
+      "matched": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.75,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0008",
+    "document_correct": false,
+    "latency_s": 31.578,
+    "cost_usd": 0.0028493,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2736,
+        "completion_tokens": 557,
+        "latency_s": 17.438702999963425,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1520,
+        "completion_tokens": 680,
+        "latency_s": 14.138912399997935,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": "Tunai",
+        "pred": "cash",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.6129
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2775
+      },
+      {
+        "field": "subtotal",
+        "gt": "85000",
+        "pred": "85000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "8500",
+        "pred": "8500",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "93500",
+        "pred": "93500",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 2,
+      "n_pred": 2,
+      "matched": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0009",
+    "document_correct": true,
+    "latency_s": 29.61,
+    "cost_usd": 0.00356585,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2758,
+        "completion_tokens": 800,
+        "latency_s": 13.257429799996316,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1527,
+        "completion_tokens": 849,
+        "latency_s": 16.353057299973443,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": "CASH",
+        "pred": "cash",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9175
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "total",
+        "gt": "54000",
+        "pred": "54000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9578
+      }
+    ],
+    "line_items": {
+      "n_gt": 4,
+      "n_pred": 4,
+      "matched": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "cord_0010",
+    "document_correct": false,
+    "latency_s": 37.55,
+    "cost_usd": 0.00550445,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2778,
+        "completion_tokens": 1505,
+        "latency_s": 18.383031200035475,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1601,
+        "completion_tokens": 1114,
+        "latency_s": 19.167041199980304,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9175
+      },
+      {
+        "field": "subtotal",
+        "gt": "561800",
+        "pred": "561800",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": "42135",
+        "pred": "42135",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "tax",
+        "gt": "60394",
+        "pred": "60394",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9227
+      },
+      {
+        "field": "total",
+        "gt": "664329",
+        "pred": "664329",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 9,
+      "n_pred": 9,
+      "matched": 9,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.8888888888888888,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0011",
+    "document_correct": true,
+    "latency_s": 42.861,
+    "cost_usd": 0.00548965,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2778,
+        "completion_tokens": 1579,
+        "latency_s": 18.56095939996885,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1589,
+        "completion_tokens": 784,
+        "latency_s": 24.30039869999746,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9175
+      },
+      {
+        "field": "subtotal",
+        "gt": "316017.00",
+        "pred": "316017",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9629
+      },
+      {
+        "field": "service_charge",
+        "gt": "48982.68",
+        "pred": "48982.68",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "total",
+        "gt": "365000.00",
+        "pred": "365000",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9629
+      }
+    ],
+    "line_items": {
+      "n_gt": 10,
+      "n_pred": 10,
+      "matched": 10,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "cord_0012",
+    "document_correct": false,
+    "latency_s": 13.192,
+    "cost_usd": 0.00363145,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2758,
+        "completion_tokens": 826,
+        "latency_s": 10.765132100030314,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1527,
+        "completion_tokens": 850,
+        "latency_s": 2.4270908000180498,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "XXI Cafe",
+        "pred": "XXI cafe",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9126
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": "CASH",
+        "pred": "CASH",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2845
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "total",
+        "gt": "88000",
+        "pred": "88000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9578
+      }
+    ],
+    "line_items": {
+      "n_gt": 4,
+      "n_pred": 4,
+      "matched": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0013",
+    "document_correct": false,
+    "latency_s": 23.436,
+    "cost_usd": 0.0039412,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2778,
+        "completion_tokens": 937,
+        "latency_s": 9.856758299982175,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1598,
+        "completion_tokens": 876,
+        "latency_s": 13.578887299983762,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "Solaria",
+        "pred": "SOLARIA",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9126
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": "Debit BCA",
+        "pred": "DEBIT BCA",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2775
+      },
+      {
+        "field": "subtotal",
+        "gt": "303646",
+        "pred": "303646",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8521
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "tax",
+        "gt": "30365",
+        "pred": "30365",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9227
+      },
+      {
+        "field": "total",
+        "gt": "334000",
+        "pred": "334000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 4,
+      "n_pred": 4,
+      "matched": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.75,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0017",
+    "document_correct": true,
+    "latency_s": 32.917,
+    "cost_usd": 0.00331825,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2778,
+        "completion_tokens": 706,
+        "latency_s": 14.300799200020265,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1531,
+        "completion_tokens": 817,
+        "latency_s": 18.616202100005466,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": "CASH",
+        "pred": "Cash",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "date",
+        "gt": "2017-10-23",
+        "pred": "2017-10-23",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8361
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9175
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "total",
+        "gt": "74000",
+        "pred": "74000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9578
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 3,
+      "matched": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "cord_0018",
+    "document_correct": false,
+    "latency_s": 41.85,
+    "cost_usd": 0.00559845,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2742,
+        "completion_tokens": 1449,
+        "latency_s": 20.154755800031126,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1657,
+        "completion_tokens": 1508,
+        "latency_s": 21.695038600009866,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2845
+      },
+      {
+        "field": "subtotal",
+        "gt": "1343000",
+        "pred": "1343000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": "80580",
+        "pred": "80580",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "142358",
+        "pred": "142358",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "1565938",
+        "pred": "1565938",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 14,
+      "n_pred": 8,
+      "matched": 8,
+      "precision": 1.0,
+      "recall": 0.5714285714285714,
+      "f1": 0.7272727272727273,
+      "field_accuracy": {
+        "description": 0.25,
+        "quantity": 1.0,
+        "unit_price": 0.5,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0022",
+    "document_correct": false,
+    "latency_s": 17.613,
+    "cost_usd": 0.00235445,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2758,
+        "completion_tokens": 437,
+        "latency_s": 8.108439199975692,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1505,
+        "completion_tokens": 348,
+        "latency_s": 9.504666000022553,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "LA PH\u00c3\u2030",
+        "pred": "C\u00c0 PH\u00ca",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9158
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": "CASH",
+        "pred": "cash",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2775
+      },
+      {
+        "field": "subtotal",
+        "gt": "25000",
+        "pred": "25000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "25000",
+        "pred": "25000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 1,
+      "matched": 1,
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "field_accuracy": {
+        "description": 0.0,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0023",
+    "document_correct": false,
+    "latency_s": 27.403,
+    "cost_usd": 0.00669695,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2742,
+        "completion_tokens": 1847,
+        "latency_s": 18.754828699980862,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1623,
+        "completion_tokens": 1689,
+        "latency_s": 8.648331700009294,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": "Cash",
+        "pred": "Cash",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2775
+      },
+      {
+        "field": "subtotal",
+        "gt": "179500",
+        "pred": "179500",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "17950",
+        "pred": "17950",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "197450",
+        "pred": "197450",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 11,
+      "n_pred": 11,
+      "matched": 11,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0025",
+    "document_correct": false,
+    "latency_s": 17.985,
+    "cost_usd": 0.00325975,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2767,
+        "completion_tokens": 754,
+        "latency_s": 14.534702199976891,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1591,
+        "completion_tokens": 510,
+        "latency_s": 3.450213200005237,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": "Pancious",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9126
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9264
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "IDR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2916
+      },
+      {
+        "field": "subtotal",
+        "gt": "215000",
+        "pred": "215000",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9629
+      },
+      {
+        "field": "service_charge",
+        "gt": "12900",
+        "pred": "12900",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9629
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "22790",
+        "pred": "22790",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9629
+      },
+      {
+        "field": "total",
+        "gt": "250690",
+        "pred": "250690",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9629
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 3,
+      "matched": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.6666666666666666,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "inv_0001",
+    "document_correct": false,
+    "latency_s": 46.332,
+    "cost_usd": 0.00528405,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 4181,
+        "completion_tokens": 1293,
+        "latency_s": 17.884843099978752,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 2187,
+        "completion_tokens": 782,
+        "latency_s": 28.446778499986976,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "invoice_number",
+        "gt": "04-30-2021-03",
+        "pred": "04-30-2021-03",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "purchase_order",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "vendor.name",
+        "gt": "City of Richmond Police Department",
+        "pred": "City of Richmond Police Department",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7799
+      },
+      {
+        "field": "vendor.address",
+        "gt": "200 West Grace Street, Richmond, VA 23220",
+        "pred": "200 West Grace Street, Richmond, VA 23220",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9071
+      },
+      {
+        "field": "vendor.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "customer.name",
+        "gt": "MuckRock News",
+        "pred": "Tom Nash",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9071
+      },
+      {
+        "field": "customer.address",
+        "gt": "DEPT MR 70546, 411 A Highland Avenue, Somerville, VA 02144-2516",
+        "pred": "411 A Highland Avenue, Somerville, VA 02144-2516",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9071
+      },
+      {
+        "field": "customer.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "issue_date",
+        "gt": null,
+        "pred": "2021-04-30",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.6381
+      },
+      {
+        "field": "due_date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8585
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7113
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": "100.0",
+        "label": "swapped_field",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9628
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "100.00",
+        "pred": "100.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 2,
+      "n_pred": 2,
+      "matched": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 0.5,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "inv_0002",
+    "document_correct": false,
+    "latency_s": 62.554,
+    "cost_usd": 0.01111765,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 4181,
+        "completion_tokens": 3103,
+        "latency_s": 33.08122390002245,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 3279,
+        "completion_tokens": 2690,
+        "latency_s": 29.473105399985798,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "invoice_number",
+        "gt": "949838-1",
+        "pred": "949838-1",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "purchase_order",
+        "gt": null,
+        "pred": "949838",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.7856
+      },
+      {
+        "field": "vendor.name",
+        "gt": "WXII",
+        "pred": "WXII",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "vendor.address",
+        "gt": "700 Coliseum Drive, Winston-Salem, NC 27106",
+        "pred": "700 Coliseum Drive\nWinston-Salem, NC 27106",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.7856
+      },
+      {
+        "field": "vendor.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8728
+      },
+      {
+        "field": "customer.name",
+        "gt": "Crossroads Media",
+        "pred": "Crossroads Media",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "customer.address",
+        "gt": "66 Canal Center Plaza, Suite 555, Alexandria, VA 22314",
+        "pred": "66 Canal Center Plaza\nSuite 555\nAlexandria, VA 22314",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.7856
+      },
+      {
+        "field": "customer.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8728
+      },
+      {
+        "field": "issue_date",
+        "gt": "2012-10-14",
+        "pred": "2012-10-14",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8321
+      },
+      {
+        "field": "due_date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8671
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7113
+      },
+      {
+        "field": "subtotal",
+        "gt": "6150.00",
+        "pred": "6150.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9523
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.93
+      },
+      {
+        "field": "total",
+        "gt": "5227.50",
+        "pred": "5227.5",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9523
+      }
+    ],
+    "line_items": {
+      "n_gt": 6,
+      "n_pred": 6,
+      "matched": 6,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "inv_0003",
+    "document_correct": true,
+    "latency_s": 59.713,
+    "cost_usd": 0.00578275,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 4181,
+        "completion_tokens": 1498,
+        "latency_s": 19.233543999958783,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 2287,
+        "completion_tokens": 734,
+        "latency_s": 40.47986479999963,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "invoice_number",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "purchase_order",
+        "gt": "33286",
+        "pred": "33286",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "vendor.name",
+        "gt": "Flock Safety",
+        "pred": "Flock Safety",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "vendor.address",
+        "gt": "PO Box 207576, Dallas, TX 75320-7576",
+        "pred": "PO Box 207576, Dallas, TX 75320-7576",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7856
+      },
+      {
+        "field": "vendor.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "customer.name",
+        "gt": "Cobb County Finance Department",
+        "pred": "Cobb County Finance Department",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "customer.address",
+        "gt": "100 Cherokee Street, Ste 410, Marietta, Georgia 30090-9610, United States",
+        "pred": "100 Cherokee Street, Ste 410, Marietta, Georgia 30090-9610, United States",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7799
+      },
+      {
+        "field": "customer.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "issue_date",
+        "gt": "2020-01-09",
+        "pred": "2020-01-09",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8321
+      },
+      {
+        "field": "due_date",
+        "gt": "2020-02-08",
+        "pred": "2020-02-08",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8321
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9196
+      },
+      {
+        "field": "subtotal",
+        "gt": "297500.00",
+        "pred": "297500.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "tax",
+        "gt": "0.00",
+        "pred": "0.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "297500.00",
+        "pred": "297500.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 2,
+      "n_pred": 2,
+      "matched": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "inv_0004",
+    "document_correct": false,
+    "latency_s": 35.297,
+    "cost_usd": 0.0044034,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 4181,
+        "completion_tokens": 957,
+        "latency_s": 16.696565499994904,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1916,
+        "completion_tokens": 782,
+        "latency_s": 18.599962100037374,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "invoice_number",
+        "gt": "00011",
+        "pred": "00011",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "purchase_order",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "vendor.name",
+        "gt": "Williamsburg-James City County Public Schools",
+        "pred": "Williamsburg-James City County Public Schools",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "vendor.address",
+        "gt": "117 Ironbound Road, Williamsburg, VA 23185",
+        "pred": "117 Ironbound Road, Williamsburg, VA 23185",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "vendor.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "customer.name",
+        "gt": "Muckrock.com",
+        "pred": "Tom Nash",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9064
+      },
+      {
+        "field": "customer.address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.6979
+      },
+      {
+        "field": "customer.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "issue_date",
+        "gt": "2020-02-14",
+        "pred": "2020-02-14",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8321
+      },
+      {
+        "field": "due_date",
+        "gt": "2020-03-15",
+        "pred": "2020-03-15",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8321
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7113
+      },
+      {
+        "field": "subtotal",
+        "gt": "36.59",
+        "pred": "36.59",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9523
+      },
+      {
+        "field": "tax",
+        "gt": "0",
+        "pred": "0",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "36.59",
+        "pred": "36.59",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 2,
+      "n_pred": 2,
+      "matched": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "inv_0005",
+    "document_correct": false,
+    "latency_s": 58.119,
+    "cost_usd": 0.00999945,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 5283,
+        "completion_tokens": 2850,
+        "latency_s": 25.497404900030233,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 3297,
+        "completion_tokens": 1325,
+        "latency_s": 32.62154449999798,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "invoice_number",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "purchase_order",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "vendor.name",
+        "gt": "William H. Stewart III",
+        "pred": "WILLIAM H. STEWART III",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "vendor.address",
+        "gt": "160 Doc Road, Reidsville, NC 27320",
+        "pred": "160 Doc Road\nReidsville, NC 27320",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.7813
+      },
+      {
+        "field": "vendor.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.6979
+      },
+      {
+        "field": "customer.name",
+        "gt": "Plastic Revolutions, Inc.",
+        "pred": "Plastic Revolutions, Inc. / JDC Mfg",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9092
+      },
+      {
+        "field": "customer.address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "customer.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "issue_date",
+        "gt": "2011-02-03",
+        "pred": "2011-02-03",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8331
+      },
+      {
+        "field": "due_date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8585
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.717
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8604
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "1867.99",
+        "pred": "1867.99",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9128
+      }
+    ],
+    "line_items": {
+      "n_gt": 5,
+      "n_pred": 5,
+      "matched": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.6,
+        "quantity": 0.8,
+        "unit_price": 0.8,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "inv_0009",
+    "document_correct": false,
+    "latency_s": 85.262,
+    "cost_usd": 0.01415815,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 7487,
+        "completion_tokens": 4288,
+        "latency_s": 42.190153900010046,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 4671,
+        "completion_tokens": 819,
+        "latency_s": 43.0713812999893,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "invoice_number",
+        "gt": "501",
+        "pred": "501",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "purchase_order",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "vendor.name",
+        "gt": "Circuit Makers Inc.",
+        "pred": "Circuit Makers Inc.",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "vendor.address",
+        "gt": "PO Box 886, Eden NC 27288",
+        "pred": "PO Box 886\nEden NC 27288",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9092
+      },
+      {
+        "field": "vendor.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "customer.name",
+        "gt": "Plastic Revolutions",
+        "pred": "Plastic Revolutions",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "customer.address",
+        "gt": "PO Box 1616, Reidsville, NC 27323",
+        "pred": "PO Box 1616\nReidsville, NC 27323",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9064
+      },
+      {
+        "field": "customer.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "issue_date",
+        "gt": "2011-01-11",
+        "pred": "2011-01-11",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8321
+      },
+      {
+        "field": "due_date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8585
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7113
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "8840.00",
+        "pred": "8840.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9579
+      }
+    ],
+    "line_items": {
+      "n_gt": 4,
+      "n_pred": 4,
+      "matched": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.5,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "inv_0010",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "invoice_number",
+        "gt": "S16947",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "purchase_order",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "vendor.name",
+        "gt": "Florida Department of Agriculture and Consumer Services",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "vendor.address",
+        "gt": "P.O. Box 6720, Tallahassee, FL 32314-6720",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "vendor.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "customer.name",
+        "gt": "Brian Sparks",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "customer.address",
+        "gt": "1505 Wills Lane, Bryceville, Fl 32009",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "customer.tax_id",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "issue_date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "due_date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "59403.38",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 225,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0002",
+    "document_correct": false,
+    "latency_s": 13.443,
+    "cost_usd": 0.00414535,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2780,
+        "completion_tokens": 1066,
+        "latency_s": 11.512830000021495,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1553,
+        "completion_tokens": 689,
+        "latency_s": 1.9302290999912657,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "HOMEDELIVERY",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8414
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "date",
+        "gt": "2015-06-28",
+        "pred": "2015-06-28",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8602
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9175
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": "124.0",
+        "label": "swapped_field",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "total",
+        "gt": "124.00",
+        "pred": "124.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9226
+      }
+    ],
+    "line_items": {
+      "n_gt": 6,
+      "n_pred": 6,
+      "matched": 6,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "wild_0004",
+    "document_correct": false,
+    "latency_s": 11.312,
+    "cost_usd": 0.0032639,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2753,
+        "completion_tokens": 716,
+        "latency_s": 9.353963100002147,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1636,
+        "completion_tokens": 671,
+        "latency_s": 1.9579578000120819,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "57 EXPRESS",
+        "pred": "57 EXPRESS",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9071
+      },
+      {
+        "field": "merchant_address",
+        "gt": "3111 W TEMPLE AVE POMONA, CA",
+        "pred": "3111 W TEMPLE AVE, POMONA, CA",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9092
+      },
+      {
+        "field": "payment_method",
+        "gt": "CREDIT",
+        "pred": "CREDIT",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9071
+      },
+      {
+        "field": "date",
+        "gt": "2015-03-08",
+        "pred": "2015-03-08",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8331
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7113
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.93
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.93
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.93
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.93
+      },
+      {
+        "field": "total",
+        "gt": "65.19",
+        "pred": "65.19",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9579
+      }
+    ],
+    "line_items": {
+      "n_gt": 2,
+      "n_pred": 2,
+      "matched": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "wild_0007",
+    "document_correct": false,
+    "latency_s": 13.561,
+    "cost_usd": 0.00354695,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2780,
+        "completion_tokens": 824,
+        "latency_s": 10.488027999992482,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1609,
+        "completion_tokens": 686,
+        "latency_s": 3.072738900023978,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "PRIME BURGER BAR",
+        "pred": "PRIME BURGER BAR",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "merchant_address",
+        "gt": "VIA PRIVATA DELLA PASSERELLA, 4 20122 MILANO",
+        "pred": "VIA PRIVATA DELLA PASSERELLA, 4, 20122 MILANO",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.7813
+      },
+      {
+        "field": "payment_method",
+        "gt": "Contanti",
+        "pred": "cash",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.6129
+      },
+      {
+        "field": "date",
+        "gt": "2016-02-14",
+        "pred": "2016-02-14",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8361
+      },
+      {
+        "field": "currency",
+        "gt": "EUR",
+        "pred": "EUR",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.272
+      },
+      {
+        "field": "subtotal",
+        "gt": "24.50",
+        "pred": "24.5",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "24.50",
+        "pred": "24.5",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 3,
+      "matched": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "wild_0008",
+    "document_correct": false,
+    "latency_s": 29.049,
+    "cost_usd": 0.00461365,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2770,
+        "completion_tokens": 1099,
+        "latency_s": 17.912825600011274,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1629,
+        "completion_tokens": 1318,
+        "latency_s": 11.136112799984403,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "ONE MILL STREET",
+        "pred": "ONE MILL STREET",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9071
+      },
+      {
+        "field": "merchant_address",
+        "gt": "ONE MILL STREET",
+        "pred": "ONE MILL STREET",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7856
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "date",
+        "gt": "2003-01-09",
+        "pred": "2003-01-09",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.6707
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9201
+      },
+      {
+        "field": "subtotal",
+        "gt": "105.00",
+        "pred": "105.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": "18.90",
+        "pred": "18.9",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "5.25",
+        "pred": "5.25",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "129.15",
+        "pred": "129.15",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 5,
+      "n_pred": 5,
+      "matched": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.6,
+        "quantity": 0.8,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0009",
+    "document_correct": false,
+    "latency_s": 20.079,
+    "cost_usd": 0.00340425,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2758,
+        "completion_tokens": 792,
+        "latency_s": 10.29291000001831,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1575,
+        "completion_tokens": 601,
+        "latency_s": 9.786028299946338,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "Breakfast 2 Breakfast",
+        "pred": "Breakfast 2 Breakfast",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "merchant_address",
+        "gt": "DIC Building 12, Dubai, UAE",
+        "pred": "DIC Building 12\nDubai, UAE",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.7813
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8642
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8593
+      },
+      {
+        "field": "currency",
+        "gt": "AED",
+        "pred": "AED",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9196
+      },
+      {
+        "field": "subtotal",
+        "gt": "44.00",
+        "pred": "44.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9304
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9304
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9304
+      },
+      {
+        "field": "total",
+        "gt": "44.00",
+        "pred": "44.0",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 3,
+      "matched": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0010",
+    "document_correct": false,
+    "latency_s": 29.752,
+    "cost_usd": 0.0039459,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2780,
+        "completion_tokens": 942,
+        "latency_s": 11.641845799982548,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1682,
+        "completion_tokens": 841,
+        "latency_s": 18.109656499989796,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "EL GRECO",
+        "pred": "EL GRECO",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "merchant_address",
+        "gt": "Rue Chair et Pains, 5 Grand place, 36, 1000 Bruxelles",
+        "pred": "Rue Chair et Pains,5 Grand place,36 1000 Bruxelles",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9071
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "date",
+        "gt": "2016-06-23",
+        "pred": "2016-06-23",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8593
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "EUR",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.272
+      },
+      {
+        "field": "subtotal",
+        "gt": "38.87",
+        "pred": "38.87",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9522
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "5.63",
+        "pred": "5.63",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "44.50",
+        "pred": "44.5",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 3,
+      "matched": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0011",
+    "document_correct": false,
+    "latency_s": 33.569,
+    "cost_usd": 0.0090464,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2758,
+        "completion_tokens": 2672,
+        "latency_s": 28.357062600029167,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1772,
+        "completion_tokens": 2122,
+        "latency_s": 5.211705800029449,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "ALDI STORES",
+        "pred": "ALDI STORES",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7813
+      },
+      {
+        "field": "merchant_address",
+        "gt": "CARINDALE",
+        "pred": "CARINDALE",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8585
+      },
+      {
+        "field": "currency",
+        "gt": "AUD",
+        "pred": "AUD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.717
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "37.98",
+        "pred": "37.98",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9579
+      }
+    ],
+    "line_items": {
+      "n_gt": 16,
+      "n_pred": 18,
+      "matched": 16,
+      "precision": 0.8888888888888888,
+      "recall": 1.0,
+      "f1": 0.9411764705882353,
+      "field_accuracy": {
+        "description": 0.875,
+        "quantity": 0.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0012",
+    "document_correct": false,
+    "latency_s": 42.916,
+    "cost_usd": 0.0038904,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2742,
+        "completion_tokens": 936,
+        "latency_s": 10.996848299982958,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1592,
+        "completion_tokens": 815,
+        "latency_s": 31.9193505999865,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "Iron Horse Tavern",
+        "pred": "Iron Horse Tavern",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9071
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "date",
+        "gt": "2014-06-04",
+        "pred": "2014-06-04",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8321
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9196
+      },
+      {
+        "field": "subtotal",
+        "gt": "33.60",
+        "pred": "33.6",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "2.02",
+        "pred": "2.02",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "35.62",
+        "pred": "35.62",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 5,
+      "n_pred": 5,
+      "matched": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.6,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0013",
+    "document_correct": false,
+    "latency_s": 30.684,
+    "cost_usd": 0.0041996,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2770,
+        "completion_tokens": 968,
+        "latency_s": 12.625249499978963,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1724,
+        "completion_tokens": 1150,
+        "latency_s": 18.05897419998655,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "SUPER A FOODS",
+        "pred": "SUPER A FOODS",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9057
+      },
+      {
+        "field": "merchant_address",
+        "gt": "5250 York Blvd, Highland Park, CA 90042",
+        "pred": "5250 York Blvd., Highland Park, CA 90042",
+        "label": "format_error",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.7856
+      },
+      {
+        "field": "payment_method",
+        "gt": "VISA",
+        "pred": "VISA",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9057
+      },
+      {
+        "field": "date",
+        "gt": "2014-12-12",
+        "pred": "2014-12-12",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.831
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7099
+      },
+      {
+        "field": "subtotal",
+        "gt": "1.48",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8604
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "1.48",
+        "pred": "1.48",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9579
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 3,
+      "matched": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 0.6666666666666666,
+        "unit_price": 0.6666666666666666,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0014",
+    "document_correct": false,
+    "latency_s": 24.974,
+    "cost_usd": 0.00464,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2778,
+        "completion_tokens": 1238,
+        "latency_s": 11.68911759997718,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1812,
+        "completion_tokens": 733,
+        "latency_s": 13.284940299985465,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "Morrisons",
+        "pred": "Morrisons",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "merchant_address",
+        "gt": "Morrisons Supermarkets plc BD3 7DL, Hadleigh",
+        "pred": "BD3 7DL, Hadleigh",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.7925
+      },
+      {
+        "field": "payment_method",
+        "gt": "Card",
+        "pred": "Visa Credit",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9092
+      },
+      {
+        "field": "date",
+        "gt": "2016-02-13",
+        "pred": "2016-02-13",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8331
+      },
+      {
+        "field": "currency",
+        "gt": "GBP",
+        "pred": "GBP",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9196
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8604
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "2.19",
+        "pred": "2.19",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9579
+      }
+    ],
+    "line_items": {
+      "n_gt": 4,
+      "n_pred": 4,
+      "matched": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.5,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0016",
+    "document_correct": false,
+    "latency_s": 37.996,
+    "cost_usd": 0.0068923,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2780,
+        "completion_tokens": 1996,
+        "latency_s": 19.14948700001696,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1706,
+        "completion_tokens": 1354,
+        "latency_s": 18.846563900006004,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "Peter Chang",
+        "pred": "Peter Chang",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9057
+      },
+      {
+        "field": "merchant_address",
+        "gt": "2503 N. Harrison St Ste E, Arlington, VA 22207",
+        "pred": "2503 N. Harrison St Ste E, Arlington, VA 22207",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9057
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "date",
+        "gt": "2016-05-07",
+        "pred": "2016-05-07",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.831
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": "USD",
+        "label": "spurious",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.2706
+      },
+      {
+        "field": "subtotal",
+        "gt": "104.50",
+        "pred": "104.5",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9629
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "10.45",
+        "pred": "10.45",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9629
+      },
+      {
+        "field": "total",
+        "gt": "114.95",
+        "pred": "114.95",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9629
+      }
+    ],
+    "line_items": {
+      "n_gt": 14,
+      "n_pred": 12,
+      "matched": 11,
+      "precision": 0.9166666666666666,
+      "recall": 0.7857142857142857,
+      "f1": 0.8461538461538461,
+      "field_accuracy": {
+        "description": 0.8181818181818182,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0017",
+    "document_correct": false,
+    "latency_s": 29.189,
+    "cost_usd": 0.0032533,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2778,
+        "completion_tokens": 742,
+        "latency_s": 8.228017099958379,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1618,
+        "completion_tokens": 537,
+        "latency_s": 20.96104139997624,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "Hillside",
+        "pred": "Hillside Nursery Centre",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.6129
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8633
+      },
+      {
+        "field": "payment_method",
+        "gt": "Credit Card",
+        "pred": "Credit Card",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9071
+      },
+      {
+        "field": "date",
+        "gt": "2016-12-01",
+        "pred": "2016-12-01",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.831
+      },
+      {
+        "field": "currency",
+        "gt": "GBP",
+        "pred": "GBP",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9191
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "total",
+        "gt": "7.90",
+        "pred": "7.9",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9579
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 3,
+      "matched": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0019",
+    "document_correct": true,
+    "latency_s": 22.596,
+    "cost_usd": 0.0050063,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2742,
+        "completion_tokens": 1358,
+        "latency_s": 15.937436199979857,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1678,
+        "completion_tokens": 895,
+        "latency_s": 6.658285700017586,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "The Blue Ginger",
+        "pred": "The Blue Ginger",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "merchant_address",
+        "gt": "97 Tanjong Pagar Road",
+        "pred": "97 Tanjong Pagar Road",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "date",
+        "gt": "2012-11-15",
+        "pred": "2012-11-15",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8321
+      },
+      {
+        "field": "currency",
+        "gt": "SGD",
+        "pred": "SGD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.717
+      },
+      {
+        "field": "subtotal",
+        "gt": "87.30",
+        "pred": "87.3",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": "8.73",
+        "pred": "8.73",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "6.72",
+        "pred": "6.72",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "102.75",
+        "pred": "102.75",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 8,
+      "n_pred": 8,
+      "matched": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": true
+    }
+  },
+  {
+    "doc_id": "wild_0022",
+    "document_correct": false,
+    "latency_s": 49.455,
+    "cost_usd": 0.01328335,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2756,
+        "completion_tokens": 4195,
+        "latency_s": 32.3728429999901,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1939,
+        "completion_tokens": 2797,
+        "latency_s": 17.082579499983694,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "AL MANAMA HYPERMARKET",
+        "pred": "AL MANAMA HYPERMARKET",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "merchant_address",
+        "gt": "TIMES SQUARE CENTER - DUBAI",
+        "pred": "TIMES SQUARE CENTER - DUBAI",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9071
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9355
+      },
+      {
+        "field": "date",
+        "gt": "2014-01-10",
+        "pred": "2014-01-10",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8331
+      },
+      {
+        "field": "currency",
+        "gt": "AED",
+        "pred": "AED",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9196
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.926
+      },
+      {
+        "field": "total",
+        "gt": "278.88",
+        "pred": "278.88",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9579
+      }
+    ],
+    "line_items": {
+      "n_gt": 27,
+      "n_pred": 27,
+      "matched": 27,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 0.4074074074074074,
+        "quantity": 1.0,
+        "unit_price": 1.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0023",
+    "document_correct": false,
+    "latency_s": 51.269,
+    "cost_usd": 0.0109267,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2742,
+        "completion_tokens": 3184,
+        "latency_s": 26.081404399999883,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1866,
+        "completion_tokens": 3107,
+        "latency_s": 25.188068700022995,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "TRADER JOE'S",
+        "pred": "TRADER JOE'S",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9057
+      },
+      {
+        "field": "merchant_address",
+        "gt": "2025 Bond Street, Charlottesville VA 22901",
+        "pred": "2025 Bond Street, Charlottesville VA 22901",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7813
+      },
+      {
+        "field": "payment_method",
+        "gt": "DEBIT",
+        "pred": "debit",
+        "label": "correct",
+        "exact": false,
+        "normalized": true,
+        "confidence": 0.9092
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8585
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7099
+      },
+      {
+        "field": "subtotal",
+        "gt": "96.62",
+        "pred": "96.62",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9629
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "1.48",
+        "pred": "3.2",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.8048
+      },
+      {
+        "field": "total",
+        "gt": "99.82",
+        "pred": "99.82",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9629
+      }
+    ],
+    "line_items": {
+      "n_gt": 20,
+      "n_pred": 20,
+      "matched": 8,
+      "precision": 0.4,
+      "recall": 0.4,
+      "f1": 0.4000000000000001,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 0.75,
+        "unit_price": 0.875,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0025",
+    "document_correct": false,
+    "latency_s": 43.87,
+    "cost_usd": 0.00367495,
+    "tokens": {
+      "model_a": {
+        "prompt_tokens": 2742,
+        "completion_tokens": 874,
+        "latency_s": 9.52191040001344,
+        "model": "gemini-3.6-flash"
+      },
+      "model_b": {
+        "prompt_tokens": 1633,
+        "completion_tokens": 704,
+        "latency_s": 34.348429600009695,
+        "model": "openai/gpt-oss-120b"
+      }
+    },
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "Chick-fil-A",
+        "pred": "Chick-fil-A",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9064
+      },
+      {
+        "field": "merchant_address",
+        "gt": "Casselberry FSU (# 03270), Fern Park, FL",
+        "pred": "Fern Park, FL",
+        "label": "wrong_value",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.7925
+      },
+      {
+        "field": "payment_method",
+        "gt": "Visa",
+        "pred": "Visa",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9071
+      },
+      {
+        "field": "date",
+        "gt": "2018-03-07",
+        "pred": "2018-03-07",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.8321
+      },
+      {
+        "field": "currency",
+        "gt": "USD",
+        "pred": "USD",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.7113
+      },
+      {
+        "field": "subtotal",
+        "gt": "11.55",
+        "pred": "11.55",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": 0.9305
+      },
+      {
+        "field": "tax",
+        "gt": "0.81",
+        "pred": "0.81",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      },
+      {
+        "field": "total",
+        "gt": "12.36",
+        "pred": "12.36",
+        "label": "correct",
+        "exact": true,
+        "normalized": true,
+        "confidence": 0.9628
+      }
+    ],
+    "line_items": {
+      "n_gt": 3,
+      "n_pred": 3,
+      "matched": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "field_accuracy": {
+        "description": 1.0,
+        "quantity": 1.0,
+        "unit_price": 0.0,
+        "line_total": 1.0
+      },
+      "perfect": false
+    }
+  }
+]

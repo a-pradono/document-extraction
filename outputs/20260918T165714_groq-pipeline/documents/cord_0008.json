@@ -1,0 +1,149 @@
+{
+  "doc_id": "cord_0008",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "85000",
+    "service_charge": null,
+    "discount": null,
+    "tax": "8500",
+    "total": "93500",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.9355,
+    "merchant_address": 0.9355,
+    "payment_method": 0.6129,
+    "date": 0.9264,
+    "currency": 0.2775,
+    "subtotal": 0.9628,
+    "service_charge": 0.9305,
+    "discount": 0.9305,
+    "tax": 0.9628,
+    "total": 0.9628,
+    "line_items": 0.6841
+  },
+  "abstained": [
+    "payment_method",
+    "currency",
+    "line_items"
+  ],
+  "withheld": {
+    "payment_method": "cash",
+    "currency": "IDR",
+    "line_items": "[{\"description\": \"Ash Chick Sambal Matah\", \"quantity\": \"5\", \"unit_price\": \"15000\", \"line_total\": \"75000\"}, {\"description\": \"Jamur Goreng\", \"quantity\": \"2\", \"unit_price\": \"5000\", \"line_total\": \"10000\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 0.0,
+      "grounded": 0.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "currency": {
+      "agreement": 0.0,
+      "grounded": 0.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "Ash Chick Sambal Matah 5 75.000\nJamur Goreng 2 10.000\nSubtotal 85.000\nPajak (10%) 8.500\nTotal 93.500\nTunai 100.000\nKembali 6.500",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 31.578,
+    "wall_s": 0.0,
+    "cost_usd": 0.0028493,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2736,
+        "completion_tokens": 557,
+        "latency_s": 17.438702999963425,
+        "cost_usd": 0.0022133,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1520,
+        "completion_tokens": 680,
+        "latency_s": 14.138912399997935,
+        "cost_usd": 0.000636,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

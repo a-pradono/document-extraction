@@ -1,0 +1,149 @@
+{
+  "doc_id": "wild_0019",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "The Blue Ginger",
+    "merchant_address": "97 Tanjong Pagar Road",
+    "date": null,
+    "currency": null,
+    "subtotal": "87.3",
+    "service_charge": "8.73",
+    "discount": null,
+    "tax": "6.72",
+    "total": "102.75",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.9064,
+    "merchant_address": 0.9064,
+    "payment_method": 0.9355,
+    "date": 0.8321,
+    "currency": 0.717,
+    "subtotal": 0.9628,
+    "service_charge": 0.9628,
+    "discount": 0.9305,
+    "tax": 0.9628,
+    "total": 0.9628,
+    "line_items": 0.6841
+  },
+  "abstained": [
+    "date",
+    "currency",
+    "line_items"
+  ],
+  "withheld": {
+    "date": "2012-11-15",
+    "currency": "SGD",
+    "line_items": "[{\"description\": \"Ayam Panggang\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"12.2\"}, {\"description\": \"Beef Rendang\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"12.9\"}, {\"description\": \"Evian\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"3.5\"}, {\"description\": \"Fish Head\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"28.3\"}, {\"description\": \"Hoegaarden Beer\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"11.0\"}, {\"description\": \"Kueh Pie Tee\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"7.0\"}, {\"description\": \"Nonya Roll\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"8.0\"}, {\"description\": \"Misc Charges\", \"quantity\": \"2\", \"unit_price\": null, \"line_total\": \"4.4\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "currency": {
+      "agreement": 0.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "The Blue Ginger\n97 Tanjong Pagar Road\nGST REG NO: 20-0201085-W\n\nTABLE:10\nPax:2 OP:\nPOS Title: POS:POS002\nRcpt#:A12000011205 15/11/2012 22:23\n1 Ayam Panggang $12.20\n1 Beef Rendang $12.90\n1 Evian $3.50\n1 Fish Head $28.30\n1 Hoegaarden Beer $11.00\n1 Kueh Pie Tee $7.00\n1 Nonya Roll $8.00\n2 Misc Charges $4.40\nSUBTOTAL $87.30\nSV CHG 10% $8.73\nGST 7% $6.72\nTOTAL $102.75\n$102.75\nSignature:_________\nReservation : 6222-3928 Fax : 6222-38\nCatering Enquiry : 6224-4028 or 975586\nhttp://www.theblueginger.com",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 22.596,
+    "wall_s": 0.0,
+    "cost_usd": 0.0050063,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2742,
+        "completion_tokens": 1358,
+        "latency_s": 15.937436199979857,
+        "cost_usd": 0.0042176,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1678,
+        "completion_tokens": 895,
+        "latency_s": 6.658285700017586,
+        "cost_usd": 0.0007887,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

@@ -1,0 +1,147 @@
+{
+  "doc_id": "cord_0022",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "C\u00c0 PH\u00ca",
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "25000",
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "25000",
+    "payment_method": "cash",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.9158,
+    "merchant_address": 0.9355,
+    "payment_method": 0.9092,
+    "date": 0.9264,
+    "currency": 0.2775,
+    "subtotal": 0.9628,
+    "service_charge": 0.9305,
+    "discount": 0.9305,
+    "tax": 0.9305,
+    "total": 0.9628,
+    "line_items": 0.6821
+  },
+  "abstained": [
+    "currency",
+    "line_items"
+  ],
+  "withheld": {
+    "currency": "IDR",
+    "line_items": "[{\"description\": \"Viet Milk Coffee\\n+Ice\\n+M\", \"quantity\": \"1\", \"unit_price\": \"25000\", \"line_total\": \"25000\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.85
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "currency": {
+      "agreement": 0.0,
+      "grounded": 0.0,
+      "validated": 1.0,
+      "self_report": 0.95
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 0.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "C\u00c0 PH\u00ca\n1 Viet Milk Coffee 25.000\n+Ice\n+M\nSubtotal 25.000\nTotal 25.000\nCASH 25.000\nKembalian 0",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 17.613,
+    "wall_s": 0.0,
+    "cost_usd": 0.00235445,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2758,
+        "completion_tokens": 437,
+        "latency_s": 8.108439199975692,
+        "cost_usd": 0.0019199,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1505,
+        "completion_tokens": 348,
+        "latency_s": 9.504666000022553,
+        "cost_usd": 0.00043455,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

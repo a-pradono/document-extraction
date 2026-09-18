@@ -1,0 +1,40 @@
+<!doctype html><meta charset="utf-8"><title>wild_0019</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>wild_0019</h1><p class=k>receipt &middot; status: ok &middot; threshold 0.85 &middot; 3 field(s) abstained</p><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>merchant_name</td><td>The Blue Ginger</td><td>0.91</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>merchant_address</td><td>97 Tanjong Pagar Road</td><td>0.91</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>date</td><td><span class=abst>2012-11-15</span></td><td>0.83</td><td class=abst>abstained</td></tr><tr title="agreement: 0.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.95"><td>currency</td><td><span class=abst>SGD</span></td><td>0.72</td><td class=abst>abstained</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>subtotal</td><td>87.3</td><td>0.96</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>service_charge</td><td>8.73</td><td>0.96</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>discount</td><td>&mdash;</td><td>0.93</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>tax</td><td>6.72</td><td>0.96</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>total</td><td>102.75</td><td>0.96</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 0.00"><td>payment_method</td><td>&mdash;</td><td>0.94</td><td class=absent>absent</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>Ayam Panggang</td><td>1</td><td>&mdash;</td><td>12.2</td></tr><tr><td>2</td><td>Beef Rendang</td><td>1</td><td>&mdash;</td><td>12.9</td></tr><tr><td>3</td><td>Evian</td><td>1</td><td>&mdash;</td><td>3.5</td></tr><tr><td>4</td><td>Fish Head</td><td>1</td><td>&mdash;</td><td>28.3</td></tr><tr><td>5</td><td>Hoegaarden Beer</td><td>1</td><td>&mdash;</td><td>11.0</td></tr><tr><td>6</td><td>Kueh Pie Tee</td><td>1</td><td>&mdash;</td><td>7.0</td></tr><tr><td>7</td><td>Nonya Roll</td><td>1</td><td>&mdash;</td><td>8.0</td></tr><tr><td>8</td><td>Misc Charges</td><td>2</td><td>&mdash;</td><td>4.4</td></tr><tr class=sum><td colspan=4>sum</td><td><b>87.30</b> &#10003; matches subtotal</td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip pass">subtotal_plus_tax_equals_total &#10003;</span><span class="chip pass">line_items_sum_to_subtotal &#10003;</span><span class="chip na">rows_multiply_out n/a</span><span class="chip pass">date_parses &#10003;</span><span class="chip pass">currency_is_iso &#10003;</span><h2>Cost and latency</h2><p class=k>22.60s model time &middot; 4420 prompt + 2253 completion tokens &middot; $0.00501 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>2742</td><td>1358</td><td>15.94</td><td>$0.00422</td><td>cached</td></tr><tr><td>model_b</td><td>openai/gpt-oss-120b</td><td>1678</td><td>895</td><td>6.66</td><td>$0.00079</td><td></td></tr></table><details><summary>Transcription (498 chars) &mdash; the grounding source</summary><pre>The Blue Ginger
+97 Tanjong Pagar Road
+GST REG NO: 20-0201085-W
+
+TABLE:10
+Pax:2 OP:
+POS Title: POS:POS002
+Rcpt#:A12000011205 15/11/2012 22:23
+1 Ayam Panggang $12.20
+1 Beef Rendang $12.90
+1 Evian $3.50
+1 Fish Head $28.30
+1 Hoegaarden Beer $11.00
+1 Kueh Pie Tee $7.00
+1 Nonya Roll $8.00
+2 Misc Charges $4.40
+SUBTOTAL $87.30
+SV CHG 10% $8.73
+GST 7% $6.72
+TOTAL $102.75
+$102.75
+Signature:_________
+Reservation : 6222-3928 Fax : 6222-38
+Catering Enquiry : 6224-4028 or 975586
+http://www.theblueginger.com</pre></details>

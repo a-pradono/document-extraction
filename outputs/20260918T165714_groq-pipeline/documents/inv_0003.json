@@ -1,0 +1,191 @@
+{
+  "doc_id": "inv_0003",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": null,
+    "issue_date": null,
+    "due_date": null,
+    "vendor": {
+      "name": "Flock Safety",
+      "address": null,
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Cobb County Finance Department",
+      "address": null,
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": "297500.0",
+    "tax": "0.0",
+    "total": "297500.0",
+    "purchase_order": "33286",
+    "line_items": []
+  },
+  "confidence": {
+    "invoice_number": 0.8633,
+    "purchase_order": 0.9092,
+    "vendor.name": 0.9064,
+    "vendor.address": 0.7856,
+    "vendor.tax_id": 0.8633,
+    "customer.name": 0.9064,
+    "customer.address": 0.7799,
+    "customer.tax_id": 0.8633,
+    "issue_date": 0.8321,
+    "due_date": 0.8321,
+    "currency": 0.9196,
+    "subtotal": 0.9628,
+    "tax": 0.9628,
+    "total": 0.9628,
+    "line_items": 0.6841
+  },
+  "abstained": [
+    "vendor.address",
+    "customer.address",
+    "issue_date",
+    "due_date",
+    "line_items"
+  ],
+  "withheld": {
+    "vendor.address": "PO Box 207576, Dallas, TX 75320-7576",
+    "customer.address": "100 Cherokee Street, Ste 410, Marietta, Georgia 30090-9610, United States",
+    "issue_date": "2020-01-09",
+    "due_date": "2020-02-08",
+    "line_items": "[{\"description\": \"Flock Safety - PO #33286\", \"quantity\": \"35\", \"unit_price\": \"8500.0\", \"line_total\": \"297500.0\"}, {\"description\": \"Sales tax\", \"quantity\": \"1\", \"unit_price\": \"0.0\", \"line_total\": \"0.0\"}]"
+  },
+  "signals": {
+    "invoice_number": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "purchase_order": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "vendor.name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "vendor.address": {
+      "agreement": 0.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "vendor.tax_id": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "customer.name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "customer.address": {
+      "agreement": 0.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "customer.tax_id": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "issue_date": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "due_date": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "currency": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": true,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {},
+  "transcription": "--- page 1 ---\nFlock Safety\n+1 844-900-0732\nbilling@flocksafety.com\n\nInvoice\nInvoice number\nDate of issue Jan 9, 2020\nDate due Feb 8, 2020\n\nBill to\nCobb County Finance Department\nAccounts Payable Division\n100 Cherokee Street, Ste 410\nMarietta, Georgia 30090-9610\nUnited States\naccounts.payable@cobbcounty.org\n\n$297,500.00 due February 8, 2020\nAutomatic License Plate Reader with 5 Year Maintenance Warranty\n35 License Plate Readers\nPO #\n\nIf you have any questions about your installation, please reach out to your account manager.\nIf needed, you can find our W9 at https://bit.ly/2V41AkX and our COI at https://bit.ly/2VjEjk0\n\nDescription Qty Unit price Amount\nFlock Safety - PO #33286 35 $8,500.00 $297,500.00\nSales tax 1 $0.00 $0.00\nSubtotal $297,500.00\n\nPay $297,500.00 with ACH or wire transfer\nBank WELLS FARGO BANK, N.A.\nRouting\nAccount\nSWIFT WFBIUS6S\n\nPay $297,500.00 with mailed check\nPayable to Flock Safety\nMemo DF489FB4-0001\nMail to PO Box 207576\nDallas, TX 75320-7576\nPlease include a copy of this PDF.\nPayment should be sent via USPS.\n\nPay $297,500.00 with card\nVisit pay.stripe.com/invoice/invst_xt\nHBoOf0U4ARonFcdRTn4qjww8\n\nQuestions? Contact Flock Safety at billing@flocksafety.com or call at +1 844-900-0732. DF489FB4-0001 - Page 1 of 2\n\n--- page 2 ---\nAmount due $297,500.00\n\nPay $297,500.00 with ACH or wire transfer\nBank WELLS FARGO BANK, N.A.\nRouting\nAccount\nSWIFT WFBIUS6S\n\nPay $297,500.00 with mailed check\nPayable to Flock Safety\nMemo DF489FB4-0001\nMail to PO Box 207576\nDallas, TX 75320-7576\nPlease include a copy of this PDF.\nPayment should be sent via USPS.\n\nPay $297,500.00 with card\nVisit pay.stripe.com/invoice/invst_xt\nHBoOf0U4ARonFcdRTn4qjww8\n\nQuestions? Contact Flock Safety at billing@flocksafety.com or call at +1 844-900-0732. DF489FB4-0001 - Page 2 of 2",
+  "threshold": 0.85,
+  "usage": {
+    "latency_s": 59.713,
+    "wall_s": 0.0,
+    "cost_usd": 0.00578275,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 4181,
+        "completion_tokens": 1498,
+        "latency_s": 19.233543999958783,
+        "cost_usd": 0.0049993,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 2287,
+        "completion_tokens": 734,
+        "latency_s": 40.47986479999963,
+        "cost_usd": 0.00078345,
+        "cached": false,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

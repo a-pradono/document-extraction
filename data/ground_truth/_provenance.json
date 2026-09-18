@@ -18,7 +18,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "afc3085dc1156673",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -42,7 +42,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "df9046f00feb0156",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -66,7 +66,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "640cb2d7f8c92d19",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -115,7 +115,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "70441cf2d49270a9",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -139,7 +139,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "0d9a96e198658446",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
@@ -164,7 +164,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "7a58cedcfa16e86f",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
@@ -189,7 +189,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "351001be32fe5786",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -213,7 +213,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "0009a5a5391006cb",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -237,7 +237,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "4884df7a330a3c41",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -261,7 +261,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "7a355af15d254285",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -285,7 +285,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "60c9e1c47636806d",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -309,7 +309,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "bb9e7b4c7dffd2ed",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -333,7 +333,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "9d6862f648cfedf7",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -357,8 +357,8 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
-    "verified_note": "It's fine, there are discounts",
+    "verified": false,
+    "verified_note": null,
     "label_sha": "bfa5084f76db6b0c",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
@@ -381,7 +381,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "d0d2dff7b784d1da",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -430,7 +430,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "73ab3d3663ed361e",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -479,7 +479,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "bb82197885c4cc72",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -503,7 +503,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "764c09c1df6d95aa",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
@@ -553,7 +553,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "8aef90fd15df8415",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -577,7 +577,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "adbb8948d20de8a3",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -601,7 +601,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "c54c724a9f40b20e",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -782,7 +782,7 @@
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
-      "BUNDLE, KEPT BY DECISION (2026-09-18): this PDF is three separate documents (p1 invoice 29069, p2 a different invoice 28815, p3 credit memo 3094). Labelled invoice 29069 (page 1) only. Kept rather than replaced: it exposes the one-document-per-file premise, it sits in calibration so it affects no reported number, and splitting a stack is scoped as a separate endpoint in docs/OUTPUT.md section 2.",
+      "BUNDLE, CONSIDER REPLACING: this PDF is three separate documents (p1 invoice 29069, p2 a different invoice 28815, p3 credit memo 3094). Labeled invoice 29069 (page 1) only; the 'one document' target is contestable.",
       "Bill-to address redacted: null. PO # field literally prints 'SMA Sensor Box'.",
       "Totals block labels are illegible: 408.24 is the subtotal (sum of rows) and 449.39 is confirmed by the remittance slip, but whether 9.51 or 31.64 is tax is inference, so tax is null.",
       "Handwriting excluded ('pd 1/13/11 Wire', '$459.90', 'Ref# 110113-006613')."
@@ -941,7 +941,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "fe9c5e93d9d8166a",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -991,9 +991,9 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
-    "label_sha": "ffe502bc364f0ab8",
+    "label_sha": "32c637576238318a",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0005": {
@@ -1013,7 +1013,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "0ab3249026beefb9",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -1059,10 +1059,12 @@
       "merchant_address",
       "merchant_name"
     ],
-    "needs_hand_label": [],
+    "needs_hand_label": [
+      "payment_method"
+    ],
     "verified": true,
-    "verified_note": null,
-    "label_sha": "f1178c2a7b12e0fc"
+    "verified_note": "Amounts were already correct (1.50 + 11.00 + 12.00 = 24.50 subtotal and total, no tax printed). Added the printed date 14/02/16 and EUR, and re-spaced the text WildReceipt strips. Other wild_ labels keep their stripped spacing.",
+    "label_sha": "b59d332f42374771"
   },
   "wild_0008": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1083,7 +1085,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "348ab9f5e8ea304b",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
@@ -1107,7 +1109,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "9f55d1a201a794bb",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -1131,7 +1133,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "8870b24aba2777ab",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -1202,7 +1204,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "e3c4a6bb3d673e6a",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -1224,7 +1226,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "4597c01b08a80dad",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -1248,9 +1250,9 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
-    "label_sha": "f56751f1a7fb456d",
+    "label_sha": "f3c285a795442e90",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0016": {
@@ -1273,7 +1275,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "0ccc4eb94a0ebe3b",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -1294,7 +1296,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "e128006b737ebb76",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -1320,9 +1322,9 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
-    "label_sha": "2b809776832708e6",
+    "label_sha": "dcffa8901c9d2b87",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0019": {
@@ -1369,7 +1371,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "53319450216ac8f2",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
@@ -1391,7 +1393,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "4d5c044344bcb24b",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
@@ -1492,7 +1494,7 @@
       "payment_method"
     ],
     "needs_hand_label": [],
-    "verified": true,
+    "verified": false,
     "verified_note": null,
     "label_sha": "9352b74277617f60",
     "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"

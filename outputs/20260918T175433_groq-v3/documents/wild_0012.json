@@ -1,0 +1,139 @@
+{
+  "doc_id": "wild_0012",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "Iron Horse Tavern",
+    "merchant_address": null,
+    "date": null,
+    "currency": "USD",
+    "subtotal": "33.6",
+    "service_charge": null,
+    "discount": null,
+    "tax": "2.02",
+    "total": "35.62",
+    "payment_method": null,
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8439,
+    "merchant_address": 0.8568,
+    "payment_method": 0.8568,
+    "date": 0.7385,
+    "currency": 0.9941,
+    "subtotal": 0.9376,
+    "service_charge": 0.8894,
+    "discount": 0.8894,
+    "tax": 0.9376,
+    "total": 0.9376,
+    "line_items": 0.5328
+  },
+  "abstained": [
+    "date",
+    "line_items"
+  ],
+  "withheld": {
+    "date": "2014-06-04",
+    "line_items": "[{\"description\": \"3-CHEESE MAC\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"6.85\"}, {\"description\": \"FARMHOUSE MELT\\nWHITE\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"7.0\"}, {\"description\": \"IRON HORSE BURGER\\nMEDIUM\\nSmokey Ranch\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"9.75\"}, {\"description\": \"GELATO\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"5.0\"}, {\"description\": \"SORBET\", \"quantity\": null, \"unit_price\": null, \"line_total\": \"5.0\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 0.6,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "Iron Horse\nTavern\n\nCheck: 65\nTable:4\nServer:Aimee G\n06/04/14 06:16pm\n\n-[Seat 1]-\n3-CHEESE MAC $6.85\nFARMHOUSE MELT $7.00\n WHITE\nIRON HORSE BURGER $9.75\n MEDIUM\n Smokey Ranch\nGELATO $5.00\nSORBET $5.00\n\nSubtotal: $33.60\nSub w/Tax: $35.62\nTotal: $35.62\n\nTax: $2.02\n\n\"Thank-You\"",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 11.157,
+    "wall_s": 0.0,
+    "cost_usd": 0.003387,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2815,
+        "completion_tokens": 1017,
+        "latency_s": 11.157161899958737,
+        "cost_usd": 0.003387,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199989, Requested 2138. Please try again in 15m18.864s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}
