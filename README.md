@@ -1,4 +1,4 @@
-# Receipt extraction and evaluation
+# Document extraction and evaluation
 
 Extracts typed, validated fields from messy real-world receipts with a VLM reader and a
 text-LLM cross-check. Deterministic validation sits between the two, and every field gets
