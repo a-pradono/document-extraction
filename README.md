@@ -37,7 +37,7 @@ joins them with the accuracy numbers.
 ```bash
 python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env        # add a Google AI Studio key and an OpenRouter key
+cp .env.example .env        # add a Google AI Studio key and a Groq key
 
 pytest eval/tests -q                                 # 435 tests, no keys needed
 python -m agent.offline_e2e                          # whole system over HTTP, no keys needed
@@ -81,7 +81,7 @@ and `line_items[]` (`description`, `quantity`, `unit_price`, `line_total`).
 ```
 pages ──► Model A: VLM (Gemini 3.6 Flash) ──► transcription + fields + self-reported certainty
               │                                          (ONE call, all pages together)
-              └─ transcription ──► Model B: text LLM, different family (NVIDIA Nemotron 3 Super)
+              └─ transcription ──► Model B: text LLM, different family (GPT-OSS 120B on Groq)
                                              ──► independent re-extraction
                                    ▼
             deterministic validation (arithmetic, row math) + type-aware grounding

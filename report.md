@@ -232,7 +232,7 @@ transcription  ──► Model B (LLM)  ──► document  (independent re-extr
 | Role | Model | Why |
 |---|---|---|
 | Model A — VLM reader | `gemini-3.6-flash` | Layout is the problem: "which of these five numbers is the total" is answered by position, which flat OCR destroys |
-| Model B — LLM reasoner | `nvidia/nemotron-3-super-120b-a12b:free` | Cross-section reasoning and normalisation, text-only and cheap. **Different family on purpose** |
+| Model B — LLM reasoner | `openai/gpt-oss-120b` (Groq) | Cross-section reasoning and normalisation, text-only and cheap. Open-weights, and a **different family from Model A on purpose** |
 | Cascade first pass | `gemini-3.5-flash-lite` | Cheap read; escalates to the full pipeline on doubt (§4.5) |
 
 **Different families, deliberately.** Sibling models fail identically on the same
@@ -319,10 +319,15 @@ a config change given a GPU.
 **Caching by input + model + prompt hash** keeps API calls to one per document across
 repeated eval runs. Re-running the harness after a metrics change costs zero calls.
 
-**Measured free-tier limits** (not documentation, observation): Google's free tier
-allows **20 requests per model per day** — not the 250 the docs suggested — which
-stopped a calibration run at 8 of 18 documents. Billing was enabled to lift it.
-OpenRouter's free tier allows **50 requests per day** and capped a later run.
+**Measured free-tier limits** (observation, not documentation). Google's free tier
+allows **20 requests per model per day** — not the 250 its docs suggested — which stopped
+a calibration run at 8 of 18 documents; billing was enabled to lift it. OpenRouter's free
+tier allows **50 requests per day account-wide**, which cannot cover a single 39-document
+test run, so Model B moved to **Groq**: 1000 requests/day at 8,000 tokens/minute, and
+1–2 s per call against nemotron's 18–22 s. The token window, not the daily cap, is what
+now paces a run — roughly 2–3 documents per minute. A model slug must be checked against
+the key's own catalogue before it is pinned: `llama-3.3-70b-versatile` 404s on this
+account, which cost a cycle to discover.
 
 ### 3.6 Production surface
 

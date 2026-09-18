@@ -87,8 +87,11 @@ LightOnOCR-2-1B or Qwen2.5-VL would be swapped in locally given GPU access.
 - **Model A (VLM):** `gemini-3.6-flash` via Google AI Studio's OpenAI-compatible
   endpoint. Free tier 10 RPM / 250 RPD, no credit card.
 - **Model B (LLM):** a different-family text model, e.g.
-  `nvidia/nemotron-3-super-120b-a12b:free` via OpenRouter (qwen-2.5-7b free was removed). Free slugs rotate — build a
-  fallback chain in `provider.py` (`openrouter/free` auto-router survives churn).
+  `openai/gpt-oss-120b` on Groq (was nvidia/nemotron via OpenRouter, whose free tier caps at
+  50 requests/day account-wide; Groq allows 1000/day at 8k tokens/min). Free slugs rotate — build a
+  fallback chain in `provider.py`, and check the key's own /models catalogue before
+  pinning a slug - a missing one 404s silently (llama-3.3-70b-versatile is not on
+  every Groq account).
 - **Cascade base (Phase 6):** `gemini-3.5-flash-lite`, 15 RPM / 1000 RPD — the
   highest free quota, so it absorbs the bulk of the volume.
 - No local model inference. Caching by image hash keeps rate-limited calls to one

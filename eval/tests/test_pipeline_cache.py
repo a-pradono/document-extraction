@@ -50,8 +50,8 @@ class TestCacheKeys:
         cascade model would have been served Flash's answers and 'measured' nothing."""
         monkeypatch.setattr(pipeline, "CACHE_DIR", tmp_path / "cache")
         img = _image(tmp_path)
-        pipeline.run_vlm(img, FakeProvider("gemini-2.5-flash"))
-        lite = FakeProvider("gemini-2.5-flash-lite")
+        pipeline.run_vlm(img, FakeProvider("gemini-3.6-flash"))
+        lite = FakeProvider("gemini-3.5-flash-lite")
         _, _, cached = pipeline.run_vlm(img, lite)
         assert not cached and lite.calls == 1
 
