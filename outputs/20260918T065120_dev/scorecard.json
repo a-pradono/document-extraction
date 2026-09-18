@@ -1,0 +1,218 @@
+{
+  "meta": {
+    "version": "dev",
+    "set": "smoke",
+    "source": "pipeline",
+    "confidence_model": "unfitted (fallback weights)",
+    "threshold": 0.5,
+    "generated_at": "2026-09-18T06:51:19+00:00",
+    "fingerprint": {
+      "ground_truth": "b6510513ab6ce8c9",
+      "documents": "2b35a847cbbe205e",
+      "prompts": "4f24e8bba711e1aa",
+      "models": {
+        "model_a": "gemini-2.5-flash",
+        "model_b": "qwen/qwen-2.5-7b-instruct:free",
+        "cascade_model": null
+      },
+      "threshold": 0.5,
+      "confidence_model": null,
+      "code": "709cfcf"
+    }
+  },
+  "metrics": {
+    "n_docs": 12,
+    "document_accuracy_rate": 0.0,
+    "micro_f1": 0.0,
+    "macro_f1": 0.0,
+    "line_item_f1": 0.0,
+    "hallucination_rate": 0.0,
+    "per_field": {
+      "merchant_name": {
+        "support": 6,
+        "predicted": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_f1": 0.0
+      },
+      "merchant_address": {
+        "support": 6,
+        "predicted": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_f1": 0.0
+      },
+      "payment_method": {
+        "support": 0,
+        "predicted": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "exact_f1": null
+      },
+      "date": {
+        "support": 2,
+        "predicted": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_f1": 0.0
+      },
+      "currency": {
+        "support": 0,
+        "predicted": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "exact_f1": null
+      },
+      "subtotal": {
+        "support": 8,
+        "predicted": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_f1": 0.0
+      },
+      "service_charge": {
+        "support": 2,
+        "predicted": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_f1": 0.0
+      },
+      "discount": {
+        "support": 0,
+        "predicted": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "exact_f1": null
+      },
+      "tax": {
+        "support": 10,
+        "predicted": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_f1": 0.0
+      },
+      "total": {
+        "support": 12,
+        "predicted": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_f1": 0.0
+      }
+    },
+    "error_taxonomy": {
+      "correct": 74,
+      "missing": 46,
+      "spurious": 0,
+      "wrong_value": 0,
+      "format_error": 0,
+      "swapped_field": 0
+    },
+    "latency": {
+      "p50_s": 0.0,
+      "p95_s": 0.0,
+      "mean_s": 0.0
+    },
+    "calibration": {
+      "available": false
+    },
+    "headline_document_type": "receipt",
+    "by_document_type": {},
+    "abstention": {
+      "available": false
+    },
+    "breakdown": {
+      "source:cord": {
+        "n_docs": 6,
+        "document_accuracy_rate": 0.0,
+        "micro_f1": 0.0,
+        "line_item_f1": 0.0,
+        "hallucination_rate": 0.0,
+        "error_taxonomy": {
+          "missing": 18
+        }
+      },
+      "source:wild": {
+        "n_docs": 6,
+        "document_accuracy_rate": 0.0,
+        "micro_f1": 0.0,
+        "line_item_f1": 0.0,
+        "hallucination_rate": 0.0,
+        "error_taxonomy": {
+          "missing": 28
+        }
+      }
+    },
+    "failed_documents": [
+      {
+        "doc_id": "cord_0001",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "cord_0002",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "cord_0014",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "cord_0015",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "cord_0021",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "cord_0024",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "wild_0001",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "wild_0005",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "wild_0006",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "wild_0015",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "wild_0020",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      },
+      {
+        "doc_id": "wild_0024",
+        "error": "NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 256, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 202, in extract_one\n    result = extractor(doc_path, threshold=threshold, model=conf_model, use_cache=use_cache,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\pipeline.py\", line 325, in extract_with_confidence\n    raw_a, usage_a, cached_a = run_vlm(pages, vlm, use_cache, doc_type=doc_type)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nopenai.NotFoundError: Error code: 404 - [{'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.', 'status': 'NOT_FOUND'}}]\n"
+      }
+    ]
+  }
+}

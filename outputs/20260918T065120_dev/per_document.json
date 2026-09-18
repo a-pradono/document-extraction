@@ -1,0 +1,1370 @@
+[
+  {
+    "doc_id": "cord_0001",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": "100909",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "10091",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "111000",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 2,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0002",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": "238000",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": "17850",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "25585",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "281435",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 6,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0014",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": "618490",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "61849",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "680500",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 9,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0015",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": "24500",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "24500",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 6,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0021",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": "256363",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "25637",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "282000",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 6,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "cord_0024",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": "16363",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "1636",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "17999",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 1,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0001",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "DIA%",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": "CLATOCHA,22 FACTURASIMPLIFICADA",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "0.03",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "19.20",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 21,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0005",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "GASTROBAREL GALLO AZUL",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": "JEREZDELAFRONTERA",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "20.90",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 8,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0006",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "TUSCANYRISTORANTE",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": "55NORTONSTREET LEICHHARDTNSW2040",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "65.19",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "811.60",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 15,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0015",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "meijer",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": "SawmillRd. Dublin.OH-#58",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": "2012-07-11",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "0.00",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "3.00",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 4,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0020",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "PastaDivina",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": "RuedelaMontgne16 1000Bruxelles",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": "106.82",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "15.28",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "122.10",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 16,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  },
+  {
+    "doc_id": "wild_0024",
+    "document_correct": false,
+    "latency_s": 0.0,
+    "cost_usd": null,
+    "tokens": null,
+    "fields": [
+      {
+        "field": "merchant_name",
+        "gt": "AsiaBay",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "merchant_address",
+        "gt": "1007KaneConcourse",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "payment_method",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "date",
+        "gt": "2012-12-09",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "currency",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "subtotal",
+        "gt": "52.00",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "service_charge",
+        "gt": "9.36",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "discount",
+        "gt": null,
+        "pred": null,
+        "label": "correct",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "tax",
+        "gt": "4.30",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      },
+      {
+        "field": "total",
+        "gt": "65.66",
+        "pred": null,
+        "label": "missing",
+        "exact": false,
+        "normalized": false,
+        "confidence": null
+      }
+    ],
+    "line_items": {
+      "n_gt": 5,
+      "n_pred": 0,
+      "matched": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "field_accuracy": {
+        "description": null,
+        "quantity": null,
+        "unit_price": null,
+        "line_total": null
+      },
+      "perfect": false
+    }
+  }
+]

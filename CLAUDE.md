@@ -109,7 +109,7 @@ docker-compose.yml, Dockerfile, .env.example, README.md, CLAUDE.md
 
 ## Current state
 
-Built and tested (391/391 pytest passing; `python -m agent.offline_e2e` 7/7):
+Built and tested (415/415 pytest passing; `python -m agent.offline_e2e` 7/7):
 - Phase 0-2: `extractor/schema.py`, `extractor/provider.py`, `extractor/extract.py`
   (single-doc walking skeleton, VLM-only).
 - Phase 3: `eval/metrics.py`, `eval/taxonomy.py`, `eval/scorecard.py`, `eval/run.py`,
@@ -138,6 +138,10 @@ Built and tested (391/391 pytest passing; `python -m agent.offline_e2e` 7/7):
   `assign_splits.py` / `degrade.py`, with `eval/tests/test_dataset_converters.py`
   covering normalization, date refusal, row grouping and stratified sampling.
 
+- **Review dashboard** (`eval/dashboard.py` + `dashboard.css`): source document beside
+  the extraction, type/status filters, pagination, keyboard nav, self-contained HTML with
+  images inlined. Built from the same ExtractionOut payload as the API; shows no ground
+  truth. `outputs/dashboard.html` is gitignored - it embeds real invoice images.
 - **Output contract (`docs/OUTPUT.md`).** `ExtractionOut` now also carries `signals`,
   `validation` (named model-free checks, null = not applicable), `validation_notes` (the
   discrepancy behind each failure) and `transcription`. `extractor/confidence.document_checks`

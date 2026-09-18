@@ -28,3 +28,4 @@ data/raw/
 # scorecard and per-document results from a run you actually did.
 # Large raw datasets are not committed; only the curated sample + ground truth
 # under data/ so the eval runs out of the box.
+outputs/dashboard.html

@@ -6,7 +6,7 @@ a confidence score, so the system abstains instead of guessing. The evaluation h
 is the main deliverable: it shows **how** the system fails, not just how often, and it
 blocks a regression before it ships.
 
-> **Status of the numbers.** Everything below is built and tested (391 unit tests plus
+> **Status of the numbers.** Everything below is built and tested (415 unit tests plus
 > a 7-check offline end-to-end run over real HTTP). **No result in this README comes from
 > a real model run yet**, and the 50 ground-truth labels are not yet hand-verified.
 > Results sections say *pending* and give the exact command that fills them. That's
@@ -22,7 +22,7 @@ python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\act
 pip install -r requirements.txt
 cp .env.example .env        # add a Google AI Studio key and an OpenRouter key
 
-pytest eval/tests -q                                 # 391 tests, no keys needed
+pytest eval/tests -q                                 # 415 tests, no keys needed
 python -m agent.offline_e2e                          # whole system over HTTP, no keys needed
 
 python -m extractor.pipeline data/docs/cord_0001.jpg # one receipt -> fields + confidence
@@ -282,6 +282,29 @@ disagree about whether a document added up. `null` renders as an em dash and abs
 renders with its withheld value in warning colour, because "not on the document" and
 "read but not asserted" are the one distinction abstention exists to make.
 
+### The review dashboard
+
+[`eval/dashboard.py`](eval/dashboard.py)
+
+```bash
+python -m eval.dashboard --set calibration --open     # outputs/dashboard.html
+```
+
+One self-contained page (images inlined, no CDN) showing **every source document beside
+what the system read from it**: per-field value, confidence and status (ok / abstained /
+absent), the line-item table with the arithmetic check as its footer, the model-free
+validation chips, cost and latency, and the transcription behind a fold. Filter by
+document type or by status (clean / abstained / failed a check), five per page, arrow
+keys to move.
+
+It renders the exact `POST /extract` payload, so what a reviewer sees is what a caller
+gets. Invoices show a page-count badge, since a 4-page PDF is one document. Re-rendering
+cached documents costs nothing, so iterating on it is free.
+
+**Not committed and not published.** The page embeds the source images, and the invoices
+are real public records naming private individuals; `outputs/` stays local and the
+repository stays private.
+
 ### Comparing versions and catching a regression
 
 ```bash
@@ -449,7 +472,7 @@ threshold that makes fields abstain.
 ```
 extractor/  schema, provider, extract (pages), pipeline, grounding, confidence, cascade, cost
 api/        app (FastAPI), service, schemas, batch, telemetry
-eval/       run, metrics, taxonomy, scorecard, render_doc, compare, regression, tests/ (391)
+eval/       run, metrics, taxonomy, scorecard, render_doc, dashboard, compare, regression, tests/ (415)
 agent/      stub_provider, offline_e2e          .claude/skills/offline-e2e/SKILL.md
 scripts/    fetch_datasets.sh, fetch_invoices, convert_*, verify_gt, audit_gt, assign_splits, degrade
 data/       docs/, ground_truth/ (+ _provenance.json), sets/, README.md
