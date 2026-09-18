@@ -10,7 +10,7 @@ mismatch. Documents land as data/docs/inv_XXXX.pdf with a provenance entry.
 Idempotent: documents already in place with the right checksum are skipped, and an
 existing label file is NEVER overwritten (labels are hand-verified work).
 
-Why this source and not the one DATASETS.md first preferred: see its addendum's
+Why this source and not the one docs/DATASETS.md first preferred: see its addendum's
 "Verified 2026-09-17" note. In short, the Hugging Face checkmark set is synthetic and
 single-page; these are real, multi-page public-records invoices naming both parties.
 

@@ -109,7 +109,7 @@ docker-compose.yml, Dockerfile, .env.example, README.md, CLAUDE.md
 
 ## Current state
 
-Built and tested (374/374 pytest passing; `python -m agent.offline_e2e` 7/7):
+Built and tested (391/391 pytest passing; `python -m agent.offline_e2e` 7/7):
 - Phase 0-2: `extractor/schema.py`, `extractor/provider.py`, `extractor/extract.py`
   (single-doc walking skeleton, VLM-only).
 - Phase 3: `eval/metrics.py`, `eval/taxonomy.py`, `eval/scorecard.py`, `eval/run.py`,
@@ -133,12 +133,24 @@ Built and tested (374/374 pytest passing; `python -m agent.offline_e2e` 7/7):
   `--source vlm-only` keeps the Phase 3 baseline runnable so "abstention raised
   precision" stays a measured claim. The scorecard reports AUC/ECE and the
   before/after abstention delta.
-- Dataset acquisition (see `DATASETS.md`): `scripts/fetch_datasets.sh` +
+- Dataset acquisition (see `docs/DATASETS.md`): `scripts/fetch_datasets.sh` +
   `convert_cord.py` / `convert_wildreceipt.py` / `convert_retail.py` / `verify_gt.py` /
   `assign_splits.py` / `degrade.py`, with `eval/tests/test_dataset_converters.py`
   covering normalization, date refusal, row grouping and stratified sampling.
 
-- **Invoices (second document type, DATASETS.md addendum).** 10 real multi-page invoices
+- **Output contract (`docs/OUTPUT.md`).** `ExtractionOut` now also carries `signals`,
+  `validation` (named model-free checks, null = not applicable), `validation_notes` (the
+  discrepancy behind each failure) and `transcription`. `extractor/confidence.document_checks`
+  produces the named checks from the SAME rules as `validate_arithmetic`, so the two can
+  never disagree. `eval/render_doc.py` renders one payload as a self-contained HTML card
+  (fields with ok/abstained/absent, line items with the arithmetic footer, validation
+  chips, cost/latency, collapsed transcription); it recomputes nothing and shows no
+  ground truth. `eval.run` writes `outputs/<run>/documents/<doc_id>.html` per document and
+  the scorecard's per-document table links to them. Tests: `eval/tests/test_render_doc.py`.
+  NOT built: OUTPUT.md section 2 (one PDF holding a STACK of separate receipts, and
+  `/extract` returning a list) — that changes the wire contract for every consumer and is
+  a pending decision, not an oversight.
+- **Invoices (second document type, docs/DATASETS.md addendum).** 10 real multi-page invoices
   from RVL-CDIP-N (`scripts/fetch_invoices.py`, pinned + SHA-256); the synthetic HF set
   was rejected. `Invoice`/`Party` in `extractor/schema.py`; type comes from the `inv_`
   prefix (`document_type_of`). Pipeline, cascade, API (`document_type` form field) and
@@ -295,7 +307,7 @@ unexamined confidence number.
 
 ## Datasets (Phase 3 prerequisite)
 
-See **`DATASETS.md`** for download URLs, converters, and split assignment. Summary:
+See **`docs/DATASETS.md`** for download URLs, converters, and split assignment. Summary:
 ~65 hand-verified docs from three sources — CORD via HF `naver-clova-ix/cord-v2` (25),
 WildReceipt via `https://download.openmmlab.com/mmocr/data/wildreceipt.tar` (25), and
 Kaggle `trainingdatapro/ocr-receipts-text-detection` (15, needs an API token, so

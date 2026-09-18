@@ -6,7 +6,7 @@ a confidence score, so the system abstains instead of guessing. The evaluation h
 is the main deliverable: it shows **how** the system fails, not just how often, and it
 blocks a regression before it ships.
 
-> **Status of the numbers.** Everything below is built and tested (374 unit tests plus
+> **Status of the numbers.** Everything below is built and tested (391 unit tests plus
 > a 7-check offline end-to-end run over real HTTP). **No result in this README comes from
 > a real model run yet**, and the 50 ground-truth labels are not yet hand-verified.
 > Results sections say *pending* and give the exact command that fills them. That's
@@ -22,7 +22,7 @@ python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\act
 pip install -r requirements.txt
 cp .env.example .env        # add a Google AI Studio key and an OpenRouter key
 
-pytest eval/tests -q                                 # 374 tests, no keys needed
+pytest eval/tests -q                                 # 391 tests, no keys needed
 python -m agent.offline_e2e                          # whole system over HTTP, no keys needed
 
 python -m extractor.pipeline data/docs/cord_0001.jpg # one receipt -> fields + confidence
@@ -142,7 +142,7 @@ system isn't confident in.
 ### Ground truth
 
 About 65 documents from three independent sources: two languages, three label schemas
-([`DATASETS.md`](DATASETS.md), [`data/README.md`](data/README.md)).
+([`docs/DATASETS.md`](docs/DATASETS.md), [`data/README.md`](data/README.md)).
 
 | Source | Docs | Why |
 |---|--:|---|
@@ -205,7 +205,7 @@ tax ID, and returning them swapped is the failure that matters.
   They are public-records invoices from a police department, TV stations, a school
   district, law firms, a state agency and small manufacturers, and 1 to 5 pages each.
   [`scripts/fetch_invoices.py`](scripts/fetch_invoices.py) streams the archive and pulls
-  only the ten pinned files, verified by SHA-256 ([`DATASETS.md`](DATASETS.md) records
+  only the ten pinned files, verified by SHA-256 ([`docs/DATASETS.md`](docs/DATASETS.md) records
   the search).
 - **Schema:** `Invoice` has `vendor: Party` and `customer: Party` and reuses `LineItem`.
   Nested fields are scored, calibrated and withheld under dotted names
@@ -253,6 +253,30 @@ tax ID, and returning them swapped is the failure that matters.
   what they say?), a reliability diagram, the risk–coverage curve, and precision on
   kept fields versus all fields. AUC near 0.5 means change the *signals*; good AUC with
   high ECE means *refit*.
+
+### Seeing one document's extraction
+
+[`eval/render_doc.py`](eval/render_doc.py), contract in
+[`docs/OUTPUT.md`](docs/OUTPUT.md)
+
+```bash
+python -m eval.render_doc outputs/<run>/documents/cord_0007.json   # or any /extract payload
+```
+
+`scorecard.html` answers "how good is the system". This answers "what did it read off
+THIS document, and why believe it": every field with its value, confidence and status
+(ok / abstained / absent), the line-item table with the **arithmetic check as its footer
+row**, the model-free validation chips, cost and latency, and the transcription in a
+collapsed block. An eval run writes one card per document to
+`outputs/<run>/documents/<doc_id>.html` and links them from the per-document table in
+`scorecard.html`, so a failing row leads straight to the extraction behind it.
+
+Two rules make it evidence rather than decoration: it shows **no ground truth** (that
+comparison belongs in the scorecard), and it **recomputes nothing** — the arithmetic
+verdicts come from the payload's `validation` block, so the page and the API can never
+disagree about whether a document added up. `null` renders as an em dash and abstained
+renders with its withheld value in warning colour, because "not on the document" and
+"read but not asserted" are the one distinction abstention exists to make.
 
 ### Comparing versions and catching a regression
 
@@ -346,7 +370,7 @@ escalating.
 Built with **Claude Code**. The specs were written *for* the agent: [`CLAUDE.md`](CLAUDE.md)
 holds the mission, the non-negotiables ("never hallucinate", "eval before
 optimization"), the phase plan with done-when gates, and a Current state section the
-agent keeps up to date. [`DATASETS.md`](DATASETS.md) is a dataset-acquisition spec with
+agent keeps up to date. [`docs/DATASETS.md`](docs/DATASETS.md) is a dataset-acquisition spec with
 its own non-negotiables. The agent implemented the phases against those; the human set
 direction, made the calls only a human should make (which account, when to commit, what
 counts as verified ground truth), and redirected when needed.
@@ -421,9 +445,10 @@ threshold that makes fields abstain.
 ```
 extractor/  schema, provider, extract (pages), pipeline, grounding, confidence, cascade, cost
 api/        app (FastAPI), service, schemas, batch, telemetry
-eval/       run, metrics, taxonomy, scorecard, compare, regression, tests/ (374)
+eval/       run, metrics, taxonomy, scorecard, render_doc, compare, regression, tests/ (391)
 agent/      stub_provider, offline_e2e          .claude/skills/offline-e2e/SKILL.md
 scripts/    fetch_datasets.sh, fetch_invoices, convert_*, verify_gt, audit_gt, assign_splits, degrade
 data/       docs/, ground_truth/ (+ _provenance.json), sets/, README.md
-Dockerfile  docker-compose.yml  .env.example  CLAUDE.md  DATASETS.md
+docs/       DATASETS.md (dataset spec), OUTPUT.md (output contract)
+Dockerfile  docker-compose.yml  .env.example  CLAUDE.md  README.md
 ```
