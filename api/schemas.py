@@ -11,6 +11,7 @@ from typing import Optional, Union
 
 from pydantic import BaseModel, Field
 
+from extractor.confidence import document_checks
 from extractor.pipeline import PipelineResult
 from extractor.schema import Invoice, Receipt
 
@@ -46,6 +47,20 @@ class ExtractionOut(BaseModel):
                     "Nested fields use dotted names, e.g. `vendor.name`.",
     )
     withheld: dict[str, Optional[str]] = Field(default_factory=dict)
+    signals: dict[str, dict[str, float]] = Field(
+        default_factory=dict,
+        description="Why each confidence score is what it is: agreement, grounded, "
+                    "validated, self_report. Exposed deliberately - an opaque score is "
+                    "not defensible.",
+    )
+    validation: dict[str, Optional[bool]] = Field(
+        default_factory=dict,
+        description="Deterministic, model-free checks. null means the check did not "
+                    "apply to this document, which is not the same as passing.",
+    )
+    validation_notes: dict[str, str] = Field(
+        default_factory=dict, description="The discrepancy behind each failed check.")
+    transcription: str = ""
     threshold: Optional[float] = None
     usage: Optional[UsageOut] = None
     cascade: Optional[dict] = Field(
@@ -78,6 +93,7 @@ def from_result(doc_id: str, result: PipelineResult, threshold: float,
         withheld[field] = None if value is None else str(value)
         setattr(owner, leaf, None)
 
+    checks, notes = document_checks(result.document)   # on what was READ, before withholding
     return ExtractionOut(
         doc_id=doc_id,
         document_type=doc_type,
@@ -85,6 +101,10 @@ def from_result(doc_id: str, result: PipelineResult, threshold: float,
         confidence=result.confidence,
         abstained=list(result.abstained),
         withheld=withheld,
+        signals={f: s.__dict__.copy() for f, s in result.signals.items()},
+        validation=checks,
+        validation_notes=notes,
+        transcription=result.transcription,
         threshold=threshold,
         usage=UsageOut(
             latency_s=result.latency_s,

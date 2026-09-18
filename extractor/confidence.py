@@ -223,6 +223,96 @@ def norm_party(name: str) -> str:
     return "".join(ch for ch in name.lower() if ch.isalnum())
 
 
+def _money(v) -> str:
+    return f"{v:,}"
+
+
+def document_checks(doc) -> tuple[dict[str, Optional[bool]], dict[str, str]]:
+    """The model-free checks as NAMED results, for the API's `validation` block.
+
+    `validate_arithmetic` answers "how much do I trust this field"; this answers "did
+    this document's arithmetic hold", which is what a human reads. Both run the same
+    rules (`expected_total`, `reconciles`, the same tolerance), so they can never
+    disagree. True/False/None, where None means the check did not apply — a document
+    with no printed subtotal has not passed reconciliation, it was never checked.
+
+    The second return value explains every failure ("48,000 != 47,500 - off by 500"),
+    so a renderer can show the discrepancy without recomputing it.
+    """
+    checks: dict[str, Optional[bool]] = {}
+    notes: dict[str, str] = {}
+
+    sub, service, discount, tax, total = (
+        norm_money(getattr(doc, f, None)) for f in RECONCILIATION_FIELDS)
+    tol = money_tolerance(sub, total)
+
+    checks["subtotal_plus_tax_equals_total"] = None
+    if total is not None and sub is not None:
+        expected = expected_total(sub, service, discount, tax)
+        ok = reconciles(expected, total, tol)
+        checks["subtotal_plus_tax_equals_total"] = ok
+        if not ok:
+            notes["subtotal_plus_tax_equals_total"] = (
+                f"{_money(expected)} != {_money(total)} - off by {_money(abs(expected - total))}")
+
+    items = getattr(doc, "line_items", []) or []
+    item_totals = [norm_money(i.line_total) for i in items]
+    checks["line_items_sum_to_subtotal"] = None
+    if items and all(t is not None for t in item_totals):
+        line_sum = sum(item_totals)
+        anchor = sub if sub is not None else (
+            total - (service or 0) + abs(discount or 0) - (tax or 0) if total is not None else None)
+        if anchor is not None:
+            ok = abs(line_sum - anchor) <= tol
+            checks["line_items_sum_to_subtotal"] = ok
+            if not ok:
+                notes["line_items_sum_to_subtotal"] = (
+                    f"rows sum to {_money(line_sum)} != {_money(anchor)} "
+                    f"- off by {_money(abs(line_sum - anchor))}")
+
+    rows = [(norm_money(i.quantity), norm_money(i.unit_price), norm_money(i.line_total))
+            for i in items]
+    rows = [r for r in rows if None not in r]
+    checks["rows_multiply_out"] = None
+    if rows:
+        bad = [f"row {n}: {_money(q)} x {_money(u)} != {_money(t)}"
+               for n, (q, u, t) in enumerate(rows, 1) if abs(q * u - t) > tol]
+        checks["rows_multiply_out"] = not bad
+        if bad:
+            notes["rows_multiply_out"] = "; ".join(bad[:3])
+
+    date_fields = [f for f in ("date", "issue_date", "due_date") if hasattr(doc, f)]
+    read = [f for f in date_fields if getattr(doc, f) is not None]
+    # Pydantic refuses to build the document at all if a date does not parse, so reaching
+    # here with a date means it parsed. The check exists to say so, not to re-verify it.
+    checks["date_parses"] = True if read else None
+
+    cur = getattr(doc, "currency", None)
+    checks["currency_is_iso"] = None
+    if present(cur):
+        checks["currency_is_iso"] = len(str(cur).strip()) == 3
+        if not checks["currency_is_iso"]:
+            notes["currency_is_iso"] = f"{cur!r} is not a 3-letter ISO 4217 code"
+
+    issue, due = getattr(doc, "issue_date", None), getattr(doc, "due_date", None)
+    if hasattr(doc, "issue_date"):
+        checks["due_date_after_issue_date"] = None
+        if issue is not None and due is not None:
+            checks["due_date_after_issue_date"] = due >= issue
+            if due < issue:
+                notes["due_date_after_issue_date"] = f"due {due} is before issue {issue}"
+    vendor, customer = getattr(doc, "vendor", None), getattr(doc, "customer", None)
+    if vendor is not None and customer is not None:
+        checks["vendor_differs_from_customer"] = None
+        if vendor.name and customer.name:
+            same = norm_party(vendor.name) == norm_party(customer.name)
+            checks["vendor_differs_from_customer"] = not same
+            if same:
+                notes["vendor_differs_from_customer"] = (
+                    f"both parties read as {vendor.name!r} - role resolution failed")
+    return checks, notes
+
+
 # --- logistic model ----------------------------------------------------------
 def _sigmoid(z: float) -> float:
     if z >= 0:
