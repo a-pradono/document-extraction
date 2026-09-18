@@ -304,10 +304,12 @@ python -m eval.dashboard --set all --open              # outputs/dashboard.html,
 python -m eval.render_md report.md -o outputs/report.html    # the report, themed to match
 ```
 
-**Neither file is committed** — `outputs/dashboard.html` is 6.7 MB of inlined source
-images, and `outputs/report.html` is generated from [`report.md`](report.md), which is.
-Both are gitignored and rebuilt by the commands above in seconds, because every document
-is cached.
+**Both are committed** ([`outputs/dashboard.html`](outputs/dashboard.html),
+[`outputs/report.html`](outputs/report.html)) so a reviewer can open them without
+rebuilding: the repository is private, and the dashboard is 6.5 MB of inlined source
+images. The commands above regenerate them in seconds, because every document is cached.
+Only `.env` and machine-local paths (caches, virtualenvs, the 239 MB `data/raw/`) stay
+out of git.
 
 The dashboard is one self-contained page (images inlined, no CDN) showing **every source
 document beside what the system read from it**: per-field value, confidence and status
