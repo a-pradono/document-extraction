@@ -1060,8 +1060,8 @@
       "merchant_name"
     ],
     "needs_hand_label": [],
-    "verified": false,
-    "verified_note": "payment_method was left null, but the receipt prints CONTANTI 24,50 / RESTO 0,00 - Italian for cash, the same case as wild_0020's Especes. Labelled 'Contanti' as printed. One confirm needed.",
+    "verified": true,
+    "verified_note": null,
     "label_sha": "f1178c2a7b12e0fc"
   },
   "wild_0008": {
