@@ -17,6 +17,21 @@ blocks a regression before it ships.
 
 ---
 
+## Start here
+
+Two files answer most questions without running anything. Both are committed, so open
+them straight from the repository:
+
+| Open | What it answers |
+|---|---|
+| **[`outputs/dashboard.html`](outputs/dashboard.html)** | *What does this system actually do?* All 60 source documents beside what was read from each: per-field values, confidence, abstentions, the model-free arithmetic checks, cost and latency. Filter by document type, status or confidence band |
+| **[`report.md`](report.md)** — or [`outputs/report.html`](outputs/report.html) for the rendered version | *Why is it built this way, and what has been measured?* The design decisions, the dataset, the confidence fit, what the evaluation caught in its own ground truth, and what is still unmeasured |
+
+The dashboard's header links to the report and back. After a scored run, `outputs/<run>/scorecard.html`
+joins them with the accuracy numbers.
+
+---
+
 ## Quick start
 
 ```bash
@@ -34,6 +49,9 @@ python -m eval.regression outputs/<v1> outputs/<v2>  # exit 1 if v2 regressed
 
 uvicorn api.app:app --port 8000                      # or: docker compose up
 python -m api.batch path/to/folder                   # many receipts -> results + cost/latency
+
+python -m eval.dashboard --set all --open            # rebuild outputs/dashboard.html
+python -m eval.render_md report.md -o outputs/report.html    # rebuild the rendered report
 ```
 
 ---
