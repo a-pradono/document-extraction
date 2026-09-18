@@ -432,7 +432,14 @@ def cascade_report(results: list[metrics.DocResult], cascades: dict[str, dict]) 
 
 
 # --- calibration -------------------------------------------------------------
-def calibrate(target_precision: float, use_cache: bool = True) -> Path:
+# A fit is only as good as its coverage. Below this share of the calibration split
+# actually extracted, the weights and the threshold describe a handful of documents
+# that happened to run before the quota ran out, not the split.
+MIN_CALIBRATION_COVERAGE = 0.8
+
+
+def calibrate(target_precision: float, use_cache: bool = True,
+              allow_partial: bool = False) -> Path:
     """Fit the confidence model on the calibration split and pick a threshold.
 
     The split is held out from `test` by construction (scripts/assign_splits.py), so
@@ -449,12 +456,15 @@ def calibrate(target_precision: float, use_cache: bool = True) -> Path:
           file=sys.stderr)
 
     samples: list[tuple[str, FieldSignals, bool]] = []
+    collected: list[str] = []
+    failed: list[dict] = []
     for doc_id in ids:
         gt = model_for(doc_id).model_validate_json(_find_gt(doc_id).read_text())
         try:
             ext = extract_one(_find_doc(doc_id), "pipeline", None, 0.0, use_cache)
         except Exception as exc:  # noqa: BLE001
             print(f"  skipped {doc_id}: {type(exc).__name__}: {exc}", file=sys.stderr)
+            failed.append({"doc_id": doc_id, "error": f"{type(exc).__name__}: {exc}"})
             continue
         # Correctness comes from the same compare_document the scorecard uses, so the
         # model is fitted on exactly the definition of "correct" it is later judged by.
@@ -464,10 +474,28 @@ def calibrate(target_precision: float, use_cache: bool = True) -> Path:
         for field, sig in ext.signals.items():
             if field in judged:
                 samples.append((field, sig, judged[field]))
+        collected.append(doc_id)
         print(f"  collected {doc_id}", file=sys.stderr)
 
     if not samples:
         raise SystemExit("no calibration samples — check the calibration split and the providers")
+
+    # A partial fit that reports a threshold is worse than no fit: the number looks
+    # authoritative and nothing downstream knows it came from a fraction of the split.
+    # This is how a rate-limited run quietly produced a "calibrated" model from 8 of 18
+    # documents, exit code 0.
+    coverage = len(collected) / len(ids)
+    if coverage < MIN_CALIBRATION_COVERAGE and not allow_partial:
+        reasons = {f["error"].split(":")[0] for f in failed}
+        raise SystemExit(
+            f"\nREFUSING to fit: only {len(collected)} of {len(ids)} documents extracted "
+            f"({coverage:.0%}, need {MIN_CALIBRATION_COVERAGE:.0%}).\n"
+            f"  {len(failed)} failed: {', '.join(sorted(reasons))}\n"
+            f"  Nothing was written, so no run can pick up a threshold fitted on a "
+            f"fraction of the split.\n"
+            f"  Fix the cause (a daily quota resets; see the errors above), then re-run. "
+            f"Cached documents cost no further calls.\n"
+            f"  --allow-partial overrides this, and marks the report partial.")
 
     model = ConfidenceModel()
     fit_report = model.fit(samples)
@@ -483,7 +511,11 @@ def calibrate(target_precision: float, use_cache: bool = True) -> Path:
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "split": CALIBRATION_SET,
-        "n_documents": len(ids),
+        "n_documents": len(collected),          # what the fit SAW, not what was asked for
+        "n_documents_requested": len(ids),
+        "document_coverage": round(coverage, 4),
+        "partial": coverage < MIN_CALIBRATION_COVERAGE,
+        "failed_documents": failed,
         "n_field_observations": len(samples),
         "fit": fit_report,
         "chosen_threshold": chosen,
@@ -504,6 +536,8 @@ def calibrate(target_precision: float, use_cache: bool = True) -> Path:
         else:
             print(f"  {group:<9} n={info['n']:<4} not fitted ({info['reason']}) - keeping defaults")
     print(f"\nAUC {report['auc_in_sample']} | ECE {report['ece_in_sample']} (in-sample)")
+    print(f"Fitted on {len(collected)} of {len(ids)} documents ({coverage:.0%} coverage)"
+          + ("  ** PARTIAL — the threshold is provisional **" if report["partial"] else ""))
     print(f"\nModel: {MODEL_PATH}\nReport: {out}")
     if chosen["met_target"]:
         a = chosen["achieved"]
@@ -530,10 +564,14 @@ def main() -> None:
     ap.add_argument("--calibrate", action="store_true",
                     help="fit the confidence model on the calibration split and pick a threshold")
     ap.add_argument("--target-precision", type=float, default=0.95)
+    ap.add_argument("--allow-partial", action="store_true",
+                    help="fit even if part of the calibration split failed to extract "
+                         "(marks the report partial; the threshold is then provisional)")
     args = ap.parse_args()
 
     if args.calibrate:
-        calibrate(args.target_precision, use_cache=not args.no_cache)
+        calibrate(args.target_precision, use_cache=not args.no_cache,
+                  allow_partial=args.allow_partial)
     else:
         run(args.set_name, args.source, args.version, use_cache=not args.no_cache)
 

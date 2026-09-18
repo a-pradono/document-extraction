@@ -153,3 +153,65 @@ def test_save_load_roundtrip(tmp_path):
     loaded = ConfidenceModel.load(p)
     sig = FieldSignals(1.0, 1.0, 1.0, 0.5)
     assert abs(loaded.score_field("total", sig) - m.score_field("total", sig)) < 1e-9
+
+
+class TestCalibrationRefusesAPartialFit:
+    """Regression: a rate-limited run fitted the confidence model on 8 of 18 calibration
+    documents, wrote the model and the threshold, and exited 0. Every downstream run
+    would then have used a threshold read off whichever documents happened to run before
+    the quota ran out."""
+
+    def _run(self, tmp_path, monkeypatch, failures, allow_partial=False):
+        import pytest
+
+        from eval import run as eval_run
+        from extractor.confidence import FieldSignals
+        from extractor.schema import Receipt
+
+        ids = [f"cord_{i:04d}" for i in range(1, 11)]
+        monkeypatch.setattr(eval_run, "_doc_ids", lambda _: ids)
+        monkeypatch.setattr(eval_run, "_find_doc", lambda d: tmp_path / f"{d}.png")
+        gt = tmp_path / "gt.json"
+        gt.write_text('{"total": "10", "subtotal": "10"}')
+        monkeypatch.setattr(eval_run, "_find_gt", lambda d: gt)
+        monkeypatch.setattr(eval_run, "MODEL_PATH", tmp_path / "model.json")
+        monkeypatch.setattr(eval_run, "OUT_ROOT", tmp_path / "out")
+
+        def extract(path, *a, **k):
+            if path.stem in failures:
+                raise RuntimeError("RateLimitError: 429 quota exceeded")
+            return eval_run.Extraction(
+                document=Receipt(total="10", subtotal="10"), latency_s=0.1,
+                signals={"total": FieldSignals(1.0, 1.0, 1.0, 0.9),
+                         "subtotal": FieldSignals(1.0, 1.0, 1.0, 0.9)})
+
+        monkeypatch.setattr(eval_run, "extract_one", extract)
+        return eval_run, pytest
+
+    def test_it_refuses_and_writes_nothing_when_most_documents_failed(self, tmp_path, monkeypatch):
+        eval_run, pytest = self._run(tmp_path, monkeypatch,
+                                     failures={f"cord_{i:04d}" for i in range(3, 11)})
+        with pytest.raises(SystemExit) as exc:
+            eval_run.calibrate(0.95)
+        assert "REFUSING" in str(exc.value) and "2 of 10" in str(exc.value)
+        assert not (tmp_path / "model.json").exists()          # nothing downstream can pick it up
+        assert not (tmp_path / "out" / "calibration.json").exists()
+
+    def test_allow_partial_fits_but_marks_the_report(self, tmp_path, monkeypatch):
+        import json
+
+        eval_run, _ = self._run(tmp_path, monkeypatch,
+                                failures={f"cord_{i:04d}" for i in range(3, 11)})
+        out = eval_run.calibrate(0.95, allow_partial=True)
+        report = json.loads(out.read_text())
+        assert report["partial"] is True
+        assert report["n_documents"] == 2 and report["n_documents_requested"] == 10
+        assert len(report["failed_documents"]) == 8
+
+    def test_a_full_run_is_not_marked_partial(self, tmp_path, monkeypatch):
+        import json
+
+        eval_run, _ = self._run(tmp_path, monkeypatch, failures=set())
+        report = json.loads(eval_run.calibrate(0.95).read_text())
+        assert report["partial"] is False and report["document_coverage"] == 1.0
+        assert report["n_documents"] == 10
