@@ -6,7 +6,7 @@ a confidence score, so the system abstains instead of guessing. The evaluation h
 is the main deliverable: it shows **how** the system fails, not just how often, and it
 blocks a regression before it ships.
 
-> **Status of the numbers.** Everything below is built and tested (415 unit tests plus
+> **Status of the numbers.** Everything below is built and tested (435 unit tests plus
 > a 7-check offline end-to-end run over real HTTP). **No result in this README comes from
 > a real model run yet**, and the 50 ground-truth labels are not yet hand-verified.
 > Results sections say *pending* and give the exact command that fills them. That's
@@ -22,7 +22,7 @@ python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\act
 pip install -r requirements.txt
 cp .env.example .env        # add a Google AI Studio key and an OpenRouter key
 
-pytest eval/tests -q                                 # 415 tests, no keys needed
+pytest eval/tests -q                                 # 435 tests, no keys needed
 python -m agent.offline_e2e                          # whole system over HTTP, no keys needed
 
 python -m extractor.pipeline data/docs/cord_0001.jpg # one receipt -> fields + confidence
@@ -158,7 +158,10 @@ About 65 documents from three independent sources: two languages, three label sc
   receipt" from a null meaning "nobody looked yet".
 - **Verification status: 60 of 60 verified** (`python scripts/verify_gt.py --status`).
   Every label was checked against its image by a human; `--html` renders each document
-  beside its labels for that pass. It found real errors that the model-free audit alone
+  beside its labels for that pass, and `python scripts/review_server.py` opens a faster
+  one-document-at-a-time view (only the fields a human still has to judge, the arithmetic
+  the audit disputes spelled out, y/n verdicts on the keyboard written straight to
+  provenance). It found real errors that the model-free audit alone
   did not: wild_0003's converted subtotal had lost the leading digit of a printed
   `Rs1,675.00`, and its two printed taxes (VAT 13.13% and Service TAX 4.94%) had been
   collapsed into one, so the receipt never reconciled. Four documents were corrected or
@@ -472,9 +475,9 @@ threshold that makes fields abstain.
 ```
 extractor/  schema, provider, extract (pages), pipeline, grounding, confidence, cascade, cost
 api/        app (FastAPI), service, schemas, batch, telemetry
-eval/       run, metrics, taxonomy, scorecard, render_doc, dashboard, compare, regression, tests/ (415)
+eval/       run, metrics, taxonomy, scorecard, render_doc, dashboard, compare, regression, tests/ (435)
 agent/      stub_provider, offline_e2e          .claude/skills/offline-e2e/SKILL.md
-scripts/    fetch_datasets.sh, fetch_invoices, convert_*, verify_gt, audit_gt, assign_splits, degrade
+scripts/    fetch_datasets.sh, fetch_invoices, convert_*, verify_gt, review_server, audit_gt, assign_splits, degrade
 data/       docs/, ground_truth/ (+ _provenance.json), sets/, README.md
 docs/       DATASETS.md (dataset spec), OUTPUT.md (output contract)
 Dockerfile  docker-compose.yml  .env.example  CLAUDE.md  README.md

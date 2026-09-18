@@ -1,0 +1,177 @@
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Ground-truth review</title>
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f6f7f9; --line:#e4e7ec; --line2:#d3d8e0;
+  --fg:#111111; --mut:#535c6b; --dim:#858e9d;
+  --accent:#2f5fe0; --ok:#0f7a52; --warn:#9a5b06; --bad:#c0263a;
+  --ok-bg:rgba(15,122,82,.09); --warn-bg:rgba(154,91,6,.10); --bad-bg:rgba(192,38,58,.09);
+  --mono:"JetBrains Mono","SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.55 "Inter",system-ui,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
+  padding:.7rem 1.2rem;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+h1{font-size:.95rem;margin:0;font-weight:700;letter-spacing:-.01em}
+.prog{flex:1;min-width:180px;height:6px;background:var(--bg2);border-radius:99px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--ok);transition:width .3s}
+.count{font-family:var(--mono);font-size:.8rem;color:var(--mut);font-variant-numeric:tabular-nums}
+.keys{font-size:.72rem;color:var(--dim)}
+kbd{font-family:var(--mono);font-size:.68rem;background:var(--bg2);border:1px solid var(--line);
+  border-bottom-width:2px;border-radius:4px;padding:0 .3rem}
+main{display:grid;grid-template-columns:minmax(0,52fr) minmax(0,48fr);gap:1.2rem;
+  padding:1.2rem;max-width:1500px;margin:0 auto;align-items:start}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+.imgwrap{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:.8rem;
+  position:sticky;top:4.2rem}
+.imgwrap img{width:100%;height:auto;border-radius:8px;display:block}
+.docid{font-family:var(--mono);font-weight:700;font-size:1rem}
+.pill{font-size:.64rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;
+  padding:.16rem .5rem;border-radius:99px;border:1px solid var(--line);color:var(--mut)}
+.pill.check{color:var(--warn);border-color:var(--warn);background:var(--warn-bg)}
+.pill.inv{color:#6d4bd8;border-color:#6d4bd8}
+.pill.done{color:var(--ok);border-color:var(--ok);background:var(--ok-bg)}
+.card{border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:1rem}
+h2{font-size:.66rem;text-transform:uppercase;letter-spacing:.13em;color:var(--dim);
+  margin:0 0 .6rem;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+td{padding:.32rem .4rem;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.f{color:var(--mut);width:11rem;font-size:.8rem}
+.v{font-weight:600}
+.v.null{color:var(--dim);font-weight:400}
+.drafted td{background:rgba(47,95,224,.05)}
+.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.dispute{background:var(--bad-bg);border-left:3px solid var(--bad);border-radius:0 8px 8px 0;
+  padding:.55rem .7rem;margin:.4rem 0;font-size:.82rem}
+.dispute b{font-family:var(--mono);color:var(--bad)}
+.note{background:var(--warn-bg);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;
+  padding:.55rem .7rem;margin:0 0 1rem;font-size:.82rem;color:#6b3f04}
+.acts{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem}
+button{font:inherit;font-size:.85rem;font-weight:600;border-radius:9px;padding:.5rem .9rem;
+  cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--fg)}
+button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+button.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+button:disabled{opacity:.45;cursor:default}
+textarea{width:100%;font:inherit;font-size:.84rem;border:1px solid var(--line);border-radius:9px;
+  padding:.5rem .6rem;margin-top:.5rem;resize:vertical;min-height:4.5rem}
+.done-msg{text-align:center;padding:5rem 1rem;color:var(--mut)}
+.sum{color:var(--mut);font-size:.78rem;margin-top:.5rem}
+.rows{max-height:12rem;overflow:auto;border:1px solid var(--line);border-radius:8px;margin-top:.5rem}
+.rows table{font-size:.78rem}
+</style></head><body>
+<header>
+  <h1>Ground-truth review</h1>
+  <span class=count id=pos></span>
+  <div class=prog><i id=bar style="width:0"></i></div>
+  <span class=count id=tally></span>
+  <span class=keys><kbd>y</kbd> verify · <kbd>n</kbd> needs fixing · <kbd>s</kbd> skip ·
+    <kbd>←</kbd><kbd>→</kbd> move</span>
+</header>
+<main id=main></main>
+<script>
+let docs = [], i = 0, tally = {verified: 0, total: 0};
+
+async function load(){
+  const r = await fetch('/api/docs');
+  const data = await r.json();
+  docs = data.documents; tally = {verified: data.verified, total: data.total};
+  render();
+}
+
+function money(v){ return v === null || v === undefined ? '—' : v; }
+
+function render(){
+  const m = document.getElementById('main');
+  if(!docs.length){
+    m.innerHTML = '<div class=done-msg><h2>Nothing left to review</h2>'+
+      '<p>Every document in this queue has a verdict.</p></div>';
+    document.getElementById('pos').textContent = '';
+    return;
+  }
+  if(i >= docs.length) i = docs.length - 1;
+  const d = docs[i];
+  document.getElementById('pos').textContent = `${i+1} / ${docs.length}`;
+  document.getElementById('tally').textContent = `${tally.verified} / ${tally.total} verified`;
+  document.getElementById('bar').style.width = (100*tally.verified/tally.total) + '%';
+
+  const fields = d.fields.map(f => `<tr class="${f.drafted?'drafted':''}"><td class=f>${f.field}${
+    f.drafted ? ' <span class=pill>drafted</span>' : ''}</td><td class="v ${
+    f.value===null?'null':''}">${f.value===null?'— absent':escapeHtml(f.value)}</td></tr>`).join('');
+
+  const moneyRows = d.money.map(x =>
+    `<tr><td class=f>${x.field}</td><td class="v n ${x.value===null?'null':''}">${
+      money(x.value)}</td></tr>`).join('');
+
+  const disputes = d.disputes.map(x =>
+    `<div class=dispute><b>${x.field}</b> — ${escapeHtml(x.message)}</div>`).join('');
+
+  const rows = d.row_preview.map((r,n) =>
+    `<tr><td class=n>${n+1}</td><td>${escapeHtml(r.description||'')}</td>
+     <td class=n>${r.qty??''}</td><td class=n>${r.line_total??'—'}</td></tr>`).join('');
+
+  m.innerHTML = `
+  <div class=imgwrap><img src="/api/image/${d.doc_id}" alt="${d.doc_id}"></div>
+  <div>
+    <div class=card>
+      <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:.8rem">
+        <span class=docid>${d.doc_id}</span>
+        <span class="pill ${d.document_type==='invoice'?'inv':''}">${d.document_type}</span>
+        ${d.pages>1?`<span class=pill>${d.pages} pages</span>`:''}
+        ${d.check?'<span class="pill check">check</span>':''}
+        ${d.verified?'<span class="pill done">verified</span>':''}
+      </div>
+      ${d.note?`<div class=note>${escapeHtml(d.note)}</div>`:''}
+      ${disputes ? `<h2>Arithmetic the audit disputes</h2>${disputes}` : ''}
+      <h2>Fields to judge</h2>
+      <table>${fields}</table>
+      <h2>Money</h2>
+      <table>${moneyRows}</table>
+      <p class=sum>${d.rows} line item(s)${d.rows_sum?`, summing to <b>${d.rows_sum}</b>`:''}</p>
+      <div class=rows><table>${rows}</table></div>
+    </div>
+    <div class=card>
+      <h2>Verdict</h2>
+      <div class=acts>
+        <button class=ok onclick="verdict(true)">Verified (y)</button>
+        <button class=bad onclick="verdict(false)">Needs fixing (n)</button>
+        <button onclick="move(1)">Skip (s)</button>
+      </div>
+      <textarea id=note placeholder="Note — what is wrong, or what you checked. Saved with the verdict."></textarea>
+    </div>
+  </div>`;
+  const next = docs[i+1];
+  if(next) new Image().src = `/api/image/${next.doc_id}`;   // preload
+}
+
+function escapeHtml(s){ return String(s).replace(/[&<>"]/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+async function verdict(ok){
+  const d = docs[i];
+  const note = document.getElementById('note').value.trim();
+  const r = await fetch('/api/verdict', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({doc_id: d.doc_id, verified: ok, note: note || null})});
+  const data = await r.json();
+  tally = {verified: data.verified, total: data.total};
+  d.verified = ok;
+  move(1);
+}
+
+function move(step){
+  i = Math.min(Math.max(0, i + step), Math.max(0, docs.length - 1));
+  render();
+  window.scrollTo({top: 0});
+}
+
+document.addEventListener('keydown', e => {
+  if(e.target.tagName === 'TEXTAREA') return;
+  if(e.key === 'y') verdict(true);
+  if(e.key === 'n') verdict(false);
+  if(e.key === 's' || e.key === 'ArrowRight') move(1);
+  if(e.key === 'ArrowLeft') move(-1);
+});
+load();
+</script>
+</body></html>
