@@ -84,6 +84,16 @@ def to_markdown(scorecard: dict, meta: dict) -> str:
     if any(v["f1"] is None for v in m["per_field"].values()):
         lines += ["", "n/a: no ground-truth value and no prediction anywhere in the set, so the "
                       "field is undefined rather than 0 and is excluded from macro F1."]
+    if m.get("unscored_fields"):
+        lines += ["", "## Not scored (no annotation)", "",
+                  "These fields have no ground-truth label on the documents below, so they "
+                  "are left out of every number above. A null label would mean *not on the "
+                  "document*; an unlabeled field is a different thing, and scoring it would "
+                  "count a correct reading as a hallucination.", "",
+                  "| field | documents with no label |", "|---|--:|"]
+        for f, n in m["unscored_fields"].items():
+            lines.append(f"| {f} | {n} of {m['n_docs']} |")
+
     lines += ["", "## Failures by kind", "", "| kind | count |", "|---|--:|"]
     for label in taxonomy.ALL_LABELS:
         lines.append(f"| {label} | {m['error_taxonomy'].get(label, 0)} |")
@@ -252,7 +262,14 @@ def to_html(scorecard: dict, meta: dict, results: list[DocResult] | None = None,
         "<h2>Per-field (normalized)</h2><table>"
         "<tr><th>field</th><th>support</th><th>precision</th><th>recall</th>"
         f"<th>F1</th><th>exact F1</th></tr>{field_rows}</table>"
-        "<h2>Failures by kind</h2><table>"
+        + ("<h2>Not scored (no annotation)</h2><p class=k>No ground-truth label exists for "
+           "these fields, so they are excluded from every number above &mdash; an unlabeled "
+           "field is not the same as a field that is absent from the document.</p><table>"
+           "<tr><th>field</th><th>docs with no label</th></tr>"
+           + "".join(f"<tr><td>{f}</td><td>{n} of {m['n_docs']}</td></tr>"
+                     for f, n in m["unscored_fields"].items()) + "</table>"
+           if m.get("unscored_fields") else "")
+        + "<h2>Failures by kind</h2><table>"
         f"<tr><th>kind</th><th>count</th></tr>{tax_rows}</table>"
         + (_per_document_table(results, linked) if results else "")
     )

@@ -216,6 +216,21 @@ def extract_one(
     )
 
 
+def unscored_fields(doc_id: str) -> list[str]:
+    """Fields this document has no annotation for, from data/ground_truth/_provenance.json.
+
+    `needs_hand_label` is the converters' record of what a dataset never annotated. Those
+    labels are null, and scoring them would count a correct reading as a hallucination."""
+    path = GT_DIR / "_provenance.json"
+    if not path.exists():
+        return []
+    try:
+        prov = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+    return list(prov.get(doc_id, {}).get("needs_hand_label") or [])
+
+
 def _load_model() -> tuple[Optional[ConfidenceModel], bool]:
     if MODEL_PATH.exists():
         return ConfidenceModel.load(MODEL_PATH), True
@@ -263,7 +278,8 @@ def run(set_name: str | None, source: str, version: str, use_cache: bool = True)
             ext = Extraction(document=model_for(doc_type)(), latency_s=0.0)
 
         doc = metrics.compare_document(
-            doc_id, ext.document, gt, latency_s=ext.latency_s, confidence=ext.confidence
+            doc_id, ext.document, gt, latency_s=ext.latency_s, confidence=ext.confidence,
+            unscored=unscored_fields(doc_id),
         )
         cards.append(json.loads(from_result(doc_id, PipelineResult(
             document=ext.document, document_b=None, transcription=ext.transcription,
@@ -470,7 +486,8 @@ def calibrate(target_precision: float, use_cache: bool = True,
         # model is fitted on exactly the definition of "correct" it is later judged by.
         judged = {f: ok for f, _, ok in metrics.confidence_observations([
             metrics.compare_document(doc_id, ext.document, gt,
-                                     confidence={f: 0.0 for f in ext.signals})])}
+                                     confidence={f: 0.0 for f in ext.signals},
+                                     unscored=unscored_fields(doc_id))])}
         for field, sig in ext.signals.items():
             if field in judged:
                 samples.append((field, sig, judged[field]))

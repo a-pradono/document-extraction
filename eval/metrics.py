@@ -17,7 +17,7 @@ from dataclasses import dataclass, field as dc_field
 from datetime import date
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 from difflib import SequenceMatcher
-from typing import Any, Optional
+from typing import Any, Iterable, Optional
 
 from pydantic import BaseModel
 
@@ -74,7 +74,15 @@ CURRENCY_SYMBOLS = {"$": "USD", "rp": "IDR", "€": "EUR", "£": "GBP", "¥": "J
 
 # --- normalization -----------------------------------------------------------
 def norm_string(v: Any) -> str:
-    return re.sub(r"\s+", " ", str(v).strip().lower())
+    """Case- and whitespace-insensitive, INCLUDING internal spaces.
+
+    A known lenience, and a deliberate one: WildReceipt's annotations strip spaces out of
+    text ("TUSCANYRISTORANTE", "AsiaBay"), so a correct reading scored as wrong_value on
+    every one of those documents and taught the confidence model to distrust exactly the
+    strings it could see on the page. Collapsing spaces scores the reading, not the
+    annotator's tokenizer. It does accept "TUS CANY RISTORANTE" as correct; that is the
+    price, and it is smaller than systematically scoring correct text as wrong."""
+    return re.sub(r"\s+", "", str(v).strip().lower())
 
 
 def aggr_string(v: Any) -> str:
@@ -228,6 +236,7 @@ class DocResult:
     tokens: Optional[dict] = None          # filled in Phase 5
     cost_usd: Optional[float] = None       # filled in Phase 5
     confidence: dict = dc_field(default_factory=dict)  # field -> conf, Phase 4
+    unscored: list[str] = dc_field(default_factory=list)  # no annotation: not scored
 
 
 def _apply_swapped(comparisons: list[FieldComparison], gt: BaseModel) -> None:
@@ -259,11 +268,22 @@ def compare_document(
     gt: BaseModel,
     latency_s: Optional[float] = None,
     confidence: Optional[dict] = None,
+    unscored: Iterable[str] = (),
 ) -> DocResult:
+    """`unscored` names fields this document has no annotation for.
+
+    A null label means "not on the document". A field nobody has labeled yet is a
+    DIFFERENT thing, and conflating them scored every correct merchant_name as a
+    hallucination — the one failure this system promises never to make — while teaching
+    the confidence model that a visible, grounded string is probably wrong. Those fields
+    are left out of scoring entirely and counted in the scorecard, so the gap is visible
+    instead of being absorbed as false precision."""
     if type(pred) is not type(gt):
         raise TypeError(f"{doc_id}: prediction is {type(pred).__name__}, ground truth is "
                         f"{type(gt).__name__}; a document must be scored against its own type")
-    comparisons = [compare_scalar(f, get_field(gt, f), get_field(pred, f)) for f in scalar_fields(gt)]
+    skip = set(unscored)
+    comparisons = [compare_scalar(f, get_field(gt, f), get_field(pred, f))
+                   for f in scalar_fields(gt) if f not in skip]
     _apply_swapped(comparisons, gt)
     li = score_line_items(gt.line_items, pred.line_items)
     scalars_ok = all(c.label == taxonomy.CORRECT for c in comparisons)
@@ -275,6 +295,7 @@ def compare_document(
         document_correct=document_correct,
         latency_s=latency_s,
         confidence=confidence or {},
+        unscored=sorted(skip & set(scalar_fields(gt))),
     )
 
 
@@ -289,10 +310,13 @@ def aggregate(results: list[DocResult]) -> dict:
     Callers must not pool document types into one headline (receipts and invoices have
     different fields and difficulty); eval/run.py aggregates each type separately."""
     fields: list[str] = []
+    unscored: dict[str, int] = {}
     for r in results:
         for c in r.comparisons:
             if c.field not in fields:
                 fields.append(c.field)
+        for f in r.unscored:
+            unscored[f] = unscored.get(f, 0) + 1
     per_field: dict[str, dict] = {}
     for f in fields:
         tp_n = tp_e = pred_pos = gt_pos = 0
@@ -365,6 +389,7 @@ def aggregate(results: list[DocResult]) -> dict:
         "line_item_f1": round(li_f1, 4),
         "hallucination_rate": round(hallucination_rate, 4),
         "per_field": per_field,
+        "unscored_fields": dict(sorted(unscored.items(), key=lambda kv: -kv[1])),
         "error_taxonomy": tax_counts,
         "latency": latency,
         "calibration": calibration(results),
