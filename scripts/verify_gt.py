@@ -25,6 +25,12 @@ SETS_DIR = REPO / "data" / "sets"
 REVIEW_HTML = REPO / "outputs" / "gt_review.html"
 
 
+def _notes(entry: dict) -> str:
+    """label_notes is a string on receipts and a list of judgement calls on invoices."""
+    notes = entry.get("label_notes") or ""
+    return " • ".join(notes) if isinstance(notes, list) else str(notes)
+
+
 def _load_provenance() -> dict:
     return json.loads(PROVENANCE.read_text(encoding="utf-8")) if PROVENANCE.exists() else {}
 
@@ -63,7 +69,18 @@ def write_html(ids: list[str]) -> Path:
     # goes where the labels are most likely broken (see scripts/audit_gt.py).
     audit = {d["doc_id"]: d for d in audit_all()}
     wanted = set(ids)
-    ids = [d for d in audit if d in wanted] + [d for d in ids if d not in audit]
+    ordered = [d for d in audit if d in wanted] + [d for d in ids if d not in audit]
+
+    # Review order = "how likely is this label to be wrong", from two independent
+    # sources: a CHECK note means the drafter could not resolve it (a blurred header, an
+    # ambiguous $ or date), and an audit flag means the arithmetic does not hold. Sorting
+    # on the audit alone buried the CHECK documents in the middle of the page.
+    def priority(doc_id: str) -> tuple:
+        notes = _notes(prov.get(doc_id, {}))
+        flags = [f for f in audit.get(doc_id, {}).get("flags", []) if f["severity"] != "todo"]
+        return (0 if "CHECK" in notes else 1, 0 if flags else 1, -len(flags), doc_id)
+
+    ids = sorted(ordered, key=priority)
     rows = []
     for doc_id in ids:
         image = _doc_path(doc_id)
@@ -78,6 +95,9 @@ def write_html(ids: list[str]) -> Path:
         pages = f" &middot; {entry['page_count']} pages" if entry.get("page_count") else ""
         status = f" &middot; <b>{html.escape(entry['label_status'])}</b>" if entry.get("label_status") else ""
         badge = "verified" if entry.get("verified") else "unverified"
+        notes = _notes(entry)
+        note_html = (f'<p class="note{" check" if "CHECK" in notes else ""}">'
+                     f"{html.escape(notes)}</p>" if notes else "")
         flags = [f for f in audit.get(doc_id, {}).get("flags", []) if f["severity"] != "todo"]
         flag_html = "".join(
             f'<li class="{f["severity"]}"><b>{html.escape(f["field"])}</b> '
@@ -89,6 +109,7 @@ def write_html(ids: list[str]) -> Path:
   <div class="meta">{html.escape(entry.get('source', ''))} &middot;
     {html.escape(entry.get('original_file', ''))}{pages}{status}
     {'&middot; <b>needs hand label:</b> ' + html.escape(', '.join(todo)) if todo else ''}</div>
+  {note_html}
   {f'<ul class="flags">{flag_html}</ul>' if flags else ''}
   <div class="pair">
     {viewer}
@@ -113,6 +134,8 @@ def write_html(ids: list[str]) -> Path:
  .flags .error{{color:#f99}} .flags .check{{color:#fc8}}
 </style>
 <h1>Ground-truth review &mdash; {len(ids)} documents</h1>
+<p class="meta">Order: documents the drafter flagged <b>CHECK</b> first, then those the
+model-free audit flags, then the rest.</p>
 <p class="meta">Check every field against the image. Mark status with
 <code>python scripts/verify_gt.py</code>. Never adjust a value to make the arithmetic
 balance &mdash; a receipt whose printed total is genuinely wrong is a valuable test case.</p>
