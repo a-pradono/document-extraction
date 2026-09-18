@@ -271,3 +271,30 @@ class TestSingleModelDocuments:
                                 stages=[StageUsage(stage="model_a", model="vlm")]))
         html = dashboard.build(["cord_0001"], title="t")
         assert "one model only" in html and "rests on three signals" in html
+
+
+class TestReportPage:
+    """report.md is what a reviewer reads end to end; it ships beside the dashboard."""
+
+    def test_markdown_becomes_a_self_contained_page(self):
+        from eval import render_md
+        html_text = render_md.render("# Title\n\n| a | b |\n|---|---|\n| 1 | 2 |\n",
+                                     title="Report", back_link="dashboard.html")
+        assert "<table>" in html_text and "<title>Report</title>" in html_text
+        assert "<style>" in html_text
+        assert not re.findall(r'(?:src|href)="https?://', html_text.split("<article")[0])
+
+    def test_it_links_back_to_the_dashboard(self):
+        from eval import render_md
+        assert 'href="dashboard.html"' in render_md.render(
+            "# T", title="T", back_link="dashboard.html")
+
+    def test_the_dashboard_links_to_the_report(self, tmp_path, monkeypatch):
+        docs = tmp_path / "docs"
+        docs.mkdir()
+        Image.new("RGB", (40, 60)).save(docs / "cord_0001.png")
+        monkeypatch.setattr(dashboard.eval_run, "DOCS_DIR", docs)
+        monkeypatch.setattr(dashboard.eval_run, "_load_model", lambda: (None, True))
+        monkeypatch.setattr(dashboard.eval_run, "extract_one", lambda *a, **k:
+                            dashboard.eval_run.Extraction(document=Receipt(**CLEAN), latency_s=0.1))
+        assert 'href="report.html"' in dashboard.build(["cord_0001"], title="t")

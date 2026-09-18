@@ -357,6 +357,7 @@ def page(cards: list[str], meta: dict) -> str:
         <button data-type-filter=invoice>Invoices<span class=cnt>{counts['invoice']}</span></button>
       </div>
       <span class=spacer></span>
+      <a class=reportlink href="report.html">Full report &rarr;</a>
       <span class=cnt id=shown></span>
       <div class=nav>
         <button id=prev>&lsaquo; Prev</button>

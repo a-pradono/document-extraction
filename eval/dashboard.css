@@ -79,6 +79,10 @@ h1{font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.08;margin:1rem 0 .5rem;
 .seg button.on[data-conf=medium]{color:var(--warn)}
 .seg button.on[data-conf=low]{color:var(--bad)}
 .conf-high{color:var(--ok)} .conf-medium{color:var(--warn)} .conf-low{color:var(--bad)}
+.reportlink{font-size:.8rem;font-weight:600;color:var(--accent);text-decoration:none;
+  border:1px solid var(--accent-line);background:var(--accent-bg);border-radius:9px;
+  padding:.34rem .7rem}
+.reportlink:hover{text-decoration:underline}
 .cnt{font-size:.7rem;color:var(--dim);font-variant-numeric:tabular-nums;
   padding:.1rem .4rem;background:var(--bg2);border-radius:5px;margin-left:.25rem}
 .spacer{flex:1 1 auto}
