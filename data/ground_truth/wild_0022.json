@@ -1,8 +1,10 @@
 {
-  "merchant_name": "ALMANAMAHYPERMARKET",
-  "merchant_address": "TIMESSQUARECENTER-DUBAI",
-  "date": "2014-10-01",
+  "merchant_name": "AL MANAMA HYPERMARKET",
+  "merchant_address": "TIMES SQUARE CENTER - DUBAI",
+  "date": "2014-01-10",
+  "currency": "AED",
   "total": "278.88",
+  "payment_method": null,
   "line_items": [
     {
       "quantity": "0.48",

@@ -1,7 +1,12 @@
 {
+  "merchant_name": "삼진어묵",
+  "merchant_address": null,
+  "date": null,
+  "currency": "IDR",
   "subtotal": "91000",
   "discount": "0",
   "total": "91000",
+  "payment_method": "Debit",
   "line_items": [
     {
       "description": "Goblin's Mace",

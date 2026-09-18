@@ -1,9 +1,12 @@
 {
-  "merchant_name": "IronHorse Tavern",
+  "merchant_name": "Iron Horse Tavern",
+  "merchant_address": null,
   "date": "2014-06-04",
+  "currency": "USD",
   "subtotal": "33.60",
   "tax": "2.02",
   "total": "35.62",
+  "payment_method": null,
   "line_items": [
     {
       "description": "3-CHEESEMAC",

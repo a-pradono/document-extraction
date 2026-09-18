@@ -1,8 +1,13 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "561800",
   "service_charge": "42135",
   "tax": "60394",
   "total": "664329",
+  "payment_method": null,
   "line_items": [
     {
       "description": "XLB Org Pork 10x",

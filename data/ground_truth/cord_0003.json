@@ -1,7 +1,12 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "63636",
   "tax": "6364",
   "total": "70000",
+  "payment_method": "Cash",
   "line_items": [
     {
       "description": "[LG] BLACK SAKURA",

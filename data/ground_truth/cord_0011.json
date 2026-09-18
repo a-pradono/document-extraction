@@ -1,7 +1,12 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "316017.00",
   "service_charge": "48982.68",
   "total": "365000.00",
+  "payment_method": null,
   "line_items": [
     {
       "description": "Chicken Maryland",

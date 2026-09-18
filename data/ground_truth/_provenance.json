@@ -10,17 +10,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "6d7274db3425200e"
+    "label_sha": "afc3085dc1156673",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0002": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -33,17 +34,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "5a633ede5afbaf88"
+    "label_sha": "df9046f00feb0156",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0003": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -56,17 +58,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "875160e0a23e5bdc"
+    "label_sha": "640cb2d7f8c92d19",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0004": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -79,17 +82,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "7a41b99f74afd39e"
+    "label_sha": "401e02e41b096549",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "merchant_name read from the Korean logo (Samjin Amook); the printed header beneath it is blurred. CHECK: Korean script vs transliteration."
   },
   "cord_0005": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -102,17 +107,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "39c9aad22657edca"
+    "label_sha": "70441cf2d49270a9",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0006": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -125,17 +131,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "00c8798b60da5cb1"
+    "label_sha": "0d9a96e198658446",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "header blurred; the line shape resembles cord_0019 but is not legible, so merchant_name is null."
   },
   "cord_0007": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -148,17 +156,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "7fa50279d60bff09"
+    "label_sha": "7a58cedcfa16e86f",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "payment printed as '~BCA EDC' (a card terminal); labelled as printed."
   },
   "cord_0008": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -171,17 +181,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "915f79ef521e05d5"
+    "label_sha": "351001be32fe5786",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0009": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -194,17 +205,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "b7f4c623007b0112"
+    "label_sha": "0009a5a5391006cb",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0010": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -217,17 +229,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "868caa0c42965ac6"
+    "label_sha": "4884df7a330a3c41",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0011": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -240,17 +253,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "1608adac5b46e5ce"
+    "label_sha": "7a355af15d254285",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0012": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -263,17 +277,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "b783b6e5064f8b3b"
+    "label_sha": "60c9e1c47636806d",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0013": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -286,17 +301,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "045177dc73e4c177"
+    "label_sha": "bb9e7b4c7dffd2ed",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0014": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -309,17 +325,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "5bbc11e13020a654"
+    "label_sha": "9d6862f648cfedf7",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0015": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -332,17 +349,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "74d44c4f9af01ff6"
+    "label_sha": "bfa5084f76db6b0c",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0016": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -355,17 +373,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "4e1f8b945b6c40f0"
+    "label_sha": "d0d2dff7b784d1da",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0017": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -378,17 +397,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "9fe9e5afa6335d17"
+    "label_sha": "4cb7beb5ab7cc18e",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "date printed 23/1?/2017 with the month digit partly obscured; read as 23/10/2017. CHECK."
   },
   "cord_0018": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -401,17 +422,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "b0cc349dba551530"
+    "label_sha": "73ab3d3663ed361e",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0019": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -424,17 +446,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "797d9a927798a0a1"
+    "label_sha": "505e9e9b3ac1e9ea",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "header blurred. A model returning 'FRANCIS ARTISAN BAKERY' here is reading through the blur; it is not legible to me, so the label is null. CHECK - if you can read it, this label should change."
   },
   "cord_0020": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -447,17 +471,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "e31f4fd91a8ff071"
+    "label_sha": "bb82197885c4cc72",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0021": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -470,17 +495,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "654b3d3a18e7f307"
+    "label_sha": "764c09c1df6d95aa",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "'PIZZA HUT' is legible through the anonymisation blur, so it is labelled."
   },
   "cord_0022": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -493,17 +520,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "1ad30f0a7d9d0861"
+    "label_sha": "0744662513e9e6d2",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "logo reads 'LA PHE' (accent uncertain); the header beneath is blurred. CHECK."
   },
   "cord_0023": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -516,17 +545,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "df6150b46acc26e3"
+    "label_sha": "8aef90fd15df8415",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0024": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -539,17 +569,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "12e58b8e308f896e"
+    "label_sha": "adbb8948d20de8a3",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "cord_0025": {
     "source": "CORD v2 (naver-clova-ix/cord-v2, test split)",
@@ -562,17 +593,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "9a9b18e0429e560e"
+    "label_sha": "c54c724a9f40b20e",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "inv_0001": {
     "source": "RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets & Benchmarks; CC BY-NC 4.0), invoice class",
@@ -879,17 +911,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "6532383b855cf587"
+    "label_sha": "981bb5849890902e",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "address was 'CLATOCHA,22 FACTURASIMPLIFICADA': the dataset ran the address into the document-type line 'FACTURA SIMPLIFICADA', which is not part of the address."
   },
   "wild_0002": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -899,16 +933,18 @@
       "merchant_name",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
+      "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "7c9631279edeee89"
+    "label_sha": "fe9c5e93d9d8166a",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0003": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -947,16 +983,18 @@
       "merchant_name",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
+      "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "25e2ffb26a63c1f6"
+    "label_sha": "32c637576238318a",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0005": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -967,17 +1005,18 @@
       "merchant_name",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "94dff04023966e9f"
+    "label_sha": "0ab3249026beefb9",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0006": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -989,17 +1028,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "73f02dffb5a2ac20"
+    "label_sha": "e81428fc88a5cd88",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "currency printed only as '$'; AUD inferred from the ABN and NSW address. CHECK. Date partly illegible (15/0?/20??), so left null."
   },
   "wild_0007": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1036,16 +1077,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
+      "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "43e8648fc1452770"
+    "label_sha": "348ab9f5e8ea304b",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "printed as 'ONE MILL STREET / @ ONE MILL STREET'; the '@' line names the venue, not a street address."
   },
   "wild_0009": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1057,17 +1101,18 @@
       "subtotal",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "eee4aafd3fb2989b"
+    "label_sha": "9f55d1a201a794bb",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0010": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1080,17 +1125,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "e3d8046d83338a27"
+    "label_sha": "8870b24aba2777ab",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0011": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1100,16 +1146,19 @@
       "merchant_name",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
+      "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "f2c177a5175f1ee4"
+    "label_sha": "43e2d657fac216be",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "currency printed only as '$'; AUD inferred from the ABN. CHECK."
   },
   "wild_0012": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1122,15 +1171,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
+      "date",
+      "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "59c64c91a6cba212"
+    "label_sha": "df10169d1e17a72e",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "US-format date 06/04/14 read as 2014-06-04. CHECK if you read it as 4 June."
   },
   "wild_0013": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1143,16 +1196,18 @@
       "subtotal",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
+      "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "cd0bd4f7eae6b42c"
+    "label_sha": "e3c4a6bb3d673e6a",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0014": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1163,17 +1218,18 @@
       "merchant_name",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "ec6f54831290d8f1"
+    "label_sha": "4597c01b08a80dad",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0015": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1186,16 +1242,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
+      "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "ccd3aa4d514506fe"
+    "label_sha": "f3c285a795442e90",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0016": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1209,16 +1267,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
+      "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "7422103cf2afc4d7"
+    "label_sha": "0ccc4eb94a0ebe3b",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0017": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1228,16 +1288,18 @@
       "merchant_name",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
+      "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "8bbe03abc15c85c5"
+    "label_sha": "e128006b737ebb76",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0018": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1252,16 +1314,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
+      "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "ff8360a620527261"
+    "label_sha": "dcffa8901c9d2b87",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0019": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1274,17 +1338,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "359dc7b55c979c1f"
+    "label_sha": "95850e9cdd4d7ab3",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "currency printed only as '$'; SGD inferred from the Singapore GST registration. CHECK."
   },
   "wild_0020": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1297,17 +1363,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "71e5102aa388a4ca"
+    "label_sha": "53319450216ac8f2",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0021": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1318,17 +1385,19 @@
       "merchant_name",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "6bb1e2ddffabc872"
+    "label_sha": "4d5c044344bcb24b",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "merchant printed 'COSTCO WHOLESALE'; the dataset label had only 'COSTCO'."
   },
   "wild_0022": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1340,16 +1409,19 @@
       "merchant_name",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
+      "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "a65a8f4d8494fc1b"
+    "label_sha": "872b4dcb9b559fbe",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "Dubai receipt; date 10/01/14 read day-first as 2014-01-10. CHECK."
   },
   "wild_0023": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1362,17 +1434,18 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "c6fed58e9c3783dd"
+    "label_sha": "cec5df654da9daa4",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   },
   "wild_0024": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1387,16 +1460,19 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
+      "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "2e1a73bb949c5458"
+    "label_sha": "ac35bf778ca12731",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier",
+    "label_notes": "US-format date 12/09/12 read as 2012-12-09. CHECK."
   },
   "wild_0025": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1410,15 +1486,17 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
+      "date",
       "merchant_address",
       "merchant_name",
       "payment_method"
     ],
-    "verified": true,
+    "needs_hand_label": [],
+    "verified": false,
     "verified_note": null,
-    "label_sha": "a937b4e1a9d93b78"
+    "label_sha": "9352b74277617f60",
+    "label_status": "5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier"
   }
 }

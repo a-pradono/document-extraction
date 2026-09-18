@@ -1,8 +1,11 @@
 {
-  "merchant_name": "TUSCANYRISTORANTE",
-  "merchant_address": "55NORTONSTREET LEICHHARDTNSW2040",
+  "merchant_name": "TUSCANY RISTORANTE",
+  "merchant_address": "55 NORTON STREET LEICHHARDT NSW 2040",
+  "date": null,
+  "currency": "AUD",
   "tax": "65.19",
   "total": "811.60",
+  "payment_method": null,
   "line_items": [
     {
       "description": "L-STILLWATER",

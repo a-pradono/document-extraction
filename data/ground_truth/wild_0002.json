@@ -1,6 +1,9 @@
 {
   "merchant_name": "HOMEDELIVERY",
+  "date": "2015-06-28",
+  "currency": null,
   "total": "124.00",
+  "payment_method": null,
   "line_items": [
     {
       "quantity": "1",

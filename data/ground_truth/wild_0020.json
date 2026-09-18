@@ -1,9 +1,12 @@
 {
-  "merchant_name": "PastaDivina",
-  "merchant_address": "RuedelaMontgne16 1000Bruxelles",
+  "merchant_name": "Pasta Divina",
+  "merchant_address": "Rue de la Montagne 16, 1000 Bruxelles",
+  "date": "2016-09-04",
+  "currency": "EUR",
   "subtotal": "106.82",
   "tax": "15.28",
   "total": "122.10",
+  "payment_method": "Espèces",
   "line_items": [
     {
       "quantity": "1",

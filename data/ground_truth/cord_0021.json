@@ -1,7 +1,12 @@
 {
+  "merchant_name": "PIZZA HUT",
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "256363",
   "tax": "25637",
   "total": "282000",
+  "payment_method": null,
   "line_items": [
     {
       "description": "CHOCO PUFF",

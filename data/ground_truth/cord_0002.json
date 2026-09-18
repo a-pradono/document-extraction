@@ -1,8 +1,13 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "238000",
   "service_charge": "17850",
   "tax": "25585",
   "total": "281435",
+  "payment_method": "CASH",
   "line_items": [
     {
       "description": "RedVelvet Cheese Slc",

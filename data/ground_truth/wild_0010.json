@@ -1,9 +1,12 @@
 {
-  "merchant_name": "ELGRECO",
-  "merchant_address": "RueChairatPains, 5Grand place,36 1000Bruxelles",
+  "merchant_name": "EL GRECO",
+  "merchant_address": "Rue Chair et Pains, 5 Grand place, 36, 1000 Bruxelles",
+  "date": "2016-06-23",
+  "currency": null,
   "subtotal": "38.87",
   "tax": "5.63",
   "total": "44.50",
+  "payment_method": null,
   "line_items": [
     {
       "quantity": "4",

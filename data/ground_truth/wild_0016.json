@@ -1,10 +1,12 @@
 {
-  "merchant_name": "PeterChang",
-  "merchant_address": "2503N.HarrisonStSteE Arlington,VA22207",
+  "merchant_name": "Peter Chang",
+  "merchant_address": "2503 N. Harrison St Ste E, Arlington, VA 22207",
   "date": "2016-05-07",
+  "currency": null,
   "subtotal": "104.50",
   "tax": "10.45",
   "total": "114.95",
+  "payment_method": null,
   "line_items": [
     {
       "quantity": "1",

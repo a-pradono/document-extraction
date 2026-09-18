@@ -1,9 +1,12 @@
 {
-  "merchant_name": "TRADERJOE'S",
-  "merchant_address": "2025BondStreet",
+  "merchant_name": "TRADER JOE'S",
+  "merchant_address": "2025 Bond Street, Charlottesville VA 22901",
+  "date": null,
+  "currency": "USD",
   "subtotal": "96.62",
   "tax": "1.48",
   "total": "99.82",
+  "payment_method": "DEBIT",
   "line_items": [
     {
       "description": "BALLASTPOINTBREWINGGRAPEFRU",

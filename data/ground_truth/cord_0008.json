@@ -1,7 +1,12 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "85000",
   "tax": "8500",
   "total": "93500",
+  "payment_method": "Tunai",
   "line_items": [
     {
       "description": "Ash Chick Sambal Matah",

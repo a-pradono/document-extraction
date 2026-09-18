@@ -1,9 +1,12 @@
 {
-  "merchant_name": "TheBlueGinger",
-  "merchant_address": "97TanjongPagarRoad",
+  "merchant_name": "The Blue Ginger",
+  "merchant_address": "97 Tanjong Pagar Road",
+  "date": "2012-11-15",
+  "currency": "SGD",
   "subtotal": "97.30",
   "tax": "6.72",
   "total": "102.75",
+  "payment_method": null,
   "line_items": [
     {
       "quantity": "1",

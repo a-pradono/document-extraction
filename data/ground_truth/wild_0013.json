@@ -1,9 +1,11 @@
 {
-  "merchant_name": "SUPERAFOODS",
-  "merchant_address": "5250YorkBlvd. HighlandPark,CA90042",
+  "merchant_name": "SUPER A FOODS",
+  "merchant_address": "5250 York Blvd, Highland Park, CA 90042",
   "date": "2014-12-12",
+  "currency": "USD",
   "subtotal": "1.48",
   "total": "1.48",
+  "payment_method": "VISA",
   "line_items": [
     {
       "quantity": "2",

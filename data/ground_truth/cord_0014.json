@@ -1,7 +1,12 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "618490",
   "tax": "61849",
   "total": "680500",
+  "payment_method": null,
   "line_items": [
     {
       "description": "Tahu Isi",

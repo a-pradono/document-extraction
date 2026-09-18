@@ -1,7 +1,10 @@
 {
-  "merchant_name": "GASTROBAREL GALLO AZUL",
-  "merchant_address": "JEREZDELAFRONTERA",
+  "merchant_name": "GASTROBAR EL GALLO AZUL",
+  "merchant_address": "C/ LARGA 2 JEREZ DE LA FRONTERA",
+  "date": "2013-11-14",
+  "currency": null,
   "total": "20.90",
+  "payment_method": null,
   "line_items": [
     {
       "quantity": "2",

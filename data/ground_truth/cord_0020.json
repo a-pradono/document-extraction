@@ -1,8 +1,13 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "278000",
   "service_charge": "22240",
   "tax": "30024",
   "total": "330264",
+  "payment_method": null,
   "line_items": [
     {
       "description": "BLACKCURRANT",

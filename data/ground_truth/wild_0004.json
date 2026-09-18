@@ -1,8 +1,10 @@
 {
-  "merchant_name": "57EXPRESS",
-  "merchant_address": "3111WTEMPLEAVE POMONA,CA",
+  "merchant_name": "57 EXPRESS",
+  "merchant_address": "3111 W TEMPLE AVE POMONA, CA",
   "date": "2015-03-08",
+  "currency": "USD",
   "total": "65.19",
+  "payment_method": "CREDIT",
   "line_items": [
     {
       "description": "REGULAR",

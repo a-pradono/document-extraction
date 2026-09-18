@@ -1,7 +1,12 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": "IDR",
   "subtotal": "100909",
   "tax": "10091",
   "total": "111000",
+  "payment_method": "Cash",
   "line_items": [
     {
       "description": "Kupon 15",

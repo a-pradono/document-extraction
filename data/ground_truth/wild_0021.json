@@ -1,7 +1,10 @@
 {
-  "merchant_name": "COSTCO",
-  "merchant_address": "12300WestDodgeRd Omaha,NE68154",
+  "merchant_name": "COSTCO WHOLESALE",
+  "merchant_address": "12300 West Dodge Rd, Omaha, NE 68154",
+  "date": null,
+  "currency": null,
   "total": "70.34",
+  "payment_method": null,
   "line_items": [
     {
       "description": "ORGANICPAST",

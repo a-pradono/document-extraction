@@ -1,6 +1,10 @@
 {
   "merchant_name": "Hillside",
+  "merchant_address": null,
+  "date": "2016-12-01",
+  "currency": "GBP",
   "total": "7.90",
+  "payment_method": "Credit Card",
   "line_items": [
     {
       "quantity": "1",

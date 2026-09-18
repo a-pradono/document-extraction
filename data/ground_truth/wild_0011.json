@@ -1,6 +1,10 @@
 {
-  "merchant_name": "ALDISTORES",
+  "merchant_name": "ALDI STORES",
+  "merchant_address": "CARINDALE",
+  "date": null,
+  "currency": "AUD",
   "total": "37.98",
+  "payment_method": null,
   "line_items": [
     {
       "description": "46199BabySoinach120g",

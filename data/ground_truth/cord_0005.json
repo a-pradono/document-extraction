@@ -1,8 +1,13 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "325600",
   "service_charge": "17908",
   "tax": "34351",
   "total": "377859",
+  "payment_method": null,
   "line_items": [
     {
       "description": "cashew nuts chkn",

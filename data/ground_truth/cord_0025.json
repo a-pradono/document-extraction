@@ -1,8 +1,13 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "215000",
   "service_charge": "12900",
   "tax": "22790",
   "total": "250690",
+  "payment_method": null,
   "line_items": [
     {
       "description": "BLACK PAPPER MEATBALL PAS",

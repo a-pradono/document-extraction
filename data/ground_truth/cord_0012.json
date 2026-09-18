@@ -1,5 +1,10 @@
 {
+  "merchant_name": "XXI Cafe",
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "total": "88000",
+  "payment_method": "CASH",
   "line_items": [
     {
       "description": "Lemon Tea (L).",

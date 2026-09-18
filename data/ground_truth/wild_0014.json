@@ -1,7 +1,10 @@
 {
   "merchant_name": "Morrisons",
-  "merchant_address": "MorrisonsSupermarketsplcBD37DL Hadleigh-01473827021",
+  "merchant_address": "Morrisons Supermarkets plc BD3 7DL, Hadleigh",
+  "date": "2016-02-13",
+  "currency": "GBP",
   "total": "2.19",
+  "payment_method": "Card",
   "line_items": [
     {
       "quantity": "1",

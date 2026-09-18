@@ -1,8 +1,13 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "1343000",
   "service_charge": "80580",
   "tax": "142358",
   "total": "1565938",
+  "payment_method": null,
   "line_items": [
     {
       "description": "UDANG RE",

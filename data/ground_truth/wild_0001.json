@@ -1,8 +1,11 @@
 {
   "merchant_name": "DIA%",
-  "merchant_address": "CLATOCHA,22 FACTURASIMPLIFICADA",
+  "merchant_address": "CL ATOCHA, 22",
+  "date": "2014-06-30",
+  "currency": "EUR",
   "tax": "0.03",
   "total": "19.20",
+  "payment_method": null,
   "line_items": [
     {
       "description": "REUTILIZABLE",

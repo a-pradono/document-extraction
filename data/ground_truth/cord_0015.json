@@ -1,6 +1,11 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "24500",
   "total": "24500",
+  "payment_method": "CARD",
   "line_items": [
     {
       "description": "TALAM UNGU",

@@ -1,11 +1,13 @@
 {
-  "merchant_name": "XINWANG ANCHORPOINT",
-  "merchant_address": "370AlexandraRoad #01-13/14 Anchorpoint",
-  "date": "2016-12-07",
+  "merchant_name": "XIN WANG ANCHORPOINT",
+  "merchant_address": "370 Alexandra Road #01-13/14 Anchorpoint",
+  "date": "2016-07-13",
+  "currency": null,
   "subtotal": "47.30",
   "service_charge": "4.73",
   "tax": "3.64",
   "total": "55.67",
+  "payment_method": "Cash",
   "line_items": [
     {
       "quantity": "1",

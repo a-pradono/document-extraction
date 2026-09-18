@@ -1,7 +1,12 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "179500",
   "tax": "17950",
   "total": "197450",
+  "payment_method": "Cash",
   "line_items": [
     {
       "description": "Nasi Putih",

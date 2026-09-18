@@ -1,8 +1,11 @@
 {
-  "merchant_name": "Breakfast2Breakfast",
-  "merchant_address": "DICBuilding12 Dubai,UAE Dubai",
+  "merchant_name": "Breakfast 2 Breakfast",
+  "merchant_address": "DIC Building 12, Dubai, UAE",
+  "date": null,
+  "currency": "AED",
   "subtotal": "44.00",
   "total": "44.00",
+  "payment_method": null,
   "line_items": [
     {
       "quantity": "1",

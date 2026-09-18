@@ -1,9 +1,13 @@
 {
-  "merchant_name": "ONEMILLSTREET",
+  "merchant_name": "ONE MILL STREET",
+  "merchant_address": "ONE MILL STREET",
+  "date": "2003-01-09",
+  "currency": "USD",
   "subtotal": "105.00",
   "service_charge": "18.90",
   "tax": "5.25",
   "total": "129.15",
+  "payment_method": null,
   "line_items": [
     {
       "description": "CALAMARIW/MOJO",

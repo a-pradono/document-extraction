@@ -1,5 +1,10 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "total": "54000",
+  "payment_method": "CASH",
   "line_items": [
     {
       "description": "TWIST DONUT",

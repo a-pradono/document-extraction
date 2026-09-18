@@ -1,9 +1,11 @@
 {
-  "merchant_name": "meijer",
-  "merchant_address": "SawmillRd. Dublin.OH-#58",
+  "merchant_name": "Meijer",
+  "merchant_address": "Sawmill Rd. Dublin, OH - # 58",
   "date": "2012-07-11",
+  "currency": null,
   "tax": "0.00",
   "total": "3.00",
+  "payment_method": "Credit Cards",
   "line_items": [
     {
       "quantity": "1",

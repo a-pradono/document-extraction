@@ -1,7 +1,12 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "132636",
   "tax": "13264",
   "total": "145900",
+  "payment_method": "BCA EDC",
   "line_items": [
     {
       "description": "COLD OCHA",

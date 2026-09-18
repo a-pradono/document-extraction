@@ -1,7 +1,12 @@
 {
+  "merchant_name": null,
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "16363",
   "tax": "1636",
   "total": "17999",
+  "payment_method": null,
   "line_items": [
     {
       "description": "THAI ICED TEA (L)",

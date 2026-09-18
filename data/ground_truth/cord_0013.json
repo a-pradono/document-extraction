@@ -1,7 +1,12 @@
 {
+  "merchant_name": "Solaria",
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "303646",
   "tax": "30365",
   "total": "334000",
+  "payment_method": "Debit BCA",
   "line_items": [
     {
       "description": "(TA) NASI GRG TERI MEDAN",

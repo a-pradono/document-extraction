@@ -1,10 +1,12 @@
 {
-  "merchant_name": "WecometoChick-fil-A CasselberryFSU(#03270)",
-  "merchant_address": "FernPark,FL",
+  "merchant_name": "Chick-fil-A",
+  "merchant_address": "Casselberry FSU (# 03270), Fern Park, FL",
   "date": "2018-03-07",
+  "currency": "USD",
   "subtotal": "11.55",
   "tax": "0.81",
   "total": "12.36",
+  "payment_method": "Visa",
   "line_items": [
     {
       "quantity": "1",

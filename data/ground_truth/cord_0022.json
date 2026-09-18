@@ -1,6 +1,11 @@
 {
+  "merchant_name": "LA PHÉ",
+  "merchant_address": null,
+  "date": null,
+  "currency": null,
   "subtotal": "25000",
   "total": "25000",
+  "payment_method": "CASH",
   "line_items": [
     {
       "description": "Viet Milk Coffee",
