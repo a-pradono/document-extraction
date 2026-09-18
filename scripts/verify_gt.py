@@ -63,24 +63,30 @@ def _select(args) -> list[str]:
     return ids
 
 
-def write_html(ids: list[str]) -> Path:
-    prov = _load_provenance()
-    # Audit order: unverified documents with likely-wrong labels first, so review time
-    # goes where the labels are most likely broken (see scripts/audit_gt.py).
-    audit = {d["doc_id"]: d for d in audit_all()}
-    wanted = set(ids)
-    ordered = [d for d in audit if d in wanted] + [d for d in ids if d not in audit]
+def review_order(ids: list[str]) -> list[str]:
+    """Review order = how likely this label is to be wrong, from two independent signals.
 
-    # Review order = "how likely is this label to be wrong", from two independent
-    # sources: a CHECK note means the drafter could not resolve it (a blurred header, an
-    # ambiguous $ or date), and an audit flag means the arithmetic does not hold. Sorting
-    # on the audit alone buried the CHECK documents in the middle of the page.
+    A CHECK note means the drafter could not resolve the field (a blurred header, an
+    ambiguous $ or date); an audit flag means the arithmetic does not hold. The contact
+    sheet and the interactive pass BOTH use this, so the page and the terminal walk the
+    documents in the same sequence - they did not, and the mismatch sent a reviewer to a
+    different document than the one on screen.
+    """
+    prov = _load_provenance()
+    audit = {d["doc_id"]: d for d in audit_all()}
+
     def priority(doc_id: str) -> tuple:
         notes = _notes(prov.get(doc_id, {}))
         flags = [f for f in audit.get(doc_id, {}).get("flags", []) if f["severity"] != "todo"]
         return (0 if "CHECK" in notes else 1, 0 if flags else 1, -len(flags), doc_id)
 
-    ids = sorted(ordered, key=priority)
+    return sorted(ids, key=priority)
+
+
+def write_html(ids: list[str]) -> Path:
+    prov = _load_provenance()
+    audit = {d["doc_id"]: d for d in audit_all()}
+    ids = review_order(ids)
     rows = []
     for doc_id in ids:
         image = _doc_path(doc_id)
@@ -148,6 +154,7 @@ balance &mdash; a receipt whose printed total is genuinely wrong is a valuable t
 
 def interactive(ids: list[str]) -> None:
     prov = _load_provenance()
+    ids = review_order(ids)
     print(f"{len(ids)} documents. [y] verified  [n] needs fixing  [s] skip  [q] quit\n")
     for i, doc_id in enumerate(ids, 1):
         image = _doc_path(doc_id)
@@ -156,6 +163,10 @@ def interactive(ids: list[str]) -> None:
         entry = prov.setdefault(doc_id, {})
         if entry.get("needs_hand_label"):
             print(f"  NEEDS HAND LABEL: {', '.join(entry['needs_hand_label'])}")
+        note = _notes(entry)
+        if note:
+            marker = "CHECK -> " if "CHECK" in note else "note: "
+            print(f"  {marker}{note}")
         print((GT_DIR / f"{doc_id}.json").read_text(encoding="utf-8"))
         if image:
             webbrowser.open(image.resolve().as_uri())
