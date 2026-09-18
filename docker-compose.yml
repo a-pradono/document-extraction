@@ -11,7 +11,7 @@ x-app: &app
     context: .
     args:
       APP_UID: ${APP_UID:-10001}
-  image: receipt-extraction:latest
+  image: document-extraction:latest
   # Optional: without .env the API still boots and /health reports what is missing.
   env_file:
     - path: .env
