@@ -1,34 +1,22 @@
 # Secrets — NEVER commit. Only .env.example belongs in git.
 .env
 
-# Caches
-.cache/
+# Everything else under outputs/ IS committed, including the review dashboard and the
+# rendered report: this repository is private, and a reviewer should be able to open the
+# artifacts without rebuilding them.
+
+# Machine-local only: these are not artifacts, and committing them would either bloat the
+# history or break on another machine. Say the word if any of them should go in too.
+.venv/
+venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
-.venv/
-venv/
-
-# Local scratch
 *.log
 .DS_Store
-
-# Generated locally with absolute file:// paths to this machine; regenerate with
-# `python scripts/verify_gt.py --html`.
-outputs/gt_review.html
-
+# 239 MB of downloaded source datasets; the curated 60 documents live in data/docs/.
+data/raw/
+# Cached model responses, rewritten on every run.
+.cache/
 # Per-machine agent settings. The shared skill in .claude/skills/ IS committed.
 .claude/settings.local.json
-
-# Raw datasets: downloaded by scripts/fetch_datasets.sh, never committed (GBs).
-# Only the ~65 curated documents the converters emit under data/docs/ go into git.
-data/raw/
-
-# NOTE: /outputs is deliberately NOT ignored — the test requires committing the
-# scorecard and per-document results from a run you actually did.
-# Large raw datasets are not committed; only the curated sample + ground truth
-# under data/ so the eval runs out of the box.
-outputs/dashboard.html
-# Rendered from report.md; regenerate with
-# `python -m eval.render_md report.md -o outputs/report.html`
-outputs/report.html

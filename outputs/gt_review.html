@@ -1,0 +1,4799 @@
+<!doctype html><meta charset="utf-8"><title>Ground-truth review</title>
+<style>
+ body{font:14px/1.5 system-ui,sans-serif;margin:0;padding:24px;background:#111;color:#eee}
+ h1{font-size:18px} h2{font-size:15px;margin:0 0 4px}
+ section{border-top:1px solid #333;padding:20px 0}
+ .pair{display:flex;gap:20px;align-items:flex-start}
+ img{max-width:46%;max-height:70vh;background:#fff;border-radius:4px}
+ iframe{width:46%;height:80vh;border:0;background:#fff;border-radius:4px}
+ pre{flex:1;background:#1b1b1b;padding:12px;border-radius:4px;overflow:auto;max-height:70vh}
+ .meta{color:#999;margin-bottom:10px;font-size:12px}
+ .badge{font-size:11px;padding:2px 6px;border-radius:3px;vertical-align:middle}
+ .verified{background:#164;color:#cfe} .unverified{background:#631;color:#fed}
+ .flagged{background:#724;color:#fde}
+ .flags{margin:0 0 10px;padding-left:18px;font-size:13px}
+ .flags .error{color:#f99} .flags .check{color:#fc8}
+</style>
+<h1>Ground-truth review &mdash; 60 documents</h1>
+<p class="meta">Order: documents the drafter flagged <b>CHECK</b> first, then those the
+model-free audit flags, then the rest.</p>
+<p class="meta">Check every field against the image. Mark status with
+<code>python scripts/verify_gt.py</code>. Never adjust a value to make the arithmetic
+balance &mdash; a receipt whose printed total is genuinely wrong is a valuable test case.</p>
+
+<section id="wild_0019">
+  <h2>wild_0019 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">2 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_68/4/dcff7be58f5c0252fb3c1e89e7602532cc372d79.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">currency printed only as &#x27;$&#x27;; SGD inferred from the Singapore GST registration. CHECK.</p>
+  <ul class="flags"><li class="check"><b>total</b> subtotal 97.30 + tax 6.72 = 104.02, label says 102.75 (an unlabeled charge, or a mislabeled field?)</li><li class="check"><b>line_items</b> rows sum to 87.30, subtotal is 97.30 (8 rows: a dropped or extra row?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0019.jpeg" alt="wild_0019">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;The Blue Ginger&quot;,
+  &quot;merchant_address&quot;: &quot;97 Tanjong Pagar Road&quot;,
+  &quot;date&quot;: &quot;2012-11-15&quot;,
+  &quot;currency&quot;: &quot;SGD&quot;,
+  &quot;subtotal&quot;: &quot;97.30&quot;,
+  &quot;tax&quot;: &quot;6.72&quot;,
+  &quot;total&quot;: &quot;102.75&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;AyamPanggang&quot;,
+      &quot;line_total&quot;: &quot;12.20&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;BeefRendang&quot;,
+      &quot;line_total&quot;: &quot;12.90&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Evian&quot;,
+      &quot;line_total&quot;: &quot;3.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;FishHead&quot;,
+      &quot;line_total&quot;: &quot;28.30&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;HoegaardenBeer&quot;,
+      &quot;line_total&quot;: &quot;11.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;KuehPieTee&quot;,
+      &quot;line_total&quot;: &quot;7.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;NonyaRoll&quot;,
+      &quot;line_total&quot;: &quot;8.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;description&quot;: &quot;MiscCharges&quot;,
+      &quot;line_total&quot;: &quot;4.40&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0011">
+  <h2>wild_0011 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">1 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_4/0/d7732d42528decf2645835b7735add65d21d7611.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">currency printed only as &#x27;$&#x27;; AUD inferred from the ABN. CHECK.</p>
+  <ul class="flags"><li class="check"><b>line_items</b> rows sum to 39.98, total less charges is 37.98 (16 rows: a dropped or extra row?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0011.jpeg" alt="wild_0011">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;ALDI STORES&quot;,
+  &quot;merchant_address&quot;: &quot;CARINDALE&quot;,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: &quot;AUD&quot;,
+  &quot;total&quot;: &quot;37.98&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;46199BabySoinach120g&quot;,
+      &quot;line_total&quot;: &quot;1.79&quot;
+    },
+    {
+      &quot;description&quot;: &quot;35250CkrBrownRice100g&quot;,
+      &quot;line_total&quot;: &quot;1.39&quot;
+    },
+    {
+      &quot;description&quot;: &quot;37427TortillaWrapsWholemeal&quot;,
+      &quot;line_total&quot;: &quot;1.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;42335BeetrootSliced450g&quot;,
+      &quot;line_total&quot;: &quot;0.85&quot;
+    },
+    {
+      &quot;description&quot;: &quot;4376PremBakedBeansTom425g&quot;,
+      &quot;line_total&quot;: &quot;0.89&quot;
+    },
+    {
+      &quot;description&quot;: &quot;5336FznMixedBerries500g&quot;,
+      &quot;line_total&quot;: &quot;4.49&quot;
+    },
+    {
+      &quot;description&quot;: &quot;36884Ham4x100g&quot;,
+      &quot;line_total&quot;: &quot;5.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;1390FrozSteamVeg450g&quot;,
+      &quot;line_total&quot;: &quot;1.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;41207RiceCrackers200g&quot;,
+      &quot;line_total&quot;: &quot;1.65&quot;
+    },
+    {
+      &quot;description&quot;: &quot;76016PinkLadyApplesperkg&quot;,
+      &quot;line_total&quot;: &quot;2.64&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;530&quot;,
+      &quot;description&quot;: &quot;76113Bananas,Caven,750g&quot;,
+      &quot;line_total&quot;: &quot;2.49&quot;
+    },
+    {
+      &quot;description&quot;: &quot;76365GrapesThompson1Kg&quot;,
+      &quot;line_total&quot;: &quot;1.75&quot;
+    },
+    {
+      &quot;description&quot;: &quot;9477NutsRawOSNVar&quot;,
+      &quot;line_total&quot;: &quot;3.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;43333DipSalsa300g&quot;,
+      &quot;line_total&quot;: &quot;1.49&quot;
+    },
+    {
+      &quot;description&quot;: &quot;3769MayonnaiseSqueeZe&quot;,
+      &quot;line_total&quot;: &quot;2.59&quot;
+    },
+    {
+      &quot;description&quot;: &quot;76490MandarinsH/M,700g&quot;,
+      &quot;line_total&quot;: &quot;4.99&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0004">
+  <h2>cord_0004 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0017.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">merchant_name read from the Korean logo (Samjin Amook); the printed header beneath it is blurred. CHECK: Korean script vs transliteration.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0004.jpg" alt="cord_0004">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;삼진어묵&quot;,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: &quot;IDR&quot;,
+  &quot;subtotal&quot;: &quot;91000&quot;,
+  &quot;discount&quot;: &quot;0&quot;,
+  &quot;total&quot;: &quot;91000&quot;,
+  &quot;payment_method&quot;: &quot;Debit&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Goblin&#x27;s Mace&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;25000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mozarella Hot Dog&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;38000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Chili Pepper Croquette&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;14000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Cheese Croquette&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;14000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Plastik Amook&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Plastik Putih Take Away&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0017">
+  <h2>cord_0017 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0069.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">date printed 23/1?/2017 with the month digit partly obscured; read as 23/10/2017. CHECK.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0017.jpg" alt="cord_0017">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: &quot;2017-10-23&quot;,
+  &quot;currency&quot;: null,
+  &quot;total&quot;: &quot;74000&quot;,
+  &quot;payment_method&quot;: &quot;CASH&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;[MD] SOFT MORNING ROLL&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;18000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;REAL HONEY PANCAKE BREAD&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;20000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CUSTARD BRIOCHE&quot;,
+      &quot;quantity&quot;: &quot;4&quot;,
+      &quot;line_total&quot;: &quot;36000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0019">
+  <h2>cord_0019 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0073.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">header blurred. A model returning &#x27;FRANCIS ARTISAN BAKERY&#x27; here is reading through the blur; it is not legible to me, so the label is null. CHECK - if you can read it, this label should change.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0019.jpg" alt="cord_0019">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;total&quot;: &quot;22000&quot;,
+  &quot;payment_method&quot;: &quot;Cash&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;1001-Choco Bun&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;22000&quot;,
+      &quot;line_total&quot;: &quot;22000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;6001-Plastic Bag Small&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;0&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0022">
+  <h2>cord_0022 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0080.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">logo reads &#x27;LA PHE&#x27; (accent uncertain); the header beneath is blurred. CHECK.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0022.jpg" alt="cord_0022">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;LA PHÉ&quot;,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;25000&quot;,
+  &quot;total&quot;: &quot;25000&quot;,
+  &quot;payment_method&quot;: &quot;CASH&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Viet Milk Coffee&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;25000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;+Ice&quot;
+    },
+    {
+      &quot;description&quot;: &quot;+M&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0006">
+  <h2>wild_0006 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_31/14/dcdfaa460d28153f9e7370bf9712208132b5bbdf.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">currency printed only as &#x27;$&#x27;; AUD inferred from the ABN and NSW address. CHECK. Date partly illegible (15/0?/20??), so left null.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0006.jpeg" alt="wild_0006">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;TUSCANY RISTORANTE&quot;,
+  &quot;merchant_address&quot;: &quot;55 NORTON STREET LEICHHARDT NSW 2040&quot;,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: &quot;AUD&quot;,
+  &quot;tax&quot;: &quot;65.19&quot;,
+  &quot;total&quot;: &quot;811.60&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;L-STILLWATER&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;17.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;L’ANTIPASTOMISTO&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;35.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CALAMARIPACIFICO&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;39.80&quot;
+    },
+    {
+      &quot;description&quot;: &quot;OLIVE&quot;,
+      &quot;line_total&quot;: &quot;12.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;FREYIN&quot;,
+      &quot;quantity&quot;: &quot;4&quot;,
+      &quot;line_total&quot;: &quot;520.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;BABYGOAT&quot;,
+      &quot;quantity&quot;: &quot;3&quot;,
+      &quot;line_total&quot;: &quot;94.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SPATCHCOCK&quot;,
+      &quot;line_total&quot;: &quot;29.90&quot;
+    },
+    {
+      &quot;description&quot;: &quot;INSALATARUGIIETTA&quot;,
+      &quot;line_total&quot;: &quot;12.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;INSALATAPOMODORI&quot;,
+      &quot;line_total&quot;: &quot;12.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;FLATWHITE&quot;,
+      &quot;line_total&quot;: &quot;4.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SHDRTBLACK&quot;,
+      &quot;line_total&quot;: &quot;3.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CAMOMILE&quot;,
+      &quot;line_total&quot;: &quot;4.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;LIDUEURCOFFEE&quot;,
+      &quot;line_total&quot;: &quot;9.90&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Galliano&quot;
+    },
+    {
+      &quot;description&quot;: &quot;GL-SCRPT\\nCAB/S&quot;,
+      &quot;line_total&quot;: &quot;16.50&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0012">
+  <h2>wild_0012 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_42/17/3362036743a6ff98ce65de09973f20b09f481465.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">US-format date 06/04/14 read as 2014-06-04. CHECK if you read it as 4 June.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0012.jpeg" alt="wild_0012">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Iron Horse Tavern&quot;,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: &quot;2014-06-04&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;subtotal&quot;: &quot;33.60&quot;,
+  &quot;tax&quot;: &quot;2.02&quot;,
+  &quot;total&quot;: &quot;35.62&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;3-CHEESEMAC&quot;,
+      &quot;line_total&quot;: &quot;6.85&quot;
+    },
+    {
+      &quot;description&quot;: &quot;FARMHOUSEMELT&quot;,
+      &quot;line_total&quot;: &quot;7.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;IRONHORSEBURGER&quot;,
+      &quot;line_total&quot;: &quot;9.75&quot;
+    },
+    {
+      &quot;description&quot;: &quot;GELATO&quot;,
+      &quot;line_total&quot;: &quot;5.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SORBET&quot;,
+      &quot;line_total&quot;: &quot;5.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0022">
+  <h2>wild_0022 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_80/7/5bab50153bf3d3329d90a6824b4c5bdc070e802f.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">Dubai receipt; date 10/01/14 read day-first as 2014-01-10. CHECK.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0022.jpeg" alt="wild_0022">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;AL MANAMA HYPERMARKET&quot;,
+  &quot;merchant_address&quot;: &quot;TIMES SQUARE CENTER - DUBAI&quot;,
+  &quot;date&quot;: &quot;2014-01-10&quot;,
+  &quot;currency&quot;: &quot;AED&quot;,
+  &quot;total&quot;: &quot;278.88&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;0.48&quot;,
+      &quot;description&quot;: &quot;COURGETTESGREENESP&quot;,
+      &quot;line_total&quot;: &quot;7.92&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.27&quot;,
+      &quot;description&quot;: &quot;BROCCOLISPAIN&quot;,
+      &quot;line_total&quot;: &quot;3.65&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.38&quot;,
+      &quot;description&quot;: &quot;CARROTLOOSEAUST&quot;,
+      &quot;line_total&quot;: &quot;1.43&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.92&quot;,
+      &quot;description&quot;: &quot;LETTUCE-ICEBERG&quot;,
+      &quot;line_total&quot;: &quot;12.42&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.3&quot;,
+      &quot;description&quot;: &quot;LYCHEE&quot;,
+      &quot;line_total&quot;: &quot;3.29&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;MUSHROOM-FINE/SMALL&quot;,
+      &quot;line_total&quot;: &quot;5.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.21&quot;,
+      &quot;description&quot;: &quot;GINGERCHINA&quot;,
+      &quot;line_total&quot;: &quot;2.84&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.43&quot;,
+      &quot;description&quot;: &quot;ONIONBROWNSPAIN&quot;,
+      &quot;line_total&quot;: &quot;2.37&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.89&quot;,
+      &quot;description&quot;: &quot;POTATOSAUDI&quot;,
+      &quot;line_total&quot;: &quot;4.41&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.64&quot;,
+      &quot;description&quot;: &quot;KIWIFRUITITALY&quot;,
+      &quot;line_total&quot;: &quot;8.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;NORLANDERBREAD&quot;,
+      &quot;line_total&quot;: &quot;6.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;YOPLAITF/FYOGHURTS&quot;,
+      &quot;line_total&quot;: &quot;1.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;BANANAPHILIPPINESD&quot;,
+      &quot;line_total&quot;: &quot;3.75&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;ALRAWABILOWFATMI&quot;,
+      &quot;line_total&quot;: &quot;10.25&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;ALMARAIUHTLOWFATM&quot;,
+      &quot;line_total&quot;: &quot;3.75&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;7&quot;,
+      &quot;description&quot;: &quot;ALALALIWHITEMEATT&quot;,
+      &quot;line_total&quot;: &quot;31.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;FIGAROSTUFDGREENO&quot;,
+      &quot;line_total&quot;: &quot;7.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;PATAKSTANDOORIPAST&quot;,
+      &quot;line_total&quot;: &quot;13.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;FRICOEDAMCHEESE15&quot;,
+      &quot;line_total&quot;: &quot;10.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;SMOKEDSALMONNORWAY&quot;,
+      &quot;line_total&quot;: &quot;15.90&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;KELLOGGSCORNFLAKES&quot;,
+      &quot;line_total&quot;: &quot;26.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;NATUREVALLEYS/FV/&quot;,
+      &quot;line_total&quot;: &quot;14.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;NATUREVALLEYS/FOAT&quot;,
+      &quot;line_total&quot;: &quot;14.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.47&quot;,
+      &quot;description&quot;: &quot;AUSLAMBRACK&quot;,
+      &quot;line_total&quot;: &quot;29.43&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.39&quot;,
+      &quot;description&quot;: &quot;AUSCUBEROLLSTEAK&quot;,
+      &quot;line_total&quot;: &quot;27.24&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;description&quot;: &quot;ALAINMINERALWATER&quot;,
+      &quot;line_total&quot;: &quot;7.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;0.31&quot;,
+      &quot;description&quot;: &quot;CUCUMBERPREPACKED&quot;,
+      &quot;line_total&quot;: &quot;4.73&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0024">
+  <h2>wild_0024 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_84/8/3834.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note check">US-format date 12/09/12 read as 2012-12-09. CHECK.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0024.jpeg" alt="wild_0024">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Asia Bay&quot;,
+  &quot;merchant_address&quot;: &quot;1007 Kane Concourse&quot;,
+  &quot;date&quot;: &quot;2012-12-09&quot;,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;52.00&quot;,
+  &quot;service_charge&quot;: &quot;9.36&quot;,
+  &quot;tax&quot;: &quot;4.30&quot;,
+  &quot;total&quot;: &quot;65.66&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;SpicyTunaRock&quot;,
+      &quot;line_total&quot;: &quot;14.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Rainbowroll&quot;,
+      &quot;line_total&quot;: &quot;11.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;SpiderRoll&quot;,
+      &quot;line_total&quot;: &quot;11.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;PadThai..&quot;
+    },
+    {
+      &quot;description&quot;: &quot;beef&quot;,
+      &quot;line_total&quot;: &quot;16.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0010">
+  <h2>inv_0010 <span class="badge verified">verified</span>
+      <span class="badge flagged">26 audit flag(s)</span></h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    3982955-Invoice.pdf &middot; 5 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">225 rows over 5 pages; the total is only on page 5. Self-check: the transcribed line totals sum EXACTLY to the printed $59,403.38, and every row with a quantity satisfies qty x rate = total. • &#x27;Date: Initial Bill Not Yet Sent&#x27;: issue_date null. &#x27;8/1/2017&#x27; in the footer is a print date, not the issue date. • 3 rows split across a page break print no quantity on the continuation page: quantity null. • Descriptions recorded as printed, including the unclosed &#x27;(Ranger NAME&#x27; parenthesis. • The audit flags ~26 &#x27;identical rows&#x27;: these are genuine repeated charges (e.g. five identical $57.00 transport rows). All rows are present; the exact sum match confirms it.</p>
+  <ul class="flags"><li class="check"><b>line_items[15]</b> identical to row 13 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[23]</b> identical to row 22 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[65]</b> identical to row 62 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[82]</b> identical to row 75 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[83]</b> identical to row 76 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[119]</b> identical to row 118 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[120]</b> identical to row 118 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[121]</b> identical to row 118 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[122]</b> identical to row 118 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[124]</b> identical to row 123 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[128]</b> identical to row 127 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[131]</b> identical to row 129 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[133]</b> identical to row 132 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[149]</b> identical to row 148 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[151]</b> identical to row 148 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[175]</b> identical to row 171 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[184]</b> identical to row 183 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[186]</b> identical to row 185 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[188]</b> identical to row 187 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[189]</b> identical to row 187 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[190]</b> identical to row 187 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[191]</b> identical to row 187 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[192]</b> identical to row 187 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[203]</b> identical to row 199 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[209]</b> identical to row 208 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[218]</b> identical to row 217 (really bought twice, or a converter double-count?)</li></ul>
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0010.pdf" title="inv_0010"></iframe>
+    <pre>{
+  &quot;invoice_number&quot;: &quot;S16947&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;Florida Department of Agriculture and Consumer Services&quot;,
+    &quot;address&quot;: &quot;P.O. Box 6720, Tallahassee, FL 32314-6720&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;Brian Sparks&quot;,
+    &quot;address&quot;: &quot;1505 Wills Lane, Bryceville, Fl 32009&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;total&quot;: &quot;59403.38&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HEAD&quot;,
+      &quot;quantity&quot;: &quot;13.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;291.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HEAD&quot;,
+      &quot;quantity&quot;: &quot;5.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;121.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger DAVIDSON&quot;,
+      &quot;quantity&quot;: &quot;10.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;220.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger DAVIDSON&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;214.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger PALMER&quot;,
+      &quot;quantity&quot;: &quot;8.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;176.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WYATT&quot;,
+      &quot;quantity&quot;: &quot;4.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;104.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WYATT&quot;,
+      &quot;quantity&quot;: &quot;7.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;165.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WYATT&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;49.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WYATT&quot;,
+      &quot;quantity&quot;: &quot;10.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;231.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WYATT&quot;,
+      &quot;quantity&quot;: &quot;7.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;154.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HOEPKER&quot;,
+      &quot;quantity&quot;: &quot;7.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;170.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HERNANDEZ&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;132.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HERNANDEZ&quot;,
+      &quot;quantity&quot;: &quot;11.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;247.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HERNANDEZ&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;66.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HERNANDEZ&quot;,
+      &quot;quantity&quot;: &quot;12.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;269.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HERNANDEZ&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;66.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BLACKWELL&quot;,
+      &quot;quantity&quot;: &quot;4.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;99.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BLACKWELL&quot;,
+      &quot;quantity&quot;: &quot;4.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;88.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BLACKWELL&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;49.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BLACKWELL&quot;,
+      &quot;quantity&quot;: &quot;7.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;159.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BLACKWELL&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;214.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BLACKWELL&quot;,
+      &quot;quantity&quot;: &quot;9.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;203.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BLACKWELL&quot;,
+      &quot;quantity&quot;: &quot;10.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;220.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BLACKWELL&quot;,
+      &quot;quantity&quot;: &quot;10.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;220.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger DORSA&quot;,
+      &quot;quantity&quot;: &quot;10.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;220.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger DORSA&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;214.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger COOPER&quot;,
+      &quot;quantity&quot;: &quot;5.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;121.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger VIGNOLA&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;214.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger VIGNOLA&quot;,
+      &quot;quantity&quot;: &quot;3.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;77.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger VIGNOLA&quot;,
+      &quot;quantity&quot;: &quot;1.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;33.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger DOWIE&quot;,
+      &quot;quantity&quot;: &quot;12.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;264.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger DOWIE&quot;,
+      &quot;quantity&quot;: &quot;10.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;225.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WALLS&quot;,
+      &quot;quantity&quot;: &quot;2.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;60.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger MASON&quot;,
+      &quot;quantity&quot;: &quot;8.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;176.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger STEED&quot;,
+      &quot;quantity&quot;: &quot;13.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;291.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger HART&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;180.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger HART&quot;,
+      &quot;quantity&quot;: &quot;3.25&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;97.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger HART&quot;,
+      &quot;quantity&quot;: &quot;2.00&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;60.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger ORR&quot;,
+      &quot;quantity&quot;: &quot;2.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;44.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger ORR&quot;,
+      &quot;quantity&quot;: &quot;9.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;203.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger ORR&quot;,
+      &quot;quantity&quot;: &quot;7.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;170.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger SMITH&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;132.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger SMITH&quot;,
+      &quot;quantity&quot;: &quot;7.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;165.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger ABBOTT&quot;,
+      &quot;quantity&quot;: &quot;13.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;291.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger ABBOTT&quot;,
+      &quot;quantity&quot;: &quot;13.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;297.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger ABBOTT&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;132.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger ABBOTT&quot;,
+      &quot;quantity&quot;: &quot;10.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;225.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger DREW&quot;,
+      &quot;quantity&quot;: &quot;16.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;363.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger LEWIS&quot;,
+      &quot;quantity&quot;: &quot;9.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;198.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HAMLIN&quot;,
+      &quot;quantity&quot;: &quot;10.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;220.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HAMLIN&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;214.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger NORMAN&quot;,
+      &quot;quantity&quot;: &quot;30.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;660.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger CHANAKI&quot;,
+      &quot;quantity&quot;: &quot;14.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;319.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger SLUSKI&quot;,
+      &quot;quantity&quot;: &quot;7.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;159.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger GARRARD&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;49.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger GARRARD&quot;,
+      &quot;quantity&quot;: &quot;10.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;225.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger WORK&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;67.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger WORK&quot;,
+      &quot;quantity&quot;: &quot;13.25&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;397.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger WORK&quot;,
+      &quot;quantity&quot;: &quot;2.50&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;75.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger WORK&quot;,
+      &quot;quantity&quot;: &quot;8.25&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;247.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger WORK&quot;,
+      &quot;quantity&quot;: &quot;14.00&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;420.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger HOLLEY&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;66.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger MEREDITH&quot;,
+      &quot;quantity&quot;: &quot;4.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;104.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger MEREDITH&quot;,
+      &quot;quantity&quot;: &quot;4.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;88.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger MEREDITH&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;49.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger MEREDITH&quot;,
+      &quot;quantity&quot;: &quot;4.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;104.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger MEREDITH&quot;,
+      &quot;quantity&quot;: &quot;3.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;77.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger MEREDITH&quot;,
+      &quot;quantity&quot;: &quot;10.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;231.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger MEREDITH&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;66.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger NEELY&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;214.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger NEELY&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;132.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger NEELY&quot;,
+      &quot;quantity&quot;: &quot;7.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;159.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger NEELY&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;66.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;90.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;12.75&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;382.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;2.50&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;75.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;1.25&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;37.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;30.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;1.75&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;52.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;12.00&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;360.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;4.25&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;127.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;13.50&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;405.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;2.50&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;75.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;1.25&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;37.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;8.25&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;247.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SUPERVISORY LABOR (Ranger TAYLOR&quot;,
+      &quot;quantity&quot;: &quot;2.75&quot;,
+      &quot;unit_price&quot;: &quot;30.00&quot;,
+      &quot;line_total&quot;: &quot;82.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WINTER&quot;,
+      &quot;quantity&quot;: &quot;13.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;286.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WINTER&quot;,
+      &quot;quantity&quot;: &quot;10.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;236.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WINTER&quot;,
+      &quot;quantity&quot;: &quot;7.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;165.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger CROCKER&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;214.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger CROCKER&quot;,
+      &quot;quantity&quot;: &quot;1.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;33.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger KLINDT&quot;,
+      &quot;quantity&quot;: &quot;13.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;297.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger KLINDT&quot;,
+      &quot;quantity&quot;: &quot;11.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;253.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger KLINDT&quot;,
+      &quot;quantity&quot;: &quot;15.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;335.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger NELSON&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;214.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger NELSON&quot;,
+      &quot;quantity&quot;: &quot;13.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;291.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger SEYMOUR&quot;,
+      &quot;quantity&quot;: &quot;11.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;247.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger SEYMOUR&quot;,
+      &quot;quantity&quot;: &quot;8.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;187.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WEST&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;181.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger SCHEIDER&quot;,
+      &quot;quantity&quot;: &quot;11.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;247.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BATTON&quot;,
+      &quot;quantity&quot;: &quot;10.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;220.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger BATTON&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;214.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger ROWE&quot;,
+      &quot;quantity&quot;: &quot;8.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;176.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger GRIFFIS&quot;,
+      &quot;quantity&quot;: &quot;14.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;319.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger JOSEPH&quot;,
+      &quot;quantity&quot;: &quot;10.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;225.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger NESS&quot;,
+      &quot;quantity&quot;: &quot;12.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;269.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger JOHNSON&quot;,
+      &quot;quantity&quot;: &quot;6.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;143.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger WALL&quot;,
+      &quot;quantity&quot;: &quot;14.50&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;319.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger CLAYTON&quot;,
+      &quot;quantity&quot;: &quot;12.00&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;264.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NON-SUPERVISORY LABOR (Ranger CLAYTON&quot;,
+      &quot;quantity&quot;: &quot;10.25&quot;,
+      &quot;unit_price&quot;: &quot;22.00&quot;,
+      &quot;line_total&quot;: &quot;225.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T439)&quot;,
+      &quot;quantity&quot;: &quot;7.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;756.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS11924)&quot;,
+      &quot;quantity&quot;: &quot;10.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;174.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS31210)&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;288.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS31210)&quot;,
+      &quot;quantity&quot;: &quot;11.25&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;540.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS31210)&quot;,
+      &quot;quantity&quot;: &quot;5.50&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;264.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS31410)&quot;,
+      &quot;quantity&quot;: &quot;16.50&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;280.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS11586)&quot;,
+      &quot;quantity&quot;: &quot;11.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;191.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS28255)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;51.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS27587)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS27587)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS27587)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS27587)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS27587)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-2 (ACS28822)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-2 (ACS28822)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS28842)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29651)&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;165.75&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T771)&quot;,
+      &quot;quantity&quot;: &quot;9.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;972.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T771)&quot;,
+      &quot;quantity&quot;: &quot;9.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;972.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T771)&quot;,
+      &quot;quantity&quot;: &quot;9.50&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;1026.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T771)&quot;,
+      &quot;quantity&quot;: &quot;6.50&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;702.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T771)&quot;,
+      &quot;quantity&quot;: &quot;9.50&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;1026.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-2 (ACS29294)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-2 (ACS29294)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS29283)&quot;,
+      &quot;quantity&quot;: &quot;13.25&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;636.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS29283)&quot;,
+      &quot;quantity&quot;: &quot;12.00&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;576.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS29283)&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;288.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS29283)&quot;,
+      &quot;quantity&quot;: &quot;7.50&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;360.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACST0889)&quot;,
+      &quot;quantity&quot;: &quot;12.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;1296.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACST0889)&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;648.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACSM1506)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;324.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACSM1506)&quot;,
+      &quot;quantity&quot;: &quot;6.75&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;729.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29400)&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;38.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29400)&quot;,
+      &quot;quantity&quot;: &quot;13.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;225.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29400)&quot;,
+      &quot;quantity&quot;: &quot;2.50&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;42.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29400)&quot;,
+      &quot;quantity&quot;: &quot;8.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;140.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29400)&quot;,
+      &quot;quantity&quot;: &quot;14.00&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;238.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-2 (ACS31945)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS31230)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS31230)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS31230)&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;128.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS31230)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;ATV, 4-Wheel (ACS78871)&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;12.00&quot;,
+      &quot;line_total&quot;: &quot;27.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-1 (ACS28313)&quot;,
+      &quot;quantity&quot;: &quot;7.75&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;441.75&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T862)&quot;,
+      &quot;quantity&quot;: &quot;13.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;1404.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T862)&quot;,
+      &quot;quantity&quot;: &quot;6.50&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;702.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-3 (ACS0T564)&quot;,
+      &quot;quantity&quot;: &quot;3.50&quot;,
+      &quot;unit_price&quot;: &quot;96.00&quot;,
+      &quot;line_total&quot;: &quot;336.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-3 (ACS0T564)&quot;,
+      &quot;unit_price&quot;: &quot;96.00&quot;,
+      &quot;line_total&quot;: &quot;864.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-3 (ACS0T564)&quot;,
+      &quot;quantity&quot;: &quot;2.50&quot;,
+      &quot;unit_price&quot;: &quot;96.00&quot;,
+      &quot;line_total&quot;: &quot;240.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-3 (ACS0T564)&quot;,
+      &quot;quantity&quot;: &quot;7.00&quot;,
+      &quot;unit_price&quot;: &quot;96.00&quot;,
+      &quot;line_total&quot;: &quot;672.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T478)&quot;,
+      &quot;quantity&quot;: &quot;8.50&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;918.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T478)&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;648.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-1 (ACS11819)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Fixed Wing Aircraft, Type-3 (N151FC)&quot;,
+      &quot;quantity&quot;: &quot;5.00&quot;,
+      &quot;unit_price&quot;: &quot;110.00&quot;,
+      &quot;line_total&quot;: &quot;550.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T768)&quot;,
+      &quot;quantity&quot;: &quot;9.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;972.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T768)&quot;,
+      &quot;quantity&quot;: &quot;8.50&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;918.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T768)&quot;,
+      &quot;quantity&quot;: &quot;2.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;216.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T768)&quot;,
+      &quot;quantity&quot;: &quot;9.50&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;1026.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10522)&quot;,
+      &quot;quantity&quot;: &quot;10.00&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;480.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10522)&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;468.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-3 (ACS0T316)&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;96.00&quot;,
+      &quot;line_total&quot;: &quot;576.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;4.75&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;228.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;4.00&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;192.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;13.25&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;636.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;108.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;4.75&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;228.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;3.50&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;168.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;9.00&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;432.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;6.50&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;312.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;10.50&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;504.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS10674)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;144.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T284)&quot;,
+      &quot;quantity&quot;: &quot;5.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;540.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T286)&quot;,
+      &quot;quantity&quot;: &quot;7.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;756.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-2 (ACS12033)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-2 (ACS12033)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS11784)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS11784)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS28265)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS28265)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS28265)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS28265)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS28265)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS28265)&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;57.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS31209)&quot;,
+      &quot;quantity&quot;: &quot;10.00&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;480.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS31209)&quot;,
+      &quot;quantity&quot;: &quot;9.75&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;468.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS28142)&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;102.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS28142)&quot;,
+      &quot;quantity&quot;: &quot;3.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;55.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29241)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;51.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29241)&quot;,
+      &quot;quantity&quot;: &quot;12.75&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;216.75&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29241)&quot;,
+      &quot;quantity&quot;: &quot;2.50&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;42.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29241)&quot;,
+      &quot;quantity&quot;: &quot;12.00&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;204.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29241)&quot;,
+      &quot;quantity&quot;: &quot;4.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;72.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29241)&quot;,
+      &quot;quantity&quot;: &quot;13.50&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;229.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29241)&quot;,
+      &quot;quantity&quot;: &quot;2.50&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;42.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29241)&quot;,
+      &quot;quantity&quot;: &quot;8.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;140.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29241)&quot;,
+      &quot;quantity&quot;: &quot;2.75&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;46.75&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Trailer (ACS31558)&quot;,
+      &quot;quantity&quot;: &quot;7.75&quot;,
+      &quot;unit_price&quot;: &quot;0.00&quot;,
+      &quot;line_total&quot;: &quot;0.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS09549)&quot;,
+      &quot;quantity&quot;: &quot;4.50&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;76.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS28808)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-3 (ACS28808)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;171.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mechanic Truck w/Tools (ACS29214)&quot;,
+      &quot;quantity&quot;: &quot;8.25&quot;,
+      &quot;unit_price&quot;: &quot;15.50&quot;,
+      &quot;line_total&quot;: &quot;127.88&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS28888)&quot;,
+      &quot;quantity&quot;: &quot;12.25&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;588.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Engine, Wildland, Type-6 (ACS28888)&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;unit_price&quot;: &quot;48.00&quot;,
+      &quot;line_total&quot;: &quot;144.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29618)&quot;,
+      &quot;quantity&quot;: &quot;2.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;38.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29007)&quot;,
+      &quot;quantity&quot;: &quot;13.00&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;221.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29007)&quot;,
+      &quot;quantity&quot;: &quot;10.75&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;182.75&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS29007)&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;127.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-2 (ACS31288)&quot;,
+      &quot;quantity&quot;: &quot;2.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;114.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Transport, Heavy Equip Type-2 (ACS31288)&quot;,
+      &quot;quantity&quot;: &quot;2.00&quot;,
+      &quot;unit_price&quot;: &quot;57.00&quot;,
+      &quot;line_total&quot;: &quot;114.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T537)&quot;,
+      &quot;quantity&quot;: &quot;13.00&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;1404.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T537)&quot;,
+      &quot;quantity&quot;: &quot;6.50&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;702.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS28274)&quot;,
+      &quot;quantity&quot;: &quot;11.50&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;195.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Personnel Transportation (ACS28274)&quot;,
+      &quot;quantity&quot;: &quot;15.25&quot;,
+      &quot;unit_price&quot;: &quot;17.00&quot;,
+      &quot;line_total&quot;: &quot;259.25&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-1 (ACS0T829)&quot;,
+      &quot;quantity&quot;: &quot;6.00&quot;,
+      &quot;unit_price&quot;: &quot;124.00&quot;,
+      &quot;line_total&quot;: &quot;744.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Dozer/Plow, Type-2 (ACS0T414)&quot;,
+      &quot;quantity&quot;: &quot;3.50&quot;,
+      &quot;unit_price&quot;: &quot;108.00&quot;,
+      &quot;line_total&quot;: &quot;378.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0023">
+  <h2>wild_0023 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">13 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_83/8/0bac2b0f9f7af4742ac3400fecb9f9185ebb310c.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>total</b> subtotal 96.62 + tax 1.48 = 98.10, label says 99.82 (an unlabeled charge, or a mislabeled field?)</li><li class="check"><b>line_items[1]</b> amount 4.99 with no description</li><li class="check"><b>line_items[2]</b> amount 0.79 with no description</li><li class="check"><b>line_items[3]</b> amount 2.99 with no description</li><li class="check"><b>line_items[4]</b> amount 3.99 with no description</li><li class="check"><b>line_items[8]</b> amount 3.16 with no description</li><li class="check"><b>line_items[9]</b> amount 2.99 with no description</li><li class="check"><b>line_items[13]</b> amount 2.49 with no description</li><li class="check"><b>line_items[14]</b> amount 2.99 with no description</li><li class="check"><b>line_items[15]</b> amount 6.49 with no description</li><li class="check"><b>line_items[17]</b> amount 7.99 with no description</li><li class="check"><b>line_items[18]</b> amount 2.89 with no description</li><li class="check"><b>line_items[19]</b> amount 5.99 with no description</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0023.jpeg" alt="wild_0023">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;TRADER JOE&#x27;S&quot;,
+  &quot;merchant_address&quot;: &quot;2025 Bond Street, Charlottesville VA 22901&quot;,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;subtotal&quot;: &quot;96.62&quot;,
+  &quot;tax&quot;: &quot;1.48&quot;,
+  &quot;total&quot;: &quot;99.82&quot;,
+  &quot;payment_method&quot;: &quot;DEBIT&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;BALLASTPOINTBREWINGGRAPEFRU&quot;,
+      &quot;line_total&quot;: &quot;13.99&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;4.99&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;0.79&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;2.99&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;3.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;BALLASTPOINTBREWINGSCULPIN&quot;,
+      &quot;line_total&quot;: &quot;13.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CHOCDARKCOVEREDGRAHAMWSEA&quot;,
+      &quot;line_total&quot;: &quot;3.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;A-PEACHESYELLOW2LBEASTERN&quot;,
+      &quot;line_total&quot;: &quot;3.49&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;3.16&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;2.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;BANANAS&quot;,
+      &quot;line_total&quot;: &quot;1.14&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;6&quot;,
+      &quot;description&quot;: &quot;PIZZAPARLANNOW/SAUSAGE&quot;,
+      &quot;line_total&quot;: &quot;4.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;FREEZEDRIEDMANGO&quot;,
+      &quot;line_total&quot;: &quot;3.29&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;2.49&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;2.99&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;6.49&quot;
+    },
+    {
+      &quot;description&quot;: &quot;DRIEDBABYSWEETPINEAPPLE&quot;,
+      &quot;line_total&quot;: &quot;3.99&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;7.99&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;2.89&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;5.99&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0001">
+  <h2>wild_0001 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">5 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_1/0/40.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note">address was &#x27;CLATOCHA,22 FACTURASIMPLIFICADA&#x27;: the dataset ran the address into the document-type line &#x27;FACTURA SIMPLIFICADA&#x27;, which is not part of the address.</p>
+  <ul class="flags"><li class="check"><b>line_items[1]</b> identical to row 0 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[2]</b> identical to row 0 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[14]</b> identical to row 10 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[16]</b> identical to row 10 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[18]</b> identical to row 10 (really bought twice, or a converter double-count?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0001.jpeg" alt="wild_0001">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;DIA%&quot;,
+  &quot;merchant_address&quot;: &quot;CL ATOCHA, 22&quot;,
+  &quot;date&quot;: &quot;2014-06-30&quot;,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;tax&quot;: &quot;0.03&quot;,
+  &quot;total&quot;: &quot;19.20&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;REUTILIZABLE&quot;,
+      &quot;line_total&quot;: &quot;0.05&quot;
+    },
+    {
+      &quot;description&quot;: &quot;REUTILIZABLE&quot;,
+      &quot;line_total&quot;: &quot;0.05&quot;
+    },
+    {
+      &quot;description&quot;: &quot;REUTILIZABLE&quot;,
+      &quot;line_total&quot;: &quot;0.05&quot;
+    },
+    {
+      &quot;description&quot;: &quot;ACE.OLIVACARBONELL&quot;,
+      &quot;line_total&quot;: &quot;2.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;YOGURGRIEGOC/FRUT&quot;,
+      &quot;line_total&quot;: &quot;1.56&quot;
+    },
+    {
+      &quot;description&quot;: &quot;LECHESEMIDBOTEDI&quot;,
+      &quot;line_total&quot;: &quot;0.71&quot;
+    },
+    {
+      &quot;description&quot;: &quot;BARRAPAN6CEREALE&quot;,
+      &quot;line_total&quot;: &quot;0.65&quot;
+    },
+    {
+      &quot;description&quot;: &quot;JAMONSERRANDIA24&quot;,
+      &quot;line_total&quot;: &quot;3.29&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SALCHICHONEXELPOZ&quot;,
+      &quot;line_total&quot;: &quot;1.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;FILETEPECHUGAPOLL&quot;,
+      &quot;line_total&quot;: &quot;4.14&quot;
+    },
+    {
+      &quot;description&quot;: &quot;PRECIOKILO&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CHAMPINONBANDEJA&quot;,
+      &quot;line_total&quot;: &quot;1.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SALSABARBACOADIA&quot;,
+      &quot;line_total&quot;: &quot;0.92&quot;
+    },
+    {
+      &quot;description&quot;: &quot;MANZ-ROYALGALAPES&quot;,
+      &quot;line_total&quot;: &quot;0.52&quot;
+    },
+    {
+      &quot;description&quot;: &quot;PRECIOKILO&quot;
+    },
+    {
+      &quot;description&quot;: &quot;TOMATEENRAMAPESO&quot;,
+      &quot;line_total&quot;: &quot;0.29&quot;
+    },
+    {
+      &quot;description&quot;: &quot;PRECIOKILO&quot;
+    },
+    {
+      &quot;description&quot;: &quot;AGUACATE&quot;,
+      &quot;line_total&quot;: &quot;0.55&quot;
+    },
+    {
+      &quot;description&quot;: &quot;PRECIOKILO&quot;
+    },
+    {
+      &quot;description&quot;: &quot;TOMATEFRITOFRASCO&quot;,
+      &quot;line_total&quot;: &quot;0.65&quot;
+    },
+    {
+      &quot;description&quot;: &quot;PLUMASGALLO500GRS&quot;,
+      &quot;line_total&quot;: &quot;0.78&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0020">
+  <h2>wild_0020 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">4 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_79/7/36c95886591cc6aea16d3a5f78775a27dd591567.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>line_items[9]</b> identical to row 7 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[13]</b> identical to row 12 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[15]</b> identical to row 14 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items</b> rows sum to 122.10, subtotal is 106.82 (16 rows: a dropped or extra row?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0020.jpeg" alt="wild_0020">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Pasta Divina&quot;,
+  &quot;merchant_address&quot;: &quot;Rue de la Montagne 16, 1000 Bruxelles&quot;,
+  &quot;date&quot;: &quot;2016-09-04&quot;,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;subtotal&quot;: &quot;106.82&quot;,
+  &quot;tax&quot;: &quot;15.28&quot;,
+  &quot;total&quot;: &quot;122.10&quot;,
+  &quot;payment_method&quot;: &quot;Espèces&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Caprese&quot;,
+      &quot;line_total&quot;: &quot;12.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;description&quot;: &quot;Lunga&quot;,
+      &quot;line_total&quot;: &quot;27.80&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Tagliatelleverdi&quot;,
+      &quot;line_total&quot;: &quot;16.90&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Aipiena&quot;,
+      &quot;line_total&quot;: &quot;14.90&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;HoegaardenRosee25cl&quot;,
+      &quot;line_total&quot;: &quot;3.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;description&quot;: &quot;Coca&quot;,
+      &quot;line_total&quot;: &quot;6.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;description&quot;: &quot;Duvel&quot;,
+      &quot;line_total&quot;: &quot;9.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Supp.Pain&quot;,
+      &quot;line_total&quot;: &quot;1.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Supp.Parniggiano&quot;,
+      &quot;line_total&quot;: &quot;1.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Supp.Pain&quot;,
+      &quot;line_total&quot;: &quot;1.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Duvel&quot;,
+      &quot;line_total&quot;: &quot;4.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Jupiler25cl&quot;,
+      &quot;line_total&quot;: &quot;3.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;TiramisuMaison&quot;,
+      &quot;line_total&quot;: &quot;7.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;TiramisuMaison&quot;,
+      &quot;line_total&quot;: &quot;7.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;EspressoMacchiato&quot;,
+      &quot;line_total&quot;: &quot;3.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;EspressoMacchiato&quot;,
+      &quot;line_total&quot;: &quot;3.50&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0011">
+  <h2>cord_0011 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">2 audit flag(s)</span></h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0041.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>line_items[7]</b> identical to row 6 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items[9]</b> identical to row 0 (really bought twice, or a converter double-count?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0011.jpg" alt="cord_0011">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;316017.00&quot;,
+  &quot;service_charge&quot;: &quot;48982.68&quot;,
+  &quot;total&quot;: &quot;365000.00&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Chicken Maryland&quot;,
+      &quot;line_total&quot;: &quot;47619.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Cappucino (Hot/Iced)&quot;,
+      &quot;line_total&quot;: &quot;30303.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Naga Lychee Juice&quot;,
+      &quot;line_total&quot;: &quot;34632.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Cafe Latte&quot;,
+      &quot;line_total&quot;: &quot;30303.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Hot Chocolate Marshmallo&quot;,
+      &quot;line_total&quot;: &quot;30303.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Chicken Cesar Salad&quot;,
+      &quot;line_total&quot;: &quot;43290.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mineral Water&quot;,
+      &quot;line_total&quot;: &quot;12987.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mineral Water&quot;,
+      &quot;line_total&quot;: &quot;12987.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Lychee/Peach/Lemon/Mango&quot;,
+      &quot;line_total&quot;: &quot;25974.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Chicken Maryland&quot;,
+      &quot;line_total&quot;: &quot;47619.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0004">
+  <h2>wild_0004 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">2 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_21/12/d1b85e4417343974227ed6704724f0ce11e0a304.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>line_items[1]</b> amount 3479 with no description</li><li class="check"><b>line_items[2]</b> amount 55.19 with no description</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0004.jpeg" alt="wild_0004">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;57 EXPRESS&quot;,
+  &quot;merchant_address&quot;: &quot;3111 W TEMPLE AVE POMONA, CA&quot;,
+  &quot;date&quot;: &quot;2015-03-08&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;total&quot;: &quot;65.19&quot;,
+  &quot;payment_method&quot;: &quot;CREDIT&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;REGULAR&quot;,
+      &quot;quantity&quot;: &quot;15863&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;3479&quot;
+    },
+    {
+      &quot;line_total&quot;: &quot;55.19&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0015">
+  <h2>wild_0015 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">2 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_51/19/6f16e7e8010b5bc8cba98388c96c770020887656.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>line_items[3]</b> identical to row 2 (really bought twice, or a converter double-count?)</li><li class="check"><b>line_items</b> rows sum to 5.00, total less charges is 3.00 (4 rows: a dropped or extra row?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0015.jpeg" alt="wild_0015">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Meijer&quot;,
+  &quot;merchant_address&quot;: &quot;Sawmill Rd. Dublin, OH - # 58&quot;,
+  &quot;date&quot;: &quot;2012-07-11&quot;,
+  &quot;currency&quot;: null,
+  &quot;tax&quot;: &quot;0.00&quot;,
+  &quot;total&quot;: &quot;3.00&quot;,
+  &quot;payment_method&quot;: &quot;Credit Cards&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;CHECKLANECANDY&quot;,
+      &quot;line_total&quot;: &quot;0.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;CHECKLANEANDY&quot;,
+      &quot;line_total&quot;: &quot;0.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;FRUITSNACKS&quot;,
+      &quot;line_total&quot;: &quot;2.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;FRUITSNACKS&quot;,
+      &quot;line_total&quot;: &quot;2.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0015">
+  <h2>cord_0015 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">1 audit flag(s)</span></h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0061.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>line_items</b> rows sum to 37500, subtotal is 24500 (6 rows: a dropped or extra row?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0015.jpg" alt="cord_0015">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;24500&quot;,
+  &quot;total&quot;: &quot;24500&quot;,
+  &quot;payment_method&quot;: &quot;CARD&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;TALAM UNGU&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;6500&quot;,
+      &quot;line_total&quot;: &quot;6500&quot;
+    },
+    {
+      &quot;description&quot;: &quot;AREM - AREM&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;8000&quot;,
+      &quot;line_total&quot;: &quot;8000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;LEMPER&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;unit_price&quot;: &quot;9000&quot;,
+      &quot;line_total&quot;: &quot;18000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;MIKA SEDANG&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;0&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    },
+    {
+      &quot;description&quot;: &quot;PLASTIK KECIL&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;0&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    },
+    {
+      &quot;description&quot;: &quot;TEH KOTAK&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;5000&quot;,
+      &quot;line_total&quot;: &quot;5000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0018">
+  <h2>cord_0018 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">1 audit flag(s)</span></h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0070.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>line_items[11]</b> identical to row 5 (really bought twice, or a converter double-count?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0018.jpg" alt="cord_0018">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;1343000&quot;,
+  &quot;service_charge&quot;: &quot;80580&quot;,
+  &quot;tax&quot;: &quot;142358&quot;,
+  &quot;total&quot;: &quot;1565938&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;UDANG RE&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;unit_price&quot;: &quot;216000&quot;,
+      &quot;line_total&quot;: &quot;432000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;=*LARGE*==&quot;,
+      &quot;quantity&quot;: &quot;2&quot;
+    },
+    {
+      &quot;description&quot;: &quot;AYM GR JUN NJAN&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;108000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;=*MEDIUM*=&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SAPO TH SEAFOOD&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;172000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;=*LARGE*==&quot;
+    },
+    {
+      &quot;description&quot;: &quot;POCAI 3&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;unit_price&quot;: &quot;111000&quot;,
+      &quot;line_total&quot;: &quot;222000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;=*MEDIUM*=&quot;,
+      &quot;quantity&quot;: &quot;2&quot;
+    },
+    {
+      &quot;description&quot;: &quot;GURAME FILLET M&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;163000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;ASAM MANIS&quot;
+    },
+    {
+      &quot;description&quot;: &quot;BIHUN GORENG JJ&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;116000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;=*LARGE*==&quot;
+    },
+    {
+      &quot;description&quot;: &quot;ICED TEA&quot;,
+      &quot;quantity&quot;: &quot;5&quot;,
+      &quot;unit_price&quot;: &quot;12000&quot;,
+      &quot;line_total&quot;: &quot;60000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NASI PUTIH&quot;,
+      &quot;quantity&quot;: &quot;7&quot;,
+      &quot;unit_price&quot;: &quot;10000&quot;,
+      &quot;line_total&quot;: &quot;70000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0002">
+  <h2>inv_0002 <span class="badge verified">verified</span>
+      <span class="badge flagged">1 audit flag(s)</span></h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    600947-american-crossroads-invoice-october-1.pdf &middot; 2 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">ROLE TRAP: customer is the billing address (Crossroads Media, the agency), NOT the advertiser American Crossroads. • subtotal = Gross Total 6,150.00; total = Net Amount Due 5,227.50 after a 922.50 agency commission. The schema has no commission field, so subtotal + tax != total. Recorded as printed. • No per-line totals are printed (spots x rate only): line_total null. • &#x27;Payment Terms 30 Days&#x27; gives no printed due date: null. • &#x27;Order # 949838&#x27; is the station&#x27;s order number, not a customer PO: purchase_order null. • Line 6 and all totals are on page 2.</p>
+  <ul class="flags"><li class="check"><b>total</b> subtotal 6150.00 + tax 0 = 6150.00, label says 5227.50 (an unlabeled charge, or a mislabeled field?)</li></ul>
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0002.pdf" title="inv_0002"></iframe>
+    <pre>{
+  &quot;invoice_number&quot;: &quot;949838-1&quot;,
+  &quot;issue_date&quot;: &quot;2012-10-14&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;WXII&quot;,
+    &quot;address&quot;: &quot;700 Coliseum Drive, Winston-Salem, NC 27106&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;Crossroads Media&quot;,
+    &quot;address&quot;: &quot;66 Canal Center Plaza, Suite 555, Alexandria, VA 22314&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;subtotal&quot;: &quot;6150.00&quot;,
+  &quot;total&quot;: &quot;5227.50&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;NBC Today Show II&quot;,
+      &quot;quantity&quot;: &quot;4&quot;,
+      &quot;unit_price&quot;: &quot;150.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NBC Today Show II&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;150.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;DR. OZ&quot;,
+      &quot;quantity&quot;: &quot;4&quot;,
+      &quot;unit_price&quot;: &quot;600.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;DR. OZ&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;600.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NBC Prime&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;2000.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Notre Dame Football&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;400.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0004">
+  <h2>inv_0004 <span class="badge verified">verified</span>
+      <span class="badge flagged">1 audit flag(s)</span></h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    6779372-Invoice.pdf &middot; 2 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">PRINTED ARITHMETIC ERROR: rows are 8.05 + 48.51 = 56.56, but SUBTOTAL and TOTAL DUE print 36.59. Recorded as printed; do not correct. • Due date printed as &#x27;TOTAL DUE BY 3-15-2020&#x27;. • Page 2 is an empty template page (&#x27;YOUR LOGO HERE&#x27;).</p>
+  <ul class="flags"><li class="check"><b>line_items</b> rows sum to 56.56, subtotal is 36.59 (2 rows: a dropped or extra row?)</li></ul>
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0004.pdf" title="inv_0004"></iframe>
+    <pre>{
+  &quot;invoice_number&quot;: &quot;00011&quot;,
+  &quot;issue_date&quot;: &quot;2020-02-14&quot;,
+  &quot;due_date&quot;: &quot;2020-03-15&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;Williamsburg-James City County Public Schools&quot;,
+    &quot;address&quot;: &quot;117 Ironbound Road, Williamsburg, VA 23185&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;Muckrock.com&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;subtotal&quot;: &quot;36.59&quot;,
+  &quot;tax&quot;: &quot;0&quot;,
+  &quot;total&quot;: &quot;36.59&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;R. Showah Form Search&quot;,
+      &quot;quantity&quot;: &quot;.25&quot;,
+      &quot;unit_price&quot;: &quot;32.21&quot;,
+      &quot;line_total&quot;: &quot;8.05&quot;
+    },
+    {
+      &quot;description&quot;: &quot;P. Hayworth Website Search, Form Search, FOIA Response Preparation&quot;,
+      &quot;quantity&quot;: &quot;1.5&quot;,
+      &quot;unit_price&quot;: &quot;32.34&quot;,
+      &quot;line_total&quot;: &quot;48.51&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0006">
+  <h2>inv_0006 <span class="badge verified">verified</span>
+      <span class="badge flagged">1 audit flag(s)</span></h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    1314577-20141016142902.pdf &middot; 3 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">BUNDLE, CONSIDER REPLACING: this PDF is three separate documents (p1 invoice 29069, p2 a different invoice 28815, p3 credit memo 3094). Labeled invoice 29069 (page 1) only; the &#x27;one document&#x27; target is contestable. • Bill-to address redacted: null. PO # field literally prints &#x27;SMA Sensor Box&#x27;. • Totals block labels are illegible: 408.24 is the subtotal (sum of rows) and 449.39 is confirmed by the remittance slip, but whether 9.51 or 31.64 is tax is inference, so tax is null. • Handwriting excluded (&#x27;pd 1/13/11 Wire&#x27;, &#x27;$459.90&#x27;, &#x27;Ref# 110113-006613&#x27;).</p>
+  <ul class="flags"><li class="check"><b>total</b> subtotal 408.24 + tax 0 = 408.24, label says 449.39 (an unlabeled charge, or a mislabeled field?)</li></ul>
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0006.pdf" title="inv_0006"></iframe>
+    <pre>{
+  &quot;invoice_number&quot;: &quot;29069&quot;,
+  &quot;issue_date&quot;: &quot;2010-12-21&quot;,
+  &quot;due_date&quot;: &quot;2011-01-20&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;groSolar&quot;,
+    &quot;address&quot;: &quot;601 Old River Road, Suite 3, White River Junction, VT 05001&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;SolarDyne, LLC&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;subtotal&quot;: &quot;408.24&quot;,
+  &quot;total&quot;: &quot;449.39&quot;,
+  &quot;purchase_order&quot;: &quot;SMA Sensor Box&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;SMA Ambient Temperature Sensor, for use with Sensor Box&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;37.38&quot;,
+      &quot;line_total&quot;: &quot;37.38&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SMA Sunny Sensor Box&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;370.86&quot;,
+      &quot;line_total&quot;: &quot;370.86&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0010">
+  <h2>wild_0010 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">1 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_39/16/80511fa838d95038c23f2fdc7901b25d6be2203b.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>line_items</b> rows sum to 44.50, subtotal is 38.87 (3 rows: a dropped or extra row?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0010.jpeg" alt="wild_0010">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;EL GRECO&quot;,
+  &quot;merchant_address&quot;: &quot;Rue Chair et Pains, 5 Grand place, 36, 1000 Bruxelles&quot;,
+  &quot;date&quot;: &quot;2016-06-23&quot;,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;38.87&quot;,
+  &quot;tax&quot;: &quot;5.63&quot;,
+  &quot;total&quot;: &quot;44.50&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;4&quot;,
+      &quot;description&quot;: &quot;Cocacolalight&quot;,
+      &quot;line_total&quot;: &quot;13.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Filetdepoitrinedepou&quot;,
+      &quot;line_total&quot;: &quot;14.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Brochetted&#x27;agneau&quot;,
+      &quot;line_total&quot;: &quot;17.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0016">
+  <h2>wild_0016 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">1 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_54/2/31069916ee9a545fdf5b3aef0e5be30b0e719e94.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>line_items[12]</b> identical to row 10 (really bought twice, or a converter double-count?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0016.jpeg" alt="wild_0016">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Peter Chang&quot;,
+  &quot;merchant_address&quot;: &quot;2503 N. Harrison St Ste E, Arlington, VA 22207&quot;,
+  &quot;date&quot;: &quot;2016-05-07&quot;,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;104.50&quot;,
+  &quot;tax&quot;: &quot;10.45&quot;,
+  &quot;total&quot;: &quot;114.95&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;21.Dry-FriedEggplant&quot;,
+      &quot;line_total&quot;: &quot;10.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;5.CilantroFishRolls&quot;,
+      &quot;line_total&quot;: &quot;8.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;11.Grandma&#x27;sNoodle&quot;,
+      &quot;line_total&quot;: &quot;7.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;24.SzechuanBangBangShrimp&quot;,
+      &quot;line_total&quot;: &quot;9.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;PinotBlanc(g)&quot;,
+      &quot;line_total&quot;: &quot;8.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;TsingTao&quot;,
+      &quot;line_total&quot;: &quot;4.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;description&quot;: &quot;TsingTao&quot;,
+      &quot;line_total&quot;: &quot;9.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;40c.BasilChicken&quot;,
+      &quot;line_total&quot;: &quot;15.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;39c.ThreePeppersChicken&quot;,
+      &quot;line_total&quot;: &quot;15.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;35f.FishinHotChiliOil&quot;,
+      &quot;line_total&quot;: &quot;19.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;CustomerDesign&quot;
+    },
+    {
+      &quot;description&quot;: &quot;&gt;imaplada&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;CustomerDesign&quot;
+    },
+    {
+      &quot;description&quot;: &quot;&gt;ihaveasmallp&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0018">
+  <h2>wild_0018 <span class="badge unverified">unverified</span>
+      <span class="badge flagged">1 audit flag(s)</span></h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_60/20/e9f70b635326a312059812be1c3642d51cd4d0cc.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  <ul class="flags"><li class="check"><b>line_items</b> rows sum to 5431.40, subtotal is 47.30 (6 rows: a dropped or extra row?)</li></ul>
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0018.jpeg" alt="wild_0018">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;XIN WANG ANCHORPOINT&quot;,
+  &quot;merchant_address&quot;: &quot;370 Alexandra Road #01-13/14 Anchorpoint&quot;,
+  &quot;date&quot;: &quot;2016-07-13&quot;,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;47.30&quot;,
+  &quot;service_charge&quot;: &quot;4.73&quot;,
+  &quot;tax&quot;: &quot;3.64&quot;,
+  &quot;total&quot;: &quot;55.67&quot;,
+  &quot;payment_method&quot;: &quot;Cash&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;(705)Kopi&quot;,
+      &quot;line_total&quot;: &quot;1.70&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;(074)WantonSoupNoodle&quot;,
+      &quot;line_total&quot;: &quot;8.90&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;(503)SpyP,DicesSoupNdl&quot;,
+      &quot;line_total&quot;: &quot;7.80&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;(043)PorkChopBkRice&quot;,
+      &quot;line_total&quot;: &quot;12.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;(545)ChickenFlosFriedRi&quot;,
+      &quot;line_total&quot;: &quot;10.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;(110)F.ToastPeanutButter&quot;,
+      &quot;line_total&quot;: &quot;5390&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0001">
+  <h2>cord_0001 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0007.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0001.jpg" alt="cord_0001">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: &quot;IDR&quot;,
+  &quot;subtotal&quot;: &quot;100909&quot;,
+  &quot;tax&quot;: &quot;10091&quot;,
+  &quot;total&quot;: &quot;111000&quot;,
+  &quot;payment_method&quot;: &quot;Cash&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Kupon 15&quot;,
+      &quot;line_total&quot;: &quot;100000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;ADD CHICKEN BOX&quot;,
+      &quot;line_total&quot;: &quot;909&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0002">
+  <h2>cord_0002 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0014.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0002.jpg" alt="cord_0002">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;238000&quot;,
+  &quot;service_charge&quot;: &quot;17850&quot;,
+  &quot;tax&quot;: &quot;25585&quot;,
+  &quot;total&quot;: &quot;281435&quot;,
+  &quot;payment_method&quot;: &quot;CASH&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;RedVelvet Cheese Slc&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;38000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Chicken Baked Rice&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;55000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Fish n Chips&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;65000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mushroom Soup&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;35000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Chamomile&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;25000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Iced Tea&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;20000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0003">
+  <h2>cord_0003 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0016.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0003.jpg" alt="cord_0003">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;63636&quot;,
+  &quot;tax&quot;: &quot;6364&quot;,
+  &quot;total&quot;: &quot;70000&quot;,
+  &quot;payment_method&quot;: &quot;Cash&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;[LG] BLACK SAKURA&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;59091&quot;
+    },
+    {
+      &quot;description&quot;: &quot;LONGAN&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    },
+    {
+      &quot;description&quot;: &quot;ROASTED ALMOND&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    },
+    {
+      &quot;description&quot;: &quot;IVANGGO&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    },
+    {
+      &quot;description&quot;: &quot;IVINERAL WATER (bundling) 5k&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;4545&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0005">
+  <h2>cord_0005 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0020.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0005.jpg" alt="cord_0005">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;325600&quot;,
+  &quot;service_charge&quot;: &quot;17908&quot;,
+  &quot;tax&quot;: &quot;34351&quot;,
+  &quot;total&quot;: &quot;377859&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;cashew nuts chkn&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;64500&quot;
+    },
+    {
+      &quot;description&quot;: &quot;garlic pepper beef&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;79500&quot;
+    },
+    {
+      &quot;description&quot;: &quot;red curry beef&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;69500&quot;
+    },
+    {
+      &quot;description&quot;: &quot;phad thai&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;64500&quot;
+    },
+    {
+      &quot;description&quot;: &quot;steamed rice&quot;,
+      &quot;quantity&quot;: &quot;4&quot;,
+      &quot;line_total&quot;: &quot;47600&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0006">
+  <h2>cord_0006 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0024.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note">header blurred; the line shape resembles cord_0019 but is not legible, so merchant_name is null.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0006.jpg" alt="cord_0006">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: &quot;IDR&quot;,
+  &quot;total&quot;: &quot;118000&quot;,
+  &quot;payment_method&quot;: &quot;Debet Card&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;5001-Corn Flakes Cookies&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;56000&quot;,
+      &quot;line_total&quot;: &quot;56000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;5003-Chokoreto Cookies&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;62000&quot;,
+      &quot;line_total&quot;: &quot;62000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;6002-Plastic Bag Medium&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;0.0&quot;,
+      &quot;line_total&quot;: &quot;0.0&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0007">
+  <h2>cord_0007 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0029.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note">payment printed as &#x27;~BCA EDC&#x27; (a card terminal); labelled as printed.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0007.jpg" alt="cord_0007">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;132636&quot;,
+  &quot;tax&quot;: &quot;13264&quot;,
+  &quot;total&quot;: &quot;145900&quot;,
+  &quot;payment_method&quot;: &quot;BCA EDC&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;COLD OCHA&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;10909&quot;
+    },
+    {
+      &quot;description&quot;: &quot;BCA PROMO&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;54455&quot;
+    },
+    {
+      &quot;description&quot;: &quot;ABURA UDON SPICY&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    },
+    {
+      &quot;description&quot;: &quot;:-KAKE UDON&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;0&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SKEWERED SHUMAI&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;12727&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SKEWERED TOFU ROLL&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;12727&quot;
+    },
+    {
+      &quot;description&quot;: &quot;EBI TEMPURA&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;13636&quot;
+    },
+    {
+      &quot;description&quot;: &quot;KITSUNE UDON (KIDS)&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;28182&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0008">
+  <h2>cord_0008 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0034.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0008.jpg" alt="cord_0008">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;85000&quot;,
+  &quot;tax&quot;: &quot;8500&quot;,
+  &quot;total&quot;: &quot;93500&quot;,
+  &quot;payment_method&quot;: &quot;Tunai&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Ash Chick Sambal Matah&quot;,
+      &quot;quantity&quot;: &quot;5&quot;,
+      &quot;line_total&quot;: &quot;75000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Jamur Goreng&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;10000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0009">
+  <h2>cord_0009 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0035.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0009.jpg" alt="cord_0009">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;total&quot;: &quot;54000&quot;,
+  &quot;payment_method&quot;: &quot;CASH&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;TWIST DONUT&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;18000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;BANANA DONUT&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;11000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CREAMCHEESE BREAD&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;13000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;FRANKFRUT SAUSAGE ROLL&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;12000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0010">
+  <h2>cord_0010 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0038.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0010.jpg" alt="cord_0010">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;561800&quot;,
+  &quot;service_charge&quot;: &quot;42135&quot;,
+  &quot;tax&quot;: &quot;60394&quot;,
+  &quot;total&quot;: &quot;664329&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;XLB Org Pork 10x&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;78000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Sicito Babi&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;65000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Hotplate Tahu&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;58000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;DF Fish Fillet Garlc&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;108000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;LM Pork Belly&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;88000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Siew Mai&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;38800&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Kwan Yin Cup&quot;,
+      &quot;quantity&quot;: &quot;5&quot;,
+      &quot;line_total&quot;: &quot;50000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Herbal Jelly&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;38000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Onde-Onde&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;38000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0012">
+  <h2>cord_0012 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0045.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0012.jpg" alt="cord_0012">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;XXI Cafe&quot;,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;total&quot;: &quot;88000&quot;,
+  &quot;payment_method&quot;: &quot;CASH&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Lemon Tea (L).&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;25000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mike &amp; Ike Original&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;28000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mike &amp; Berry&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;28000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Roti Keju Manis.&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;7000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0013">
+  <h2>cord_0013 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0051.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0013.jpg" alt="cord_0013">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Solaria&quot;,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;303646&quot;,
+  &quot;tax&quot;: &quot;30365&quot;,
+  &quot;total&quot;: &quot;334000&quot;,
+  &quot;payment_method&quot;: &quot;Debit BCA&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;(TA) NASI GRG TERI MEDAN&quot;,
+      &quot;quantity&quot;: &quot;4&quot;,
+      &quot;line_total&quot;: &quot;165460&quot;
+    },
+    {
+      &quot;description&quot;: &quot;(TA) BIHUN GORENG SEAFOOD&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;40456&quot;
+    },
+    {
+      &quot;description&quot;: &quot;(TA) KWETIAW SEAFOOD SIRAM&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;42274&quot;
+    },
+    {
+      &quot;description&quot;: &quot;(TA) NASI GORENG&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;55456&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0014">
+  <h2>cord_0014 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0059.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0014.jpg" alt="cord_0014">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;618490&quot;,
+  &quot;tax&quot;: &quot;61849&quot;,
+  &quot;total&quot;: &quot;680500&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Tahu Isi&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;78000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Tea&quot;,
+      &quot;quantity&quot;: &quot;5&quot;,
+      &quot;line_total&quot;: &quot;30000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Kepiting 7-8.4ons - Chilly 0.7 1&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;297490&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Udang Telur Asin - Regular&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;47500&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Kailan 2 Rasa&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;45000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mantau - 2 pcs&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;25000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Sweet Tea&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;16000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Nasi Putih&quot;,
+      &quot;quantity&quot;: &quot;7&quot;,
+      &quot;line_total&quot;: &quot;42000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mantau - 3 pcs&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;37500&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0016">
+  <h2>cord_0016 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0065.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0016.jpg" alt="cord_0016">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;13000&quot;,
+  &quot;total&quot;: &quot;13000&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Bubur Polos + Telur&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;13000&quot;,
+      &quot;line_total&quot;: &quot;13000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0020">
+  <h2>cord_0020 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0074.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0020.jpg" alt="cord_0020">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;278000&quot;,
+  &quot;service_charge&quot;: &quot;22240&quot;,
+  &quot;tax&quot;: &quot;30024&quot;,
+  &quot;total&quot;: &quot;330264&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;BLACKCURRANT&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;32000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SPRITE&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;32000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;GRILLED CALAMARI&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;85000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;DINE FOR 2&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;129000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;* DANISH FISH &amp; CHIPS DF&quot;
+    },
+    {
+      &quot;description&quot;: &quot;* NEW YORK FISH &amp; CHIPS&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0021">
+  <h2>cord_0021 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0075.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note">&#x27;PIZZA HUT&#x27; is legible through the anonymisation blur, so it is labelled.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0021.jpg" alt="cord_0021">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;PIZZA HUT&quot;,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;256363&quot;,
+  &quot;tax&quot;: &quot;25637&quot;,
+  &quot;total&quot;: &quot;282000&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;CHOCO PUFF&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;29091&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CREAMY BEEF CLS FTC&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;42727&quot;
+    },
+    {
+      &quot;description&quot;: &quot;NEW ORIENTAL CHK RICE&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;34545&quot;
+    },
+    {
+      &quot;description&quot;: &quot;LIPTON PITCHER&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;54545&quot;
+    },
+    {
+      &quot;description&quot;: &quot;SC/P SUPER SUPREME&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;47273&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CB/P BLACK PEPP BEEF&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;48182&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0023">
+  <h2>cord_0023 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0085.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0023.jpg" alt="cord_0023">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;179500&quot;,
+  &quot;tax&quot;: &quot;17950&quot;,
+  &quot;total&quot;: &quot;197450&quot;,
+  &quot;payment_method&quot;: &quot;Cash&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Nasi Putih&quot;,
+      &quot;quantity&quot;: &quot;3&quot;,
+      &quot;line_total&quot;: &quot;30000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Nasi Tambah&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;7000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Ayam Pop&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;line_total&quot;: &quot;40000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Samabal SP&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;11000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Sambal Gabus Asin Cb&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;18000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Kerupuk Kuah&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;15000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Ikan Bawal Besa&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;28500&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Telur Dadar&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;10000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Teh Es&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;7000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Teh Manis&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;9000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Es Batu&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;4000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0024">
+  <h2>cord_0024 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0093.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0024.jpg" alt="cord_0024">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;16363&quot;,
+  &quot;tax&quot;: &quot;1636&quot;,
+  &quot;total&quot;: &quot;17999&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;THAI ICED TEA (L)&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;16363&quot;,
+      &quot;line_total&quot;: &quot;16363&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="cord_0025">
+  <h2>cord_0025 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">CORD v2 (naver-clova-ix/cord-v2, test split) &middot;
+    cord_test_0098.jpg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/cord_0025.jpg" alt="cord_0025">
+    <pre>{
+  &quot;merchant_name&quot;: null,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;subtotal&quot;: &quot;215000&quot;,
+  &quot;service_charge&quot;: &quot;12900&quot;,
+  &quot;tax&quot;: &quot;22790&quot;,
+  &quot;total&quot;: &quot;250690&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;BLACK PAPPER MEATBALL PAS&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;79000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;TRUFFLE CREAM&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;77000&quot;
+    },
+    {
+      &quot;description&quot;: &quot;EARL GREY MILK TEA&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;line_total&quot;: &quot;59000&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0001">
+  <h2>inv_0001 <span class="badge verified">verified</span>
+      </h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    20694747-invoice.pdf &middot; 2 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">The identifier &#x27;04-30-2021-03&#x27; is labeled invoice_number; no &#x27;Date:&#x27; is printed, so issue_date is null even though the number looks date-like. • Customer is the billed organization (MuckRock News); &#x27;Tom Nash&#x27; above it is the attention line. • &#x27;30 minutes&#x27; at $40/hr: quantity left null (0.5 would be computed, not read). • Address prints &#x27;Somerville, VA&#x27; (sic, the city is in MA): recorded as printed. • Page 2 carries only payment notes.</p>
+  
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0001.pdf" title="inv_0001"></iframe>
+    <pre>{
+  &quot;invoice_number&quot;: &quot;04-30-2021-03&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;City of Richmond Police Department&quot;,
+    &quot;address&quot;: &quot;200 West Grace Street, Richmond, VA 23220&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;MuckRock News&quot;,
+    &quot;address&quot;: &quot;DEPT MR 70546, 411 A Highland Avenue, Somerville, VA 02144-2516&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;total&quot;: &quot;100.00&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Major Crimes&quot;,
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;unit_price&quot;: &quot;40.00&quot;,
+      &quot;line_total&quot;: &quot;80.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Internal Affairs&quot;,
+      &quot;unit_price&quot;: &quot;40.00&quot;,
+      &quot;line_total&quot;: &quot;20.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0003">
+  <h2>inv_0003 <span class="badge verified">verified</span>
+      </h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    6768458-Invoice.pdf &middot; 2 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">Invoice number is REDACTED: null. The footer shows &#x27;DF489FB4-0001&#x27;, which is probably the same number, but equating them is inference. Decide on verification. • The PO is redacted near the top but printed in the line item (&#x27;PO #33286&#x27;): purchase_order = 33286. • The amount due ($297,500.00) is on page 2.</p>
+  
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0003.pdf" title="inv_0003"></iframe>
+    <pre>{
+  &quot;issue_date&quot;: &quot;2020-01-09&quot;,
+  &quot;due_date&quot;: &quot;2020-02-08&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;Flock Safety&quot;,
+    &quot;address&quot;: &quot;PO Box 207576, Dallas, TX 75320-7576&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;Cobb County Finance Department&quot;,
+    &quot;address&quot;: &quot;100 Cherokee Street, Ste 410, Marietta, Georgia 30090-9610, United States&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;subtotal&quot;: &quot;297500.00&quot;,
+  &quot;tax&quot;: &quot;0.00&quot;,
+  &quot;total&quot;: &quot;297500.00&quot;,
+  &quot;purchase_order&quot;: &quot;33286&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Flock Safety - PO #33286&quot;,
+      &quot;quantity&quot;: &quot;35&quot;,
+      &quot;unit_price&quot;: &quot;8500.00&quot;,
+      &quot;line_total&quot;: &quot;297500.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Sales tax&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;0.00&quot;,
+      &quot;line_total&quot;: &quot;0.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0005">
+  <h2>inv_0005 <span class="badge verified">verified</span>
+      </h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    1314570-20141016142248.pdf &middot; 3 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">JUDGEMENT CALL: the &#x27;General Labor 29 Hours @ $15/hour $435.00&#x27; row is struck through by hand (&#x27;duplicate invoicing&#x27;), but the PRINTED total $1,867.99 includes it. Labeled the typed invoice as printed (row kept). Confirm on verification. • Handwriting excluded: &#x27;236-51-1751&#x27;, &#x27;/ JDC Mfg&#x27;, &#x27;pd 2/9/11 ck# 1515 $2502.99&#x27;. No printed invoice number: null. • Pages 2-3 are an attached, rotated U.S. DoL payroll form (WH-347), not invoice content.</p>
+  
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0005.pdf" title="inv_0005"></iframe>
+    <pre>{
+  &quot;issue_date&quot;: &quot;2011-02-03&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;William H. Stewart III&quot;,
+    &quot;address&quot;: &quot;160 Doc Road, Reidsville, NC 27320&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;Plastic Revolutions, Inc.&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;total&quot;: &quot;1867.99&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;William H. Stewart III&quot;,
+      &quot;quantity&quot;: &quot;3&quot;,
+      &quot;unit_price&quot;: &quot;25.00&quot;,
+      &quot;line_total&quot;: &quot;75.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;General Labor&quot;,
+      &quot;quantity&quot;: &quot;29&quot;,
+      &quot;unit_price&quot;: &quot;15.00&quot;,
+      &quot;line_total&quot;: &quot;435.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Wire(3/0) 135&#x27; @ $2.59&quot;,
+      &quot;line_total&quot;: &quot;350.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Concrete Anchors&quot;,
+      &quot;line_total&quot;: &quot;34.33&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Wire(Cat5E) (Tilden), Lowes Items (Tilden), Electric Supplies, Grainger Supply&quot;,
+      &quot;line_total&quot;: &quot;973.66&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0007">
+  <h2>inv_0007 <span class="badge verified">verified</span>
+      </h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    7331212-invoice.pdf &middot; 3 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">A genuine single invoice over 3 pages: form, per-month detail (same invoice number), remittance page. • &#x27;Payment is due within 30 days after receipt&#x27; gives no printed due date: null.</p>
+  
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0007.pdf" title="inv_0007"></iframe>
+    <pre>{
+  &quot;invoice_number&quot;: &quot;10202000114&quot;,
+  &quot;issue_date&quot;: &quot;2020-11-04&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;Food and Drug Administration&quot;,
+    &quot;address&quot;: &quot;P.O Box 979107, St. Louis, MO 63197-9000&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;MATTHEW GUENTHER&quot;,
+    &quot;address&quot;: &quot;411A HIGHLAND AVE, SUITE 302, SOMERVILLE, MA 02144, US&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;total&quot;: &quot;51.75&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Reproduction&quot;,
+      &quot;line_total&quot;: &quot;0.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Search Time&quot;,
+      &quot;line_total&quot;: &quot;51.75&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Review Time&quot;,
+      &quot;line_total&quot;: &quot;0.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Microfiche&quot;,
+      &quot;line_total&quot;: &quot;0.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Other&quot;,
+      &quot;line_total&quot;: &quot;0.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0008">
+  <h2>inv_0008 <span class="badge verified">verified</span>
+      </h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    20519891-correll-invoice.pdf &middot; 4 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">JUDGEMENT CALL, role resolution: &#x27;TO: Wayne LaPierre c/o The National Rifle Association of America, Inc.&#x27; &#x27;c/o&#x27; means in care of, so the addressee is LaPierre and the NRA is the address. Labeled customer.name = Wayne LaPierre. Confirm on verification. • Two rows billed &#x27;N/C&#x27; (no charge): line_total null, since no number is printed. • Self-check: the 25 service rows sum to the printed &#x27;Total amount of services&#x27; $78,225.00; with the $2,188.92 expense they give the $80,413.92 total. Amount due appears only on page 4. • &#x27;PAYMENT TERMS: DUE ON RECEIPT&#x27; gives no printed due date: null.</p>
+  
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0008.pdf" title="inv_0008"></iframe>
+    <pre>{
+  &quot;invoice_number&quot;: &quot;2020.03.05&quot;,
+  &quot;issue_date&quot;: &quot;2021-01-13&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;Correll Law Group&quot;,
+    &quot;address&quot;: &quot;250 Park Avenue, 7th Floor, New York, NY 10177&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;Wayne LaPierre&quot;,
+    &quot;address&quot;: &quot;c/o The National Rifle Association of America, Inc., 11250 Waples Mill Road, Fairfax, VA 22030&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;total&quot;: &quot;80413.92&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Pursue preparation for oral argument on pending motions to dismiss, transfer or stay in NYAG action, review/analyze Tashenberg and citing references (7.9).&quot;,
+      &quot;quantity&quot;: &quot;7.90&quot;,
+      &quot;line_total&quot;: &quot;7110.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Assist PKC in preparation for oral argument on pending motions in NYAG action (2.5).&quot;,
+      &quot;quantity&quot;: &quot;2.50&quot;,
+      &quot;line_total&quot;: &quot;487.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Pursue dismissal, transfer or stay of NYAG action, review/revise 1/2/21 notes and memos re venue issue and statutory construction issues (0.3); pursue investigation and analysis of director and officer liability issues (0.4); review correspondence from TCC re NYAG comments in national media, review/analyze transcript of same, draft memo based on same (3.6); pursue legal research on statutory construction issues (3.0).&quot;,
+      &quot;quantity&quot;: &quot;7.30&quot;,
+      &quot;line_total&quot;: &quot;6570.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Review correspondence from Court re oral argument and correspond with all counsel re same (0.1); continue research and analysis re statutory construction issues (0.7); pursue preparation for oral argument (0.3).&quot;,
+      &quot;quantity&quot;: &quot;1.10&quot;,
+      &quot;line_total&quot;: &quot;990.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Assist PKC in preparation for oral argument (3.0).&quot;,
+      &quot;quantity&quot;: &quot;3.00&quot;,
+      &quot;line_total&quot;: &quot;585.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Pursue motions to dismiss, transfer and stay and prepare for oral argument (1.3); communicate with SBR re issue relating to WLP employment contract and correspond with SBR re same (0.1); pursue defense of claims relating to WLP employment agreement (5.9).&quot;,
+      &quot;quantity&quot;: &quot;7.30&quot;,
+      &quot;line_total&quot;: &quot;6570.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Assist PKC in preparation for oral argument and defense of claims relating to WLP employment contract (5.5).&quot;,
+      &quot;quantity&quot;: &quot;5.50&quot;,
+      &quot;line_total&quot;: &quot;1072.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Pursue investigation and analysis of NYAG case and motion for dismissal, transfer or stay of causes of action asserted against LaPierre in NYAG action, review and edit 1/3/21 notes and memos and review and revise draft of oral argument (2.1); pursue preparation for oral argument on venue motion (2.2); confer with WLP re status and strategy (0.2); pursue strategy, review email from WAB re transcript of WLP deposition in UWS action and review/analyze transcript (4.0).&quot;,
+      &quot;quantity&quot;: &quot;8.50&quot;,
+      &quot;line_total&quot;: &quot;7650.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Assist PKC with preparation for oral argument on pending motions (0.9).&quot;,
+      &quot;quantity&quot;: &quot;0.90&quot;,
+      &quot;line_total&quot;: &quot;175.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Review/revise 1/4/21 notes and memos re venue issue (0.6); pursue investigation of case (0.6); research/review/analyze relevant background information on key players and potential witnesses (0.7); review 12/1/13 WLP contract, background information on Nonprofit Revitalization Act, prepare for meetings in Dallas re litigation strategy; confer with WAB, SBR, and J. Houser re same (7.0); confer with WLP re strategy (0.1).&quot;,
+      &quot;quantity&quot;: &quot;9.00&quot;,
+      &quot;line_total&quot;: &quot;8100.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Confer with WAB and SBR re strategy (0.5); pursue strategy discussions (0.5).&quot;,
+      &quot;quantity&quot;: &quot;1.00&quot;,
+      &quot;line_total&quot;: &quot;900.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Pursue strategy discussions (3.5).&quot;,
+      &quot;quantity&quot;: &quot;3.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Review/revise 1/5/21 notes and memos and pursue analysis of open issues (0.3); pursue preparation for oral argument on motions pending in NYAG case (0.5); review revised draft of new employment agreement for WLP (0.2); confer with SBR re same (0.1); continue review of draft agreement and confer further with SBR re same (0.3); pursue strategy discussions with defense team (3.9); continue review/analysis of transcript of WLP testimony in UWS action and related issues (4.7).&quot;,
+      &quot;quantity&quot;: &quot;10.00&quot;,
+      &quot;line_total&quot;: &quot;9000.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Continue review/analysis of transcript of WLP testimony in UWS action (1.1).&quot;,
+      &quot;quantity&quot;: &quot;1.10&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Pursue strategy (0.2); correspond with W. Davis re new employment agreement for WLP (0.1); analyze governing law issue (0.2); confer with WAB and SBR re status and strategy (0.6); pursue strategy (0.2); review 1/5/21 notes and pursue strategy (1.2); confer with SBR re further changes to new employment agreement and review proposed revisions (0.2); pursue strategy (1.1); review email from SBR re final version of new employment agreement (0.1).&quot;,
+      &quot;quantity&quot;: &quot;3.90&quot;,
+      &quot;line_total&quot;: &quot;3510.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Review correspondence from E. Stern re proposed meet and confer, review and analyze attached discovery proposal and preliminary conference order and confer with SBR re same (1.1); continue review and analysis of OAG proposal re discovery and confer further with SBR re same (1.0); review and respond to email from C. Liggio re scheduling of meet and confer (0.1).&quot;,
+      &quot;quantity&quot;: &quot;2.20&quot;,
+      &quot;line_total&quot;: &quot;1980.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Pursue preparation for oral argument on motions to dismiss, etc, review 1/7/21 notes and prepare memo re same (0.6); review correspondence re oral argument on pending motions (0.1); confer with SBR re strategy (0.1); pursue strategy, confer with MJC re status and strategy, review correspondence from MJC re same (4.2).&quot;,
+      &quot;quantity&quot;: &quot;5.00&quot;,
+      &quot;line_total&quot;: &quot;4500.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Confer with WAB and SBR re oral argument on motions to dismiss and pursue preparation for oral argument (1.7); review and respond to correspondence from SBR re oral argument and pursue strategy (0.3); review and respond to correspondence from W. Fleming re Frazer request for adjournment of oral argument (0.1); review and respond to correspondence from E. Stern re adjournment of oral argument and scheduling conference (0.2).&quot;,
+      &quot;quantity&quot;: &quot;2.30&quot;,
+      &quot;line_total&quot;: &quot;2070.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Pursue investigation of NYAG case (2.8).&quot;,
+      &quot;quantity&quot;: &quot;2.80&quot;,
+      &quot;line_total&quot;: &quot;2520.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Assist PKC in pursuit of strategy and further investigation of NYAG case (2.8).&quot;,
+      &quot;quantity&quot;: &quot;2.80&quot;,
+      &quot;line_total&quot;: &quot;546.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Prepare for conference with Court in NYAG action re pending motions and scheduling order and rework oral argument regarding N-PCL section 1110 issue (0.6); appear for conference before Justice Cohen (0.2); pursue preparation for oral argument, review and respond to correspondence from WBB re review and correction of WLP deposition transcript in UWS case and preparation of errata sheet, pursue analysis of argument and strategy in NYAG case (1.5).&quot;,
+      &quot;quantity&quot;: &quot;2.30&quot;,
+      &quot;line_total&quot;: &quot;2070.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Continue review and analysis of WLP testimony in UWS case and correction of transcript of WLP deposition, supplement timeline, cast of characters and witness profiles and correspond with WBB re same (5.8).&quot;,
+      &quot;quantity&quot;: &quot;5.80&quot;,
+      &quot;line_total&quot;: &quot;5220.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Assist PKC in preparation for court appearance (0.2); monitor conference with the Court (0.2); assist PKC in further analysis/development of argument and strategy in NYAG case (1.4); assist PKC in supplementation of timeline, cast of characters and witness profiles and in preparing errata sheet for WLP deposition transcript in UWS case (1.3).&quot;,
+      &quot;quantity&quot;: &quot;3.10&quot;,
+      &quot;line_total&quot;: &quot;604.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Assist PKC in developing venue argument and in reviewing and correcting WLP transcript in UWS case (0.6); review correspondence from E. Stern and counsel re proposed meet and confer (0.1); research commercial division in Third Judicial District, review 2021 Judicial Assignments Book and Albany County commercial division Justice Platkin bio (0.3); revise errata sheet (0.2).&quot;,
+      &quot;quantity&quot;: &quot;1.20&quot;,
+      &quot;line_total&quot;: &quot;234.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Review 1/11/21 notes and memos and revise argument re venue (1.6); review and respond to email from WBB re additions to errata sheet (0.1); review and respond to email from E. Stern re rescheduling of meet and confer (0.1) pursue review and analysis of WLP testimony in UWS case, correspond with WAB and SBR re status and strategy, correspond with WBB re exhibits, video and updated errata sheet (4.2); review/analyze bio of Justice Platkin (0.2); confer with SBR re status and strategy (0.2).&quot;,
+      &quot;quantity&quot;: &quot;6.40&quot;,
+      &quot;line_total&quot;: &quot;5760.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Hotel/Meals in Dallas 1/5/21 - 1/9/21&quot;,
+      &quot;line_total&quot;: &quot;2188.92&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="inv_0009">
+  <h2>inv_0009 <span class="badge verified">verified</span>
+      </h2>
+  <div class="meta">RVL-CDIP-N multi-page (jordyvl/rvl_cdip_n_mp; Larson et al., NeurIPS 2022 Datasets &amp; Benchmarks; CC BY-NC 4.0), invoice class &middot;
+    1314575-20141016142748.pdf &middot; 5 pages &middot; <b>drafted by assistant from page images; pending human verification</b>
+    </div>
+  <p class="note">Vendor town line is half-covered by a redaction box but legible; the next line is fully redacted and omitted. • Handwritten &#x27;- Business Owner&#x27; annotations are excluded from descriptions. • Pages 2-5 are attached, rotated U.S. DoL payroll forms (WH-347), not invoice content.</p>
+  
+  <div class="pair">
+    <iframe src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/inv_0009.pdf" title="inv_0009"></iframe>
+    <pre>{
+  &quot;invoice_number&quot;: &quot;501&quot;,
+  &quot;issue_date&quot;: &quot;2011-01-11&quot;,
+  &quot;vendor&quot;: {
+    &quot;name&quot;: &quot;Circuit Makers Inc.&quot;,
+    &quot;address&quot;: &quot;PO Box 886, Eden NC 27288&quot;
+  },
+  &quot;customer&quot;: {
+    &quot;name&quot;: &quot;Plastic Revolutions&quot;,
+    &quot;address&quot;: &quot;PO Box 1616, Reidsville, NC 27323&quot;
+  },
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;total&quot;: &quot;8840.00&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Solar Installation Labor Tilden&quot;,
+      &quot;line_total&quot;: &quot;3405.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Solar Installation Labor Keith&quot;,
+      &quot;line_total&quot;: &quot;3240.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Solar Installation Labor Will&quot;,
+      &quot;line_total&quot;: &quot;1620.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Solar Installation Materials and Bucket Truck&quot;,
+      &quot;line_total&quot;: &quot;575.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0002">
+  <h2>wild_0002 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_10/10/2c6512feaa251a848ab63a10b19218af33de89e9.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0002.jpeg" alt="wild_0002">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;HOMEDELIVERY&quot;,
+  &quot;date&quot;: &quot;2015-06-28&quot;,
+  &quot;currency&quot;: null,
+  &quot;total&quot;: &quot;124.00&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;XoChicken&quot;,
+      &quot;line_total&quot;: &quot;40.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;TomYumSoup&quot;,
+      &quot;line_total&quot;: &quot;26.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Prawns&quot;,
+      &quot;line_total&quot;: &quot;8.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;SaltandPepper&quot;,
+      &quot;line_total&quot;: &quot;26.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;ChickenWings&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;ChickenSpringRoll&quot;,
+      &quot;line_total&quot;: &quot;24.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0003">
+  <h2>wild_0003 <span class="badge verified">verified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_19/12/67c10ac3c00c5da07f0600a5a6bfac69062dc5c0.jpeg
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0003.jpeg" alt="wild_0003">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Khyen Chyen&quot;,
+  &quot;merchant_address&quot;: &quot;G-19, DLF Cross Point, DLF Phase 4, Gurgaon&quot;,
+  &quot;date&quot;: &quot;2015-04-17&quot;,
+  &quot;currency&quot;: &quot;INR&quot;,
+  &quot;subtotal&quot;: &quot;1675.00&quot;,
+  &quot;service_charge&quot;: &quot;82.75&quot;,
+  &quot;tax&quot;: &quot;213.36&quot;,
+  &quot;total&quot;: &quot;1971.11&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Tabakh Maaz (Only Me)&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;200.00&quot;,
+      &quot;line_total&quot;: &quot;200.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Haakh (Hungry)&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;300.00&quot;,
+      &quot;line_total&quot;: &quot;300.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Al-Yakhni (Only Me)&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;225.00&quot;,
+      &quot;line_total&quot;: &quot;225.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Batta (Hungry)&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;200.00&quot;,
+      &quot;line_total&quot;: &quot;200.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Saffron Kehwa&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;100.00&quot;,
+      &quot;line_total&quot;: &quot;100.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Lahabdaar Kebab (Only&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;250.00&quot;,
+      &quot;line_total&quot;: &quot;250.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Mineral Water&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;50.00&quot;,
+      &quot;line_total&quot;: &quot;50.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Rogan Josh Mutton (On&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;250.00&quot;,
+      &quot;line_total&quot;: &quot;250.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Doon Chutney&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;unit_price&quot;: &quot;100.00&quot;,
+      &quot;line_total&quot;: &quot;100.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0005">
+  <h2>wild_0005 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_28/14/3823.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0005.jpeg" alt="wild_0005">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;GASTROBAR EL GALLO AZUL&quot;,
+  &quot;merchant_address&quot;: &quot;C/ LARGA 2 JEREZ DE LA FRONTERA&quot;,
+  &quot;date&quot;: &quot;2013-11-14&quot;,
+  &quot;currency&quot;: null,
+  &quot;total&quot;: &quot;20.90&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;description&quot;: &quot;COPARIOJA&quot;,
+      &quot;line_total&quot;: &quot;4.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;description&quot;: &quot;CAFESCONLECHE&quot;,
+      &quot;line_total&quot;: &quot;2.40&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;TAPAMOJAMADEBARBATE&quot;,
+      &quot;line_total&quot;: &quot;2.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;TAPABEREJENASCONSALM&quot;,
+      &quot;line_total&quot;: &quot;3.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;TAPAPATATASALIOLI&quot;,
+      &quot;line_total&quot;: &quot;2.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;PANYPICOSXPERSONA&quot;,
+      &quot;line_total&quot;: &quot;0.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;TAPACARRILLERAIBERICA&quot;,
+      &quot;line_total&quot;: &quot;2.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;SALMOREJO&quot;,
+      &quot;line_total&quot;: &quot;4.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0007">
+  <h2>wild_0007 <span class="badge verified">verified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_37/16/11c9e22d6ba44af50188f615631bf7c273a13ea3.jpeg
+    &middot; <b>needs hand label:</b> payment_method</div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0007.jpeg" alt="wild_0007">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;PRIME BURGER BAR&quot;,
+  &quot;merchant_address&quot;: &quot;VIA PRIVATA DELLA PASSERELLA, 4 20122 MILANO&quot;,
+  &quot;date&quot;: &quot;2016-02-14&quot;,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;subtotal&quot;: &quot;24.50&quot;,
+  &quot;total&quot;: &quot;24.50&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;Coperti&quot;,
+      &quot;line_total&quot;: &quot;1.50&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Hamburger Blue-cheddar&quot;,
+      &quot;line_total&quot;: &quot;11.00&quot;
+    },
+    {
+      &quot;description&quot;: &quot;Cannolo Venere&quot;,
+      &quot;line_total&quot;: &quot;12.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0008">
+  <h2>wild_0008 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_39/16/62de924d5bad661beca6fc46d0b1d9a262a736ea.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note">printed as &#x27;ONE MILL STREET / @ ONE MILL STREET&#x27;; the &#x27;@&#x27; line names the venue, not a street address.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0008.jpeg" alt="wild_0008">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;ONE MILL STREET&quot;,
+  &quot;merchant_address&quot;: &quot;ONE MILL STREET&quot;,
+  &quot;date&quot;: &quot;2003-01-09&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;subtotal&quot;: &quot;105.00&quot;,
+  &quot;service_charge&quot;: &quot;18.90&quot;,
+  &quot;tax&quot;: &quot;5.25&quot;,
+  &quot;total&quot;: &quot;129.15&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;CALAMARIW/MOJO&quot;,
+      &quot;line_total&quot;: &quot;16.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;ARTICHOKES&quot;,
+      &quot;line_total&quot;: &quot;8.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;3&quot;,
+      &quot;description&quot;: &quot;PORKCHOP@18.00&quot;,
+      &quot;line_total&quot;: &quot;54.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;VFGIESAND&quot;,
+      &quot;line_total&quot;: &quot;8.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;NEWYORKSTRIP&quot;,
+      &quot;line_total&quot;: &quot;19.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0009">
+  <h2>wild_0009 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_39/16/781c3816ff9610d68d594041e4dcfa076fac95a6.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0009.jpeg" alt="wild_0009">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Breakfast 2 Breakfast&quot;,
+  &quot;merchant_address&quot;: &quot;DIC Building 12, Dubai, UAE&quot;,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: &quot;AED&quot;,
+  &quot;subtotal&quot;: &quot;44.00&quot;,
+  &quot;total&quot;: &quot;44.00&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;Taouk Sandwich&quot;,
+      &quot;line_total&quot;: &quot;16.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;RoastBeefSandwich&quot;,
+      &quot;line_total&quot;: &quot;17.00&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;FrenchFriesAppetizer&quot;,
+      &quot;line_total&quot;: &quot;11.00&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0013">
+  <h2>wild_0013 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_47/18/565131355216578dd63083b0b93eacd70895b9e3.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0013.jpeg" alt="wild_0013">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;SUPER A FOODS&quot;,
+  &quot;merchant_address&quot;: &quot;5250 York Blvd, Highland Park, CA 90042&quot;,
+  &quot;date&quot;: &quot;2014-12-12&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;subtotal&quot;: &quot;1.48&quot;,
+  &quot;total&quot;: &quot;1.48&quot;,
+  &quot;payment_method&quot;: &quot;VISA&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;2&quot;,
+      &quot;description&quot;: &quot;ASSORTEDSWEETBREAD&quot;,
+      &quot;line_total&quot;: &quot;0.80&quot;
+    },
+    {
+      &quot;description&quot;: &quot;PAPERBAG&quot;,
+      &quot;line_total&quot;: &quot;0.10&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1.76&quot;,
+      &quot;description&quot;: &quot;ORG-NAVELLARGE&quot;,
+      &quot;line_total&quot;: &quot;0.58&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0014">
+  <h2>wild_0014 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_5/1/16.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0014.jpeg" alt="wild_0014">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Morrisons&quot;,
+  &quot;merchant_address&quot;: &quot;Morrisons Supermarkets plc BD3 7DL, Hadleigh&quot;,
+  &quot;date&quot;: &quot;2016-02-13&quot;,
+  &quot;currency&quot;: &quot;GBP&quot;,
+  &quot;total&quot;: &quot;2.19&quot;,
+  &quot;payment_method&quot;: &quot;Card&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;MWHOLEMEALOAF&quot;,
+      &quot;line_total&quot;: &quot;0.50&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;MDOUSLECREAM&quot;,
+      &quot;line_total&quot;: &quot;0.84&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;MCARROTS1KG&quot;,
+      &quot;line_total&quot;: &quot;0.47&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;MBROCCOLI&quot;,
+      &quot;line_total&quot;: &quot;0.38&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0017">
+  <h2>wild_0017 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_58/20/5953d9c8606a2d7b0e816d0310ce64894ed6f57e.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0017.jpeg" alt="wild_0017">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Hillside&quot;,
+  &quot;merchant_address&quot;: null,
+  &quot;date&quot;: &quot;2016-12-01&quot;,
+  &quot;currency&quot;: &quot;GBP&quot;,
+  &quot;total&quot;: &quot;7.90&quot;,
+  &quot;payment_method&quot;: &quot;Credit Card&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;DESSERTS&quot;,
+      &quot;line_total&quot;: &quot;3.95&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;REGULARAMERICANO&quot;,
+      &quot;line_total&quot;: &quot;1.85&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;SMALLTUB&quot;,
+      &quot;line_total&quot;: &quot;2.10&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0021">
+  <h2>wild_0021 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_80/7/4381.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  <p class="note">merchant printed &#x27;COSTCO WHOLESALE&#x27;; the dataset label had only &#x27;COSTCO&#x27;.</p>
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0021.jpeg" alt="wild_0021">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;COSTCO WHOLESALE&quot;,
+  &quot;merchant_address&quot;: &quot;12300 West Dodge Rd, Omaha, NE 68154&quot;,
+  &quot;date&quot;: null,
+  &quot;currency&quot;: null,
+  &quot;total&quot;: &quot;70.34&quot;,
+  &quot;payment_method&quot;: null,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: &quot;ORGANICPAST&quot;,
+      &quot;line_total&quot;: &quot;5.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;PELEDCAROTS&quot;,
+      &quot;line_total&quot;: &quot;5.49&quot;
+    },
+    {
+      &quot;description&quot;: &quot;IQFSTRWBRYS&quot;,
+      &quot;line_total&quot;: &quot;8.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;BROCCOLI&quot;,
+      &quot;line_total&quot;: &quot;4.79&quot;
+    },
+    {
+      &quot;description&quot;: &quot;WATERMELON&quot;,
+      &quot;line_total&quot;: &quot;5.99&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CANTALOUPE&quot;,
+      &quot;line_total&quot;: &quot;5.49&quot;
+    },
+    {
+      &quot;description&quot;: &quot;CUCUMBERS&quot;,
+      &quot;line_total&quot;: &quot;3.29&quot;
+    },
+    {
+      &quot;description&quot;: &quot;BANANAS&quot;,
+      &quot;line_total&quot;: &quot;1.47&quot;
+    },
+    {
+      &quot;description&quot;: &quot;REDPEPPERS&quot;,
+      &quot;line_total&quot;: &quot;7.49&quot;
+    },
+    {
+      &quot;description&quot;: &quot;ORGNCBSTHG&quot;,
+      &quot;line_total&quot;: &quot;17.56&quot;
+    },
+    {
+      &quot;description&quot;: &quot;ROMAINE&quot;,
+      &quot;line_total&quot;: &quot;3.79&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>
+<section id="wild_0025">
+  <h2>wild_0025 <span class="badge unverified">unverified</span>
+      </h2>
+  <div class="meta">WildReceipt (Sun et al., arXiv:2103.14470; test split) &middot;
+    image_files/Image_87/8/e6e905ac976a4c241b24b00326f8fb88b31a88a3.jpeg &middot; <b>5 header fields drafted by assistant from the image on 2026-09-18, pending human verification; amounts and line items were verified earlier</b>
+    </div>
+  
+  
+  <div class="pair">
+    <img src="file:///C:/Users/Aditya/Desktop/Project/dsaur/data/docs/wild_0025.jpeg" alt="wild_0025">
+    <pre>{
+  &quot;merchant_name&quot;: &quot;Chick-fil-A&quot;,
+  &quot;merchant_address&quot;: &quot;Casselberry FSU (# 03270), Fern Park, FL&quot;,
+  &quot;date&quot;: &quot;2018-03-07&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;subtotal&quot;: &quot;11.55&quot;,
+  &quot;tax&quot;: &quot;0.81&quot;,
+  &quot;total&quot;: &quot;12.36&quot;,
+  &quot;payment_method&quot;: &quot;Visa&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;GrillSand&quot;,
+      &quot;line_total&quot;: &quot;4.75&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;GrlSpcyDlx+CJ&quot;,
+      &quot;line_total&quot;: &quot;5.05&quot;
+    },
+    {
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;description&quot;: &quot;FriesMD&quot;,
+      &quot;line_total&quot;: &quot;1.75&quot;
+    }
+  ]
+}
+</pre>
+  </div>
+</section>

@@ -1,0 +1,1082 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Receipt &amp; Invoice Extraction — End-to-End Report</title><style>:root{
+  /* Light-first, after datasaur.ai: white ground, near-black type (#111111 is the
+     colour of their logo), one blue accent, semantic colours kept separate from it. */
+  --bg:#ffffff; --bg2:#f6f7f9; --panel:#ffffff; --panel2:#f0f2f5;
+  --line:#e4e7ec; --line2:#d3d8e0;
+  --fg:#111111; --mut:#535c6b; --dim:#858e9d;
+  --accent:#2f5fe0; --accent2:#2f5fe0; --violet:#6d4bd8;
+  --ok:#0f7a52; --warn:#9a5b06; --bad:#c0263a;
+  --ok-bg:rgba(15,122,82,.09); --warn-bg:rgba(154,91,6,.10); --bad-bg:rgba(192,38,58,.09);
+  --accent-bg:rgba(47,95,224,.07); --accent-line:rgba(47,95,224,.24);
+  --hero1:rgba(47,95,224,.07); --hero2:rgba(109,75,216,.06);
+  --img-bg:#f0f2f5;
+  --radius:16px;
+  --mono:"JetBrains Mono","SF Mono",ui-monospace,Menlo,Consolas,monospace;
+  --shadow:0 1px 2px rgba(17,17,17,.05),0 10px 26px -14px rgba(17,17,17,.22);
+}
+/* Deliberately single-theme: the page commits to the light identity even when the
+   viewer's OS or host is set to dark, so it looks the same to everyone it is shown to.
+   Every colour is painted explicitly above for exactly that reason. */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;padding:0;background:var(--bg);color:var(--fg);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(60rem 30rem at 12% -8%,var(--hero1),transparent 60%),
+    radial-gradient(48rem 26rem at 96% 2%,var(--hero2),transparent 60%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:1360px;margin:0 auto;padding:0 1.5rem 4rem}
+
+.hero{padding:3.2rem 0 1.6rem}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;
+  text-transform:uppercase;letter-spacing:.16em;color:var(--accent);font-weight:600;
+  padding:.3rem .7rem;border:1px solid var(--accent-line);border-radius:99px;background:var(--accent-bg)}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 3px var(--accent-bg);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.08;margin:1rem 0 .5rem;
+  letter-spacing:-.03em;font-weight:700;
+  color:var(--fg)}
+.lede{color:var(--mut);font-size:1rem;max-width:66ch;margin:0}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:.7rem;margin:2rem 0 .5rem}
+.stat{background:linear-gradient(180deg,var(--panel),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--radius);padding:.9rem 1rem;
+  position:relative;overflow:hidden}
+.stat:before{content:"";position:absolute;inset:0 0 auto 0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--line2),transparent)}
+.stat .v{font-size:1.75rem;font-weight:700;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;font-family:var(--mono)}
+.stat .l{font-size:.66rem;text-transform:uppercase;letter-spacing:.11em;color:var(--dim);
+  margin-top:.15rem}
+.stat.a .v{color:var(--accent)} .stat.w .v{color:var(--warn)} .stat.b .v{color:var(--bad)}
+
+.toolbar{position:sticky;top:0;z-index:50;margin:1.4rem 0 1.8rem;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:.7rem .9rem;box-shadow:var(--shadow)}
+.trow{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+.trow+.trow{margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--line)}
+.glabel{font-size:.63rem;text-transform:uppercase;letter-spacing:.13em;color:var(--dim);
+  font-weight:600}
+.seg{display:inline-flex;background:var(--bg2);border:1px solid var(--line);
+  border-radius:11px;padding:3px;gap:2px}
+.seg button{font:inherit;font-size:.8rem;font-weight:500;color:var(--mut);
+  background:transparent;border:0;border-radius:8px;padding:.34rem .8rem;cursor:pointer;
+  transition:background .16s,color .16s;white-space:nowrap}
+.seg button:hover:not(.on){color:var(--fg);background:var(--panel2)}
+.seg button.on{background:linear-gradient(180deg,var(--panel2),var(--panel));
+  color:var(--fg);box-shadow:0 1px 2px rgba(17,17,17,.10)}
+.seg button.on[data-status=failed]{color:var(--bad)}
+.seg button.on[data-status=abstained]{color:var(--warn)}
+.seg button.on[data-status=clean]{color:var(--accent)}
+.seg button.on[data-conf=high]{color:var(--accent)}
+.seg button.on[data-conf=medium]{color:var(--warn)}
+.seg button.on[data-conf=low]{color:var(--bad)}
+.conf-high{color:var(--ok)} .conf-medium{color:var(--warn)} .conf-low{color:var(--bad)}
+.reportlink{font-size:.8rem;font-weight:600;color:var(--accent);text-decoration:none;
+  border:1px solid var(--accent-line);background:var(--accent-bg);border-radius:9px;
+  padding:.34rem .7rem}
+.reportlink:hover{text-decoration:underline}
+.cnt{font-size:.7rem;color:var(--dim);font-variant-numeric:tabular-nums;
+  padding:.1rem .4rem;background:var(--bg2);border-radius:5px;margin-left:.25rem}
+.spacer{flex:1 1 auto}
+.nav{display:inline-flex;align-items:center;gap:.45rem}
+.nav button{font:inherit;font-size:.8rem;color:var(--fg);background:var(--panel);
+  border:1px solid var(--line);border-radius:9px;padding:.34rem .7rem;cursor:pointer;
+  transition:border-color .16s,transform .1s}
+.nav button:hover:not(:disabled){border-color:var(--accent);transform:translateY(-1px)}
+.nav button:disabled{opacity:.3;cursor:default}
+.pg{font-size:.78rem;color:var(--mut);font-variant-numeric:tabular-nums;min-width:6.5rem;
+  text-align:center;font-family:var(--mono)}
+kbd{font-size:.66rem;font-family:var(--mono);background:var(--bg2);
+  border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 .3rem;
+  color:var(--dim)}
+
+.card{background:linear-gradient(180deg,var(--panel),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--radius);margin-bottom:1.5rem;
+  overflow:hidden;box-shadow:var(--shadow);
+  animation:rise .42s cubic-bezier(.22,1,.36,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px) scale(.995)}to{opacity:1;transform:none}}
+.card header{display:flex;gap:.55rem;align-items:center;flex-wrap:wrap;
+  padding:.7rem 1rem;border-bottom:1px solid var(--line);background:var(--bg2)}
+.did{font-family:var(--mono);font-size:.84rem;font-weight:600}
+.srcname{font-size:.7rem;color:var(--dim);font-family:var(--mono)}
+.pill{font-size:.64rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:.18rem .5rem;border-radius:99px;background:var(--bg2);color:var(--mut);
+  border:1px solid var(--line)}
+.tp-receipt{color:var(--accent);border-color:var(--accent-line);background:var(--accent-bg)}
+.tp-invoice{color:var(--violet);border-color:color-mix(in srgb,var(--violet) 30%,transparent);
+  background:color-mix(in srgb,var(--violet) 8%,transparent)}
+.badge{font-size:.66rem;font-weight:600;padding:.18rem .55rem;border-radius:6px}
+.b-ok{color:var(--ok);background:var(--ok-bg)}
+.b-abs{color:var(--warn);background:var(--warn-bg)}
+.b-fail{color:var(--bad);background:var(--bad-bg)}
+.b-partial{color:var(--warn);background:var(--warn-bg)}
+.b-conf{color:var(--mut);background:var(--bg2);font-family:var(--mono)}
+
+.split{display:grid;grid-template-columns:minmax(0,47fr) minmax(0,53fr)}
+@media(max-width:940px){.split{grid-template-columns:1fr}}
+.src{padding:1.1rem;background:
+  repeating-linear-gradient(45deg,color-mix(in srgb,var(--fg) 3%,transparent) 0 10px,transparent 10px 20px),
+  var(--img-bg);display:flex;align-items:flex-start;justify-content:center;
+  border-right:1px solid var(--line)}
+@media(max-width:940px){.src{border-right:0;border-bottom:1px solid var(--line)}}
+.src img{max-width:100%;height:auto;border-radius:10px;
+  box-shadow:var(--shadow);
+  transition:transform .32s cubic-bezier(.22,1,.36,1)}
+.src img:hover{transform:scale(1.022)}
+.data{padding:1rem 1.15rem}
+h4{margin:1.1rem 0 .4rem;font-size:.63rem;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--dim);font-weight:700;display:flex;align-items:center;gap:.5rem}
+h4:after{content:"";flex:1;height:1px;background:var(--line)}
+
+table{border-collapse:collapse;width:100%;font-size:.84rem}
+th{text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:.11em;
+  color:var(--dim);font-weight:700;padding:.25rem .45rem;border-bottom:1px solid var(--line2)}
+td{padding:.36rem .45rem;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.fields tr{transition:background .14s}
+.fields tr:hover{background:var(--bg2)}
+.fl{color:var(--mut);white-space:nowrap;width:8.5rem;font-size:.78rem}
+.fv{font-weight:500;color:var(--fg)}
+.fc{text-align:right;width:3.2rem;color:var(--mut);font-variant-numeric:tabular-nums;
+  font-family:var(--mono);font-size:.78rem}
+.fs{width:5.2rem;font-size:.63rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.st-abstained{background:var(--warn-bg)}
+.st-abstained .fv,.st-abstained .fc,.st-abstained .fs{color:var(--warn)}
+.st-absent .fv{color:var(--dim)} .st-absent .fs{color:var(--dim)}
+.li th:nth-child(n+3),.li td.n{text-align:right}
+.li .n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.8rem}
+.sum-ok td{border-top:1px solid var(--ok);color:var(--ok);padding-top:.45rem}
+.sum-bad td{border-top:1px solid var(--bad);color:var(--bad);padding-top:.45rem}
+.sum-na td{border-top:1px solid var(--line2);color:var(--mut);padding-top:.45rem}
+.sm{font-size:.72rem;color:var(--dim);font-weight:400}
+.sum-ok .sm{color:var(--ok);opacity:.85} .sum-bad .sm{color:var(--bad)}
+.warn-note{color:var(--warn)}
+.foot{margin:.9rem 0 0;font-family:var(--mono)}
+.problems{border:1px solid color-mix(in srgb,var(--bad) 35%,transparent);background:var(--bad-bg);
+  border-radius:10px;padding:.55rem .7rem;margin-bottom:.9rem;font-size:.78rem;
+  color:var(--bad);display:flex;flex-direction:column;gap:.25rem}
+.problems b{font-size:.63rem;text-transform:uppercase;letter-spacing:.11em}
+.problems span{font-family:var(--mono);font-size:.72rem;word-break:break-word}
+.chips{margin-top:.9rem;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.chip{font-size:.67rem;padding:.2rem .55rem;border-radius:6px;font-weight:500}
+.ch-ok{color:var(--ok);background:var(--ok-bg);
+  border:1px solid color-mix(in srgb,var(--ok) 24%,transparent)}
+.ch-bad{color:var(--bad);background:var(--bad-bg);
+  border:1px solid color-mix(in srgb,var(--bad) 28%,transparent)}
+.bad-detail{color:var(--bad);font-weight:600;font-family:var(--mono)}
+details{margin:.9rem 0 0}
+summary{cursor:pointer;font-size:.72rem;color:var(--dim);text-transform:uppercase;
+  letter-spacing:.11em;font-weight:700}
+pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);
+  padding:.6rem;border-radius:8px;font-size:.72rem;max-height:20rem;overflow:auto;
+  font-family:var(--mono);color:var(--mut)}
+.hidden{display:none!important}
+.empty{text-align:center;padding:4rem 1rem;color:var(--dim);border:1px dashed var(--line2);
+  border-radius:var(--radius)}
+footer .fcol{display:flex;flex-direction:column;gap:.4rem;max-width:78ch}
+footer .attr{color:var(--dim);line-height:1.5}
+footer .attr b{color:var(--dim);font-weight:600}
+footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);
+  color:var(--dim);font-size:.74rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.prose{max-width:82ch;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+.prose h1{font-size:clamp(1.7rem,3.6vw,2.4rem);margin:0 0 .4rem;letter-spacing:-.03em}
+.prose h2{font-size:1.25rem;margin:2.6rem 0 .8rem;padding-top:1.4rem;
+  border-top:1px solid var(--line);letter-spacing:-.02em}
+.prose h3{font-size:1.02rem;margin:1.9rem 0 .5rem;letter-spacing:-.01em}
+.prose h4{font-size:.9rem;margin:1.3rem 0 .4rem;text-transform:none;letter-spacing:0;
+  color:var(--fg);display:block}
+.prose h4:after{content:none}
+.prose p,.prose li{color:var(--mut);font-size:.95rem;line-height:1.7}
+.prose strong{color:var(--fg)}
+.prose blockquote{margin:1.4rem 0;padding:.9rem 1.1rem;background:var(--bg2);
+  border-left:3px solid var(--accent);border-radius:0 10px 10px 0}
+.prose blockquote p{margin:.3rem 0;color:var(--fg)}
+.prose table{margin:1.2rem 0;font-size:.88rem}
+.prose th{background:var(--bg2);white-space:nowrap}
+.prose td,.prose th{border:1px solid var(--line);padding:.45rem .6rem;text-align:left;
+  vertical-align:top}
+.prose td:not(:first-child){font-variant-numeric:tabular-nums}
+.prose code{font-family:var(--mono);font-size:.85em;background:var(--bg2);
+  border:1px solid var(--line);border-radius:5px;padding:.05rem .3rem;color:var(--fg)}
+.prose pre{background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+  padding:.9rem 1rem;overflow-x:auto}
+.prose pre code{background:none;border:0;padding:0;font-size:.82rem;line-height:1.55}
+.prose hr{border:0;border-top:1px solid var(--line);margin:2.2rem 0}
+.prose a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:5;background:var(--bg);
+  border-bottom:1px solid var(--line);padding:.7rem 1.5rem;display:flex;gap:.8rem;
+  align-items:center;flex-wrap:wrap}
+.topbar .name{font-weight:700;font-size:.9rem}
+.topbar a{font-size:.82rem;color:var(--accent);text-decoration:none;font-weight:600}
+.topbar a:hover{text-decoration:underline}
+</style></head><body><div class=topbar><span class=name>Receipt &amp; Invoice Extraction — End-to-End Report</span><span class=spacer></span><a href="dashboard.html">&larr; Dashboard</a></div><article class=prose><h1 id="receipt-invoice-extraction-end-to-end-report">Receipt &amp; Invoice Extraction — End-to-End Report</h1>
+<blockquote>
+<p><strong>Status, 18 September 2026.</strong> The system is built and tested (435 unit tests, offline
+end-to-end 7/7). <strong>Ground truth is fully verified — 60 of 60 documents checked against
+their images by a human</strong>, a pass that corrected five money-field errors (§2.4). The
+<strong>confidence model is fitted</strong> on a real run of the calibration split (§4.2). <strong>The
+<code>test</code> split has not been run yet</strong>, so there is still no accuracy scorecard: §4.5 is
+empty and says so. Nothing in §4 is a placeholder — every table is either a measurement
+or explicitly marked not-yet-run.</p>
+</blockquote>
+<hr />
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="the-problem">The problem</h3>
+<p>A client needs structured data pulled out of a stack of real documents — scanned,
+photographed, multi-page, inconsistently laid out. Some fields are simple lookups
+(a merchant name, a date). Others require reasoning across sections: a total that must
+reconcile against line items and tax, a party's role in a transaction, a table of line
+items that spans a page break.</p>
+<h3 id="what-this-system-is-optimized-for">What this system is optimized for</h3>
+<p>Not a demo that works on a clean PDF. The design target is a system whose accuracy can
+be <strong>proven</strong>, that <strong>knows when it is unsure</strong>, and whose quality, latency and cost can
+be reasoned about. Three properties drove every decision:</p>
+<ol>
+<li><strong>It must not hallucinate.</strong> A field absent from the document returns <code>null</code>. No
+   value is invented, and every value kept is traceable to text found in the document.</li>
+<li><strong>It must abstain rather than guess.</strong> Per-field confidence is computed and fields
+   below a fitted threshold are withheld at the API boundary rather than asserted.</li>
+<li><strong>Evaluation is the primary deliverable.</strong> The harness was built before any prompt
+   tuning, so every change is judged by re-running a scorecard. Section 4.3 shows this
+   paying off: the harness caught three defects in its own ground truth and one in
+   itself, each of which would have produced confident, wrong numbers.</li>
+</ol>
+<h3 id="scope-and-honest-limitations">Scope and honest limitations</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary document type</td>
+<td>Receipts — <strong>50 documents</strong></td>
+</tr>
+<tr>
+<td>Secondary document type</td>
+<td>Invoices — <strong>10 documents</strong>, real, 1–5 pages</td>
+</tr>
+<tr>
+<td>Third receipt tier (Kaggle retail, 15 docs)</td>
+<td><strong>Not acquired.</strong> Needs a Kaggle token; the set works at 60</td>
+</tr>
+<tr>
+<td>Own scans</td>
+<td><strong>None.</strong> Forfeits a stated bonus; see §2.5</td>
+</tr>
+<tr>
+<td>Models</td>
+<td>Hosted, not open-weights — forfeits the self-hosting bonus; see §3.5</td>
+</tr>
+<tr>
+<td>Ground truth</td>
+<td><strong>60 of 60 human-verified</strong>, five label errors corrected</td>
+</tr>
+<tr>
+<td>Reported accuracy</td>
+<td><strong>None yet</strong> — the <code>test</code> split has not been run</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-data">2. Data</h2>
+<p>60 documents, three sources, two document types, four languages
+(Indonesian, English, Spanish, French/Dutch), three independent label schemas.</p>
+<h3 id="21-why-receipts-as-the-primary-type">2.1 Why receipts as the primary type</h3>
+<p>Receipts exercise the hardest requirement — <strong>verifiable cross-section reasoning</strong> —
+better than any alternative at this scale. A receipt carries a line-item table, a
+subtotal, a tax amount and a total, and those must reconcile. That gives a <strong>model-free
+ground-truth signal</strong>: <code>subtotal + service − discount + tax == total</code> either holds or it
+does not, whatever any model claims. That property is the foundation of the confidence
+design in §3.3.</p>
+<p>The trade-off, stated plainly: receipts are natively single-page with one counterparty,
+so they cannot exercise multi-page reading or party-role resolution. Hence invoices.</p>
+<h3 id="22-receipt-sources-50-documents">2.2 Receipt sources (50 documents)</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th style="text-align: right;">Docs</th>
+<th>Role</th>
+<th>Labels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CORD v2</strong> (<code>naver-clova-ix/cord-v2</code>, CC BY 4.0)</td>
+<td style="text-align: right;">25</td>
+<td>Structured backbone — line items with quantity and unit price, subtotal → total</td>
+<td>Script-converted from the dataset, header fields hand-drafted from the images</td>
+</tr>
+<tr>
+<td><strong>WildReceipt</strong> (MMOCR, Apache-2.0)</td>
+<td style="text-align: right;">25</td>
+<td>Template diversity — photographed in the wild, unseen templates</td>
+<td>Script-converted, re-spaced and extended by hand</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Small and trustworthy over large and noisy.</strong> Trustworthy ground truth is the
+highest-weighted evaluation criterion, and a larger set with unverified labels produces
+metrics that cannot be trusted — while costing proportionally more per eval run.</p>
+<p><strong>Stratified sampling, not first-N.</strong> CORD holds 1,000 receipts; taking the first 25
+would produce an accidentally easy set. Sampling is stratified by line-item count and
+spread across merchants, with the chosen ids pinned so a converter fix re-converts the
+<em>same</em> documents rather than reshuffling the splits.</p>
+<p><strong>CORD is anonymised at source.</strong> The dataset blurs the merchant header on nearly every
+receipt, so most CORD merchant, address and date labels are explicit <code>null</code> — which is
+itself a useful annotation: it turns "did the model invent a merchant?" into a scorable
+question. Four headers remain legible through the blur (PIZZA HUT, Solaria, XXI Cafe,
+and a Korean logo) and are labelled per the rule <em>label what a human can read</em>.</p>
+<h3 id="23-invoices-10-documents">2.3 Invoices (10 documents)</h3>
+<p>Added to cover the two requirements receipts structurally cannot: <strong>multi-page reading</strong>
+and <strong>party-role resolution</strong> (vendor vs customer, where a swap surfaces as the
+<code>swapped_field</code> error label).</p>
+<p><strong>Source: RVL-CDIP-N multipage</strong> (<code>jordyvl/rvl_cdip_n_mp</code>, invoice class; Larson et al.,
+NeurIPS 2022 Datasets &amp; Benchmarks; <strong>CC BY-NC 4.0, non-commercial</strong>). Ten real
+invoices, 1–5 pages each, obtained through public-records requests: a police department,
+two TV stations, a school district, law firms, a state agency, small manufacturers.
+<code>scripts/fetch_invoices.py</code> streams the archive and extracts only the ten pinned files,
+each verified by SHA-256.</p>
+<p><strong>A synthetic invoice set was evaluated and rejected.</strong> The candidate was one template
+filled with Faker data: totals that did not reconcile, and every document a single page.
+It could not test either property invoices were added for. The rejection is recorded in
+<code>docs/DATASETS.md</code> with the evidence.</p>
+<p><strong>Real documents bring real mess</strong>, all recorded in <code>_provenance.json</code>:</p>
+<ul>
+<li><code>inv_0004</code> prints an arithmetic error — rows sum to 56.56 against a printed 36.59.
+  Kept as-is: a document whose printed total is genuinely wrong is a valuable test case.</li>
+<li><code>inv_0005</code> has a row struck through by hand with "duplicate invoicing" written beside
+  it, while the printed total still includes it. Labelled as printed.</li>
+<li><code>inv_0006</code> is three documents in one PDF (two invoices and a credit memo). Flagged as
+  a replacement candidate; the "one document" premise is contestable there.</li>
+<li><code>inv_0002</code> is the sharpest role trap in the set: the customer is the billing agency,
+  not the advertiser whose campaign it is.</li>
+<li><code>inv_0010</code> runs 225 line items across 5 pages; the transcribed rows sum exactly to the
+  printed $59,403.38.</li>
+</ul>
+<p>n=10 is deliberately small: enough to prove the system generalises to a second document
+type, not enough to pretend invoices are a co-equal dataset. Invoice results are
+reported as a <strong>separate breakdown, never pooled</strong> into the receipt headline, and the
+confidence model is fitted on receipts only — invoice confidence is <strong>uncalibrated</strong>.</p>
+<p><strong>Privacy and licence.</strong> These are real public records naming real people and
+organisations, under a non-commercial licence. The repository is private; published
+views carry the dataset attribution.</p>
+<h3 id="24-verification-what-the-human-pass-actually-found">2.4 Verification — what the human pass actually found</h3>
+<p><strong>60 of 60 documents verified.</strong> Every label was checked against its image, and the pass
+found <strong>five money-field errors</strong>, all in WildReceipt, none of which the model-free audit
+could resolve on its own. The audit could say <em>this does not reconcile</em>; only a human
+could say what the right number was.</p>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Defect</th>
+<th>After correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wild_0003</code></td>
+<td>Subtotal <code>675.00</code> for a printed <code>Rs1,675.00</code>; one of two printed taxes (VAT 13.13%, Service TAX 4.94%) dropped</td>
+<td>1,675.00 + 82.75 + 213.36 = <strong>1,971.11</strong>, the printed Cash amount</td>
+</tr>
+<tr>
+<td><code>wild_0019</code></td>
+<td>Subtotal <code>97.30</code> for a printed <code>87.30</code>; the printed 10% service charge missing entirely</td>
+<td>87.30 + 8.73 + 6.72 = <strong>102.75</strong>, the printed TOTAL</td>
+</tr>
+<tr>
+<td><code>wild_0018</code></td>
+<td>A row annotated <code>5390</code> for a printed <code>5.90</code> — <strong>a defect in the published dataset</strong>, not in our conversion</td>
+<td>6 rows sum to exactly <strong>47.30</strong>, the printed SUBTTL</td>
+</tr>
+<tr>
+<td><code>wild_0015</code></td>
+<td>Three printed coupons (−0.75, −0.25, −1.00) dropped, so rows summed to 5.00 against a printed total of 3.00</td>
+<td>5.00 − 2.00 = <strong>3.00</strong></td>
+</tr>
+<tr>
+<td><code>wild_0004</code></td>
+<td>One fuel purchase split across three junk rows: <code>REGULAR/15863</code>, a bare <code>3479</code>, a bare <code>55.19</code> — gallons, price per gallon and fuel total</td>
+<td>15.863 gal × $3.479 = $55.19, plus $10.00 = <strong>$65.19</strong></td>
+</tr>
+</tbody>
+</table>
+<p>That is a <strong>10% error rate in the money fields of one source</strong>, and every one of those
+errors would have been charged to the model: a correct extraction scored as
+<code>wrong_value</code> on exactly the fields the confidence design leans on hardest. It is the
+empirical case for "small and verified" over "large and noisy", and the reason this
+project audits its ground truth rather than assuming it.</p>
+<p>Judgement calls are recorded per document in <code>_provenance.json</code>, including those the
+drafter could not resolve and the reviewer settled: ambiguous <code>$</code> currencies (AUD vs SGD
+vs USD, inferred from tax registrations), day-first vs month-first dates, and
+<code>cord_0019</code>, where the merchant name is blurred by the dataset's own anonymisation.</p>
+<h3 id="25-no-own-scans-and-the-compensation">2.5 No own scans — and the compensation</h3>
+<p>None were available, so that bonus is forfeited. Two substitutes:</p>
+<ol>
+<li><strong>Source diversity</strong> — three sources, two document types, four languages, three
+   independent label schemas. Per-source breakdowns test generalisation in a way one
+   dataset cannot.</li>
+<li><strong>Synthetic degradation</strong> — 25 degraded copies (blur, rotation, JPEG, fade) scored
+   against the <strong>unchanged</strong> ground truth. Clearly labelled synthetic, excluded from the
+   headline scorecard structurally rather than by convention.</li>
+</ol>
+<h3 id="26-splits-seeded-committed">2.6 Splits (seeded, committed)</h3>
+<table>
+<thead>
+<tr>
+<th>Split</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">CORD</th>
+<th style="text-align: right;">Wild</th>
+<th style="text-align: right;">Invoices</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>calibration</code></td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">3</td>
+<td>Fit confidence weights and the threshold. <strong>Never reported</strong></td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">7</td>
+<td>The reported scorecard</td>
+</tr>
+<tr>
+<td><code>smoke</code></td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td>Fast dev loop — drawn <strong>from</strong> <code>calibration</code></td>
+</tr>
+<tr>
+<td><code>degraded</code></td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td>A <em>tag</em> on the worst documents already inside <code>test</code></td>
+</tr>
+<tr>
+<td><code>invoices</code></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">10</td>
+<td>All invoices, for the per-type breakdown</td>
+</tr>
+</tbody>
+</table>
+<p>Two rules protect the numbers: <code>smoke</code> comes from <code>calibration</code>, never <code>test</code>; and
+nothing is fitted on <code>test</code>. Each source draws from its own seeded RNG, so adding the
+invoices moved no receipt between splits — verified by test.</p>
+<hr />
+<h2 id="3-method">3. Method</h2>
+<h3 id="31-architecture">3.1 Architecture</h3>
+<pre><code>image          ──► Model A (VLM)  ──► { transcription, document, _confidence }
+transcription  ──► Model B (LLM)  ──► document  (independent re-extraction)
+                   Python validation (arithmetic / format — model-free)
+                                   ──► per-field confidence ──► abstention
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Model</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model A — VLM reader</td>
+<td><code>gemini-3.6-flash</code></td>
+<td>Layout is the problem: "which of these five numbers is the total" is answered by position, which flat OCR destroys</td>
+</tr>
+<tr>
+<td>Model B — LLM reasoner</td>
+<td><code>nvidia/nemotron-3-super-120b-a12b:free</code></td>
+<td>Cross-section reasoning and normalisation, text-only and cheap. <strong>Different family on purpose</strong></td>
+</tr>
+<tr>
+<td>Cascade first pass</td>
+<td><code>gemini-3.5-flash-lite</code></td>
+<td>Cheap read; escalates to the full pipeline on doubt (§4.5)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Different families, deliberately.</strong> Sibling models fail identically on the same
+smudged digit, which would inflate the agreement signal exactly where it must be honest.</p>
+<p><strong>The transcription replaces a separate OCR stage</strong> and serves as the groundedness
+source, so the anti-hallucination signal survives without a local OCR dependency. A
+PaddleOCR path was built and abandoned: too slow on a CPU-only machine.</p>
+<p><strong>Multi-page</strong> documents are rendered page by page and sent in <strong>one</strong> call, so the
+model sees the whole document; <code>MAX_PAGES</code> (5) refuses anything longer rather than
+silently reading part of it.</p>
+<h3 id="32-typed-validated-output">3.2 Typed, validated output</h3>
+<p>Model output is parsed into Pydantic models (<code>Receipt</code>, <code>Invoice</code>, sharing <code>LineItem</code>).
+Money is <code>Decimal</code>, never <code>float</code>, and crosses the JSON boundary as a <strong>string</strong>. Dates
+are <code>YYYY-MM-DD</code>. Absent fields are <code>null</code> — never an empty string, a zero or a
+plausible guess. Malformed JSON gets one corrective retry showing the model its own bad
+output; a truncated response fails loudly as <code>TruncatedResponse</code> rather than as a JSON
+parse error; per-field salvage keeps the fields that did parse.</p>
+<p><em>Implementation note:</em> <code>Receipt.date</code> originally shadowed the <code>datetime.date</code> import
+inside its own annotation, so Pydantic resolved the type to <code>NoneType</code> and silently
+rejected <strong>every</strong> date — which would have zeroed date F1 with no visible error. Fixed
+and covered by a regression test. Worth recording because the failure was silent.</p>
+<h3 id="33-confidence-four-signals-fitted-weights">3.3 Confidence: four signals, fitted weights</h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Strength</th>
+<th>What it knows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>validated</code></td>
+<td><strong>Strongest</strong></td>
+<td>Deterministic arithmetic — reconciliation, rows multiply out, rows sum to subtotal, date parses, currency is ISO-4217, and for invoices due ≥ issue and vendor ≠ customer. <strong>Model-free, cannot be bluffed</strong></td>
+</tr>
+<tr>
+<td><code>grounded</code></td>
+<td>Strong</td>
+<td>Does the value appear in the transcription, type-aware and whole-token?</td>
+</tr>
+<tr>
+<td><code>agreement</code></td>
+<td>Moderate</td>
+<td>Do Model A and Model B agree after normalisation? Row-level F1 for tables</td>
+</tr>
+<tr>
+<td><code>self_report</code></td>
+<td><strong>Weakest</strong></td>
+<td>The model's stated certainty</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Known limitation:</strong> Model B reads Model A's transcription, so they are only partially
+independent — a misread digit propagates and inflates agreement. This is precisely why
+<code>validated</code> exists: it is independent of the reading step. True reading independence
+needs a second vision model on the raw image (§5).</p>
+<p>Weights are <strong>fitted per field group</strong> by logistic regression on the calibration split;
+groups with too few observations keep default weights rather than overfit. The threshold
+is read off a <strong>risk–coverage curve</strong> against a target precision, never hand-picked.
+Real fitted values are in §4.2.</p>
+<h3 id="34-evaluation-harness">3.4 Evaluation harness</h3>
+<p>Scoring runs after a normalisation layer (dates → ISO, money → <code>Decimal</code>, currency
+symbols, case and whitespace) so metrics measure semantic correctness, not string noise.</p>
+<p><strong>Accuracy:</strong> per-field precision / recall / F1, reported <strong>normalised and exact</strong> (the
+gap is format sensitivity); micro and macro F1; <strong>Document Accuracy Rate</strong>; and
+<strong>line-item F1</strong> via greedy one-to-one matching on description similarity plus amount.</p>
+<p><strong>Error taxonomy:</strong> <code>missing</code> (under-extraction), <code>spurious</code> (<strong>hallucination</strong>),
+<code>wrong_value</code>, <code>format_error</code> (same content, different format — deliberately not counted
+as wrong) and <code>swapped_field</code> (the value belongs to another field, e.g. vendor ↔
+customer).</p>
+<p><strong>Confidence quality:</strong> AUC for discrimination, ECE for calibration, plus a reliability
+diagram and risk–coverage curve. The two have different fixes, and the scorecard prints
+the diagnosis: AUC ≈ 0.5 means the signals must change; good AUC with high ECE means
+refit.</p>
+<p><strong>Two rules the harness enforces about its own inputs</strong> (both added after they bit —
+see §4.3):</p>
+<ul>
+<li>A field with <strong>no label</strong> is not scored, and the scorecard reports how many were
+  skipped. A <code>null</code> label means "not on the document"; an unlabelled field is a
+  different thing, and conflating them scores a correct reading as a hallucination.</li>
+<li>Calibration <strong>refuses to fit</strong> on less than 80% of the split and writes nothing,
+  rather than producing a threshold from whatever documents ran before a quota expired.</li>
+</ul>
+<h3 id="35-deployment-and-the-cpu-constraint">3.5 Deployment and the CPU constraint</h3>
+<p>No GPU on the target machine, which decided where each model runs: both models hosted
+(a 3B model generating ~600 tokens of JSON on CPU takes 40–90 s/doc against 3–8 s
+hosted), with validation, groundedness and metrics local, deterministic and free. All
+model access goes through one OpenAI-compatible provider abstraction, so endpoints are
+swappable via <code>.env</code> with no code change — which is what makes a local open-weights VLM
+a config change given a GPU.</p>
+<p><strong>Caching by input + model + prompt hash</strong> keeps API calls to one per document across
+repeated eval runs. Re-running the harness after a metrics change costs zero calls.</p>
+<p><strong>Measured free-tier limits</strong> (not documentation, observation): Google's free tier
+allows <strong>20 requests per model per day</strong> — not the 250 the docs suggested — which
+stopped a calibration run at 8 of 18 documents. Billing was enabled to lift it.
+OpenRouter's free tier allows <strong>50 requests per day</strong> and capped a later run.</p>
+<h3 id="36-production-surface">3.6 Production surface</h3>
+<p><code>docker compose up</code> serves the API; <code>docker compose run --rm eval</code> waits for the
+healthcheck and runs the harness <strong>against that running service</strong>, so the harness scores
+exactly the code the API runs.</p>
+<p>Endpoints: <code>GET /health</code>, <code>GET /metrics</code>, <code>POST /extract</code>, <code>POST /extract/batch</code> with
+bounded concurrency (free tiers rate-limit; unbounded fan-out only collects 429s).
+<code>POST /extract</code> takes a <code>document_type</code> of <code>receipt</code> or <code>invoice</code> and returns 400 for
+anything else.</p>
+<p><strong>The output contract is documented and tested</strong> (<code>docs/OUTPUT.md</code>): <code>document</code>,
+<code>confidence</code>, <code>abstained</code>, <code>withheld</code>, <code>signals</code>, <code>validation</code>, <code>validation_notes</code>,
+<code>transcription</code>, <code>usage</code>. Abstention is applied <strong>at the boundary</strong> — the value is
+removed from <code>document</code> and kept under <code>withheld</code>, so a consumer never reads an
+unasserted value while a human reviewer can still see what was read. A test fails if the
+documented payload drifts from the code.</p>
+<p><strong>Resilience:</strong> a failed document returns 200 with a populated <code>error</code> and is scored as
+an empty extraction — a recall failure, never a silent drop from the denominator.</p>
+<p><strong>Regression gate:</strong> exits 0 (ship), 1 (regression) or 2 (invalid comparison). It fails
+on any <em>new</em> hallucination, and on an F1 drop only when at least two documents flipped —
+at this size a threshold alone cries wolf. Runs are fingerprinted (labels, documents,
+prompts, models, threshold), and it <strong>refuses to compare across a label change</strong>,
+because the delta would measure the relabelling.</p>
+<h3 id="37-reviewer-artifacts">3.7 Reviewer artifacts</h3>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>What it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>outputs/&lt;run&gt;/scorecard.{md,html,json}</code></td>
+<td>How good is the system</td>
+</tr>
+<tr>
+<td><code>outputs/&lt;run&gt;/documents/&lt;id&gt;.html</code></td>
+<td>What did it read off <strong>this</strong> document, and why believe it</td>
+</tr>
+<tr>
+<td><code>outputs/dashboard.html</code></td>
+<td>All 60 documents, source beside output, filterable by type, status and confidence band</td>
+</tr>
+<tr>
+<td><code>outputs/gt_review.html</code></td>
+<td>Each document beside its labels, audit flags first — the verification tool</td>
+</tr>
+</tbody>
+</table>
+<p>All are self-contained single files (inline CSS, base64 images) so they work over
+<code>file://</code>. The per-document views show <strong>no ground truth</strong> and recompute nothing: the
+arithmetic verdicts come from the payload, so a page and the API can never disagree.</p>
+<hr />
+<h2 id="4-results">4. Results</h2>
+<h3 id="41-what-has-and-has-not-been-run">4.1 What has and has not been run</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calibration run (18 receipts, <code>pipeline</code>)</td>
+<td><strong>Done</strong> — §4.2</td>
+</tr>
+<tr>
+<td>Extraction over all 60 documents for the dashboard</td>
+<td><strong>Done</strong> — §4.4</td>
+</tr>
+<tr>
+<td>Cost measurement from real token counts</td>
+<td><strong>Done</strong> — §4.6</td>
+</tr>
+<tr>
+<td><strong>Accuracy scorecard on <code>test</code></strong></td>
+<td><strong>Not run</strong> — §4.5</td>
+</tr>
+<tr>
+<td>Cascade before/after</td>
+<td><strong>Not run</strong> — §4.7</td>
+</tr>
+<tr>
+<td>Synthetic robustness curve</td>
+<td><strong>Not run</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-confidence-quality-measured">4.2 Confidence quality — measured</h3>
+<p>Run: 18 calibration receipts (invoices excluded from the fit), 198 field observations,
+100% of the split extracted.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUC (discrimination, in-sample)</td>
+<td><strong>0.845</strong></td>
+<td>&gt; 0.75</td>
+</tr>
+<tr>
+<td>ECE (calibration, in-sample)</td>
+<td><strong>0.033</strong></td>
+<td>&lt; 0.10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fitted weights per field group</strong> — a finding in their own right:</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">agreement</th>
+<th style="text-align: right;">grounded</th>
+<th style="text-align: right;">validated</th>
+<th style="text-align: right;">self_report</th>
+<th style="text-align: right;">bias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">+0.85</td>
+<td style="text-align: right;">+0.81</td>
+<td style="text-align: right;">+0.35</td>
+<td style="text-align: right;"><strong>−0.85</strong></td>
+<td style="text-align: right;">+1.12</td>
+</tr>
+<tr>
+<td>money</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">+0.81</td>
+<td style="text-align: right;">+0.82</td>
+<td style="text-align: right;">+0.27</td>
+<td style="text-align: right;">+0.11</td>
+<td style="text-align: right;">+1.16</td>
+</tr>
+<tr>
+<td>date</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">+0.33</td>
+<td style="text-align: right;">−0.02</td>
+<td style="text-align: right;">−0.02</td>
+<td style="text-align: right;"><strong>−0.64</strong></td>
+<td style="text-align: right;">+2.04</td>
+</tr>
+<tr>
+<td>currency</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">+1.53</td>
+<td style="text-align: right;"><strong>+1.89</strong></td>
+<td style="text-align: right;">−0.46</td>
+<td style="text-align: right;"><strong>−0.69</strong></td>
+<td style="text-align: right;">+0.16</td>
+</tr>
+<tr>
+<td>table</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">−0.36</td>
+<td style="text-align: right;">−0.15</td>
+<td style="text-align: right;"><strong>+1.11</strong></td>
+<td style="text-align: right;">+0.65</td>
+<td style="text-align: right;">−0.47</td>
+</tr>
+</tbody>
+</table>
+<p>Three things worth stating plainly:</p>
+<ol>
+<li><strong><code>self_report</code> is negative in four of five groups.</strong> The model's own stated
+   confidence is <em>anti-informative</em>: when it says it is sure, it is likelier to be
+   wrong. This is the argument for a multi-signal design rather than trusting a model's
+   self-assessment, and it is a measurement, not a prior.</li>
+<li><strong><code>validated</code> dominates the table group (+1.11)</strong> while contributing modestly
+   elsewhere — exactly as designed. The arithmetic check is the signal that cannot be
+   bluffed, and a table is where it has the most to say.</li>
+<li><strong><code>grounded</code> carries currency (+1.89)</strong>, because the failure mode there is a model
+   <em>inferring</em> a currency the document never prints.</li>
+</ol>
+<p><strong>Operating point</strong>, read off the risk–coverage curve:</p>
+<blockquote>
+<p>At threshold <strong>0.875</strong> the system keeps <strong>70.7%</strong> of fields at <strong>95.0%</strong> precision.</p>
+</blockquote>
+<p>That is the honest trade-off: reaching 95% precision costs abstention on 29% of fields.
+Set <code>CONFIDENCE_THRESHOLD=0.875</code> in <code>.env</code> to use it.</p>
+<p><em>In-sample, on 18 documents.</em> These numbers set the threshold; they are not the reported
+result. The reported result comes from <code>--set test</code>, which has not been run.</p>
+<h3 id="43-what-the-harness-caught-in-its-own-ground-truth">4.3 What the harness caught in its own ground truth</h3>
+<p>The evaluation found four defects that would each have produced confident, wrong
+numbers. They are reported because the catching is the point.</p>
+<table>
+<thead>
+<tr>
+<th>Defect</th>
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unlabelled fields scored as absent</strong></td>
+<td><code>merchant_name</code> had no label on 48 of 60 documents; a correct reading counted as <code>spurious</code> — a <strong>hallucination</strong> — and taught the confidence model that a visible, grounded string is probably wrong</td>
+<td>Fields with no annotation are excluded from scoring and reported as a gap</td>
+</tr>
+<tr>
+<td><strong>WildReceipt strips spaces</strong> (<code>TUSCANYRISTORANTE</code>)</td>
+<td>Correct readings scored as <code>wrong_value</code></td>
+<td>Whitespace-insensitive string comparison, documented as a deliberate lenience</td>
+</tr>
+<tr>
+<td><strong>Partial calibration accepted silently</strong></td>
+<td>A rate-limited run fitted weights on 8 of 18 documents, wrote a threshold and exited 0 — the report even recorded <code>n_documents: 18</code>, the count it asked for rather than the count it saw</td>
+<td>Refuses to fit below 80% coverage; records real coverage and every failure</td>
+</tr>
+<tr>
+<td><strong>Scorecard written in the platform default encoding</strong></td>
+<td>Em dashes became undecodable bytes in a file declaring UTF-8</td>
+<td>Explicit UTF-8 on every write</td>
+</tr>
+</tbody>
+</table>
+<p>The evidence for the first two, measured on the calibration split before the fix:
+string fields that <em>were</em> grounded scored <strong>15% correct</strong>, against <strong>93%</strong> for
+ungrounded ones. Grounding was working perfectly and the scorer was calling it wrong.
+Fixing it moved the <code>grounded</code> weight for strings from <strong>−0.95</strong> (anti-informative) to
+<strong>+0.81</strong>, and let <code>date</code> and <code>currency</code> be fitted at all.</p>
+<p>It also made the headline AUC <em>fall</em> from 0.917 to 0.845 — the earlier number was
+largely the model learning to predict broken labels, a leaked feature. About 44 of the
+59 "errors" it had been trained to detect were not errors.</p>
+<h3 id="44-system-behaviour-over-all-60-documents">4.4 System behaviour over all 60 documents</h3>
+<p>From the dashboard run (<code>eval/dashboard.py</code>, every labelled document). <strong>These are
+self-checks, not accuracy</strong> — they say what the system did and whether its own
+arithmetic held, not whether it matched ground truth.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documents extracted</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>All model-free checks passed</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">45%</td>
+</tr>
+<tr>
+<td>At least one field abstained</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">38%</td>
+</tr>
+<tr>
+<td>At least one check failed</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">17%</td>
+</tr>
+<tr>
+<td>Mean confidence ≥ 0.80</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">90%</td>
+</tr>
+<tr>
+<td>Mean confidence 0.50–0.79</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8%</td>
+</tr>
+<tr>
+<td><strong>Read by one model only</strong></td>
+<td style="text-align: right;"><strong>16</strong></td>
+<td style="text-align: right;">27%</td>
+</tr>
+</tbody>
+</table>
+<p>The last row is a caveat on the rest: OpenRouter's free tier capped mid-run, so 16
+documents were read by the vision model alone. With Model B absent the <code>agreement</code>
+signal does not fail — it defaults to a neutral 0.50 — so those documents carry a
+normal-looking confidence built on three signals instead of four. They are badged on the
+dashboard and say so in words. Re-running them needs only Model B calls; the vision side
+is cached.</p>
+<h3 id="45-accuracy-not-yet-measured">4.5 Accuracy — NOT YET MEASURED</h3>
+<p>No <code>test</code> run has been executed, so there is <strong>no</strong> Document Accuracy Rate, per-field
+F1, line-item F1 or hallucination rate to report. The tables below stay empty
+deliberately rather than carrying invented numbers.</p>
+<pre><code class="language-bash">python -m eval.run --set test                      # fills §4.5
+python -m eval.run --set test --source cascade     # fills §4.7
+python -m eval.compare outputs/&lt;v1&gt; outputs/&lt;v2&gt;
+</code></pre>
+<p>Two conditions must hold before those numbers mean anything:</p>
+<ol>
+<li>~~Ground-truth verification~~ — <strong>done, 60/60</strong> (§2.4).</li>
+<li><strong>Model B quota</strong> must allow 39 calls for the pipeline run plus roughly 16 more for
+   cascade escalations — above OpenRouter's 50/day free cap, so either spread the runs
+   across two days or add credits.</li>
+</ol>
+<h3 id="46-cost-and-latency-measured">4.6 Cost and latency — measured</h3>
+<p>Median per-call figures from real token counts, priced at list rates from <code>.env</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th style="text-align: right;">Prompt</th>
+<th style="text-align: right;">Completion</th>
+<th style="text-align: right;">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model A (VLM)</td>
+<td style="text-align: right;">2,758</td>
+<td style="text-align: right;">853</td>
+<td style="text-align: right;"><strong>$0.00296</strong></td>
+</tr>
+<tr>
+<td>Model B (LLM)</td>
+<td style="text-align: right;">1,573</td>
+<td style="text-align: right;">1,576</td>
+<td style="text-align: right;"><strong>$0.00022</strong></td>
+</tr>
+<tr>
+<td><strong>One receipt, both models</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"><strong>$0.0032</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The vision call costs ~13× the text call: image tokens dominate. Projected cost of the
+full remaining programme — calibration, the test run, a cascade run and a VLM-only
+baseline — is <strong>$0.40</strong>, or about <strong>$0.80</strong> allowing a 2× margin for re-runs.</p>
+<p>Cost is reported as a <strong>list-price equivalent</strong> rather than actual spend, so free-tier
+and paid runs produce the same $/doc figure and the cascade comparison stays meaningful.</p>
+<h3 id="47-optimization-confidence-cascade-not-yet-measured">4.7 Optimization: confidence cascade — NOT YET MEASURED</h3>
+<p>The machinery is built and tested: a cheap first pass (<code>gemini-3.5-flash-lite</code>)
+escalating to the full pipeline on <code>arithmetic_failed</code>, <code>ungrounded:&lt;field&gt;</code>,
+<code>low_confidence:&lt;field&gt;</code>, <code>consistency_failed</code> or an empty extraction. An escalated
+document is billed for <strong>both</strong> paths — the cheap call is sunk cost, and hiding that
+would flatter the result.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Baseline</th>
+<th>Cascade</th>
+<th>Δ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost per document</td>
+<td>not run</td>
+<td>not run</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Latency p50 / p95</td>
+<td>not run</td>
+<td>not run</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Micro F1</td>
+<td>not run</td>
+<td>not run</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Document accuracy</td>
+<td>not run</td>
+<td>not run</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The accuracy rows matter as much as the cost rows.</strong> A cost reduction that quietly
+degrades quality is not an optimization, which is why <code>eval/compare.py</code> reports both and
+states the one-document noise floor.</p>
+<h3 id="48-statistical-honesty">4.8 Statistical honesty</h3>
+<ul>
+<li><strong>DAR is binary per document</strong>, so at n=39 in <code>test</code> its 95% CI is roughly ±8pp. Two
+  versions differing by 3pp are not distinguishable.</li>
+<li><strong>Per-field F1 is more stable</strong> (several hundred field-level judgments), which is why
+  the regression gate rests on per-field metrics rather than DAR.</li>
+<li><strong>Invoices at n=10 are indicative only</strong>, and their confidence is uncalibrated: the
+  weights were fitted on receipts, and 10 documents cannot support their own fit.</li>
+<li><strong>Ground truth is single-annotator</strong> and, at present, mostly unverified. No
+  inter-annotator agreement has been measured, so label noise is unquantified.</li>
+<li><strong>The calibration numbers in §4.2 are in-sample</strong> on 18 documents. They set the
+  operating point; they do not demonstrate it.</li>
+</ul>
+<hr />
+<h2 id="5-what-comes-next">5. What comes next</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Item</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Verify the remaining 48 labels</strong></td>
+<td>Everything in §4.5 rests on this; 14 documents carry explicit <code>CHECK</code> notes</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Run <code>test</code>, then the cascade, then compare</strong></td>
+<td>Produces the accuracy scorecard and the optimization result — ~40 minutes and ~$0.25</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Re-run the 16 single-model documents</td>
+<td>Restores the fourth confidence signal on those</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Second independent VLM on the raw image</td>
+<td>Removes the partial-independence weakness in §3.3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Replace <code>inv_0006</code> (three documents in one PDF)</td>
+<td>The "one document" premise is contestable there</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Inter-annotator agreement on a 15-document subset</td>
+<td>Quantifies label noise, currently unknown</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Add the retail tier (15 docs, needs a Kaggle token)</td>
+<td>A third, messier receipt source</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Local open-weights VLM given a GPU</td>
+<td>Recovers the self-hosting bonus; a config change only</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Route abstained fields to human review</td>
+<td>Closes the loop — abstention becomes useful, not merely honest</td>
+</tr>
+</tbody>
+</table></article></body></html>
