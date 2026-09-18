@@ -165,11 +165,13 @@ Built and tested (435/435 pytest passing; `python -m agent.offline_e2e` 7/7):
   prefix (`document_type_of`). Pipeline, cascade, API (`document_type` form field) and
   batch (`--type`) are type-aware; dotted nested fields everywhere. Scorecard reports
   invoices under `by_document_type`, never pooled into the receipt headline; calibration
-  fits on receipts only (invoice confidence is uncalibrated). Labels are **drafted by the
-  assistant, pending human verification** — see `label_notes`; open decisions: replace
-  inv_0006 (bundle), inv_0005 struck-through row, inv_0003 redacted number, inv_0008
-  "c/o" customer. Tests: `eval/tests/test_invoices.py`.
-- Dataset: 60 of 75 documents built and split (CORD 25 + WildReceipt 25 + invoices 10).
+  fits on receipts only (invoice confidence is uncalibrated). Labels are **human-verified
+  60/60**; judgement calls live in `label_notes`. Settled: inv_0006 (three documents in
+  one PDF) is KEPT and documented - it is in calibration, affects no reported number, and
+  stack splitting belongs to a separate endpoint (docs/OUTPUT.md §2); inv_0005 keeps its
+  struck-through row; inv_0003's redacted number stays null; inv_0008's customer is the
+  named individual. Tests: `eval/tests/test_invoices.py`.
+- Dataset: 60 documents (CORD 25 + WildReceipt 25 + invoices 10).
   **Verification is at 60/60** — the ground truth is
   now checked, so scorecards from it can be reported. Human verification caught what the
   audit could not: wild_0003 (subtotal 675.00 for a printed 1,675.00; VAT and Service TAX

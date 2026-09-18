@@ -112,8 +112,14 @@ It could not test either property invoices were added for. The rejection is reco
   Kept as-is: a document whose printed total is genuinely wrong is a valuable test case.
 - `inv_0005` has a row struck through by hand with "duplicate invoicing" written beside
   it, while the printed total still includes it. Labelled as printed.
-- `inv_0006` is three documents in one PDF (two invoices and a credit memo). Flagged as
-  a replacement candidate; the "one document" premise is contestable there.
+- `inv_0006` is three documents in one PDF: invoice 29069 (page 1), a different invoice
+  28815 (page 2) and credit memo 3094 (page 3). The label covers invoice 29069 only.
+  **Kept deliberately.** The pipeline sends every page in one call and expects one
+  document back, so the model may merge rows or totals across the three and be marked
+  wrong for it - the failure is in the one-document-per-file premise, not in the reading.
+  It sits in `calibration`, which fits on receipts only, so it affects no reported
+  number; splitting a stack into N documents is scoped as a separate feature in
+  `docs/OUTPUT.md` §2, not a change to `/extract`.
 - `inv_0002` is the sharpest role trap in the set: the customer is the billing agency,
   not the advertiser whose campaign it is.
 - `inv_0010` runs 225 line items across 5 pages; the transcribed rows sum exactly to the
@@ -538,7 +544,7 @@ states the one-document noise floor.
 | 2 | **Run `test`, then the cascade, then compare** | Produces the accuracy scorecard and the optimization result — ~40 minutes and ~$0.25 |
 | 3 | Re-run the 16 single-model documents | Restores the fourth confidence signal on those |
 | 4 | Second independent VLM on the raw image | Removes the partial-independence weakness in §3.3 |
-| 5 | Replace `inv_0006` (three documents in one PDF) | The "one document" premise is contestable there |
+| 5 | Stack splitting (`POST /extract/stack`) | `inv_0006` is three documents in one PDF - the case a separate endpoint would serve, deliberately out of scope for `/extract` (`docs/OUTPUT.md` §2) |
 | 6 | Inter-annotator agreement on a 15-document subset | Quantifies label noise, currently unknown |
 | 7 | Local open-weights VLM given a GPU | Recovers the self-hosting bonus; a config change only |
 | 8 | Route abstained fields to human review | Closes the loop — abstention becomes useful, not merely honest |

@@ -360,8 +360,14 @@ It could not test either property invoices were added for. The rejection is reco
   Kept as-is: a document whose printed total is genuinely wrong is a valuable test case.</li>
 <li><code>inv_0005</code> has a row struck through by hand with "duplicate invoicing" written beside
   it, while the printed total still includes it. Labelled as printed.</li>
-<li><code>inv_0006</code> is three documents in one PDF (two invoices and a credit memo). Flagged as
-  a replacement candidate; the "one document" premise is contestable there.</li>
+<li><code>inv_0006</code> is three documents in one PDF: invoice 29069 (page 1), a different invoice
+  28815 (page 2) and credit memo 3094 (page 3). The label covers invoice 29069 only.
+  <strong>Kept deliberately.</strong> The pipeline sends every page in one call and expects one
+  document back, so the model may merge rows or totals across the three and be marked
+  wrong for it - the failure is in the one-document-per-file premise, not in the reading.
+  It sits in <code>calibration</code>, which fits on receipts only, so it affects no reported
+  number; splitting a stack into N documents is scoped as a separate feature in
+  <code>docs/OUTPUT.md</code> §2, not a change to <code>/extract</code>.</li>
 <li><code>inv_0002</code> is the sharpest role trap in the set: the customer is the billing agency,
   not the advertiser whose campaign it is.</li>
 <li><code>inv_0010</code> runs 225 line items across 5 pages; the transcribed rows sum exactly to the
@@ -1098,8 +1104,8 @@ states the one-document noise floor.</p>
 </tr>
 <tr>
 <td>5</td>
-<td>Replace <code>inv_0006</code> (three documents in one PDF)</td>
-<td>The "one document" premise is contestable there</td>
+<td>Stack splitting (<code>POST /extract/stack</code>)</td>
+<td><code>inv_0006</code> is three documents in one PDF - the case a separate endpoint would serve, deliberately out of scope for <code>/extract</code> (<code>docs/OUTPUT.md</code> §2)</td>
 </tr>
 <tr>
 <td>6</td>

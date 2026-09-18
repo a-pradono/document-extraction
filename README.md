@@ -255,10 +255,13 @@ tax ID, and returning them swapped is the failure that matters.
   confidence model is fitted on receipts only. **Confidence is uncalibrated for
   invoices.** With 3 invoices in calibration and 7 in test, invoice numbers are
   anecdotes, not rates.
-- **Labels are drafted, pending human verification.** Every judgment call is recorded
-  in `_provenance.json` (`label_notes`). These are the ones to check first:
-  - `inv_0006` is a bundle of three documents, and only invoice 29069 is labeled.
-    Replacing it is the likely fix.
+- **Every label is human-verified**, and each judgment call is recorded in
+  `_provenance.json` (`label_notes`). The ones worth knowing about:
+  - `inv_0006` is three documents in one PDF (invoice 29069, invoice 28815, credit memo
+    3094); the label covers the first. **Kept deliberately** — it exposes the
+    one-document-per-file premise, it is in `calibration` so it affects no reported
+    number, and stack splitting is scoped as a separate endpoint in
+    [`docs/OUTPUT.md`](docs/OUTPUT.md) §2.
   - `inv_0005` has a struck-through row. It's kept because the printed total includes it.
   - `inv_0003`'s invoice number is redacted, so it's labeled null.
   - `inv_0004` has a printed arithmetic error, which is kept deliberately as a test case.

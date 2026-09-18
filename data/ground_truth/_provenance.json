@@ -782,7 +782,7 @@
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
-      "BUNDLE, CONSIDER REPLACING: this PDF is three separate documents (p1 invoice 29069, p2 a different invoice 28815, p3 credit memo 3094). Labeled invoice 29069 (page 1) only; the 'one document' target is contestable.",
+      "BUNDLE, KEPT BY DECISION (2026-09-18): this PDF is three separate documents (p1 invoice 29069, p2 a different invoice 28815, p3 credit memo 3094). Labelled invoice 29069 (page 1) only. Kept rather than replaced: it exposes the one-document-per-file premise, it sits in calibration so it affects no reported number, and splitting a stack is scoped as a separate endpoint in docs/OUTPUT.md section 2.",
       "Bill-to address redacted: null. PO # field literally prints 'SMA Sensor Box'.",
       "Totals block labels are illegible: 408.24 is the subtotal (sum of rows) and 449.39 is confirmed by the remittance slip, but whether 9.51 or 31.64 is tax is inference, so tax is null.",
       "Handwriting excluded ('pd 1/13/11 Wire', '$459.90', 'Ref# 110113-006613')."
