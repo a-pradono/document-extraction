@@ -4,8 +4,8 @@
     python scripts/verify_gt.py                   # interactive pass, records status
     python scripts/verify_gt.py --status          # how much is verified so far
 
-Script-converted CORD/WildReceipt labels still need eyeballing (~2 min/doc); retail
-needs full hand-labeling of subtotal/tax (~10 min/doc). Verification state lives in
+Script-converted CORD/WildReceipt labels still need eyeballing (~2 min/doc), and the
+header fields were drafted from the images. Verification state lives in
 data/ground_truth/_provenance.json so a reviewer can see exactly which of the 65
 documents a human has actually looked at.
 """
@@ -55,7 +55,7 @@ def _select(args) -> list[str]:
             wanted = {ln.strip() for ln in manifest.read_text().splitlines()
                       if ln.strip() and not ln.startswith("#")}
             ids = [i for i in ids if i in wanted]
-        else:                                   # --set retail also means "the retail source"
+        else:                                   # --set cord also means "the CORD source"
             ids = [i for i in ids if i.startswith(args.set)]
     if args.only_unverified:
         prov = _load_provenance()
@@ -202,7 +202,7 @@ def status() -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--set", help="a data/sets manifest name, or a source prefix (cord|wild|retail)")
+    ap.add_argument("--set", help="a data/sets manifest name, or a source prefix (cord|wild|inv)")
     ap.add_argument("--only-unverified", action="store_true")
     ap.add_argument("--html", action="store_true", help="write a contact sheet and open it")
     ap.add_argument("--status", action="store_true")

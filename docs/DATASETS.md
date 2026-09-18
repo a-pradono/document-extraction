@@ -11,7 +11,7 @@ criterion. Do NOT scale past ~65.
 |---|---:|---|---|
 | CORD (v2) | 25 | Structured backbone: line items, subtotal→total arithmetic | No (HF) |
 | WildReceipt | 25 | Template diversity, photographed "in the wild" | No (direct) |
-| OCR Receipts (retail) | 15 | Messiest tier, photographed | Yes (Kaggle) |
+| ~~OCR Receipts (retail)~~ | ~~15~~ | **DROPPED** — needs a Kaggle API token, and annotates neither subtotal nor tax, so every document would need hand-labeling of the two fields the reconciliation check depends on | — |
 
 ---
 
@@ -59,7 +59,13 @@ Read the mapping from the file — don't hardcode integers.
 
 **Sample 25 from `test.txt`**, stratified by number of product-item annotations.
 
-## 3. OCR Receipts (retail) — Kaggle, needs auth
+## 3. OCR Receipts (retail) — DROPPED
+
+> Not acquired and no longer planned. It needs a Kaggle API token, and the annotations
+> carry no subtotal and no tax. The set does its job at 60 documents across CORD,
+> WildReceipt and the invoices. The original plan is kept below as a record.
+
+### Original plan — Kaggle, needs auth
 
 - **URL:** https://www.kaggle.com/datasets/trainingdatapro/ocr-receipts-text-detection
 
@@ -88,7 +94,7 @@ where documents are hardest. Do not skip this.
 One per source, all emitting the SAME target format: `data/ground_truth/<id>.json`
 validating against `extractor.schema.Receipt`. Copy the chosen images to
 `data/docs/<id>.<ext>` using matching ids. Prefix ids by source so per-source
-breakdowns are trivial later: `cord_0001`, `wild_0001`, `retail_0001`.
+breakdowns are trivial later: `cord_0001`, `wild_0001`, `inv_0001`.
 
 **Throw the bounding boxes away.** Our VLM takes the raw image and returns fields;
 the schema has no positional fields and the metrics score normalized values, not
@@ -111,18 +117,18 @@ Ground-truth rules (see `data/README.md`):
 **Verification is mandatory, not optional.** After conversion, build
 `scripts/verify_gt.py` that renders each image alongside its converted labels for
 human review. Script-converted CORD/WildReceipt labels still need eyeballing (~2
-min/doc); retail needs full hand-labeling (~10 min/doc). Track verification status in
+min/doc). Track verification status in
 `_provenance.json`.
 
 ---
 
 ## Splits: `scripts/assign_splits.py` → `data/sets/*.txt`
 
-| Split | n | CORD | Wild | Retail | Use |
+| Split | n | CORD | Wild | Invoices | Use |
 |---|---:|---:|---:|---:|---|
-| `calibration` | 22 | 9 | 9 | 4 | Fit confidence weights + threshold. **Never reported** |
-| `test` | 43 | 16 | 16 | 11 | The reported scorecard |
-| `smoke` | 12 | — | — | — | Fast dev loop — drawn FROM `calibration` |
+| `calibration` | 21 | 9 | 9 | 3 | Fit confidence weights + threshold. **Never reported** |
+| `test` | 39 | 16 | 16 | 7 | The reported scorecard |
+| `smoke` | 12 | 6 | 6 | 0 | Fast dev loop — drawn FROM `calibration` |
 
 Two rules that matter for rigor:
 
@@ -174,7 +180,6 @@ scorecard — augmented images must never be presented as real-world variation.
 data: add dataset fetch script (CORD via HF, WildReceipt direct, Kaggle manual)
 data: add CORD -> Receipt schema converter with stratified sampling
 data: add WildReceipt converter (value classes, boxes used only for row grouping)
-data: add retail converter + hand-label subtotal/tax (dataset omits them)
 data: add split assignment (calibration/test/smoke, seeded) + provenance
 data: verify all 65 ground-truth files by hand; record status in _provenance.json
 ```

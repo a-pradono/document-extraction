@@ -74,43 +74,13 @@ fetch_wildreceipt() {
   echo "[wildreceipt] ok ($n images)"
 }
 
-# --- 3. OCR Receipts (retail) — Kaggle, needs an API token ------------------
-# Cannot be automated without credentials. Never prompt for or store them here.
-fetch_retail() {
-  local dir="$RAW/ocr-receipts-text-detection"
-  if [ -d "$dir" ] && [ "$(count_files "$dir")" -gt 0 ]; then
-    echo "[retail] already present — skipping"
-    return
-  fi
-  if [ ! -f "$HOME/.kaggle/kaggle.json" ]; then
-    cat >&2 <<'MSG'
-[retail] Kaggle credentials not found at ~/.kaggle/kaggle.json — manual step required.
-
-  1. https://www.kaggle.com/settings  ->  API  ->  "Create New API Token"
-  2. Move the downloaded kaggle.json to ~/.kaggle/kaggle.json  (chmod 600).
-     Keep it OUTSIDE this repo — credentials are never committed.
-  3. pip install kaggle
-  4. kaggle datasets download -d trainingdatapro/ocr-receipts-text-detection \
-       -p data/raw --unzip
-  5. Re-run this script.
-
-  Dataset page: https://www.kaggle.com/datasets/trainingdatapro/ocr-receipts-text-detection
-MSG
-    return 1
-  fi
-  have kaggle || die "[retail] pip install kaggle"
-  kaggle datasets download -d trainingdatapro/ocr-receipts-text-detection -p "$RAW" --unzip
-  [ "$(count_files "$dir")" -gt 0 ] || die "[retail] download produced no files"
-}
-
-targets=("${@:-cord wildreceipt retail}")
+targets=("${@:-cord wildreceipt}")
 status=0
 for t in ${targets[@]}; do
   case "$t" in
     cord)        fetch_cord ;;
     wildreceipt) fetch_wildreceipt ;;
-    retail)      fetch_retail || status=1 ;;
-    *)           die "unknown source '$t' (cord|wildreceipt|retail)" ;;
+    *)           die "unknown source '$t' (cord|wildreceipt)" ;;
   esac
 done
 

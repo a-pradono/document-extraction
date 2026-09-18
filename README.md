@@ -171,9 +171,11 @@ three label schemas ([`docs/DATASETS.md`](docs/DATASETS.md),
 | WildReceipt (English, Spanish, French, Italian…) | 25 | Template diversity, photographed in the wild |
 | RVL-CDIP-N multipage (invoices) | 10 | The second document type: 1–5 pages, vendor/customer roles. CC BY-NC 4.0 |
 
-A fourth tier — 15 messier phone photos from Kaggle's OCR Receipts set — was planned and
-**not acquired**: it needs a Kaggle token, and the set does the job at 60. Adding it
-would mean hand-labeling subtotal and tax, which that dataset does not annotate.
+A third receipt tier (15 phone photos from Kaggle's OCR Receipts set) was planned and
+**dropped**: it needs an API token, and it annotates neither subtotal nor tax — the two
+fields the reconciliation check depends on — so each document would have needed full
+hand-labeling. Sixty documents across three sources already cover clean, wild and
+multi-page.
 
 - **Stratified sampling** by line-item count and merchant. Taking the first N would
   produce an accidentally easy set that flatters every metric.

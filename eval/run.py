@@ -385,7 +385,7 @@ def breakdown(results: list[metrics.DocResult]) -> dict:
     """The same headline metrics per subset: each source, and the degraded tag.
 
     One blended number hides the thing a reader most needs to know about messy
-    documents. "F1 0.91 on clean CORD, 0.68 on photographed retail" is a finding;
+    documents. "F1 0.91 on clean CORD, 0.68 on photographed WildReceipt" is a finding;
     "F1 0.80" averages it away. Subsets under 3 documents are omitted as noise.
     """
     groups: dict[str, list[metrics.DocResult]] = {}

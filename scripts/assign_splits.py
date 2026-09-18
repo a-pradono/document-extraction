@@ -2,8 +2,8 @@
 
     python scripts/assign_splits.py [--seed 20240917]
 
-    calibration  25   (cord 9,  wild 9,  retail 4, inv 3)   fits confidence (receipts only)
-    test         50   (cord 16, wild 16, retail 11, inv 7)  the reported scorecard
+    calibration  21   (cord 9,  wild 9,  inv 3)   fits confidence (receipts only)
+    test         39   (cord 16, wild 16, inv 7)  the reported scorecard
     invoices     10   a TAG listing the invoices, reported as their own breakdown
     smoke        12   drawn FROM calibration          fast dev loop
     degraded     ~12  a TAG on documents inside test  per-subset breakdown
@@ -30,8 +30,8 @@ SETS_DIR = REPO / "data" / "sets"
 DOCS_DIR = REPO / "data" / "docs"
 
 QUOTAS = {
-    "calibration": {"cord": 9, "wild": 9, "retail": 4, "inv": 3},
-    "test": {"cord": 16, "wild": 16, "retail": 11, "inv": 7},
+    "calibration": {"cord": 9, "wild": 9, "inv": 3},
+    "test": {"cord": 16, "wild": 16, "inv": 7},
 }
 SMOKE_N = 12
 DEGRADED_N = 12

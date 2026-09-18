@@ -41,7 +41,7 @@ be reasoned about. Three properties drove every decision:
 |---|---|
 | Primary document type | Receipts — **50 documents** |
 | Secondary document type | Invoices — **10 documents**, real, 1–5 pages |
-| Third receipt tier (Kaggle retail, 15 docs) | **Not acquired.** Needs a Kaggle token; the set works at 60 |
+| Third receipt tier (Kaggle retail, 15 docs) | **Dropped.** Needs an API token and annotates neither subtotal nor tax |
 | Own scans | **None.** Forfeits a stated bonus; see §2.5 |
 | Models | Hosted, not open-weights — forfeits the self-hosting bonus; see §3.5 |
 | Ground truth | **60 of 60 human-verified**, five label errors corrected |
@@ -540,6 +540,5 @@ states the one-document noise floor.
 | 4 | Second independent VLM on the raw image | Removes the partial-independence weakness in §3.3 |
 | 5 | Replace `inv_0006` (three documents in one PDF) | The "one document" premise is contestable there |
 | 6 | Inter-annotator agreement on a 15-document subset | Quantifies label noise, currently unknown |
-| 7 | Add the retail tier (15 docs, needs a Kaggle token) | A third, messier receipt source |
-| 8 | Local open-weights VLM given a GPU | Recovers the self-hosting bonus; a config change only |
-| 9 | Route abstained fields to human review | Closes the loop — abstention becomes useful, not merely honest |
+| 7 | Local open-weights VLM given a GPU | Recovers the self-hosting bonus; a config change only |
+| 8 | Route abstained fields to human review | Closes the loop — abstention becomes useful, not merely honest |

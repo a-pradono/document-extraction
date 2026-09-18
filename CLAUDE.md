@@ -134,7 +134,7 @@ Built and tested (435/435 pytest passing; `python -m agent.offline_e2e` 7/7):
   precision" stays a measured claim. The scorecard reports AUC/ECE and the
   before/after abstention delta.
 - Dataset acquisition (see `docs/DATASETS.md`): `scripts/fetch_datasets.sh` +
-  `convert_cord.py` / `convert_wildreceipt.py` / `convert_retail.py` / `verify_gt.py` /
+  `convert_cord.py` / `convert_wildreceipt.py` / `verify_gt.py` /
   `assign_splits.py` / `degrade.py`, with `eval/tests/test_dataset_converters.py`
   covering normalization, date refusal, row grouping and stratified sampling.
 
@@ -170,7 +170,7 @@ Built and tested (435/435 pytest passing; `python -m agent.offline_e2e` 7/7):
   inv_0006 (bundle), inv_0005 struck-through row, inv_0003 redacted number, inv_0008
   "c/o" customer. Tests: `eval/tests/test_invoices.py`.
 - Dataset: 60 of 75 documents built and split (CORD 25 + WildReceipt 25 + invoices 10).
-  Retail (15) needs a Kaggle token. **Verification is at 60/60** — the ground truth is
+  **Verification is at 60/60** — the ground truth is
   now checked, so scorecards from it can be reported. Human verification caught what the
   audit could not: wild_0003 (subtotal 675.00 for a printed 1,675.00; VAT and Service TAX
   collapsed into one field) and wild_0007 (missing date and currency). inv_0005 keeps its
@@ -269,7 +269,7 @@ Built and tested (435/435 pytest passing; `python -m agent.offline_e2e` 7/7):
   - Scorecard `breakdown`: headline metrics per source and for degraded / not degraded.
 
 **Next up:** hand-verify the 50 labels (start from `verify_gt.py --html`, flagged
-first), add the retail tier, create `.env`, then
+first), create `.env`, then
 `--calibrate`, `--set test --source pipeline`, `--set test --source cascade`, and
 `eval.compare` for the first REAL scorecard and before/after table. Then Phase 7
 (regression diff, which can build on `eval/compare.py`).

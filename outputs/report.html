@@ -270,7 +270,7 @@ be reasoned about. Three properties drove every decision:</p>
 </tr>
 <tr>
 <td>Third receipt tier (Kaggle retail, 15 docs)</td>
-<td><strong>Not acquired.</strong> Needs a Kaggle token; the set works at 60</td>
+<td><strong>Dropped.</strong> Needs an API token and annotates neither subtotal nor tax</td>
 </tr>
 <tr>
 <td>Own scans</td>
@@ -1108,16 +1108,11 @@ states the one-document noise floor.</p>
 </tr>
 <tr>
 <td>7</td>
-<td>Add the retail tier (15 docs, needs a Kaggle token)</td>
-<td>A third, messier receipt source</td>
-</tr>
-<tr>
-<td>8</td>
 <td>Local open-weights VLM given a GPU</td>
 <td>Recovers the self-hosting bonus; a config change only</td>
 </tr>
 <tr>
-<td>9</td>
+<td>8</td>
 <td>Route abstained fields to human review</td>
 <td>Closes the loop — abstention becomes useful, not merely honest</td>
 </tr>

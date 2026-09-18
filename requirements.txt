@@ -9,7 +9,6 @@ pypdfium2>=4.30   # PDF rendering; self-contained wheel, no poppler binary neede
 # paddlepaddle>=2.6
 # --- dataset prep only (scripts/), not needed to run the extractor or the eval ---
 # datasets>=2.19   # CORD download in fetch_datasets.sh
-# kaggle>=1.6      # retail source; needs ~/.kaggle/kaggle.json, kept outside the repo
 # --- added in later phases ---
 fastapi>=0.110
 uvicorn>=0.29

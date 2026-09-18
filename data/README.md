@@ -9,7 +9,6 @@ data/
   ground_truth/         hand-verified labels: <id>.json  (matches a Receipt)
     _provenance.json    per doc: source, original filename, script vs hand labeled, verified
     synthetic/          labels for the synthetic tier (identical to their originals)
-  hand_labels/          retail.json — fields no dataset annotates, filled from the images
   sets/                 tier manifests: calibration.txt, test.txt, smoke.txt,
                         degraded.txt, synthetic.txt (one <id> per line, # comments ok)
   raw/                  downloaded datasets — gitignored, never committed
@@ -21,7 +20,6 @@ data/
 |---|---|---:|---|
 | `cord_` | CORD v2 (`naver-clova-ix/cord-v2`, test split) | 25 | Structured backbone: line items, subtotal→total arithmetic. Indonesian, IDR |
 | `wild_` | WildReceipt (openmmlab), test split | 25 | Template diversity, photographed in the wild. Mostly US/English |
-| `retail_` | Kaggle `trainingdatapro/ocr-receipts-text-detection` | 15 | Messiest tier, photographed |
 | `inv_` | RVL-CDIP-N multipage (`jordyvl/rvl_cdip_n_mp`), invoice class | 10 | Second document type: multi-page PDFs (1–5 pages), vendor/customer roles. Labels match `Invoice` |
 
 Three independent sources means two languages and three different label schemas, which
@@ -49,10 +47,10 @@ All three are used here for research evaluation only.
 ## Rebuilding this from scratch
 
 ```bash
-./scripts/fetch_datasets.sh          # cord + wildreceipt automatic; retail prints manual steps
+./scripts/fetch_datasets.sh          # cord + wildreceipt
 python scripts/convert_cord.py       # -> cord_0001..0025
 python scripts/convert_wildreceipt.py
-python scripts/convert_retail.py     # writes a hand-label stub; re-run after filling it
+python scripts/fetch_invoices.py     # 10 pinned invoices, verified by SHA-256
 python scripts/verify_gt.py --html   # review every label against its image
 python scripts/assign_splits.py      # seeded -> sets/*.txt
 python scripts/degrade.py            # optional synthetic robustness tier
@@ -93,10 +91,10 @@ awaiting a human (`needs_hand_label`), and whether the document has been verifie
 distinction matters because a null meaning "not on the receipt" and a null meaning
 "nobody looked yet" score identically but say very different things about the labels.
 
-The retail tier was never acquired (it needs a Kaggle token). It also has no subtotal
-and no tax in its source annotations, so adding it means hand-labeling those from the
-images — without them the `subtotal + tax == total` check, the strongest confidence
-signal, is blind on exactly the hardest documents.
+A third receipt tier (Kaggle's OCR Receipts set, 15 phone photos) was planned and
+dropped: it needs an API token, and its annotations carry no subtotal and no tax, so
+every one would have needed hand-labeling of exactly the fields the reconciliation check
+depends on. The set does its job at 60 documents.
 
 ## Splits
 
@@ -110,10 +108,8 @@ signal, is blind on exactly the hardest documents.
 | `synthetic` | 25 | 25 | — | — | Augmented copies. Own tier, never the headline number |
 
 **Current state: 60 documents** (CORD 25 + WildReceipt 25 + invoices 10), every label
-verified against its image. The planned retail tier is absent because it needs a Kaggle
-token; `assign_splits.py` rescaled the quotas accordingly. Each source draws from its own
-seeded RNG, so adding the invoices moved no receipt between splits. `smoke` and
-`degraded` stay receipts-only.
+verified against its image. Each source draws from its own seeded RNG, so adding the
+invoices moved no receipt between splits. `smoke` and `degraded` stay receipts-only.
 
 `smoke` comes from `calibration` because it runs dozens of times during iteration —
 overlapping `test` would quietly overfit the published numbers. Nothing is fitted on
