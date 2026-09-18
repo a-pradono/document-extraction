@@ -189,15 +189,25 @@ def to_markdown(scorecard: dict, meta: dict) -> str:
     return "\n".join(lines)
 
 
+_CSS = """
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+"""
+
 _HTML = """<!doctype html><meta charset="utf-8"><title>Scorecard {version}</title>
-<style>
-body{{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}}
-table{{border-collapse:collapse;width:100%;margin:1rem 0}}
-th,td{{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}}
-th:first-child,td:first-child{{text-align:left}}
-.k{{color:#555}} .big{{font-size:1.4rem;font-weight:700}}
-.miss{{color:#b45309}} .spur{{color:#b91c1c}} .wrong{{color:#b91c1c}}
-</style>
+<style>{css}</style>
 <h1>Extraction Scorecard — {version}</h1>
 <p class=k>{n_docs} docs · set: {set} · {generated_at}</p>
 <p><span class=big>{dar:.1%}</span> document accuracy ·
@@ -207,7 +217,27 @@ hallucination {halluc:.1%}</p>
 """
 
 
-def to_html(scorecard: dict, meta: dict) -> str:
+
+def _per_document_table(results: list[DocResult], linked: bool) -> str:
+    """The drill-down. Each row links to that document's own card (eval/render_doc.py),
+    so a reviewer can go from a failing row straight to what the system actually read."""
+    rows = []
+    for r in results:
+        wrong = sum(1 for c in r.comparisons if c.label)
+        name = (f'<a href="documents/{r.doc_id}.html">{r.doc_id}</a>' if linked else r.doc_id)
+        cost = "" if r.cost_usd is None else f"${r.cost_usd:.5f}"
+        latency = "" if r.latency_s is None else f"{r.latency_s:.2f}"
+        mark = "&#10003;" if r.document_correct else "&#10007;"
+        cls = "ok" if r.document_correct else "wrong"
+        rows.append(f'<tr><td>{name}</td><td class={cls}>{mark}</td><td>{wrong}</td>'
+                    f"<td>{latency}</td><td>{cost}</td></tr>")
+    return ("<h2>Per document</h2><table>"
+            "<tr><th>doc</th><th>correct</th><th>fields wrong</th><th>s</th><th>cost</th></tr>"
+            f"{''.join(rows)}</table>")
+
+
+def to_html(scorecard: dict, meta: dict, results: list[DocResult] | None = None,
+            linked: bool = False) -> str:
     m = scorecard
     field_rows = "".join(
         f"<tr><td>{f}</td><td>{v['support']}</td><td>{_num(v['precision'])}</td>"
@@ -224,19 +254,26 @@ def to_html(scorecard: dict, meta: dict) -> str:
         f"<th>F1</th><th>exact F1</th></tr>{field_rows}</table>"
         "<h2>Failures by kind</h2><table>"
         f"<tr><th>kind</th><th>count</th></tr>{tax_rows}</table>"
+        + (_per_document_table(results, linked) if results else "")
     )
     return _HTML.format(
         version=meta.get("version", "run"), n_docs=m["n_docs"], set=meta.get("set", "all"),
         generated_at=meta.get("generated_at", ""), dar=m["document_accuracy_rate"],
         micro=m["micro_f1"], macro=m["macro_f1"], li=m["line_item_f1"],
-        halluc=m["hallucination_rate"], tables=tables,
+        halluc=m["hallucination_rate"], tables=tables, css=_CSS,
     )
 
 
 def write_scorecard(out_dir: Path, scorecard: dict, results: list[DocResult], meta: dict) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "scorecard.json").write_text(_dumps({"meta": meta, "metrics": scorecard}))
-    (out_dir / "scorecard.md").write_text(to_markdown(scorecard, meta))
-    (out_dir / "scorecard.html").write_text(to_html(scorecard, meta))
-    (out_dir / "per_document.json").write_text(_dumps(per_document_payload(results)))
+    # encoding is explicit: the default is cp1252 on Windows, which writes an em dash as
+    # a byte no UTF-8 reader can decode - in a file that declares itself UTF-8.
+    (out_dir / "scorecard.json").write_text(
+        _dumps({"meta": meta, "metrics": scorecard}), encoding="utf-8")
+    (out_dir / "scorecard.md").write_text(to_markdown(scorecard, meta), encoding="utf-8")
+    (out_dir / "scorecard.html").write_text(
+        to_html(scorecard, meta, results, linked=(out_dir / "documents").is_dir()),
+        encoding="utf-8")
+    (out_dir / "per_document.json").write_text(
+        _dumps(per_document_payload(results)), encoding="utf-8")
     return out_dir / "scorecard.json"
