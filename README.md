@@ -156,16 +156,17 @@ About 65 documents from three independent sources: two languages, three label sc
   file, which fields were script-converted vs hand-labeled, which still need a human,
   and whether the document has been verified. That separates a null meaning "not on the
   receipt" from a null meaning "nobody looked yet".
-- **Verification status: 60 of 60 verified** (`python scripts/verify_gt.py --status`).
-  Every label was checked against its image by a human; `--html` renders each document
-  beside its labels for that pass, and `python scripts/review_server.py` opens a faster
-  one-document-at-a-time view (only the fields a human still has to judge, the arithmetic
-  the audit disputes spelled out, y/n verdicts on the keyboard written straight to
-  provenance). It found real errors that the model-free audit alone
-  did not: wild_0003's converted subtotal had lost the leading digit of a printed
-  `Rs1,675.00`, and its two printed taxes (VAT 13.13% and Service TAX 4.94%) had been
-  collapsed into one, so the receipt never reconciled. Four documents were corrected or
-  re-confirmed this way; each carries the reasoning in `_provenance.json`.
+- **Verification status: 60 of 60 verified.** Every label was checked against its image
+  by a human. That pass found **five money-field errors**, all in WildReceipt: two dropped
+  leading digits (`675.00` for a printed `1,675.00`; `97.30` for `87.30`), two dropped
+  charge lines (a 10% service charge; three coupons), and one fuel purchase split across
+  three junk rows. One of them — a row annotated `5390` for a printed `5.90` — is a defect
+  in the **published dataset**, not in our conversion. That is a 10% error rate in one
+  source's money fields, every instance of which would otherwise have been charged to the
+  model. [`scripts/review_server.py`](scripts/review_server.py) is what made the pass
+  fast: one document per screen, only the fields needing judgement plus the arithmetic the
+  audit disputes, keyboard verdicts written straight to provenance.
+
 - **Splits** ([`scripts/assign_splits.py`](scripts/assign_splits.py), fixed seed,
   committed): calibration 18 / test 32 now, 22 / 43 once retail lands. `smoke` is drawn
   **from calibration**, so heavy iteration can't overfit the reported numbers. Nothing is

@@ -18,5 +18,6 @@
       "description": "Cannolo Venere",
       "line_total": "12.00"
     }
-  ]
+  ],
+  "payment_method": "Contanti"
 }

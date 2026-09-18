@@ -1,12 +1,12 @@
 # Receipt & Invoice Extraction — End-to-End Report
 
-> **Status, 18 September 2026 (commit `ed7df31`, 34 commits).** The system is built and
-> tested (419 unit tests, offline end-to-end 7/7). The **confidence model has been
-> fitted on a real run** of the calibration split and those numbers are reported in
-> §4.2. **The `test` split has not been run**, so there is still no accuracy scorecard:
-> §4.4 is empty and says so. Ground-truth verification stands at **12 of 60**; 48 labels
-> are assistant drafts awaiting a human pass (§2.4). Nothing in §4 is a placeholder any
-> more — every table is either a measurement or explicitly marked not-yet-run.
+> **Status, 18 September 2026.** The system is built and tested (435 unit tests, offline
+> end-to-end 7/7). **Ground truth is fully verified — 60 of 60 documents checked against
+> their images by a human**, a pass that corrected five money-field errors (§2.4). The
+> **confidence model is fitted** on a real run of the calibration split (§4.2). **The
+> `test` split has not been run yet**, so there is still no accuracy scorecard: §4.5 is
+> empty and says so. Nothing in §4 is a placeholder — every table is either a measurement
+> or explicitly marked not-yet-run.
 
 ---
 
@@ -44,7 +44,7 @@ be reasoned about. Three properties drove every decision:
 | Third receipt tier (Kaggle retail, 15 docs) | **Not acquired.** Needs a Kaggle token; the set works at 60 |
 | Own scans | **None.** Forfeits a stated bonus; see §2.5 |
 | Models | Hosted, not open-weights — forfeits the self-hosting bonus; see §3.5 |
-| Ground truth | 12 of 60 human-verified; 48 are drafts pending review |
+| Ground truth | **60 of 60 human-verified**, five label errors corrected |
 | Reported accuracy | **None yet** — the `test` split has not been run |
 
 ---
@@ -128,25 +128,31 @@ confidence model is fitted on receipts only — invoice confidence is **uncalibr
 organisations, under a non-commercial licence. The repository is private; published
 views carry the dataset attribution.
 
-### 2.4 Ground-truth state — the honest number
+### 2.4 Verification — what the human pass actually found
 
-| | |
-|---|---:|
-| Documents with labels | 60 |
-| **Human-verified** | **12** (10 invoices, 2 receipts) |
-| Assistant-drafted, pending verification | 48 |
-| Documents carrying an explicit `CHECK` note | 14 |
+**60 of 60 documents verified.** Every label was checked against its image, and the pass
+found **five money-field errors**, all in WildReceipt, none of which the model-free audit
+could resolve on its own. The audit could say *this does not reconcile*; only a human
+could say what the right number was.
 
-Verification is not a formality here: the human pass already found a **real label
-error** the model-free audit could not. `wild_0003`'s converted subtotal had lost the
-leading digit of a printed `Rs1,675.00`, and the receipt's two printed taxes (VAT 13.13%
-and Service TAX 4.94%) had been collapsed into one, so the document never reconciled.
-Corrected, it reconciles exactly to the printed 1,971.11.
+| Document | Defect | After correction |
+|---|---|---|
+| `wild_0003` | Subtotal `675.00` for a printed `Rs1,675.00`; one of two printed taxes (VAT 13.13%, Service TAX 4.94%) dropped | 1,675.00 + 82.75 + 213.36 = **1,971.11**, the printed Cash amount |
+| `wild_0019` | Subtotal `97.30` for a printed `87.30`; the printed 10% service charge missing entirely | 87.30 + 8.73 + 6.72 = **102.75**, the printed TOTAL |
+| `wild_0018` | A row annotated `5390` for a printed `5.90` — **a defect in the published dataset**, not in our conversion | 6 rows sum to exactly **47.30**, the printed SUBTTL |
+| `wild_0015` | Three printed coupons (−0.75, −0.25, −1.00) dropped, so rows summed to 5.00 against a printed total of 3.00 | 5.00 − 2.00 = **3.00** |
+| `wild_0004` | One fuel purchase split across three junk rows: `REGULAR/15863`, a bare `3479`, a bare `55.19` — gallons, price per gallon and fuel total | 15.863 gal × $3.479 = $55.19, plus $10.00 = **$65.19** |
 
-The 14 `CHECK` notes flag exactly what the drafter was unsure of: ambiguous `$`
-currencies (AUD vs SGD vs USD inferred from tax registrations), day-first vs
-month-first dates, a partly obscured month digit, and `cord_0019`, where the model reads
-`FRANCIS ARTISAN BAKERY` through a blur the drafter could not resolve.
+That is a **10% error rate in the money fields of one source**, and every one of those
+errors would have been charged to the model: a correct extraction scored as
+`wrong_value` on exactly the fields the confidence design leans on hardest. It is the
+empirical case for "small and verified" over "large and noisy", and the reason this
+project audits its ground truth rather than assuming it.
+
+Judgement calls are recorded per document in `_provenance.json`, including those the
+drafter could not resolve and the reviewer settled: ambiguous `$` currencies (AUD vs SGD
+vs USD, inferred from tax registrations), day-first vs month-first dates, and
+`cord_0019`, where the merchant name is blurred by the dataset's own anonymisation.
 
 ### 2.5 No own scans — and the compensation
 
@@ -437,9 +443,7 @@ python -m eval.compare outputs/<v1> outputs/<v2>
 
 Two conditions must hold before those numbers mean anything:
 
-1. **Ground-truth verification** must be complete (currently 12/60). Running earlier
-   produces a scorecard measured against unchecked labels, and the regression gate will
-   refuse to compare it against any later run because the label fingerprint changes.
+1. ~~Ground-truth verification~~ — **done, 60/60** (§2.4).
 2. **Model B quota** must allow 39 calls for the pipeline run plus roughly 16 more for
    cascade escalations — above OpenRouter's 50/day free cap, so either spread the runs
    across two days or add credits.

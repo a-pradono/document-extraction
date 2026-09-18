@@ -109,7 +109,7 @@ docker-compose.yml, Dockerfile, .env.example, README.md, CLAUDE.md
 
 ## Current state
 
-Built and tested (415/415 pytest passing; `python -m agent.offline_e2e` 7/7):
+Built and tested (435/435 pytest passing; `python -m agent.offline_e2e` 7/7):
 - Phase 0-2: `extractor/schema.py`, `extractor/provider.py`, `extractor/extract.py`
   (single-doc walking skeleton, VLM-only).
 - Phase 3: `eval/metrics.py`, `eval/taxonomy.py`, `eval/scorecard.py`, `eval/run.py`,
@@ -138,6 +138,11 @@ Built and tested (415/415 pytest passing; `python -m agent.offline_e2e` 7/7):
   `assign_splits.py` / `degrade.py`, with `eval/tests/test_dataset_converters.py`
   covering normalization, date refusal, row grouping and stratified sampling.
 
+- **Ground truth VERIFIED 60/60** (2026-09-18). The pass found five WildReceipt money
+  errors (wild_0003, wild_0019, wild_0018, wild_0015, wild_0004), one of them a defect in
+  the published dataset. `scripts/review_server.py` is the fast verification tool: one
+  document per screen, only the fields needing judgement plus the disputed arithmetic,
+  y/n verdicts written straight to _provenance.json.
 - **Review dashboard** (`eval/dashboard.py` + `dashboard.css`): source document beside
   the extraction, type/status filters, pagination, keyboard nav, self-contained HTML with
   images inlined. Built from the same ExtractionOut payload as the API; shows no ground
