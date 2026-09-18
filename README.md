@@ -156,9 +156,13 @@ About 65 documents from three independent sources: two languages, three label sc
   file, which fields were script-converted vs hand-labeled, which still need a human,
   and whether the document has been verified. That separates a null meaning "not on the
   receipt" from a null meaning "nobody looked yet".
-- **Verification status: 0 of 50 verified.** `python scripts/verify_gt.py --html`
-  renders each image beside its labels. **No scorecard from this set should be reported
-  until verification is at 100%.**
+- **Verification status: 60 of 60 verified** (`python scripts/verify_gt.py --status`).
+  Every label was checked against its image by a human; `--html` renders each document
+  beside its labels for that pass. It found real errors that the model-free audit alone
+  did not: wild_0003's converted subtotal had lost the leading digit of a printed
+  `Rs1,675.00`, and its two printed taxes (VAT 13.13% and Service TAX 4.94%) had been
+  collapsed into one, so the receipt never reconciled. Four documents were corrected or
+  re-confirmed this way; each carries the reasoning in `_provenance.json`.
 - **Splits** ([`scripts/assign_splits.py`](scripts/assign_splits.py), fixed seed,
   committed): calibration 18 / test 32 now, 22 / 43 once retail lands. `smoke` is drawn
   **from calibration**, so heavy iteration can't overfit the reported numbers. Nothing is

@@ -1,6 +1,8 @@
 {
-  "merchant_name": "PRIMEBURGERBAR",
-  "merchant_address": "VIAPRIVATADELLAPASSERELLA,4 20122MILANO",
+  "merchant_name": "PRIME BURGER BAR",
+  "merchant_address": "VIA PRIVATA DELLA PASSERELLA, 4 20122 MILANO",
+  "date": "2016-02-14",
+  "currency": "EUR",
   "subtotal": "24.50",
   "total": "24.50",
   "line_items": [
@@ -9,11 +11,11 @@
       "line_total": "1.50"
     },
     {
-      "description": "HamburgerBlue-cheddar",
+      "description": "Hamburger Blue-cheddar",
       "line_total": "11.00"
     },
     {
-      "description": "CannoloVenere",
+      "description": "Cannolo Venere",
       "line_total": "12.00"
     }
   ]

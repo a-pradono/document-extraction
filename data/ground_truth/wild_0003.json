@@ -1,53 +1,65 @@
 {
-  "merchant_name": "KhyenChyen",
-  "merchant_address": "G-19,DLFCrossPoint DLFPhase4,Gurgaon",
-  "subtotal": "675.00",
-  "tax": "82.75",
-  "total": "971.00",
+  "merchant_name": "Khyen Chyen",
+  "merchant_address": "G-19, DLF Cross Point, DLF Phase 4, Gurgaon",
+  "date": "2015-04-17",
+  "currency": "INR",
+  "subtotal": "1675.00",
+  "service_charge": "82.75",
+  "tax": "213.36",
+  "total": "1971.11",
   "line_items": [
     {
-      "description": "TabakhMaaz(OnlyMe)",
+      "description": "Tabakh Maaz (Only Me)",
       "quantity": "1",
+      "unit_price": "200.00",
       "line_total": "200.00"
     },
     {
-      "description": "Haakh(Hungry)",
+      "description": "Haakh (Hungry)",
       "quantity": "1",
+      "unit_price": "300.00",
       "line_total": "300.00"
     },
     {
-      "description": "Al-Yakhni(OnlyMe)",
+      "description": "Al-Yakhni (Only Me)",
       "quantity": "1",
+      "unit_price": "225.00",
       "line_total": "225.00"
     },
     {
-      "description": "Batta(Hungry)",
+      "description": "Batta (Hungry)",
       "quantity": "1",
+      "unit_price": "200.00",
       "line_total": "200.00"
     },
     {
-      "description": "SaffronKehwa",
+      "description": "Saffron Kehwa",
       "quantity": "1",
+      "unit_price": "100.00",
       "line_total": "100.00"
     },
     {
-      "description": "LahabdaarKebab(Only",
+      "description": "Lahabdaar Kebab (Only",
       "quantity": "1",
+      "unit_price": "250.00",
       "line_total": "250.00"
     },
     {
-      "description": "MineralWater",
+      "description": "Mineral Water",
       "quantity": "1",
+      "unit_price": "50.00",
       "line_total": "50.00"
     },
     {
-      "description": "RoganJoshMutton(On",
+      "description": "Rogan Josh Mutton (On",
       "quantity": "1",
+      "unit_price": "250.00",
       "line_total": "250.00"
     },
     {
-      "description": "DoonChutey",
+      "description": "Doon Chutney",
       "quantity": "1",
+      "unit_price": "100.00",
       "line_total": "100.00"
     }
   ]

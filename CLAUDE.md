@@ -160,10 +160,14 @@ Built and tested (391/391 pytest passing; `python -m agent.offline_e2e` 7/7):
   assistant, pending human verification** — see `label_notes`; open decisions: replace
   inv_0006 (bundle), inv_0005 struck-through row, inv_0003 redacted number, inv_0008
   "c/o" customer. Tests: `eval/tests/test_invoices.py`.
-- Dataset: 50 of 65 documents built and split (CORD 25 + WildReceipt 25). Retail (15)
-  needs a Kaggle token. **Zero documents are hand-verified yet** — until
-  `scripts/verify_gt.py --status` reads 100%, the ground truth is a first pass, not
-  ground truth, and no scorecard from it should be reported.
+- Dataset: 60 of 75 documents built and split (CORD 25 + WildReceipt 25 + invoices 10).
+  Retail (15) needs a Kaggle token. **Verification is at 60/60** — the ground truth is
+  now checked, so scorecards from it can be reported. Human verification caught what the
+  audit could not: wild_0003 (subtotal 675.00 for a printed 1,675.00; VAT and Service TAX
+  collapsed into one field) and wild_0007 (missing date and currency). inv_0005 keeps its
+  struck-through row, since the printed rows sum to the printed total and the
+  strike-through is a recipient's annotation. Decisions are in `_provenance.json`
+  `verified_note`.
 - Schema bug fixed: `Receipt.date` was annotated `Optional[date]`, which the field name
   shadowed, so the annotation resolved to `NoneType` and every date silently became
   null — including in the committed ground truth. Regression test in

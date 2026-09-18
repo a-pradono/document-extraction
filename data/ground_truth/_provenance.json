@@ -18,7 +18,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "6d7274db3425200e"
   },
@@ -41,7 +41,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "5a633ede5afbaf88"
   },
@@ -64,7 +64,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "875160e0a23e5bdc"
   },
@@ -87,7 +87,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "7a41b99f74afd39e"
   },
@@ -110,7 +110,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "39c9aad22657edca"
   },
@@ -133,7 +133,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "00c8798b60da5cb1"
   },
@@ -156,7 +156,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "7fa50279d60bff09"
   },
@@ -179,7 +179,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "915f79ef521e05d5"
   },
@@ -202,7 +202,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "b7f4c623007b0112"
   },
@@ -225,7 +225,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "868caa0c42965ac6"
   },
@@ -248,7 +248,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "1608adac5b46e5ce"
   },
@@ -271,7 +271,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "b783b6e5064f8b3b"
   },
@@ -294,7 +294,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "045177dc73e4c177"
   },
@@ -317,7 +317,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "5bbc11e13020a654"
   },
@@ -340,7 +340,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "74d44c4f9af01ff6"
   },
@@ -363,7 +363,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "4e1f8b945b6c40f0"
   },
@@ -386,7 +386,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "9fe9e5afa6335d17"
   },
@@ -409,7 +409,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "b0cc349dba551530"
   },
@@ -432,7 +432,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "797d9a927798a0a1"
   },
@@ -455,7 +455,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "e31f4fd91a8ff071"
   },
@@ -478,7 +478,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "654b3d3a18e7f307"
   },
@@ -501,7 +501,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "1ad30f0a7d9d0861"
   },
@@ -524,7 +524,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "df6150b46acc26e3"
   },
@@ -547,7 +547,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "12e58b8e308f896e"
   },
@@ -570,7 +570,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "9a9b18e0429e560e"
   },
@@ -592,7 +592,7 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
@@ -623,7 +623,7 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
@@ -657,7 +657,7 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
@@ -688,7 +688,7 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
@@ -715,8 +715,8 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
-    "verified_note": null,
+    "verified": true,
+    "verified_note": "The struck-through General Labor row ($435.00) is KEPT: the strike-through and 'Invoice duplicate invoicing' are a recipient's handwritten annotation, while the five printed rows sum to exactly the printed total of $1,867.99. The label records what the document prints, not the dispute's outcome.",
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
       "JUDGEMENT CALL: the 'General Labor 29 Hours @ $15/hour $435.00' row is struck through by hand ('duplicate invoicing'), but the PRINTED total $1,867.99 includes it. Labeled the typed invoice as printed (row kept). Confirm on verification.",
@@ -746,7 +746,7 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
@@ -775,7 +775,7 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
@@ -802,7 +802,7 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
@@ -831,7 +831,7 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
@@ -858,7 +858,7 @@
     ],
     "label_status": "drafted by assistant from page images; pending human verification",
     "needs_hand_label": [],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8f6f983d087f4f2c",
     "label_notes": [
@@ -887,7 +887,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "6532383b855cf587"
   },
@@ -906,7 +906,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "7c9631279edeee89"
   },
@@ -921,17 +921,21 @@
       "tax",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
+      "line_items",
       "merchant_address",
       "merchant_name",
-      "payment_method"
+      "service_charge",
+      "subtotal",
+      "tax",
+      "total"
     ],
-    "verified": false,
-    "verified_note": null,
-    "label_sha": "d2bb6bf9ff660806"
+    "needs_hand_label": [],
+    "verified": true,
+    "verified_note": "Re-labeled from the image. The converter dropped the leading digit of the printed SUB TOTAL Rs1,675.00 (was 675.00) and took Service TAX 82.75 as the only tax. The receipt prints VAT 13.13% 213.36 and Service TAX 4.94% 82.75; 1675.00 + 82.75 + 213.36 = 1971.11, the printed Cash amount. ROUNDUP AMOUNT 1,971.00 is the rounded payable and is NOT the total. Text re-spaced and rows given their printed unit prices.",
+    "label_sha": "a7a2208d8250cf86"
   },
   "wild_0004": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -950,7 +954,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "25e2ffb26a63c1f6"
   },
@@ -971,7 +975,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "94dff04023966e9f"
   },
@@ -993,7 +997,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "73f02dffb5a2ac20"
   },
@@ -1007,17 +1011,19 @@
       "subtotal",
       "total"
     ],
-    "hand_labeled_fields": [],
-    "needs_hand_label": [
+    "hand_labeled_fields": [
       "currency",
       "date",
+      "line_items",
       "merchant_address",
-      "merchant_name",
+      "merchant_name"
+    ],
+    "needs_hand_label": [
       "payment_method"
     ],
-    "verified": false,
-    "verified_note": null,
-    "label_sha": "4657a62f7210de06"
+    "verified": true,
+    "verified_note": "Amounts were already correct (1.50 + 11.00 + 12.00 = 24.50 subtotal and total, no tax printed). Added the printed date 14/02/16 and EUR, and re-spaced the text WildReceipt strips. Other wild_ labels keep their stripped spacing.",
+    "label_sha": "b59d332f42374771"
   },
   "wild_0008": {
     "source": "WildReceipt (Sun et al., arXiv:2103.14470; test split)",
@@ -1037,7 +1043,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "43e8648fc1452770"
   },
@@ -1059,7 +1065,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "eee4aafd3fb2989b"
   },
@@ -1082,7 +1088,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "e3d8046d83338a27"
   },
@@ -1101,7 +1107,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "f2c177a5175f1ee4"
   },
@@ -1122,7 +1128,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "59c64c91a6cba212"
   },
@@ -1144,7 +1150,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "cd0bd4f7eae6b42c"
   },
@@ -1165,7 +1171,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "ec6f54831290d8f1"
   },
@@ -1187,7 +1193,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "ccd3aa4d514506fe"
   },
@@ -1210,7 +1216,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "7422103cf2afc4d7"
   },
@@ -1229,7 +1235,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "8bbe03abc15c85c5"
   },
@@ -1253,7 +1259,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "ff8360a620527261"
   },
@@ -1276,7 +1282,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "359dc7b55c979c1f"
   },
@@ -1299,7 +1305,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "71e5102aa388a4ca"
   },
@@ -1320,7 +1326,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "6bb1e2ddffabc872"
   },
@@ -1341,7 +1347,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "a65a8f4d8494fc1b"
   },
@@ -1364,7 +1370,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "c6fed58e9c3783dd"
   },
@@ -1388,7 +1394,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "2e1a73bb949c5458"
   },
@@ -1411,7 +1417,7 @@
       "merchant_name",
       "payment_method"
     ],
-    "verified": false,
+    "verified": true,
     "verified_note": null,
     "label_sha": "a937b4e1a9d93b78"
   }
