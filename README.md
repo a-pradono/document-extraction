@@ -295,28 +295,38 @@ disagree about whether a document added up. `null` renders as an em dash and abs
 renders with its withheld value in warning colour, because "not on the document" and
 "read but not asserted" are the one distinction abstention exists to make.
 
-### The review dashboard
+### The review dashboard and the report
 
-[`eval/dashboard.py`](eval/dashboard.py)
+[`eval/dashboard.py`](eval/dashboard.py) · [`eval/render_md.py`](eval/render_md.py)
 
 ```bash
-python -m eval.dashboard --set calibration --open     # outputs/dashboard.html
+python -m eval.dashboard --set all --open              # outputs/dashboard.html, 60 docs
+python -m eval.render_md report.md -o outputs/report.html    # the report, themed to match
 ```
 
-One self-contained page (images inlined, no CDN) showing **every source document beside
-what the system read from it**: per-field value, confidence and status (ok / abstained /
-absent), the line-item table with the arithmetic check as its footer, the model-free
-validation chips, cost and latency, and the transcription behind a fold. Filter by
-document type or by status (clean / abstained / failed a check), five per page, arrow
-keys to move.
+**Neither file is committed** — `outputs/dashboard.html` is 6.7 MB of inlined source
+images, and `outputs/report.html` is generated from [`report.md`](report.md), which is.
+Both are gitignored and rebuilt by the commands above in seconds, because every document
+is cached.
+
+The dashboard is one self-contained page (images inlined, no CDN) showing **every source
+document beside what the system read from it**: per-field value, confidence and status
+(ok / abstained / absent), the line-item table with the arithmetic check as its footer,
+the model-free validation chips, cost and latency, and the transcription behind a fold.
+Filter by document type, by status (clean / abstained / failed a check) or by mean
+confidence band (high ≥ 0.80, medium 0.50–0.79, low < 0.50); five per page, arrow keys to
+move. Its header links to the rendered report, and the report links back.
 
 It renders the exact `POST /extract` payload, so what a reviewer sees is what a caller
-gets. Invoices show a page-count badge, since a 4-page PDF is one document. Re-rendering
-cached documents costs nothing, so iterating on it is free.
+gets. Invoices carry a page-count badge, since a 4-page PDF is one document. A document
+whose second model did not run is badged **one model only** and says so in words, because
+a missing `agreement` signal defaults to a neutral 0.50 rather than failing — a
+confidence score built on three signals should not look like one built on four.
 
-**Not committed and not published.** The page embeds the source images, and the invoices
-are real public records naming private individuals; `outputs/` stays local and the
-repository stays private.
+**On sharing it.** The invoices are real public records naming real people, under a
+non-commercial licence, so the repository stays private and the page carries the dataset
+attribution in its footer. Publishing it anywhere is a deliberate decision, not a
+default.
 
 ### Comparing versions and catching a regression
 
@@ -487,10 +497,11 @@ threshold that makes fields abstain.
 ```
 extractor/  schema, provider, extract (pages), pipeline, grounding, confidence, cascade, cost
 api/        app (FastAPI), service, schemas, batch, telemetry
-eval/       run, metrics, taxonomy, scorecard, render_doc, dashboard, compare, regression, tests/ (435)
+eval/       run, metrics, taxonomy, scorecard, render_doc, dashboard, render_md, compare, regression, tests/ (435)
 agent/      stub_provider, offline_e2e          .claude/skills/offline-e2e/SKILL.md
 scripts/    fetch_datasets.sh, fetch_invoices, convert_*, verify_gt, review_server, audit_gt, assign_splits, degrade
 data/       docs/, ground_truth/ (+ _provenance.json), sets/, README.md
 docs/       DATASETS.md (dataset spec), OUTPUT.md (output contract)
-Dockerfile  docker-compose.yml  .env.example  CLAUDE.md  README.md
+outputs/    scorecards + calibration.json (dashboard.html / report.html are generated, gitignored)
+Dockerfile  docker-compose.yml  .env.example  CLAUDE.md  README.md  report.md
 ```
