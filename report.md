@@ -149,6 +149,37 @@ errors would have been charged to the model: a correct extraction scored as
 empirical case for "small and verified" over "large and noisy", and the reason this
 project audits its ground truth rather than assuming it.
 
+**Why verify all 60 rather than sample?** Sampling is the right tool for estimating a
+label error rate across a corpus too large to check. It is the wrong tool for an
+evaluation set, because this set is not the product — it is the **measuring instrument**
+for every number in §4. A sample of 15 would have reported "roughly 10% of WildReceipt
+money fields are wrong" and left us not knowing *which* five, so the instrument stays
+bent and we merely know that it is.
+
+The bias also does not average out. A wrong label converts a **correct** extraction into
+a scored error, so the five defects pushed one way only, on `subtotal`, `tax` and `total`
+— the fields the confidence design leans on hardest. For scale: document accuracy has a
+noise floor of about ±8pp at n=39, and a plausible improvement between two versions is
+3–5pp. The label error was **larger than the effects the harness exists to detect**.
+
+What makes full verification affordable is the deliberate choice of a small set: 60
+documents is roughly 40 minutes once, amortised over every run for the life of the
+project. At 10,000 documents it would be a month of work, and sampling would be the only
+rational option. The policy this project would apply at scale:
+
+| Corpus | Approach |
+|---|---|
+| Evaluation set, n ≤ a few hundred | Verify 100% — it is the ruler |
+| Training corpus, n large | Sample to estimate noise, report metrics with that band, fix systematically |
+| Production output | Sample continuously — that is monitoring, not ground truth |
+
+Two honest qualifications. First, the model-free audit can only flag fields it can check:
+it says "this does not reconcile", but it has no signal whatsoever on merchant name, date
+or currency, where a sample would yield an error rate and nothing more. Second, not every
+field needed the full pass — the 10 invoice labels and the mostly-null CORD header fields
+would have been well served by an audit-triaged sample. The money fields were not, and
+that is where all five errors were.
+
 Judgement calls are recorded per document in `_provenance.json`, including those the
 drafter could not resolve and the reviewer settled: ambiguous `$` currencies (AUD vs SGD
 vs USD, inferred from tax registrations), day-first vs month-first dates, and
