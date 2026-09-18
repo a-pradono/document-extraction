@@ -93,27 +93,26 @@ awaiting a human (`needs_hand_label`), and whether the document has been verifie
 distinction matters because a null meaning "not on the receipt" and a null meaning
 "nobody looked yet" score identically but say very different things about the labels.
 
-The retail tier has no subtotal and no tax in its source annotations. Those are
-hand-labeled from the images via `hand_labels/retail.json` — without them the
-`subtotal + tax == total` check, the strongest confidence signal, is blind on exactly
-the hardest documents.
+The retail tier was never acquired (it needs a Kaggle token). It also has no subtotal
+and no tax in its source annotations, so adding it means hand-labeling those from the
+images — without them the `subtotal + tax == total` check, the strongest confidence
+signal, is blind on exactly the hardest documents.
 
 ## Splits
 
-| Split | n | CORD | Wild | Retail | Use |
+| Split | n | CORD | Wild | Invoices | Use |
 |---|---:|---:|---:|---:|---|
-| `calibration` | 22 | 9 | 9 | 4 | Fits confidence weights + threshold. **Never reported** |
-| `test` | 43 | 16 | 16 | 11 | The reported scorecard |
-| `invoices` | 10 | — | — | — | All invoices: 3 in `calibration`, 7 in `test`, reported under their own type |
-| `smoke` | 12 | — | — | — | Fast dev loop — drawn **from** `calibration` |
-| `degraded` | ~12 | — | — | — | A tag on the worst documents already **inside** `test` |
-| `synthetic` | opt | — | — | — | Augmented copies. Own tier, never the headline number |
+| `calibration` | 21 | 9 | 9 | 3 | Fits confidence weights + threshold. **Never reported** |
+| `test` | 39 | 16 | 16 | 7 | The reported scorecard |
+| `invoices` | 10 | — | — | 10 | All invoices, reported under their own document type |
+| `smoke` | 12 | 6 | 6 | 0 | Fast dev loop — drawn **from** `calibration` |
+| `degraded` | 12 | 6 | 6 | 0 | A tag on the worst documents already **inside** `test` |
+| `synthetic` | 25 | 25 | — | — | Augmented copies. Own tier, never the headline number |
 
-**Current state: 50 of the 65 documents exist** (CORD 25 + WildReceipt 25). The retail
-tier is missing because it needs a Kaggle API token, so `assign_splits.py` rescaled the
-quotas proportionally and produced calibration 18 / test 32. Re-run it after
-`convert_retail.py` to get the full 22 / 43 split. The invoices add 3 / 7 on top, drawn
-with their own RNG so adding them never moved a receipt between splits. `smoke` and
+**Current state: 60 documents** (CORD 25 + WildReceipt 25 + invoices 10), every label
+verified against its image. The planned retail tier is absent because it needs a Kaggle
+token; `assign_splits.py` rescaled the quotas accordingly. Each source draws from its own
+seeded RNG, so adding the invoices moved no receipt between splits. `smoke` and
 `degraded` stay receipts-only.
 
 `smoke` comes from `calibration` because it runs dozens of times during iteration —
@@ -121,5 +120,5 @@ overlapping `test` would quietly overfit the published numbers. Nothing is fitte
 `test`. The seed is fixed and `sets/*.txt` is committed so runs stay comparable across
 versions, which is what the Phase 7 regression diff depends on.
 
-DAR is binary per document, so it's noisy at this size (~±6% at n≈65) — say so in the
-top-level README rather than reporting it as a precise figure.
+DAR is binary per document, so it's noisy at this size (~±8pp at n=39 in `test`; one
+document moves it by 2.6 points) — say so rather than reporting it as a precise figure.

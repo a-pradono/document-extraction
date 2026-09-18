@@ -7,10 +7,12 @@ is the main deliverable: it shows **how** the system fails, not just how often, 
 blocks a regression before it ships.
 
 > **Status of the numbers.** Everything below is built and tested (435 unit tests plus
-> a 7-check offline end-to-end run over real HTTP). **No result in this README comes from
-> a real model run yet**, and the 50 ground-truth labels are not yet hand-verified.
-> Results sections say *pending* and give the exact command that fills them. That's
-> deliberate: a stub-model number presented as a result would contradict the point of
+> a 7-check offline end-to-end run over real HTTP). **Ground truth is fully verified**:
+> 60 of 60 documents checked against their images by a human, a pass that corrected five
+> money-field errors. The **confidence model is fitted on a real run** of the calibration
+> split, and those numbers appear below. **The `test` split has not been run yet**, so
+> the accuracy tables still say *pending* and give the command that fills them. That's
+> deliberate: an unmeasured number presented as a result would contradict the point of
 > the harness.
 
 ---
@@ -141,14 +143,19 @@ system isn't confident in.
 
 ### Ground truth
 
-About 65 documents from three independent sources: two languages, three label schemas
-([`docs/DATASETS.md`](docs/DATASETS.md), [`data/README.md`](data/README.md)).
+**60 documents** from three independent sources: two document types, four languages,
+three label schemas ([`docs/DATASETS.md`](docs/DATASETS.md),
+[`data/README.md`](data/README.md)).
 
 | Source | Docs | Why |
 |---|--:|---|
-| CORD v2 (Indonesian) | 25 | Structured line items; subtotal → total arithmetic |
-| WildReceipt | 25 | Template diversity, photographed in the wild |
-| OCR Receipts, retail (Kaggle) | 15 | Messiest tier. **Pending**: needs a Kaggle token, and subtotal/tax must be hand-labeled |
+| CORD v2 (Indonesian) | 25 | Structured line items; subtotal → total arithmetic. Merchant headers are anonymised by the dataset |
+| WildReceipt (English, Spanish, French, Italian…) | 25 | Template diversity, photographed in the wild |
+| RVL-CDIP-N multipage (invoices) | 10 | The second document type: 1–5 pages, vendor/customer roles. CC BY-NC 4.0 |
+
+A fourth tier — 15 messier phone photos from Kaggle's OCR Receipts set — was planned and
+**not acquired**: it needs a Kaggle token, and the set does the job at 60. Adding it
+would mean hand-labeling subtotal and tax, which that dataset does not annotate.
 
 - **Stratified sampling** by line-item count and merchant. Taking the first N would
   produce an accidentally easy set that flatters every metric.
@@ -168,7 +175,8 @@ About 65 documents from three independent sources: two languages, three label sc
   audit disputes, keyboard verdicts written straight to provenance.
 
 - **Splits** ([`scripts/assign_splits.py`](scripts/assign_splits.py), fixed seed,
-  committed): calibration 18 / test 32 now, 22 / 43 once retail lands. `smoke` is drawn
+  committed): calibration 21 (18 receipts + 3 invoices) / test 39 (32 receipts +
+  7 invoices). `smoke` is drawn
   **from calibration**, so heavy iteration can't overfit the reported numbers. Nothing is
   fitted on `test`. `degraded` tags the worst scans **inside** test, stratified by source
   so the subset measures image quality and not "is this CORD". `synthetic` holds blurred,
@@ -253,10 +261,11 @@ tax ID, and returning them swapped is the failure that matters.
 - **Line items:** rows are aligned first, then each cell is scored; plus a perfect-table
   rate.
 - **By subset:** the same headline metrics and top failure kinds per source (clean CORD,
-  wild photos, retail) and for the degraded tag. A blended number averages away exactly
-  the "messy documents" story.
-- **Document accuracy rate.** Binary per document, so it's noisy: at n=32 one document
-  moves it by 3.1 points, and every comparison says so.
+  wild photos) and for the degraded tag, with invoices reported as their own document
+  type and never pooled in. A blended number averages away exactly the "messy documents"
+  story.
+- **Document accuracy rate.** Binary per document, so it's noisy: at n=39 one document
+  moves it by 2.6 points, and every comparison says so.
 - **Confidence quality:** AUC (does the score rank errors?), ECE (do the numbers mean
   what they say?), a reliability diagram, the risk–coverage curve, and precision on
   kept fields versus all fields. AUC near 0.5 means change the *signals*; good AUC with
@@ -456,8 +465,10 @@ threshold that makes fields abstain.
   given a GPU.
 - **No own scans.** Compensated with three independent sources and a clearly labeled
   synthetic degradation tier, never presented as real-world variation.
-- **n≈65 is small on purpose** (trustworthy beats large), which makes document accuracy
-  noisy. Every comparison states its one-document noise floor.
+- **n=60 is small on purpose** (trustworthy beats large), which makes document accuracy
+  noisy — roughly ±8pp at n=39 in `test`. Every comparison states its one-document noise
+  floor, and the regression gate rests on per-field metrics rather than document accuracy
+  for that reason.
 - **Model A and B are partially correlated** (see Architecture).
 - **Free-tier rate limits** cap throughput at about 10 requests/minute; the image-hash
   cache makes re-scoring after a metrics change cost zero calls.
