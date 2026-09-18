@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import re
+from pathlib import Path
 
 from api.schemas import from_result
 from eval.render_doc import main, render
@@ -162,3 +163,21 @@ class TestRunWiring:
         assert payloads == ["cord_0001", "cord_0002"]
         scorecard = (path.parent / "scorecard.html").read_text(encoding="utf-8")
         assert 'href="documents/cord_0001.html"' in scorecard
+
+
+class TestTheSpecMatchesTheCode:
+    """docs/OUTPUT.md is read as authoritative by a coding agent, so a claim it makes
+    about this repo has to be checkable. The last version asserted a shape (`fields`, in
+    an `api/main.py` that never existed here) that no test could have caught."""
+
+    def test_the_documented_payload_has_exactly_the_keys_the_api_returns(self):
+        from api.schemas import ExtractionOut
+        spec = Path("docs/OUTPUT.md").read_text(encoding="utf-8")
+        block = re.search(r"```json\n(\{.*?\n\})\n```", spec, re.S)
+        assert block, "docs/OUTPUT.md has lost its payload example"
+        assert sorted(json.loads(block.group(1))) == sorted(ExtractionOut.model_fields)
+
+    def test_the_spec_names_files_that_exist(self):
+        spec = Path("docs/OUTPUT.md").read_text(encoding="utf-8")
+        for path in sorted(set(re.findall(r"`((?:api|eval|extractor)/[\w/]+\.py)`", spec))):
+            assert Path(path).exists(), f"docs/OUTPUT.md points at a missing {path}"
