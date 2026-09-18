@@ -8,13 +8,13 @@
   "line_items": [
     {
       "description": "REGULAR",
-      "quantity": "15863"
-    },
-    {
-      "line_total": "3479"
-    },
-    {
+      "quantity": "15.863",
+      "unit_price": "3.479",
       "line_total": "55.19"
+    },
+    {
+      "description": "Ultimate",
+      "line_total": "10.00"
     }
   ]
 }

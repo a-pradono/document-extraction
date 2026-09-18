@@ -3,28 +3,30 @@
   "merchant_address": "Sawmill Rd. Dublin, OH - # 58",
   "date": "2012-07-11",
   "currency": null,
+  "subtotal": "5.00",
+  "discount": "2.00",
   "tax": "0.00",
   "total": "3.00",
   "payment_method": "Credit Cards",
   "line_items": [
     {
+      "description": "CHECKLANE CANDY",
       "quantity": "1",
-      "description": "CHECKLANECANDY",
       "line_total": "0.50"
     },
     {
+      "description": "CHECKLANE CANDY",
       "quantity": "1",
-      "description": "CHECKLANEANDY",
       "line_total": "0.50"
     },
     {
+      "description": "FRUIT SNACKS",
       "quantity": "1",
-      "description": "FRUITSNACKS",
       "line_total": "2.00"
     },
     {
+      "description": "FRUIT SNACKS",
       "quantity": "1",
-      "description": "FRUITSNACKS",
       "line_total": "2.00"
     }
   ]

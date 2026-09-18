@@ -10,34 +10,34 @@
   "payment_method": "Cash",
   "line_items": [
     {
+      "description": "(705) Kopi",
       "quantity": "1",
-      "description": "(705)Kopi",
       "line_total": "1.70"
     },
     {
+      "description": "(074) Wanton Soup Noodle",
       "quantity": "1",
-      "description": "(074)WantonSoupNoodle",
       "line_total": "8.90"
     },
     {
+      "description": "(503) Spy P.Dices Soup Ndl",
       "quantity": "1",
-      "description": "(503)SpyP,DicesSoupNdl",
       "line_total": "7.80"
     },
     {
+      "description": "(043) Pork Chop Bk Rice",
       "quantity": "1",
-      "description": "(043)PorkChopBkRice",
       "line_total": "12.50"
     },
     {
+      "description": "(545) Chicken Flos Fried Ri",
       "quantity": "1",
-      "description": "(545)ChickenFlosFriedRi",
       "line_total": "10.50"
     },
     {
+      "description": "(110) F.Toast Peanut Butter",
       "quantity": "1",
-      "description": "(110)F.ToastPeanutButter",
-      "line_total": "5390"
+      "line_total": "5.90"
     }
   ]
 }

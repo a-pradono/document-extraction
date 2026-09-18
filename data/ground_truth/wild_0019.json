@@ -3,19 +3,20 @@
   "merchant_address": "97 Tanjong Pagar Road",
   "date": "2012-11-15",
   "currency": "SGD",
-  "subtotal": "97.30",
+  "subtotal": "87.30",
+  "service_charge": "8.73",
   "tax": "6.72",
   "total": "102.75",
   "payment_method": null,
   "line_items": [
     {
       "quantity": "1",
-      "description": "AyamPanggang",
+      "description": "Ayam Panggang",
       "line_total": "12.20"
     },
     {
       "quantity": "1",
-      "description": "BeefRendang",
+      "description": "Beef Rendang",
       "line_total": "12.90"
     },
     {
@@ -25,27 +26,27 @@
     },
     {
       "quantity": "1",
-      "description": "FishHead",
+      "description": "Fish Head",
       "line_total": "28.30"
     },
     {
       "quantity": "1",
-      "description": "HoegaardenBeer",
+      "description": "Hoegaarden Beer",
       "line_total": "11.00"
     },
     {
       "quantity": "1",
-      "description": "KuehPieTee",
+      "description": "Kueh Pie Tee",
       "line_total": "7.00"
     },
     {
       "quantity": "1",
-      "description": "NonyaRoll",
+      "description": "Nonya Roll",
       "line_total": "8.00"
     },
     {
       "quantity": "2",
-      "description": "MiscCharges",
+      "description": "Misc Charges",
       "line_total": "4.40"
     }
   ]
