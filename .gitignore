@@ -29,3 +29,6 @@ data/raw/
 # Large raw datasets are not committed; only the curated sample + ground truth
 # under data/ so the eval runs out of the box.
 outputs/dashboard.html
+# Rendered from report.md; regenerate with
+# `python -m eval.render_md report.md -o outputs/report.html`
+outputs/report.html
