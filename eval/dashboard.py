@@ -205,6 +205,33 @@ def _chips(payload: dict) -> str:
     return f"<div class=chips>{''.join(chips)}{detail}</div>"
 
 
+# A document's band is its MEAN per-field confidence: the same number the card's badge
+# shows, so a reviewer filtering on "low" gets exactly the documents whose badge says so.
+CONFIDENCE_BANDS = ((0.80, "high"), (0.50, "medium"), (0.0, "low"))
+
+
+def _confidence_of(payload: dict) -> tuple[Optional[float], str]:
+    scores = [c for c in (payload.get("confidence") or {}).values() if c is not None]
+    if not scores:
+        return None, "none"                    # failed, or no confidence model fitted
+    mean = sum(scores) / len(scores)
+    return mean, next(name for floor, name in CONFIDENCE_BANDS if mean >= floor)
+
+
+def _single_model(payload: dict) -> bool:
+    """True when Model B never ran, so `agreement` is a neutral default, not a measurement.
+
+    A rate-limited second model leaves the card looking normal: three signals still
+    produce a confidence score, and the missing fourth reads as 0.50 (neither agreement
+    nor disagreement). That is exactly the quiet overstatement this page exists to avoid,
+    so such a document is badged and says so in plain words.
+    """
+    if not payload.get("document"):
+        return False
+    stages = (payload.get("usage") or {}).get("stages") or []
+    return bool(stages) and not any(s.get("stage") == "model_b" for s in stages)
+
+
 def _status_of(payload: dict) -> str:
     validation = payload.get("validation") or {}
     if payload.get("status") == "error":
@@ -219,10 +246,13 @@ def card(payload: dict, doc_path: Path) -> str:
     doc_type = payload.get("document_type", "receipt")
     status = _status_of(payload)
     rows = _rows(payload)
-    confs = [r["conf"] for r in rows if r["conf"] is not None]
-    avg = f"avg conf {sum(confs) / len(confs):.2f}" if confs else "no confidence model"
+    mean, band = _confidence_of(payload)
+    avg = "no confidence score" if mean is None else f"avg conf {mean:.2f}"
     uri, pages = thumbnail(doc_path)
 
+    partial = _single_model(payload)
+    partial_badge = ('<span class="badge b-partial" title="Model B did not run">'
+                     "one model only</span>" if partial else "")
     badge = {"clean": '<span class="badge b-ok">all checks passed</span>',
              "abstained": f'<span class="badge b-abs">{len(payload.get("abstained") or [])} abstained</span>',
              "failed": '<span class="badge b-fail">check failed</span>'}[status]
@@ -244,6 +274,10 @@ def card(payload: dict, doc_path: Path) -> str:
     # fact the call never completed.
     problems = [payload["error"]] if payload.get("error") else []
     problems += list(payload.get("warnings") or [])
+    if partial:
+        problems.insert(0, "Read by the vision model alone: the second model did not run, "
+                           "so `agreement` is a neutral 0.50 rather than a measurement and "
+                           "confidence here rests on three signals, not four.")
     problem_html = ("<div class=problems><b>Problem</b>" + "".join(
         f"<span>{html.escape(str(p))}</span>" for p in problems) + "</div>") if problems else ""
 
@@ -258,13 +292,14 @@ def card(payload: dict, doc_path: Path) -> str:
     pages_badge = f'<span class="pill">{pages} pages</span>' if pages > 1 else ""
 
     return f"""
-<article class=card data-type="{doc_type}" data-id="{html.escape(doc_id)}" data-status="{status}">
+<article class=card data-type="{doc_type}" data-id="{html.escape(doc_id)}"
+         data-status="{status}" data-conf="{band}">
   <header>
     <span class=did>{html.escape(doc_id)}</span>
     <span class="pill tp-{doc_type}">{doc_type}</span>{pages_badge}
     <span class=srcname>{html.escape(doc_path.name)}</span>
     <span class=spacer></span>
-    {badge}<span class="badge b-conf">{avg}</span>
+    {partial_badge}{badge}<span class="badge b-conf conf-{band}">{avg}</span>
   </header>
   <div class=split>
     <div class=src><img src="{uri}" alt="source document {html.escape(doc_id)}" loading=lazy></div>
@@ -297,18 +332,19 @@ def page(cards: list[str], meta: dict) -> str:
             (counts["clean_pct"], "all checks passed", "a", True),
             (counts["abstained"], "with abstentions", "w", False),
             (counts["failed"], "failed a check", "b", False),
+            (counts["partial"], "one model only", "w", False),
         ])
     return f"""<!doctype html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Extraction review &mdash; {html.escape(meta['title'])}</title>
+<title>Extraction Review</title>
 <style>{_CSS}</style></head><body>
 <div class=wrap>
   <div class=hero>
     <span class=eyebrow><span class=dot></span>Document intelligence</span>
     <h1>Extraction review</h1>
-    <p class=lede>Source document on the left, structured output on the right &mdash; with
-      per-field confidence, abstentions, and the deterministic arithmetic checks that no
-      model can bluff. {html.escape(meta['subtitle'])}</p>
+    <p class=lede>A document extraction system for receipts, invoices and similar
+      business documents. Source on the left, structured output on the right with
+      per-field confidence and deterministic arithmetic checks.{meta['subtitle']}</p>
     <div class=stats>{stats}</div>
   </div>
 
@@ -336,6 +372,14 @@ def page(cards: list[str], meta: dict) -> str:
         <button data-status=abstained>Abstained<span class=cnt>{counts['abstained']}</span></button>
         <button data-status=failed>Failed check<span class=cnt>{counts['failed']}</span></button>
       </div>
+      <span class=spacer></span>
+      <span class=glabel>Mean confidence</span>
+      <div class=seg>
+        <button data-conf=all>All<span class=cnt>{counts['total']}</span></button>
+        <button data-conf=high>High &#8805; 80<span class=cnt>{counts['high']}</span></button>
+        <button data-conf=medium>Medium 50&ndash;79<span class=cnt>{counts['medium']}</span></button>
+        <button data-conf=low>Low &lt; 50<span class=cnt>{counts['low']}</span></button>
+      </div>
     </div>
   </div>
 
@@ -343,8 +387,17 @@ def page(cards: list[str], meta: dict) -> str:
   <div class="empty hidden" id=empty>No documents match this filter.</div>
 
   <footer>
-    <span>{counts['total']} documents &middot; {meta['model_a']} + {meta['model_b']}
-      &middot; threshold {meta['threshold']}</span>
+    <div class=fcol>
+      <span>{counts['total']} documents &middot; {meta['model_a']} + {meta['model_b']}
+        &middot; threshold {meta['threshold']}</span>
+      <span class=attr>Documents: <b>CORD v2</b> (Park et al., Document Intelligence
+        Workshop @ NeurIPS 2019, CC BY 4.0) &middot; <b>WildReceipt</b> (Sun et al.,
+        arXiv:2103.14470, released with MMOCR, Apache-2.0) &middot;
+        <b>RVL-CDIP-N multipage</b> (Larson et al., NeurIPS 2022 Datasets &amp;
+        Benchmarks, CC BY-NC 4.0 &mdash; non-commercial use only). Invoices are public
+        records obtained through public-records requests; CORD receipts are anonymised
+        by the dataset authors. Shown here for research and evaluation.</span>
+    </div>
     <span class=spacer></span>
     <span>Navigate with <kbd>&larr;</kbd> <kbd>&rarr;</kbd></span>
   </footer>
@@ -355,13 +408,14 @@ def page(cards: list[str], meta: dict) -> str:
 
 _JS = """
 const PAGE=5;
-let fType='all', fStatus='all', page=1;
+let fType='all', fStatus='all', fConf='all', page=1;
 const cards=[...document.querySelectorAll('.card')];
 const grid=document.getElementById('grid');
 const empty=document.getElementById('empty');
 function match(c){
   return (fType==='all'||c.dataset.type===fType) &&
-         (fStatus==='all'||c.dataset.status===fStatus);
+         (fStatus==='all'||c.dataset.status===fStatus) &&
+         (fConf==='all'||c.dataset.conf===fConf);
 }
 function render(){
   const vis=cards.filter(match);
@@ -382,11 +436,15 @@ function render(){
     b.classList.toggle('on',b.dataset.typeFilter===fType));
   document.querySelectorAll('[data-status]').forEach(b=>
     b.classList.toggle('on',b.dataset.status===fStatus));
+  document.querySelectorAll('[data-conf]').forEach(b=>
+    b.classList.toggle('on',b.dataset.conf===fConf));
 }
 document.querySelectorAll('[data-type-filter]').forEach(b=>
   b.onclick=()=>{fType=b.dataset.typeFilter;page=1;render();grid.scrollIntoView({block:'start'})});
 document.querySelectorAll('[data-status]').forEach(b=>
   b.onclick=()=>{fStatus=b.dataset.status;page=1;render();grid.scrollIntoView({block:'start'})});
+document.querySelectorAll('.seg [data-conf]').forEach(b=>
+  b.onclick=()=>{fConf=b.dataset.conf;page=1;render();grid.scrollIntoView({block:'start'})});
 document.getElementById('prev').onclick=()=>{if(page>1){page--;render();grid.scrollIntoView({block:'start'})}};
 document.getElementById('next').onclick=()=>{page++;render();grid.scrollIntoView({block:'start'})};
 document.addEventListener('keydown',e=>{
@@ -440,6 +498,8 @@ def build(doc_ids: list[str], *, source: str = "pipeline", use_cache: bool = Tru
 
     statuses = [_status_of(p) for p in payloads]
     types = [p.get("document_type") for p in payloads]
+    bands = [_confidence_of(p)[1] for p in payloads]
+    partials = sum(1 for p in payloads if _single_model(p))
     counts = {
         "total": len(payloads),
         "receipt": types.count("receipt"),
@@ -447,6 +507,10 @@ def build(doc_ids: list[str], *, source: str = "pipeline", use_cache: bool = Tru
         "clean": statuses.count("clean"),
         "abstained": statuses.count("abstained"),
         "failed": statuses.count("failed"),
+        "high": bands.count("high"),
+        "medium": bands.count("medium"),
+        "low": bands.count("low"),
+        "partial": partials,
     }
     counts["clean_pct"] = round(100 * counts["clean"] / max(1, counts["total"]))
     import os
@@ -456,8 +520,11 @@ def build(doc_ids: list[str], *, source: str = "pipeline", use_cache: bool = Tru
         "model_a": os.environ.get("VLM_A_MODEL", "model A"),
         "model_b": os.environ.get("LLM_B_MODEL", "model B"),
         "threshold": f"{threshold:.3f}" if fitted else f"{threshold:.3f} (unfitted)",
-        "subtitle": ("Confidence comes from a model fitted on the calibration split."
-                     if fitted else "No fitted confidence model: scores are fallback weights."),
+        # Only said when it changes how the page should be read: an unfitted model
+        # means the confidence numbers are fallback weights, not calibrated scores.
+        "subtitle": ("" if fitted else
+                     " <b class=warn-note>No fitted confidence model: these scores are "
+                     "fallback weights, not calibrated.</b>"),
     }
     return page(cards, meta)
 
@@ -465,7 +532,8 @@ def build(doc_ids: list[str], *, source: str = "pipeline", use_cache: bool = Tru
 def main(argv: Optional[list[str]] = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--set", dest="set_name", default="calibration",
-                    help="a data/sets manifest name (default: calibration)")
+                    help="a data/sets manifest name, or 'all' for every labelled "
+                         "document (default: calibration)")
     ap.add_argument("--ids", nargs="*", help="explicit document ids instead of a set")
     ap.add_argument("--source", default="pipeline", choices=["pipeline", "cascade", "vlm-only"])
     ap.add_argument("--out", type=Path, default=OUT_DEFAULT)
@@ -473,7 +541,10 @@ def main(argv: Optional[list[str]] = None) -> None:
     ap.add_argument("--open", action="store_true", help="open it when done")
     args = ap.parse_args(argv)
 
-    ids = args.ids or eval_run._doc_ids(args.set_name)
+    # "all" is not a manifest: it means every document that has ground truth, which is
+    # what _doc_ids returns for no set at all.
+    set_name = None if args.set_name == "all" else args.set_name
+    ids = args.ids or eval_run._doc_ids(set_name)
     html_text = build(ids, source=args.source, use_cache=not args.no_cache,
                       title=args.set_name if not args.ids else "selected documents")
     args.out.parent.mkdir(parents=True, exist_ok=True)

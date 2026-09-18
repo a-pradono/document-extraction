@@ -200,3 +200,74 @@ def _fields(p) -> str:
         f'<td class=fv>{r["html"]}</td><td class=fc></td>'
         f'<td class=fs>{"" if r["status"] == "ok" else r["status"]}</td></tr>'
         for r in dashboard._rows(p))
+
+
+class TestConfidenceBands:
+    """High >= 0.80, medium 0.50-0.79, low < 0.50, on the mean per-field score."""
+
+    def test_the_boundaries_fall_the_way_the_labels_read(self):
+        assert dashboard._confidence_of({"confidence": {"a": 0.80}})[1] == "high"
+        assert dashboard._confidence_of({"confidence": {"a": 0.799}})[1] == "medium"
+        assert dashboard._confidence_of({"confidence": {"a": 0.50}})[1] == "medium"
+        assert dashboard._confidence_of({"confidence": {"a": 0.499}})[1] == "low"
+
+    def test_the_band_uses_the_mean_the_badge_shows(self):
+        mean, band = dashboard._confidence_of({"confidence": {"a": 0.9, "b": 0.5}})
+        assert mean == pytest.approx(0.7) and band == "medium"
+
+    def test_a_document_with_no_scores_has_no_band(self):
+        """A failed extraction must not land in 'low' - it was never scored at all."""
+        assert dashboard._confidence_of({"status": "error"}) == (None, "none")
+
+    def test_the_card_carries_the_band_and_the_toolbar_offers_it(self, tmp_path, monkeypatch):
+        docs = tmp_path / "docs"
+        docs.mkdir()
+        Image.new("RGB", (40, 60)).save(docs / "cord_0001.png")
+        monkeypatch.setattr(dashboard.eval_run, "DOCS_DIR", docs)
+        monkeypatch.setattr(dashboard.eval_run, "_load_model", lambda: (None, True))
+        monkeypatch.setattr(dashboard.eval_run, "extract_one", lambda *a, **k:
+                            dashboard.eval_run.Extraction(
+                                document=Receipt(**CLEAN), latency_s=0.1,
+                                confidence={"total": 0.95, "tax": 0.91}))
+        html = dashboard.build(["cord_0001"], title="t")
+        assert 'data-conf="high"' in html
+        assert "data-conf=low" in html and "data-conf=medium" in html
+        assert "conf-high" in html                       # badge coloured by band
+
+
+class TestSingleModelDocuments:
+    """A rate-limited Model B leaves a card that looks complete: three signals still
+    score, and the missing `agreement` reads as a neutral 0.50. It has to be labelled."""
+
+    def _payload(self, stages):
+        from extractor.cost import StageUsage
+        result = PipelineResult(document=Receipt(**CLEAN), document_b=None,
+                                transcription="T", confidence={"total": 0.9},
+                                stages=[StageUsage(stage=s, model="m") for s in stages])
+        return json.loads(from_result("cord_0001", result, 0.5).model_dump_json())
+
+    def test_both_models_is_not_flagged(self):
+        assert dashboard._single_model(self._payload(["model_a", "model_b"])) is False
+
+    def test_model_a_alone_is_flagged(self):
+        assert dashboard._single_model(self._payload(["model_a"])) is True
+
+    def test_a_document_that_never_ran_is_not_flagged_as_single_model(self):
+        """It failed outright; calling that 'one model' would misdescribe it."""
+        assert dashboard._single_model({"status": "error", "document": None}) is False
+
+    def test_the_card_says_so_in_words(self, tmp_path, monkeypatch):
+        from extractor.cost import StageUsage
+
+        docs = tmp_path / "docs"
+        docs.mkdir()
+        Image.new("RGB", (40, 60)).save(docs / "cord_0001.png")
+        monkeypatch.setattr(dashboard.eval_run, "DOCS_DIR", docs)
+        monkeypatch.setattr(dashboard.eval_run, "_load_model", lambda: (None, True))
+        monkeypatch.setattr(dashboard.eval_run, "extract_one", lambda *a, **k:
+                            dashboard.eval_run.Extraction(
+                                document=Receipt(**CLEAN), latency_s=0.1,
+                                confidence={"total": 0.9},
+                                stages=[StageUsage(stage="model_a", model="vlm")]))
+        html = dashboard.build(["cord_0001"], title="t")
+        assert "one model only" in html and "rests on three signals" in html
