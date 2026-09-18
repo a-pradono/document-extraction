@@ -50,9 +50,11 @@ from extractor.confidence import (
 from extractor.cascade import extract_cascade
 from extractor.cost import StageUsage, summarize as summarize_cost
 from extractor.extract import extract as extract_vlm_only
-from extractor.pipeline import extract_with_confidence
+from extractor.pipeline import PipelineResult, extract_with_confidence
 from extractor.schema import document_type_of, model_for
+from api.schemas import from_result
 from eval import fingerprint, metrics, taxonomy
+from eval.render_doc import write_card
 from eval.scorecard import write_scorecard
 
 load_dotenv()
@@ -73,6 +75,7 @@ class Extraction:
 
     document: BaseModel
     latency_s: float
+    transcription: str = ""
     confidence: dict[str, float] = dc_field(default_factory=dict)
     signals: dict[str, FieldSignals] = dc_field(default_factory=dict)
     abstained: list[str] = dc_field(default_factory=list)
@@ -171,6 +174,8 @@ def _extract_via_api(doc_path: Path, doc_type: str = "receipt") -> Extraction:
         latency_s=float(usage.get("latency_s", 0.0)),
         confidence=body.get("confidence") or {},
         abstained=body.get("abstained") or [],
+        signals={f: FieldSignals(**s) for f, s in (body.get("signals") or {}).items()},
+        transcription=body.get("transcription") or "",
         stages=stages,
         cost_usd=float(usage.get("cost_usd", 0.0)),
         errors=body.get("warnings") or [],
@@ -199,6 +204,7 @@ def extract_one(
     return Extraction(
         document=result.document,
         latency_s=result.latency_s,
+        transcription=result.transcription,
         confidence=result.confidence,
         signals=result.signals,
         abstained=result.abstained,
@@ -238,6 +244,7 @@ def run(set_name: str | None, source: str, version: str, use_cache: bool = True)
               file=sys.stderr)
 
     results: list[metrics.DocResult] = []
+    cards: list[dict] = []
     failures: list[dict] = []
     stage_rows: list[list[StageUsage]] = []
     cascades: dict[str, dict] = {}
@@ -258,6 +265,12 @@ def run(set_name: str | None, source: str, version: str, use_cache: bool = True)
         doc = metrics.compare_document(
             doc_id, ext.document, gt, latency_s=ext.latency_s, confidence=ext.confidence
         )
+        cards.append(json.loads(from_result(doc_id, PipelineResult(
+            document=ext.document, document_b=None, transcription=ext.transcription,
+            confidence=ext.confidence, abstained=ext.abstained, signals=ext.signals,
+            latency_s=ext.latency_s, tokens=ext.tokens, stages=ext.stages,
+            cost_usd=ext.cost_usd, errors=ext.errors, cascade=ext.cascade,
+        ), threshold, doc_type).model_dump_json()))
         doc.tokens = ext.tokens or None
         doc.cost_usd = ext.cost_usd or None
         results.append(doc)
@@ -312,7 +325,10 @@ def run(set_name: str | None, source: str, version: str, use_cache: bool = True)
         ids, _find_gt, _find_doc, source=source, threshold=threshold,
         confidence_model_path=MODEL_PATH, server=server or None)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S")
-    path = write_scorecard(OUT_ROOT / f"{stamp}_{version}", scorecard, results, meta)
+    out_dir = OUT_ROOT / f"{stamp}_{version}"
+    for payload in cards:                      # one human-readable card per document
+        write_card(payload, out_dir / "documents")
+    path = write_scorecard(out_dir, scorecard, results, meta)
 
     print(f"\nDocument accuracy: {scorecard['document_accuracy_rate']:.1%} | "
           f"micro F1: {scorecard['micro_f1']:.3f} | line-item F1: {scorecard['line_item_f1']:.3f}")
@@ -478,7 +494,7 @@ def calibrate(target_precision: float, use_cache: bool = True) -> Path:
     }
     OUT_ROOT.mkdir(parents=True, exist_ok=True)
     out = OUT_ROOT / "calibration.json"
-    out.write_text(json.dumps(report, indent=2))
+    out.write_text(json.dumps(report, indent=2), encoding="utf-8")
 
     print("\nFitted weights per field group:")
     for group, info in fit_report.items():
