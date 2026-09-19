@@ -1,4 +1,4 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Receipt &amp; Invoice Extraction — End-to-End Report</title><style>:root{
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Document Extraction — End-to-End Report</title><style>:root{
   /* Light-first, after datasaur.ai: white ground, near-black type (#111111 is the
      colour of their logo), one blue accent, semantic colours kept separate from it. */
   --bg:#ffffff; --bg2:#f6f7f9; --panel:#ffffff; --panel2:#f0f2f5;
@@ -219,7 +219,7 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);
 .topbar .name{font-weight:700;font-size:.9rem}
 .topbar a{font-size:.82rem;color:var(--accent);text-decoration:none;font-weight:600}
 .topbar a:hover{text-decoration:underline}
-</style></head><body><div class=topbar><span class=name>Receipt &amp; Invoice Extraction — End-to-End Report</span><span class=spacer></span><a href="dashboard.html">&larr; Dashboard</a></div><article class=prose><h1 id="receipt-invoice-extraction-end-to-end-report">Receipt &amp; Invoice Extraction — End-to-End Report</h1>
+</style></head><body><div class=topbar><span class=name>Document Extraction — End-to-End Report</span><span class=spacer></span><a href="dashboard.html">&larr; Dashboard</a></div><article class=prose><h1 id="document-extraction-end-to-end-report">Document Extraction — End-to-End Report</h1>
 <blockquote>
 <p><strong>Status, 18 September 2026.</strong> The system is built and tested (435 unit tests, offline
 end-to-end 7/7). <strong>Ground truth is fully verified — 60 of 60 documents checked against
@@ -248,9 +248,10 @@ be reasoned about. Three properties drove every decision:</p>
 <li><strong>It must abstain rather than guess.</strong> Per-field confidence is computed and fields
    below a fitted threshold are withheld at the API boundary rather than asserted.</li>
 <li><strong>Evaluation is the primary deliverable.</strong> The harness was built before any prompt
-   tuning, so every change is judged by re-running a scorecard. Section 4.3 shows this
-   paying off: the harness caught three defects in its own ground truth and one in
-   itself, each of which would have produced confident, wrong numbers.</li>
+   tuning, so every change is judged by re-running a scorecard. It paid off twice over:
+   §4.3 lists four defects it caught in its own ground truth and in itself, and §4.5
+   records the one it caught in the system — a 7.65% hallucination rate traced to a
+   single inferred field, fixed, and re-measured at 0.63%.</li>
 </ol>
 <h3 id="scope-and-honest-limitations">Scope and honest limitations</h3>
 <table>
@@ -287,7 +288,7 @@ be reasoned about. Three properties drove every decision:</p>
 </tr>
 <tr>
 <td>Reported accuracy</td>
-<td><strong>None yet</strong> — the <code>test</code> split has not been run</td>
+<td>Micro F1 <strong>0.918</strong>, hallucination <strong>0.63%</strong>, abstention keeping <strong>87.5%</strong> of fields at <strong>95.5%</strong> precision (§4.5)</td>
 </tr>
 </tbody>
 </table>

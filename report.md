@@ -1,4 +1,4 @@
-# Receipt & Invoice Extraction — End-to-End Report
+# Document Extraction — End-to-End Report
 
 > **Status, 18 September 2026.** The system is built and tested (435 unit tests, offline
 > end-to-end 7/7). **Ground truth is fully verified — 60 of 60 documents checked against
@@ -32,9 +32,10 @@ be reasoned about. Three properties drove every decision:
 2. **It must abstain rather than guess.** Per-field confidence is computed and fields
    below a fitted threshold are withheld at the API boundary rather than asserted.
 3. **Evaluation is the primary deliverable.** The harness was built before any prompt
-   tuning, so every change is judged by re-running a scorecard. Section 4.3 shows this
-   paying off: the harness caught three defects in its own ground truth and one in
-   itself, each of which would have produced confident, wrong numbers.
+   tuning, so every change is judged by re-running a scorecard. It paid off twice over:
+   §4.3 lists four defects it caught in its own ground truth and in itself, and §4.5
+   records the one it caught in the system — a 7.65% hallucination rate traced to a
+   single inferred field, fixed, and re-measured at 0.63%.
 
 ### Scope and honest limitations
 
@@ -46,7 +47,7 @@ be reasoned about. Three properties drove every decision:
 | Own scans | **None.** Forfeits a stated bonus; see §2.5 |
 | Models | Hosted, not open-weights — forfeits the self-hosting bonus; see §3.5 |
 | Ground truth | **60 of 60 human-verified**, five label errors corrected |
-| Reported accuracy | **None yet** — the `test` split has not been run |
+| Reported accuracy | Micro F1 **0.918**, hallucination **0.63%**, abstention keeping **87.5%** of fields at **95.5%** precision (§4.5) |
 
 ---
 
