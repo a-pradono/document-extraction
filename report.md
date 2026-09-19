@@ -223,6 +223,38 @@ transcription  ──► Model B (LLM)  ──► document  (independent re-extr
 | Model B — LLM reasoner | `openai/gpt-oss-120b` (Groq) | Cross-section reasoning and normalisation, text-only and cheap. Open-weights, and a **different family from Model A on purpose** |
 | Cascade first pass | `gemini-3.5-flash-lite` | Cheap read; escalates to the full pipeline on doubt (§4.5) |
 
+#### Why this architecture, and not the three alternatives
+
+| Architecture | Verdict |
+|---|---|
+| **LLM alone** | Impossible. The input is an image; a text model cannot read it without something converting pixels to text first. This is not a trade-off, it is a missing step. |
+| **OCR → LLM** | Built and abandoned. A classical OCR pass flattens the page into a string, which destroys the one cue that answers "which of these five numbers is the total": position. Column alignment, the totals block sitting below a rule, an add-on line indented under its item — all gone before the LLM sees anything. It also puts an irreversible error stage first: a digit misread by OCR cannot be recovered downstream, and the LLM will confidently reason over it. On the CPU-only target machine PaddleOCR was additionally too slow to keep in the loop. `extractor/ocr.py` remains in the tree as the record of that path. |
+| **VLM alone** | **Genuinely competitive, and better on two axes.** Measured on the same 39 documents (§4.8): identical micro F1 (0.918), identical hallucination rate, 18.7 pp *better* document accuracy, at half the cost and 2.5× lower latency. If the requirement were extraction accuracy alone, this is the architecture the data would choose. |
+| **VLM + LLM** (chosen) | Costs 2.1× for **no accuracy gain**. What it buys is confidence: the second model's independent re-read produces the `agreement` signal, which carries the largest fitted weight for strings (+1.50) and dates (+1.10) — the fields where no arithmetic applies and grounding is weak, because a transcription contains the text either way. |
+
+**The second model is a confidence mechanism, not an accuracy mechanism**, and the
+ablation puts a number on it (`python -m eval.ablation`, cached, no API calls):
+
+| Confidence model | AUC | ECE | Keeps, at 95% precision |
+|---|--:|--:|--:|
+| Four signals (VLM + LLM) | **0.908** | 0.032 | **86.4%** |
+| Three signals (VLM alone, `agreement` neutral) | 0.852 | 0.046 | 75.8% |
+
+Losing the second model costs **10.6 points of coverage at the same precision target** —
+one field in ten that the system could have asserted now goes to a human instead. That is
+the entire return, and whether it is worth 2.1× cost is a deployment decision rather than
+a technical one:
+
+- **Abstention matters** (fields feed a ledger, a human reviews what is withheld): the
+  second model pays for itself by cutting review volume by a tenth at equal precision.
+- **Abstention does not matter** (a human checks everything anyway, or nothing): use the
+  VLM alone. It is cheaper, faster, and better per document.
+
+This report recommends the two-model path because the brief's requirement is a system
+that *knows when it is unsure*. Under a different requirement the honest recommendation
+would be different, and the harness is what makes that statement testable rather than
+rhetorical.
+
 **Different families, deliberately.** Sibling models fail identically on the same
 smudged digit, which would inflate the agreement signal exactly where it must be honest.
 
@@ -633,10 +665,10 @@ Two facts explain it, and they matter more than the headline:
    the 3.1 pp one-document noise floor.
 
 **What this justifies and what it does not.** It justifies the second model *as a
-confidence signal*: without `agreement` the confidence model falls back to three signals,
-and `grounded` alone cannot cover fields the transcription does not constrain. It does
-**not** justify the second model as an accuracy mechanism, and the report should not
-claim it does.
+confidence signal*, and the ablation in §3.1 measures that: neutralising `agreement`
+drops AUC from 0.908 to 0.852 and coverage at the 95% precision target from 86.4% to
+75.8% — 10.6 points of fields that would otherwise need a human. It does **not** justify
+the second model as an accuracy mechanism, and the report does not claim it does.
 
 **The experiment this points at**, not run: split the VLM call so that fields are
 extracted by a fields-only prompt (the baseline's, which scores better per document) and
