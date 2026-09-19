@@ -35,6 +35,20 @@ def _load_provenance() -> dict:
     return json.loads(PROVENANCE.read_text(encoding="utf-8")) if PROVENANCE.exists() else {}
 
 
+def _record(doc_id: str, changes: dict) -> dict:
+    """Merge ONE document's verdict into provenance, re-reading first.
+
+    A long-lived pass must never write back the snapshot it loaded at startup. An
+    interactive session left open for hours did exactly that and reverted everything
+    saved meanwhile: 36 verification flags, a settled decision note on inv_0006 and a
+    reviewer note on cord_0015, none of which that session had touched.
+    """
+    prov = _load_provenance()
+    prov.setdefault(doc_id, {}).update(changes)
+    _save_provenance(prov)
+    return prov
+
+
 def _save_provenance(data: dict) -> None:
     PROVENANCE.write_text(
         json.dumps(dict(sorted(data.items())), indent=2, ensure_ascii=False) + "\n",
@@ -175,11 +189,8 @@ def interactive(ids: list[str]) -> None:
             break
         if answer == "s":
             continue
-        entry["verified"] = answer == "y"
         note = input("note (optional): ").strip()
-        entry["verified_note"] = note or None
-        _save_provenance(prov)
-    _save_provenance(prov)
+        prov = _record(doc_id, {"verified": answer == "y", "verified_note": note or None})
 
 
 def status() -> None:

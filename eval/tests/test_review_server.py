@@ -137,3 +137,36 @@ class TestImages:
     def test_a_missing_file_is_a_404_not_a_crash(self, app):
         client, _ = app
         assert client.get("/api/image/nope_0001").status_code == 404
+
+
+class TestVerdictsDoNotStompOtherDocuments:
+    """A pass left open for hours wrote back the snapshot it loaded at startup and
+    reverted everything saved meanwhile - 36 verification flags and two notes that the
+    session had never touched. A verdict must re-read and merge one entry."""
+
+    def test_a_verdict_preserves_changes_made_elsewhere(self, app):
+        client, gt = app
+        path = gt / "_provenance.json"
+
+        # someone else verifies cord_0001 and annotates it while this client is idle
+        prov = json.loads(path.read_text(encoding="utf-8"))
+        prov["cord_0001"].update(verified=True, verified_note="checked by someone else")
+        path.write_text(json.dumps(prov), encoding="utf-8")
+
+        client.post("/api/verdict", json={"doc_id": "wild_0019", "verified": True})
+
+        after = json.loads(path.read_text(encoding="utf-8"))
+        assert after["cord_0001"]["verified"] is True
+        assert after["cord_0001"]["verified_note"] == "checked by someone else"
+        assert after["wild_0019"]["verified"] is True
+
+    def test_a_verdict_preserves_notes_on_the_same_document(self, app):
+        client, gt = app
+        path = gt / "_provenance.json"
+        prov = json.loads(path.read_text(encoding="utf-8"))
+        prov["wild_0019"]["label_notes"] = "a decision recorded later"
+        path.write_text(json.dumps(prov), encoding="utf-8")
+
+        client.post("/api/verdict", json={"doc_id": "wild_0019", "verified": True})
+        after = json.loads(path.read_text(encoding="utf-8"))
+        assert after["wild_0019"]["label_notes"] == "a decision recorded later"

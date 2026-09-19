@@ -42,7 +42,7 @@ from pydantic import BaseModel
 
 from audit_gt import audit_all
 from gt_common import DOCS_DIR, GT_DIR
-from verify_gt import _load_provenance, _notes, _save_provenance, review_order
+from verify_gt import _load_provenance, _notes, _record, review_order
 
 HEADER_FIELDS = ("merchant_name", "merchant_address", "date", "currency", "payment_method",
                  "invoice_number", "purchase_order", "issue_date", "due_date")
@@ -162,13 +162,12 @@ def build_app(only_unverified: bool = True) -> FastAPI:
 
     @app.post("/api/verdict")
     def api_verdict(verdict: Verdict) -> JSONResponse:
-        prov = _load_provenance()
-        if verdict.doc_id not in prov:
+        if verdict.doc_id not in _load_provenance():
             raise HTTPException(404, f"unknown document {verdict.doc_id}")
-        entry = prov[verdict.doc_id]
-        entry["verified"] = verdict.verified
-        entry["verified_note"] = verdict.note or None
-        _save_provenance(prov)
+        # Re-read and merge one entry: never write back a snapshot, so a page left open
+        # cannot revert verdicts or notes saved elsewhere in the meantime.
+        prov = _record(verdict.doc_id,
+                       {"verified": verdict.verified, "verified_note": verdict.note or None})
         done = sum(1 for v in prov.values() if v.get("verified"))
         return JSONResponse({"ok": True, "verified": done, "total": len(prov)})
 
