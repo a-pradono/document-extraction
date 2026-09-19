@@ -228,7 +228,7 @@ transcription  ──► Model B (LLM)  ──► document  (independent re-extr
 | Architecture | Verdict |
 |---|---|
 | **LLM alone** | Impossible. The input is an image; a text model cannot read it without something converting pixels to text first. This is not a trade-off, it is a missing step. |
-| **OCR → LLM** | Built and abandoned. A classical OCR pass flattens the page into a string, which destroys the one cue that answers "which of these five numbers is the total": position. Column alignment, the totals block sitting below a rule, an add-on line indented under its item — all gone before the LLM sees anything. It also puts an irreversible error stage first: a digit misread by OCR cannot be recovered downstream, and the LLM will confidently reason over it. On the CPU-only target machine PaddleOCR was additionally too slow to keep in the loop. `extractor/ocr.py` remains in the tree as the record of that path. |
+| **OCR → LLM** | A classical OCR pass flattens the page into a string, which destroys the cue that answers "which of these five numbers is the total": position. Column alignment, the totals block below a rule, an add-on line indented under its item — all gone before the LLM sees anything. It also puts an irreversible error stage first: a digit OCR misreads cannot be recovered downstream, and the LLM reasons confidently over it. On a CPU-only machine a local OCR engine is also too slow to keep in an eval loop. |
 | **VLM alone** | **Genuinely competitive, and better on two axes.** Measured on the same 39 documents (§4.8): identical micro F1 (0.918), identical hallucination rate, 18.7 pp *better* document accuracy, at half the cost and 2.5× lower latency. If the requirement were extraction accuracy alone, this is the architecture the data would choose. |
 | **VLM + LLM** (chosen) | Costs 2.1× for **no accuracy gain**. What it buys is confidence: the second model's independent re-read produces the `agreement` signal, which carries the largest fitted weight for strings (+1.50) and dates (+1.10) — the fields where no arithmetic applies and grounding is weak, because a transcription contains the text either way. |
 
@@ -259,8 +259,8 @@ rhetorical.
 smudged digit, which would inflate the agreement signal exactly where it must be honest.
 
 **The transcription replaces a separate OCR stage** and serves as the groundedness
-source, so the anti-hallucination signal survives without a local OCR dependency. A
-PaddleOCR path was built and abandoned: too slow on a CPU-only machine.
+source, so the anti-hallucination signal exists without a local OCR dependency and
+without a second vision call.
 
 **Multi-page** documents are rendered page by page and sent in **one** call, so the
 model sees the whole document; `MAX_PAGES` (5) refuses anything longer rather than

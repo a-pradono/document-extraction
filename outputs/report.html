@@ -574,7 +574,7 @@ transcription  ──► Model B (LLM)  ──► document  (independent re-extr
 </tr>
 <tr>
 <td><strong>OCR → LLM</strong></td>
-<td>Built and abandoned. A classical OCR pass flattens the page into a string, which destroys the one cue that answers "which of these five numbers is the total": position. Column alignment, the totals block sitting below a rule, an add-on line indented under its item — all gone before the LLM sees anything. It also puts an irreversible error stage first: a digit misread by OCR cannot be recovered downstream, and the LLM will confidently reason over it. On the CPU-only target machine PaddleOCR was additionally too slow to keep in the loop. <code>extractor/ocr.py</code> remains in the tree as the record of that path.</td>
+<td>A classical OCR pass flattens the page into a string, which destroys the cue that answers "which of these five numbers is the total": position. Column alignment, the totals block below a rule, an add-on line indented under its item — all gone before the LLM sees anything. It also puts an irreversible error stage first: a digit OCR misreads cannot be recovered downstream, and the LLM reasons confidently over it. On a CPU-only machine a local OCR engine is also too slow to keep in an eval loop.</td>
 </tr>
 <tr>
 <td><strong>VLM alone</strong></td>
@@ -629,8 +629,8 @@ rhetorical.</p>
 <p><strong>Different families, deliberately.</strong> Sibling models fail identically on the same
 smudged digit, which would inflate the agreement signal exactly where it must be honest.</p>
 <p><strong>The transcription replaces a separate OCR stage</strong> and serves as the groundedness
-source, so the anti-hallucination signal survives without a local OCR dependency. A
-PaddleOCR path was built and abandoned: too slow on a CPU-only machine.</p>
+source, so the anti-hallucination signal exists without a local OCR dependency and
+without a second vision call.</p>
 <p><strong>Multi-page</strong> documents are rendered page by page and sent in <strong>one</strong> call, so the
 model sees the whole document; <code>MAX_PAGES</code> (5) refuses anything longer rather than
 silently reading part of it.</p>

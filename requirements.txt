@@ -3,10 +3,6 @@ openai>=1.30
 python-dotenv>=1.0
 pillow>=10.0
 pypdfium2>=4.30   # PDF rendering; self-contained wheel, no poppler binary needed
-# --- abandoned local OCR path (extractor/ocr.py, reference only; too slow on CPU).
-#     Grounding no longer depends on it (extractor/grounding.py). ---
-# paddleocr>=2.9
-# paddlepaddle>=2.6
 # --- dataset prep only (scripts/), not needed to run the extractor or the eval ---
 # datasets>=2.19   # CORD download in fetch_datasets.sh
 # --- added in later phases ---

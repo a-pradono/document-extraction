@@ -91,8 +91,7 @@ pages ──► Model A: VLM (Gemini 3.6 Flash) ──► transcription + fields
 layout problem. Line items sit in columns, and which of five numbers is the total is
 decided by position. Flat OCR text throws that away. The VLM also returns a
 transcription **in the same call**, which then serves as the grounding source without a
-second vision call or a slow local OCR engine. (PaddleOCR was tried and dropped: too slow
-on CPU.)
+second vision call and without a local OCR engine, which is too slow on CPU anyway.
 
 **Why a second model, from a different family.** Model B re-extracts from A's
 transcription and does what VLMs are weakest at: cross-section reasoning and arithmetic.

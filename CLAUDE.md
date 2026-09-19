@@ -50,7 +50,7 @@ transcription  -> Model B (LLM)  -> fields (independent re-extraction)
   transcript would double vision-token cost for no accuracy gain.
 - **The transcription replaces a separate OCR stage.** It is the groundedness source,
   so we keep the anti-hallucination signal without a slow local OCR dependency.
-  (PaddleOCR was dropped: too slow on CPU. `extractor/ocr.py` is dead reference code;
+  (no local OCR: too slow on CPU.
   groundedness lives in `extractor/grounding.py`.)
 - **Model B = text LLM reasoner.** Does what a VLM is weakest at: cross-section
   reasoning and arithmetic reconciliation. Cheap, text-only. MUST be a different
@@ -121,12 +121,10 @@ Built and tested (435/435 pytest passing; `python -m agent.offline_e2e` 7/7):
 - Phase 4: `extractor/pipeline.py` (Model A + Model B + signal assembly),
   `extractor/confidence.py` (four signals, fitted per-group logistic calibration,
   risk-coverage curve, `pick_threshold`), `eval/tests/test_confidence.py`.
-- `extractor/ocr.py` is the abandoned PaddleOCR path, kept for reference only.
-- **Grounding fixed (was anti-informative).** The old `ocr.is_grounded()` was a raw
-  substring check on `str(parsed_value)`, so every correct CORD amount (`53280` vs
-  printed `53.280`), every non-ISO date and every symbol-printed currency scored as
-  ungrounded, while an invented `5` grounded inside `53.280`. Replaced by type-aware,
-  whole-token matching in `extractor/grounding.py` (`eval/tests/test_grounding.py`).
+- **Grounding is type-aware, whole-token matching** (`extractor/grounding.py`,
+  `eval/tests/test_grounding.py`): a raw substring check scores a correct CORD amount
+  (`53280` against a printed `53.280`) as ungrounded while an invented `5` grounds inside
+  `53.280`, which makes the signal worse than useless.
   Any confidence numbers produced before this fix are invalid.
 - Phase 4 wiring: `eval/run.py` now runs the pipeline by default, passes per-field
   `confidence` into `compare_document`, captures per-doc errors (a failed document is
@@ -265,7 +263,7 @@ Built and tested (435/435 pytest passing; `python -m agent.offline_e2e` 7/7):
     labels it found: CORD service charge/discount dropped (schema gained `service_charge`
     and `discount`; the reconciliation rule changed accordingly); WildReceipt `Tips_value`
     unmapped; tilted-photo row pairing off by one (now an order-preserving DP,
-    `align_column`; a deskew attempt was abandoned because boxes are axis-aligned); cash-
+    `align_column`, since boxes are axis-aligned); cash-
     rounded totals (exact rounding rule, not a looser tolerance). Flags 71 -> 54, docs
     flagged 31 -> 21, `total` flags 15 -> 3. Also surfaced a WildReceipt annotation error
     (wild_0018 `5390` for 5.90), to fix during verification.
@@ -326,11 +324,11 @@ unexamined confidence number.
 ## Datasets (Phase 3 prerequisite)
 
 See **`docs/DATASETS.md`** for download URLs, converters, and split assignment. Summary:
-~65 hand-verified docs from three sources — CORD via HF `naver-clova-ix/cord-v2` (25),
-WildReceipt via `https://download.openmmlab.com/mmocr/data/wildreceipt.tar` (25), and
-Kaggle `trainingdatapro/ocr-receipts-text-detection` (15, needs an API token, so
-manual). Splits: calibration 22 / test 43, with smoke (12) drawn FROM calibration so
-iterating never overfits the reported numbers. Nothing is fitted on `test`.
+60 human-verified documents from three sources — CORD via HF `naver-clova-ix/cord-v2`
+(25), WildReceipt via `https://download.openmmlab.com/mmocr/data/wildreceipt.tar` (25),
+and RVL-CDIP-N multipage invoices via HF `jordyvl/rvl_cdip_n_mp` (10). Splits:
+calibration 21 / test 39, with smoke (12) drawn FROM calibration so iterating never
+overfits the reported numbers. Nothing is fitted on `test`.
 
 Discard bounding boxes — they exist for layout-model training; our VLM reads the raw
 image and the metrics score normalized values. Boxes are used transiently in the
