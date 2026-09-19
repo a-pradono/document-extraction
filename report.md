@@ -339,15 +339,13 @@ a config change given a GPU.
 **Caching by input + model + prompt hash** keeps API calls to one per document across
 repeated eval runs. Re-running the harness after a metrics change costs zero calls.
 
-**Measured free-tier limits** (observation, not documentation). Google's free tier
-allows **20 requests per model per day** — not the 250 its docs suggested — which stopped
-a calibration run at 8 of 18 documents; billing was enabled to lift it. OpenRouter's free
-tier allows **50 requests per day account-wide**, which cannot cover a single 39-document
-test run, so Model B moved to **Groq**: 1000 requests/day at 8,000 tokens/minute, and
-1–2 s per call against nemotron's 18–22 s. The token window, not the daily cap, is what
-now paces a run — roughly 2–3 documents per minute. A model slug must be checked against
-the key's own catalogue before it is pinned: `llama-3.3-70b-versatile` 404s on this
-account, which cost a cycle to discover.
+**Free-tier limits shape what a run can be** (measured, not taken from documentation).
+Google's free tier allows 20 requests per model per day, which does not cover one
+calibration pass, so Model A runs on a billed key. Groq allows 1,000 requests/day at
+8,000 tokens/minute and 200,000 tokens/day for Model B. The per-minute token window, not
+the daily cap, paces a run: at ~3,000 tokens per call that is 2–3 documents a minute, so
+a full 60-document re-extraction takes roughly half an hour and sits close to the daily
+token ceiling. Incremental runs off the cache are comfortable.
 
 ### 3.6 Production surface
 
