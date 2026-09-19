@@ -6,14 +6,12 @@ a confidence score, so the system abstains instead of guessing. The evaluation h
 is the main deliverable: it shows **how** the system fails, not just how often, and it
 blocks a regression before it ships.
 
-> **Status of the numbers.** Everything below is built and tested (435 unit tests plus
-> a 7-check offline end-to-end run over real HTTP). **Ground truth is fully verified**:
-> 60 of 60 documents checked against their images by a human, a pass that corrected five
-> money-field errors. The **confidence model is fitted on a real run** of the calibration
-> split, and those numbers appear below. **The `test` split has not been run yet**, so
-> the accuracy tables still say *pending* and give the command that fills them. That's
-> deliberate: an unmeasured number presented as a result would contradict the point of
-> the harness.
+> **Status of the numbers.** Built and tested (446 unit tests plus a 7-check offline
+> end-to-end run over real HTTP), ground truth **60 of 60 human-verified**, and the
+> `test` split **measured**: micro F1 **0.918**, line-item F1 **0.951**, hallucination
+> rate **0.63%**, with abstention keeping **87.8%** of fields at **95.8%** precision.
+> Models: Gemini 3.6 Flash (VLM) + GPT-OSS 120B on Groq (LLM). Full numbers, including
+> two negative results, are in [`report.md`](report.md).
 
 ---
 
@@ -133,7 +131,9 @@ Four signals per field, ranked by how much they actually know
 
 Weights are **fitted** by logistic regression on the calibration split, **per field
 group** (string / money / date / currency / table), because `merchant_name` and `total`
-fail in completely different ways. The threshold is read off the risk–coverage curve
+fail in completely different ways. The fitted operating point on this dataset is
+**threshold 0.75**, which keeps **87.8%** of fields at **95.8%** precision on the held-out
+`test` split. The threshold is read off the risk–coverage curve
 against a target precision, not picked by hand. `--calibrate` refuses to recommend a
 threshold when the target is unreachable.
 
@@ -150,7 +150,7 @@ system isn't confident in.
 | Phone photos | EXIF rotation is applied; otherwise the model gets a sideways receipt. |
 | Tables | Row arithmetic, table-level grounding, row-level agreement, and confidence and abstention on the whole table. |
 | Absent fields | `null`, and scored as correct when ground truth is also null. |
-| Long receipts | Output budget scales with page count, and a `max_tokens` stop raises `TruncatedResponse` instead of failing as a baffling JSON parse error. Gemini 2.5 is a thinking model, and its reasoning tokens come out of the same budget. |
+| Long receipts | Output budget scales with page count, and a `max_tokens` stop raises `TruncatedResponse` instead of failing as a baffling JSON parse error. Gemini 3.6 Flash is a thinking model, and its reasoning tokens come out of the same budget. |
 | Hallucination | Type-aware grounding feeds confidence, abstained values are withheld, and the regression gate fails on **any** new hallucination by default. |
 | Cross-section fields | Items, charges, tax and total sit in different parts of a receipt; they're tied together by row arithmetic and the full reconciliation above, checked without a model. |
 | Bad model output | Unparseable JSON gets **one text-only repair call** (no images re-sent). A cut-off response is never repaired. A schema-invalid value (`"12 Maret"`) is validated **per field**: the other fields survive, and the invalid one is forced to confidence 0 and abstained, never shipped or silently dropped. A table with an invalid row is abstained whole. |
@@ -411,12 +411,21 @@ an empty read, or a failed call give a concrete reason to escalate to the full
 two-model path. **An escalated receipt is billed for both paths**, so if escalation is
 frequent, the cascade costs more than the baseline and the table has to show it.
 
-| | Two-model baseline | Cascade | Δ |
+**Measured, and it does not pay** (39 documents, `test`):
+
+| | Two-model pipeline | Cascade | Δ |
 |---|--:|--:|--:|
-| $ / doc (list price) | *pending* | *pending* | |
-| Latency p50 / p95 | *pending* | *pending* | |
-| Document accuracy / micro F1 | *pending* | *pending* | |
-| Escalation rate | – | *pending* | |
+| $ / doc (list price) | $0.00579 | $0.00679 | **+17.3%** |
+| Tokens / doc | 5,884 | 10,857 | +84.5% |
+| Latency p50 / p95 | 16.1 s / 39.9 s | 20.4 s / 49.4 s | +27% / +24% |
+| Document accuracy / micro F1 | 21.9% / 0.918 | 21.9% / 0.918 | **0** |
+| Escalation rate | – | **100%** | |
+
+Every document escalated, so the cheap pass was paid for and thrown away. Reported as a
+negative result: `low_confidence` fired on 38 of 39 documents because
+`CASCADE_ESCALATE_BELOW` defaults to the abstention threshold, which asks a different
+question. [`report.md`](report.md) §4.7 has the two changes that would make the idea
+testable.
 
 ```bash
 python -m eval.run --set test --source pipeline --version base

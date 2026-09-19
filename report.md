@@ -5,7 +5,7 @@
 > their images by a human**, a pass that corrected five money-field errors (§2.4). The
 > **confidence model is fitted** on a real run of the calibration split (§4.2), and the
 > **`test` split has been run**: micro F1 0.918, hallucination rate 0.63%, abstention
-> keeping 87.5% of fields at 95.5% precision (§4.5). The cascade optimization was measured
+> keeping 87.8% of fields at 95.8% precision (§4.5). The cascade optimization was measured
 > and **does not pay** — 100% escalation, +17% cost, no accuracy gain (§4.7). The
 > VLM-only baseline shows the second model adds **no field-level accuracy** either: it
 > earns its place as a confidence signal, not as an accuracy mechanism (§4.8).
@@ -47,7 +47,7 @@ be reasoned about. Three properties drove every decision:
 | Own scans | None — three public sources instead, plus a synthetic degradation tier (§2.5) |
 | Models | Hosted: Gemini 3.6 Flash (VLM) + GPT-OSS 120B on Groq (LLM); see §3.5 |
 | Ground truth | **60 of 60 human-verified**, five label errors corrected |
-| Reported accuracy | Micro F1 **0.918**, hallucination **0.63%**, abstention keeping **87.5%** of fields at **95.5%** precision (§4.5) |
+| Reported accuracy | Micro F1 **0.918**, hallucination **0.63%**, abstention keeping **87.8%** of fields at **95.8%** precision (§4.5) |
 
 ---
 
@@ -392,40 +392,41 @@ Run: 18 calibration receipts (invoices excluded from the fit), 198 field observa
 
 | Metric | Value | Target |
 |---|---|---|
-| AUC (discrimination, in-sample) | **0.845** | > 0.75 |
-| ECE (calibration, in-sample) | **0.033** | < 0.10 |
+| AUC (discrimination, in-sample) | **0.908** | > 0.75 |
+| ECE (calibration, in-sample) | **0.032** | < 0.10 |
 
 **Fitted weights per field group** — a finding in their own right:
 
 | Group | n | agreement | grounded | validated | self_report | bias |
 |---|---:|---:|---:|---:|---:|---:|
-| string | 54 | +0.85 | +0.81 | +0.35 | **−0.85** | +1.12 |
-| money | 90 | +0.81 | +0.82 | +0.27 | +0.11 | +1.16 |
-| date | 18 | +0.33 | −0.02 | −0.02 | **−0.64** | +2.04 |
-| currency | 18 | +1.53 | **+1.89** | −0.46 | **−0.69** | +0.16 |
-| table | 18 | −0.36 | −0.15 | **+1.11** | +0.65 | −0.47 |
+| string | 54 | **+1.50** | −0.22 | +0.42 | −0.39 | +1.33 |
+| money | 90 | +1.15 | +1.02 | +0.23 | −0.08 | +0.97 |
+| date | 18 | +1.10 | −0.19 | −0.19 | **−0.80** | +1.65 |
+| currency | 18 | +1.03 | +0.61 | +0.92 | +0.88 | +2.20 |
+| table | 18 | −0.79 | +0.34 | **+1.23** | −0.18 | −0.82 |
 
 Three things worth stating plainly:
 
-1. **`self_report` is negative in four of five groups.** The model's own stated
-   confidence is *anti-informative*: when it says it is sure, it is likelier to be
-   wrong. This is the argument for a multi-signal design rather than trusting a model's
-   self-assessment, and it is a measurement, not a prior.
-2. **`validated` dominates the table group (+1.11)** while contributing modestly
-   elsewhere — exactly as designed. The arithmetic check is the signal that cannot be
-   bluffed, and a table is where it has the most to say.
-3. **`grounded` carries currency (+1.89)**, because the failure mode there is a model
-   *inferring* a currency the document never prints.
+1. **`self_report` is negative in four of five groups.** The model's own stated certainty
+   is *anti-informative*: when it says it is sure, it is likelier to be wrong. That is the
+   argument for a multi-signal design rather than trusting a model's self-assessment, and
+   it is a measurement, not a prior.
+2. **`validated` dominates the table group (+1.23)** while contributing modestly
+   elsewhere — as designed. The arithmetic check is the signal that cannot be bluffed, and
+   a table is where it has the most to say.
+3. **`agreement` is the strongest signal for strings (+1.50) and dates (+1.10)** — fields
+   where no arithmetic applies and grounding is weak, because a transcription contains the
+   text either way. This is the whole return on the second model (§4.8).
 
 **Operating point**, read off the risk–coverage curve:
 
-> At threshold **0.875** the system keeps **70.7%** of fields at **95.0%** precision.
+> At threshold **0.75** the system keeps **86.4%** of fields at **95.3%** precision.
 
-That is the honest trade-off: reaching 95% precision costs abstention on 29% of fields.
-Set `CONFIDENCE_THRESHOLD=0.875` in `.env` to use it.
+`CONFIDENCE_THRESHOLD=0.75` in `.env`. Held out on `test`, the same threshold kept 87.8%
+of fields at 95.8% precision (§4.5) — the operating point transferred.
 
-*In-sample, on 18 documents.* These numbers set the threshold; they are not the reported
-result. The reported result comes from `--set test`, which has not been run.
+*In-sample, on 18 documents and 198 field observations.* These numbers set the threshold;
+the reported result is §4.5.
 
 ### 4.3 What the harness caught in its own ground truth
 

@@ -226,7 +226,7 @@ end-to-end 7/7). <strong>Ground truth is fully verified — 60 of 60 documents c
 their images by a human</strong>, a pass that corrected five money-field errors (§2.4). The
 <strong>confidence model is fitted</strong> on a real run of the calibration split (§4.2), and the
 <strong><code>test</code> split has been run</strong>: micro F1 0.918, hallucination rate 0.63%, abstention
-keeping 87.5% of fields at 95.5% precision (§4.5). The cascade optimization was measured
+keeping 87.8% of fields at 95.8% precision (§4.5). The cascade optimization was measured
 and <strong>does not pay</strong> — 100% escalation, +17% cost, no accuracy gain (§4.7). The
 VLM-only baseline shows the second model adds <strong>no field-level accuracy</strong> either: it
 earns its place as a confidence signal, not as an accuracy mechanism (§4.8).</p>
@@ -285,7 +285,7 @@ be reasoned about. Three properties drove every decision:</p>
 </tr>
 <tr>
 <td>Reported accuracy</td>
-<td>Micro F1 <strong>0.918</strong>, hallucination <strong>0.63%</strong>, abstention keeping <strong>87.5%</strong> of fields at <strong>95.5%</strong> precision (§4.5)</td>
+<td>Micro F1 <strong>0.918</strong>, hallucination <strong>0.63%</strong>, abstention keeping <strong>87.8%</strong> of fields at <strong>95.8%</strong> precision (§4.5)</td>
 </tr>
 </tbody>
 </table>
@@ -784,12 +784,12 @@ arithmetic verdicts come from the payload, so a page and the API can never disag
 <tbody>
 <tr>
 <td>AUC (discrimination, in-sample)</td>
-<td><strong>0.845</strong></td>
+<td><strong>0.908</strong></td>
 <td>&gt; 0.75</td>
 </tr>
 <tr>
 <td>ECE (calibration, in-sample)</td>
-<td><strong>0.033</strong></td>
+<td><strong>0.032</strong></td>
 <td>&lt; 0.10</td>
 </tr>
 </tbody>
@@ -811,70 +811,71 @@ arithmetic verdicts come from the payload, so a page and the API can never disag
 <tr>
 <td>string</td>
 <td style="text-align: right;">54</td>
-<td style="text-align: right;">+0.85</td>
-<td style="text-align: right;">+0.81</td>
-<td style="text-align: right;">+0.35</td>
-<td style="text-align: right;"><strong>−0.85</strong></td>
-<td style="text-align: right;">+1.12</td>
+<td style="text-align: right;"><strong>+1.50</strong></td>
+<td style="text-align: right;">−0.22</td>
+<td style="text-align: right;">+0.42</td>
+<td style="text-align: right;">−0.39</td>
+<td style="text-align: right;">+1.33</td>
 </tr>
 <tr>
 <td>money</td>
 <td style="text-align: right;">90</td>
-<td style="text-align: right;">+0.81</td>
-<td style="text-align: right;">+0.82</td>
-<td style="text-align: right;">+0.27</td>
-<td style="text-align: right;">+0.11</td>
-<td style="text-align: right;">+1.16</td>
+<td style="text-align: right;">+1.15</td>
+<td style="text-align: right;">+1.02</td>
+<td style="text-align: right;">+0.23</td>
+<td style="text-align: right;">−0.08</td>
+<td style="text-align: right;">+0.97</td>
 </tr>
 <tr>
 <td>date</td>
 <td style="text-align: right;">18</td>
-<td style="text-align: right;">+0.33</td>
-<td style="text-align: right;">−0.02</td>
-<td style="text-align: right;">−0.02</td>
-<td style="text-align: right;"><strong>−0.64</strong></td>
-<td style="text-align: right;">+2.04</td>
+<td style="text-align: right;">+1.10</td>
+<td style="text-align: right;">−0.19</td>
+<td style="text-align: right;">−0.19</td>
+<td style="text-align: right;"><strong>−0.80</strong></td>
+<td style="text-align: right;">+1.65</td>
 </tr>
 <tr>
 <td>currency</td>
 <td style="text-align: right;">18</td>
-<td style="text-align: right;">+1.53</td>
-<td style="text-align: right;"><strong>+1.89</strong></td>
-<td style="text-align: right;">−0.46</td>
-<td style="text-align: right;"><strong>−0.69</strong></td>
-<td style="text-align: right;">+0.16</td>
+<td style="text-align: right;">+1.03</td>
+<td style="text-align: right;">+0.61</td>
+<td style="text-align: right;">+0.92</td>
+<td style="text-align: right;">+0.88</td>
+<td style="text-align: right;">+2.20</td>
 </tr>
 <tr>
 <td>table</td>
 <td style="text-align: right;">18</td>
-<td style="text-align: right;">−0.36</td>
-<td style="text-align: right;">−0.15</td>
-<td style="text-align: right;"><strong>+1.11</strong></td>
-<td style="text-align: right;">+0.65</td>
-<td style="text-align: right;">−0.47</td>
+<td style="text-align: right;">−0.79</td>
+<td style="text-align: right;">+0.34</td>
+<td style="text-align: right;"><strong>+1.23</strong></td>
+<td style="text-align: right;">−0.18</td>
+<td style="text-align: right;">−0.82</td>
 </tr>
 </tbody>
 </table>
 <p>Three things worth stating plainly:</p>
 <ol>
-<li><strong><code>self_report</code> is negative in four of five groups.</strong> The model's own stated
-   confidence is <em>anti-informative</em>: when it says it is sure, it is likelier to be
-   wrong. This is the argument for a multi-signal design rather than trusting a model's
-   self-assessment, and it is a measurement, not a prior.</li>
-<li><strong><code>validated</code> dominates the table group (+1.11)</strong> while contributing modestly
-   elsewhere — exactly as designed. The arithmetic check is the signal that cannot be
-   bluffed, and a table is where it has the most to say.</li>
-<li><strong><code>grounded</code> carries currency (+1.89)</strong>, because the failure mode there is a model
-   <em>inferring</em> a currency the document never prints.</li>
+<li><strong><code>self_report</code> is negative in four of five groups.</strong> The model's own stated certainty
+   is <em>anti-informative</em>: when it says it is sure, it is likelier to be wrong. That is the
+   argument for a multi-signal design rather than trusting a model's self-assessment, and
+   it is a measurement, not a prior.</li>
+<li><strong><code>validated</code> dominates the table group (+1.23)</strong> while contributing modestly
+   elsewhere — as designed. The arithmetic check is the signal that cannot be bluffed, and
+   a table is where it has the most to say.</li>
+<li><strong><code>agreement</code> is the strongest signal for strings (+1.50) and dates (+1.10)</strong> — fields
+   where no arithmetic applies and grounding is weak, because a transcription contains the
+   text either way. This is the whole return on the second model (§4.8).</li>
 </ol>
 <p><strong>Operating point</strong>, read off the risk–coverage curve:</p>
 <blockquote>
-<p>At threshold <strong>0.875</strong> the system keeps <strong>70.7%</strong> of fields at <strong>95.0%</strong> precision.</p>
+<p>At threshold <strong>0.75</strong> the system keeps <strong>86.4%</strong> of fields at <strong>95.3%</strong> precision.</p>
 </blockquote>
-<p>That is the honest trade-off: reaching 95% precision costs abstention on 29% of fields.
-Set <code>CONFIDENCE_THRESHOLD=0.875</code> in <code>.env</code> to use it.</p>
-<p><em>In-sample, on 18 documents.</em> These numbers set the threshold; they are not the reported
-result. The reported result comes from <code>--set test</code>, which has not been run.</p>
+<p><code>CONFIDENCE_THRESHOLD=0.75</code> in <code>.env</code>. Held out on <code>test</code>, the same threshold kept 87.8%
+of fields at 95.8% precision (§4.5) — the operating point transferred.</p>
+<p><em>In-sample, on 18 documents and 198 field observations.</em> These numbers set the threshold;
+the reported result is §4.5.</p>
 <h3 id="43-what-the-harness-caught-in-its-own-ground-truth">4.3 What the harness caught in its own ground truth</h3>
 <p>The evaluation found four defects that would each have produced confident, wrong
 numbers. They are reported because the catching is the point.</p>
