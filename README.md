@@ -510,36 +510,6 @@ threshold that makes fields abstain.
 - **Free-tier rate limits** cap throughput at about 10 requests/minute; the image-hash
   cache makes re-scoring after a metrics change cost zero calls.
 
-## What comes next
-
-Each item follows from something measured, with the reason it is worth doing.
-
-1. **Split the VLM prompt.** The baseline comparison found that asking one call for
-   fields *and* a transcription *and* a self-reported certainty costs **18.7 points of
-   document accuracy** against a fields-only prompt, at identical micro F1. Extracting
-   fields with the simpler prompt and taking the transcription separately costs one extra
-   vision call (~$0.003/doc) and may recover most of that gap. One run answers it, and it
-   is the largest improvement currently on the table.
-2. **Give the cascade its own threshold.** It escalated every document because the
-   escalation bar defaults to the abstention threshold — two different questions sharing
-   one number. Escalating on the model-free checks alone would have fired on 13 documents
-   instead of 38, which is where a saving could exist.
-3. **Route abstained fields to human review.** 87.8% of fields are kept at 95.8%
-   precision; the other 12% are withheld and nothing consumes them. A queue showing the
-   withheld value, its four signals and the source image turns abstention from honest
-   into useful.
-4. **A second VLM on the raw image.** Model B reads Model A's transcription, so the two
-   are only partly independent and a misread digit inflates their agreement — the signal
-   the ablation shows is carrying strings and dates. A second *reader* would fix that at
-   the cost of another vision call.
-5. **More invoices.** Seven in `test` is enough to show the second document type works,
-   not enough to report a rate or to calibrate confidence for it.
-6. **Inter-annotator agreement.** Verification found a 10% money-field error rate in one
-   source; the residual rate after correction is unmeasured, and a second annotator on 15
-   documents would bound it.
-7. **The gate in CI.** It already exits 0/1/2 and refuses to compare across a label
-   change. It needs a workflow file, not code.
-
 ## Repository map
 
 ```
