@@ -1,0 +1,90 @@
+{
+  "doc_id": "cord_0007",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "132636",
+    "service_charge": null,
+    "discount": null,
+    "tax": "13264",
+    "total": "145900",
+    "payment_method": "BCA EDC",
+    "line_items": [
+      {
+        "description": "COLD OCHA",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "10909"
+      },
+      {
+        "description": "BCA PROMO",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "54455"
+      },
+      {
+        "description": "!-ABURA UDON SPICY",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "0"
+      },
+      {
+        "description": "!-KAKE UDON",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "0"
+      },
+      {
+        "description": "SKEWERED SHUMAI",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "12727"
+      },
+      {
+        "description": "SKEWERED TOFU ROLL",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "12727"
+      },
+      {
+        "description": "EBI TEMPURA",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "13636"
+      },
+      {
+        "description": "KITSUNE UDON (KIDS)",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "28182"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 7.861818399978802,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

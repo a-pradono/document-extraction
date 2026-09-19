@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>cord_0006</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>cord_0006</h1><p class=k>receipt &middot; status: ok &middot; threshold 0.75 &middot; 1 field(s) abstained</p><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 0.00"><td>merchant_name</td><td>&mdash;</td><td>0.95</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 0.00"><td>merchant_address</td><td>&mdash;</td><td>0.95</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 0.00"><td>date</td><td>&mdash;</td><td>0.93</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 1.00"><td>currency</td><td>IDR</td><td>1.00</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 0.00"><td>subtotal</td><td>&mdash;</td><td>0.94</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 0.00"><td>service_charge</td><td>&mdash;</td><td>0.94</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 0.00"><td>discount</td><td>&mdash;</td><td>0.94</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 0.00"><td>tax</td><td>&mdash;</td><td>0.94</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 0.50 | self_report: 1.00"><td>total</td><td>118000</td><td>0.96</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>payment_method</td><td>Debet Card</td><td>0.92</td><td class=ok>ok</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>5001-Corn Flakes Cookies</td><td>1</td><td>56000</td><td>56000</td></tr><tr><td>2</td><td>5003-Chokoreto Cookies</td><td>1</td><td>62000</td><td>62000</td></tr><tr><td>3</td><td>6002-Plastic Bag Medium</td><td>1</td><td>0</td><td>0</td></tr><tr class=sum><td colspan=4>sum</td><td><b>118,000.00</b> &#10003; matches subtotal</td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip na">subtotal_plus_tax_equals_total n/a</span><span class="chip pass">line_items_sum_to_subtotal &#10003;</span><span class="chip pass">rows_multiply_out &#10003;</span><span class="chip na">date_parses n/a</span><span class="chip pass">currency_is_iso &#10003;</span><h2>Cost and latency</h2><p class=k>11.72s model time &middot; 4443 prompt + 1471 completion tokens &middot; $0.00326 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>2831</td><td>675</td><td>9.45</td><td>$0.00254</td><td>cached</td></tr><tr><td>model_b</td><td>openai/gpt-oss-120b</td><td>1612</td><td>796</td><td>2.27</td><td>$0.00072</td><td>cached</td></tr></table><details><summary>Transcription (181 chars) &mdash; the grounding source</summary><pre>5001-Corn Flakes Cookies
+Rp.56.000 x1 Rp.56.000
+5003-Chokoreto Cookies
+Rp.62.000 x1 Rp.62.000
+6002-Plastic Bag Medium
+Rp.0 x1 Rp.0
+Total Item: 3
+Total. Rp.118.000
+Debet Card 118.000</pre></details>

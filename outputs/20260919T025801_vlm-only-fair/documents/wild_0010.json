@@ -1,0 +1,62 @@
+{
+  "doc_id": "wild_0010",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "EL GRECO",
+    "merchant_address": "Rue Chair et Pains,5 Grand place,36 1000 Bruxelles",
+    "date": "2016-06-23",
+    "currency": null,
+    "subtotal": "38.87",
+    "service_charge": null,
+    "discount": null,
+    "tax": "5.63",
+    "total": "44.5",
+    "payment_method": null,
+    "line_items": [
+      {
+        "description": "Coca cola light",
+        "quantity": "4",
+        "unit_price": "3.25",
+        "line_total": "13"
+      },
+      {
+        "description": "Filet de poitrine de pou",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "14.5"
+      },
+      {
+        "description": "Brochette d'agneau",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "17"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": false,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": null
+  },
+  "validation_notes": {
+    "line_items_sum_to_subtotal": "rows sum to 44.50 != 38.87 - off by 5.63"
+  },
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 8.596141000045463,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

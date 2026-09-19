@@ -1,0 +1,90 @@
+{
+  "doc_id": "cord_0018",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "1343000",
+    "service_charge": "80580",
+    "discount": null,
+    "tax": "142358",
+    "total": "1565938",
+    "payment_method": null,
+    "line_items": [
+      {
+        "description": "UDANG RE =*LARGE*==",
+        "quantity": "2",
+        "unit_price": "216000",
+        "line_total": "432000"
+      },
+      {
+        "description": "AYM GR JUN NJAN =*MEDIUM*=",
+        "quantity": "1",
+        "unit_price": "108000",
+        "line_total": "108000"
+      },
+      {
+        "description": "SAPO TH SEAFOOD =*LARGE*==",
+        "quantity": "1",
+        "unit_price": "172000",
+        "line_total": "172000"
+      },
+      {
+        "description": "POCAI 3 =*MEDIUM*=",
+        "quantity": "2",
+        "unit_price": "111000",
+        "line_total": "222000"
+      },
+      {
+        "description": "GURAME FILLET M ASAM MANIS",
+        "quantity": "1",
+        "unit_price": "163000",
+        "line_total": "163000"
+      },
+      {
+        "description": "BIHUN GORENG JJ =*LARGE*==",
+        "quantity": "1",
+        "unit_price": "116000",
+        "line_total": "116000"
+      },
+      {
+        "description": "ICED TEA",
+        "quantity": "5",
+        "unit_price": "12000",
+        "line_total": "60000"
+      },
+      {
+        "description": "NASI PUTIH",
+        "quantity": "7",
+        "unit_price": "10000",
+        "line_total": "70000"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 21.65233289997559,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

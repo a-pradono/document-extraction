@@ -1,0 +1,48 @@
+{
+  "doc_id": "cord_0022",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "C\u00c0 PH\u00ca",
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "25000",
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "25000",
+    "payment_method": "CASH",
+    "line_items": [
+      {
+        "description": "Viet Milk Coffee\n+Ice\n+M",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "25000"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 6.784576399950311,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

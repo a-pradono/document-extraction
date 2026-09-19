@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>cord_0013</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>cord_0013</h1><p class=k>receipt &middot; status: ok &middot; threshold 0.75 &middot; 1 field(s) abstained</p><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 0.50 | self_report: 0.95"><td>merchant_name</td><td>SOLARIA</td><td>0.92</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>merchant_address</td><td>&mdash;</td><td>0.93</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>date</td><td>&mdash;</td><td>0.85</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>currency</td><td>&mdash;</td><td>0.99</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.98"><td>subtotal</td><td>303646</td><td>0.96</td><td class=ok>ok</td></tr><tr title="agreement: 0.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>service_charge</td><td>&mdash;</td><td>0.82</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>discount</td><td>&mdash;</td><td>0.93</td><td class=absent>absent</td></tr><tr title="agreement: 0.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.98"><td>tax</td><td>30365</td><td>0.89</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>total</td><td>334000</td><td>0.96</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>payment_method</td><td>DEBIT BCA</td><td>0.92</td><td class=ok>ok</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>(TA) NASI ORG TERI MEDAN</td><td>4</td><td>&mdash;</td><td>165460</td></tr><tr><td>2</td><td>(TA) BIHUN GORENG SEAFOOD</td><td>1</td><td>&mdash;</td><td>40456</td></tr><tr><td>3</td><td>(TA) KWETIAW SEAFOOD SIRAM</td><td>1</td><td>&mdash;</td><td>42274</td></tr><tr><td>4</td><td>(TA) NASI GORENG</td><td>2</td><td>&mdash;</td><td>55456</td></tr><tr class=sum><td colspan=4>sum</td><td><b>303,646.00</b> &#10003; matches subtotal</td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip pass">subtotal_plus_tax_equals_total &#10003;</span><span class="chip pass">line_items_sum_to_subtotal &#10003;</span><span class="chip na">rows_multiply_out n/a</span><span class="chip na">date_parses n/a</span><span class="chip na">currency_is_iso n/a</span><h2>Cost and latency</h2><p class=k>17.00s model time &middot; 4520 prompt + 2128 completion tokens &middot; $0.00416 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>2851</td><td>935</td><td>13.85</td><td>$0.00319</td><td>cached</td></tr><tr><td>model_b</td><td>openai/gpt-oss-120b</td><td>1669</td><td>1193</td><td>3.15</td><td>$0.00097</td><td>cached</td></tr></table><details><summary>Transcription (276 chars) &mdash; the grounding source</summary><pre>SOLARIA
+No
+training
+Customer:
+(TA) NASI ORG TERI 4 165,460
+MEDAN
+(TA) BIHUN GORENG 1 40,456
+SEAFOOD
+(TA) KWETIAW SEAFOOD 1 42,274
+SIRAM
+(TA) NASI GORENG 2 55,456
+ITEMS:8 303,646
+PB1 10% 30,365
+Before Rounding 334,011
+Rounding -11
+Total 334,000
+DEBIT BCA 334,000
+Atas Kunjungan</pre></details>

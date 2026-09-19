@@ -1,0 +1,72 @@
+{
+  "doc_id": "cord_0003",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "63636",
+    "service_charge": null,
+    "discount": null,
+    "tax": "6364",
+    "total": "70000",
+    "payment_method": "Cash",
+    "line_items": [
+      {
+        "description": "[LG] BLACK SAKURA",
+        "quantity": "1",
+        "unit_price": "59091",
+        "line_total": "59091"
+      },
+      {
+        "description": "LONGAN",
+        "quantity": "1",
+        "unit_price": "0",
+        "line_total": "0"
+      },
+      {
+        "description": "ROASTED ALMOND",
+        "quantity": "1",
+        "unit_price": "0",
+        "line_total": "0"
+      },
+      {
+        "description": "MANGGO",
+        "quantity": "1",
+        "unit_price": "0",
+        "line_total": "0"
+      },
+      {
+        "description": "MINERAL WATER (bundling) 5k",
+        "quantity": "1",
+        "unit_price": "4545",
+        "line_total": "4545"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 8.281268100021407,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

@@ -1,0 +1,64 @@
+{
+  "doc_id": "inv_0001",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": "04-30-2021-03",
+    "issue_date": null,
+    "due_date": null,
+    "vendor": {
+      "name": "City of Richmond Police Department",
+      "address": "200 West Grace Street, Richmond, VA 23220",
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Tom Nash",
+      "address": "MuckRock News, DEPT MR 70546, 411 A Highland Avenue, Somerville, VA 02144-2516",
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": "100",
+    "tax": null,
+    "total": "100",
+    "purchase_order": null,
+    "line_items": [
+      {
+        "description": "Major Crimes",
+        "quantity": "2",
+        "unit_price": "40",
+        "line_total": "80"
+      },
+      {
+        "description": "Internal Affairs",
+        "quantity": "0.5",
+        "unit_price": "40",
+        "line_total": "20"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": null,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 21.31801909999922,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

@@ -1,0 +1,60 @@
+{
+  "doc_id": "wild_0009",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "Breakfast 2 Breakfast",
+    "merchant_address": "DIC Building 12\nDubai, UAE",
+    "date": null,
+    "currency": "AED",
+    "subtotal": "44",
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "44",
+    "payment_method": null,
+    "line_items": [
+      {
+        "description": "Taouk Sandwich",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "16"
+      },
+      {
+        "description": "Roast Beef Sandwich",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "17"
+      },
+      {
+        "description": "French Fries Appetizer",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "11"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 5.929289299994707,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

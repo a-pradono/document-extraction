@@ -1,0 +1,145 @@
+{
+  "doc_id": "cord_0003",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "63636",
+    "service_charge": null,
+    "discount": null,
+    "tax": "6364",
+    "total": "70000",
+    "payment_method": "Cash",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.9494,
+    "merchant_address": 0.9494,
+    "payment_method": 0.9207,
+    "date": 0.9288,
+    "currency": 0.9925,
+    "subtotal": 0.9638,
+    "service_charge": 0.9345,
+    "discount": 0.9345,
+    "tax": 0.8945,
+    "total": 0.9638,
+    "line_items": 0.4677
+  },
+  "abstained": [
+    "line_items"
+  ],
+  "withheld": {
+    "line_items": "[{\"description\": \"[LG] BLACK SAKURA\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"59091\"}, {\"description\": \"LONGAN\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"0\"}, {\"description\": \"ROASTED ALMOND\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"0\"}, {\"description\": \"MANGGO\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"0\"}, {\"description\": \"MINERAL WATER (bundling) 5k\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"4545\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "currency": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "1 [LG] BLACK SAKURA 59,091\n1 LONGAN 0\n1 ROASTED ALMOND 0\n1 MANGGO 0\n1 MINERAL WATER (bundling) 5k 4,545\nSub Total 63,636\nPB1 (10%) 6,364\nRounding 0\nTotal 70,000\nCash Payment 100,000\nChange 30,000",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 14.052,
+    "wall_s": 0.0,
+    "cost_usd": 0.00403855,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2831,
+        "completion_tokens": 949,
+        "latency_s": 11.779215000045951,
+        "cost_usd": 0.0032218,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1625,
+        "completion_tokens": 955,
+        "latency_s": 2.273169299995061,
+        "cost_usd": 0.00081675,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

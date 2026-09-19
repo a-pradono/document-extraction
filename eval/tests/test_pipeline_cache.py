@@ -146,3 +146,23 @@ class TestTokenBudget:
         monkeypatch.setenv("VLM_MAX_TOKENS", "16384")
         monkeypatch.setenv("VLM_MAX_TOKENS_PER_EXTRA_PAGE", "8192")
         assert pipeline._vlm_max_tokens(1) < pipeline._vlm_max_tokens(3)
+
+
+class TestBaselineIsAFairComparison:
+    """The VLM-only baseline exists to make "two models beat one" measurable, which needs
+    the two paths to differ ONLY in architecture. Left on the provider default of 1500
+    tokens, 18 of 39 documents truncated in the baseline while the pipeline had 16384 +
+    8192 per extra page - so the first comparison measured the token budget."""
+
+    def test_the_baseline_gets_the_same_budget_as_the_pipeline(self, monkeypatch):
+        from extractor import extract, pipeline
+        monkeypatch.setenv("VLM_MAX_TOKENS", "16384")
+        monkeypatch.setenv("VLM_MAX_TOKENS_PER_EXTRA_PAGE", "8192")
+        for pages in (1, 3, 5):
+            assert extract._baseline_max_tokens(pages) == pipeline._vlm_max_tokens(pages)
+
+    def test_the_baseline_passes_a_budget_at_all(self):
+        import inspect
+
+        from extractor import extract
+        assert "max_tokens=budget" in inspect.getsource(extract.extract)

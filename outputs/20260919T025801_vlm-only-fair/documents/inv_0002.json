@@ -1,0 +1,90 @@
+{
+  "doc_id": "inv_0002",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": "949838-1",
+    "issue_date": "2012-10-14",
+    "due_date": null,
+    "vendor": {
+      "name": "WXII",
+      "address": "700 Coliseum Drive\nWinston-Salem, NC 27106",
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Crossroads Media",
+      "address": "66 Canal Center Plaza\nSuite 555\nAlexandria, VA 22314",
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": "6150",
+    "tax": null,
+    "total": "5227.5",
+    "purchase_order": null,
+    "line_items": [
+      {
+        "description": "NBC Today Show II",
+        "quantity": "4",
+        "unit_price": "150",
+        "line_total": "600"
+      },
+      {
+        "description": "NBC Today Show II",
+        "quantity": "1",
+        "unit_price": "150",
+        "line_total": "150"
+      },
+      {
+        "description": "DR. OZ",
+        "quantity": "4",
+        "unit_price": "600",
+        "line_total": "2400"
+      },
+      {
+        "description": "DR. OZ",
+        "quantity": "1",
+        "unit_price": "600",
+        "line_total": "600"
+      },
+      {
+        "description": "NBC Prime",
+        "quantity": "1",
+        "unit_price": "2000",
+        "line_total": "2000"
+      },
+      {
+        "description": "Notre Dame Football",
+        "quantity": "1",
+        "unit_price": "400",
+        "line_total": "400"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": false,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": null,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {
+    "subtotal_plus_tax_equals_total": "6,150.00 != 5,227.50 - off by 922.50"
+  },
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 16.351671800017357,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

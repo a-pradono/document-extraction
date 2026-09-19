@@ -1,0 +1,64 @@
+{
+  "doc_id": "inv_0003",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": null,
+    "issue_date": "2020-01-09",
+    "due_date": "2020-02-08",
+    "vendor": {
+      "name": "Flock Safety",
+      "address": null,
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Cobb County Finance Department",
+      "address": "Accounts Payable Division\n100 Cherokee Street, Ste 410\nMarietta, Georgia 30090-9610\nUnited States",
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": "297500",
+    "tax": "0",
+    "total": "297500",
+    "purchase_order": "33286",
+    "line_items": [
+      {
+        "description": "Flock Safety - PO #33286",
+        "quantity": "35",
+        "unit_price": "8500",
+        "line_total": "297500"
+      },
+      {
+        "description": "Sales tax",
+        "quantity": "1",
+        "unit_price": "0",
+        "line_total": "0"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": true,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 14.214144099969417,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

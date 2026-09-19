@@ -1,0 +1,72 @@
+{
+  "doc_id": "wild_0008",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "ONE MILL STREET",
+    "merchant_address": "ONE MILL STREET",
+    "date": "2003-01-09",
+    "currency": "USD",
+    "subtotal": "105",
+    "service_charge": "18.9",
+    "discount": null,
+    "tax": "5.25",
+    "total": "129.15",
+    "payment_method": null,
+    "line_items": [
+      {
+        "description": "CALAMARI W/ MOJO",
+        "quantity": "2",
+        "unit_price": "8",
+        "line_total": "16"
+      },
+      {
+        "description": "ARTICHOKES",
+        "quantity": "1",
+        "unit_price": "8",
+        "line_total": "8"
+      },
+      {
+        "description": "PORK CHOP",
+        "quantity": "3",
+        "unit_price": "18",
+        "line_total": "54"
+      },
+      {
+        "description": "VEGGIE SAND",
+        "quantity": "1",
+        "unit_price": "8",
+        "line_total": "8"
+      },
+      {
+        "description": "NEW YORK STRIP",
+        "quantity": "1",
+        "unit_price": "19",
+        "line_total": "19"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 8.594114999985322,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

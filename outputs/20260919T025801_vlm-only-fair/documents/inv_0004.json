@@ -1,0 +1,66 @@
+{
+  "doc_id": "inv_0004",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": "00011",
+    "issue_date": "2020-02-14",
+    "due_date": "2020-03-15",
+    "vendor": {
+      "name": "Williamsburg-James City County Public Schools",
+      "address": "Records Administration & Division FOIA Officer\n117 Ironbound Road, Williamsburg, VA 23185",
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Tom Nash",
+      "address": "Muckrock.com\n87620-92544075@muckrock.com",
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": "36.59",
+    "tax": "0",
+    "total": "36.59",
+    "purchase_order": null,
+    "line_items": [
+      {
+        "description": "R. Showah Form Search",
+        "quantity": "0.25",
+        "unit_price": "32.21",
+        "line_total": "8.05"
+      },
+      {
+        "description": "P. Hayworth Website Search, Form Search, FOIA Response Preparation",
+        "quantity": "1.5",
+        "unit_price": "32.34",
+        "line_total": "48.51"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": false,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": true,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {
+    "line_items_sum_to_subtotal": "rows sum to 56.56 != 36.59 - off by 19.97"
+  },
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 11.493106100009754,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

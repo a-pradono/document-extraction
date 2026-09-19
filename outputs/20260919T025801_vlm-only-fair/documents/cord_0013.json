@@ -1,0 +1,66 @@
+{
+  "doc_id": "cord_0013",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "Solaria",
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "303646",
+    "service_charge": null,
+    "discount": null,
+    "tax": "30365",
+    "total": "334000",
+    "payment_method": "DEBIT BCA",
+    "line_items": [
+      {
+        "description": "(TA) NASI GORG TERI MEDAN",
+        "quantity": "4",
+        "unit_price": null,
+        "line_total": "165460"
+      },
+      {
+        "description": "(TA) BIHUN GORENG SEAFOOD",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "40456"
+      },
+      {
+        "description": "(TA) KWETIAW SEAFOOD SIRAM",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "42274"
+      },
+      {
+        "description": "(TA) NASI GORENG",
+        "quantity": "2",
+        "unit_price": null,
+        "line_total": "55456"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 7.054294699977618,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

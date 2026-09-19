@@ -1,0 +1,76 @@
+{
+  "doc_id": "inv_0009",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": "501",
+    "issue_date": "2011-01-11",
+    "due_date": null,
+    "vendor": {
+      "name": "Circuit Makers Inc.",
+      "address": "PO Box 886\nEden NC 27288",
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Plastic Revolutions",
+      "address": "PO Box 1616\nReidsville, NC 27323",
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": null,
+    "tax": null,
+    "total": "8840",
+    "purchase_order": null,
+    "line_items": [
+      {
+        "description": "Solar Installation Labor Tilden",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "3405"
+      },
+      {
+        "description": "Solar Installation Labor Keith - Business Owner",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "3240"
+      },
+      {
+        "description": "Solar Installation Labor Will - Business Owner",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "1620"
+      },
+      {
+        "description": "Solar Installation Materials and Bucket Truck",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "575"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": null,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 10.402757000003476,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

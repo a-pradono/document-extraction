@@ -1,0 +1,162 @@
+{
+  "doc_id": "wild_0023",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "TRADER JOE'S",
+    "merchant_address": "2025 Bond Street, Charlottesville, VA 22901",
+    "date": null,
+    "currency": "USD",
+    "subtotal": "96.62",
+    "service_charge": null,
+    "discount": null,
+    "tax": "3.2",
+    "total": "99.82",
+    "payment_method": "DEBIT",
+    "line_items": [
+      {
+        "description": "BALLAST POINT BREWING GRAPEFRU",
+        "quantity": "1",
+        "unit_price": "13.99",
+        "line_total": "13.99"
+      },
+      {
+        "description": "NUT ALMOND GOCHUJANG",
+        "quantity": "1",
+        "unit_price": "4.99",
+        "line_total": "4.99"
+      },
+      {
+        "description": "SPARKLING SPRING WATER CRAN CL",
+        "quantity": "1",
+        "unit_price": "0.79",
+        "line_total": "0.79"
+      },
+      {
+        "description": "ORGANIC CARROT JUICE PTS",
+        "quantity": "1",
+        "unit_price": "2.99",
+        "line_total": "2.99"
+      },
+      {
+        "description": "CHOCOLATE CHIP COOKIES",
+        "quantity": "1",
+        "unit_price": "3.99",
+        "line_total": "3.99"
+      },
+      {
+        "description": "BALLAST POINT BREWING SCULPIN",
+        "quantity": "1",
+        "unit_price": "13.99",
+        "line_total": "13.99"
+      },
+      {
+        "description": "CHOC DARK COVERED GRAHAM W SEA",
+        "quantity": "1",
+        "unit_price": "3.99",
+        "line_total": "3.99"
+      },
+      {
+        "description": "A-PEACHES YELLOW 2 LB EASTERN",
+        "quantity": "1",
+        "unit_price": "3.49",
+        "line_total": "3.49"
+      },
+      {
+        "description": "SPARKLING SPRING WATER CRAN CL",
+        "quantity": "4",
+        "unit_price": "0.79",
+        "line_total": "3.16"
+      },
+      {
+        "description": "MANGO STICKY RICE SPRING ROLLS",
+        "quantity": "1",
+        "unit_price": "2.99",
+        "line_total": "2.99"
+      },
+      {
+        "description": "BANANAS",
+        "quantity": "6",
+        "unit_price": "0.19",
+        "line_total": "1.14"
+      },
+      {
+        "description": "PIZZA PARLANNO W/SAUSAGE",
+        "quantity": "1",
+        "unit_price": "4.99",
+        "line_total": "4.99"
+      },
+      {
+        "description": "FREEZE DRIED MANGO",
+        "quantity": "1",
+        "unit_price": "3.29",
+        "line_total": "3.29"
+      },
+      {
+        "description": "TJ'S SOFT 10 GRAIN BREAD",
+        "quantity": "1",
+        "unit_price": "2.49",
+        "line_total": "2.49"
+      },
+      {
+        "description": "ROLLS FOCCACINI WITH CHEESE",
+        "quantity": "1",
+        "unit_price": "2.99",
+        "line_total": "2.99"
+      },
+      {
+        "description": "STEAK & STOUT PIES",
+        "quantity": "1",
+        "unit_price": "6.49",
+        "line_total": "6.49"
+      },
+      {
+        "description": "DRIED BABYSWEET PINEAPPLE",
+        "quantity": "1",
+        "unit_price": "3.99",
+        "line_total": "3.99"
+      },
+      {
+        "description": "A-CITRUS ROSIE'S MANDARINS 5 L",
+        "quantity": "1",
+        "unit_price": "7.99",
+        "line_total": "7.99"
+      },
+      {
+        "description": "MILK GAL WHOLE",
+        "quantity": "1",
+        "unit_price": "2.89",
+        "line_total": "2.89"
+      },
+      {
+        "description": "MILK GAL ORG WHOLE",
+        "quantity": "1",
+        "unit_price": "5.99",
+        "line_total": "5.99"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 13.587450100050773,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

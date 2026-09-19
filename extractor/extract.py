@@ -170,6 +170,18 @@ def build_prompt(doc_type: str = "receipt") -> str:
     )
 
 
+def _baseline_max_tokens(n_pages: int) -> int:
+    """Same budget as the pipeline's VLM call.
+
+    The baseline exists to make "two models beat one" a measured claim, which requires
+    the two paths to differ ONLY in architecture. Left on the provider default of 1500,
+    18 of 39 documents truncated here while the pipeline had 16384 + 8192 per extra page,
+    so the comparison measured the budget.
+    """
+    base = int(os.environ.get("VLM_MAX_TOKENS", "16384"))
+    return base + (n_pages - 1) * int(os.environ.get("VLM_MAX_TOKENS_PER_EXTRA_PAGE", "8192"))
+
+
 def extract(path: str | Path, doc_type: str = "receipt") -> BaseModel:
     """VLM-only baseline (Phase 3). No confidence; kept so improvements stay measurable."""
     schema_model = DOCUMENT_MODELS[doc_type]
@@ -192,7 +204,8 @@ def extract(path: str | Path, doc_type: str = "receipt") -> BaseModel:
         },
     ]
 
-    resp = provider.complete(messages, json_mode=True)
+    budget = _baseline_max_tokens(len(pages))
+    resp = provider.complete(messages, json_mode=True, max_tokens=budget)
     raw = _strip_fences(resp.text)
 
     try:

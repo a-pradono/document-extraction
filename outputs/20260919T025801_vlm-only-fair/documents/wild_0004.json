@@ -1,0 +1,54 @@
+{
+  "doc_id": "wild_0004",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "57 EXPRESS",
+    "merchant_address": "3111 W TEMPLE AVE POMONA, CA",
+    "date": "2015-03-08",
+    "currency": "USD",
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "65.19",
+    "payment_method": "CREDIT",
+    "line_items": [
+      {
+        "description": "REGULAR",
+        "quantity": "15.863",
+        "unit_price": "3.479",
+        "line_total": "55.19"
+      },
+      {
+        "description": "Ultimate",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "10"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 5.419921299966518,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

@@ -1,0 +1,145 @@
+{
+  "doc_id": "cord_0009",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "Tous Les Jours",
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "54000",
+    "payment_method": "CASH",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.9275,
+    "merchant_address": 0.9494,
+    "payment_method": 0.9195,
+    "date": 0.9288,
+    "currency": 0.982,
+    "subtotal": 0.9392,
+    "service_charge": 0.9392,
+    "discount": 0.9392,
+    "tax": 0.9392,
+    "total": 0.9596,
+    "line_items": 0.4677
+  },
+  "abstained": [
+    "line_items"
+  ],
+  "withheld": {
+    "line_items": "[{\"description\": \"TWIST DONUT\", \"quantity\": \"2\", \"unit_price\": null, \"line_total\": \"18000\"}, {\"description\": \"BANANA DONUT\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"11000\"}, {\"description\": \"CREAMCHEESE BREAD\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"13000\"}, {\"description\": \"FRANKFRUT SAUSAGE ROLL\", \"quantity\": \"1\", \"unit_price\": null, \"line_total\": \"12000\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.7
+    },
+    "merchant_address": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "payment_method": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "currency": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "service_charge": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "discount": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.0
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "Tous Les Jours\n----------------------------------------\n========================================\n2 TWIST DONUT 18,000\n1 BANANA DONUT 11,000\n1 CREAMCHEESE BREAD 13,000\n1 FRANKFRUT SAUSAGE ROLL 12,000\n----------------------------------------\nTOTAL 54,000\nCASH 104,000\nCHANGE 50,000\n----------------------------------------\nThank You. Please Come Again!",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 19.391,
+    "wall_s": 0.0,
+    "cost_usd": 0.00356975,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2831,
+        "completion_tokens": 839,
+        "latency_s": 16.903906399966218,
+        "cost_usd": 0.0029468,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 1621,
+        "completion_tokens": 633,
+        "latency_s": 2.487287900003139,
+        "cost_usd": 0.00062295,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

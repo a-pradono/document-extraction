@@ -1,0 +1,108 @@
+{
+  "doc_id": "cord_0023",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "179500",
+    "service_charge": null,
+    "discount": null,
+    "tax": "17950",
+    "total": "197450",
+    "payment_method": "Cash",
+    "line_items": [
+      {
+        "description": "Nasi Putih",
+        "quantity": "3",
+        "unit_price": null,
+        "line_total": "30000"
+      },
+      {
+        "description": "Nasi Tambah",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "7000"
+      },
+      {
+        "description": "Ayam Pop",
+        "quantity": "2",
+        "unit_price": null,
+        "line_total": "40000"
+      },
+      {
+        "description": "Samabal SP",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "11000"
+      },
+      {
+        "description": "Sambal Gabus Asin Cb",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "18000"
+      },
+      {
+        "description": "Kerupuk Kuah",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "15000"
+      },
+      {
+        "description": "Ikan Bawal Besa",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "28500"
+      },
+      {
+        "description": "Telur Dadar",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "10000"
+      },
+      {
+        "description": "Teh Es",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "7000"
+      },
+      {
+        "description": "Teh Manis",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "9000"
+      },
+      {
+        "description": "Es Batu",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "4000"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 12.332632299978286,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

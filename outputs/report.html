@@ -227,8 +227,9 @@ their images by a human</strong>, a pass that corrected five money-field errors 
 <strong>confidence model is fitted</strong> on a real run of the calibration split (§4.2), and the
 <strong><code>test</code> split has been run</strong>: micro F1 0.918, hallucination rate 0.63%, abstention
 keeping 87.5% of fields at 95.5% precision (§4.5). The cascade optimization was measured
-and <strong>does not pay</strong> — 100% escalation, +17% cost, no accuracy gain (§4.7). Every table
-in §4 is now a measurement.</p>
+and <strong>does not pay</strong> — 100% escalation, +17% cost, no accuracy gain (§4.7). The
+VLM-only baseline shows the second model adds <strong>no field-level accuracy</strong> either: it
+earns its place as a confidence signal, not as an accuracy mechanism (§4.8).</p>
 </blockquote>
 <hr />
 <h2 id="1-introduction">1. Introduction</h2>
@@ -752,8 +753,20 @@ arithmetic verdicts come from the payload, so a page and the API can never disag
 <td><strong>Done</strong> — §4.7, a measured negative result</td>
 </tr>
 <tr>
+<td>VLM-only baseline (does Model B earn its cost?)</td>
+<td><strong>Done</strong> — §4.8</td>
+</tr>
+<tr>
+<td>Degraded-subset breakdown</td>
+<td><strong>Done</strong> — §4.5</td>
+</tr>
+<tr>
 <td>Synthetic robustness curve</td>
 <td><strong>Not run</strong></td>
+</tr>
+<tr>
+<td>API-mode run against the container</td>
+<td><strong>Not run</strong> (verified against a stub)</td>
 </tr>
 </tbody>
 </table>
@@ -961,8 +974,9 @@ normal-looking confidence built on three signals instead of four. They are badge
 dashboard and say so in words. Re-running them needs only Model B calls; the vision side
 is cached.</p>
 <h3 id="45-accuracy-measured">4.5 Accuracy — measured</h3>
-<p>Run <code>groq-v3</code>, <code>test</code> split (39 documents: 32 receipts + 7 invoices), Gemini 3.6 Flash +
-GPT-OSS 120B, threshold 0.75, every label human-verified.</p>
+<p>Run <code>groq-final</code>, <code>test</code> split (39 documents: 32 receipts + 7 invoices), Gemini 3.6
+Flash + GPT-OSS 120B, threshold 0.75, every label human-verified, every document read by
+both models.</p>
 <table>
 <thead>
 <tr>
@@ -1009,9 +1023,53 @@ GPT-OSS 120B, threshold 0.75, every label human-verified.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Abstention, the central claim of the design, holds on held-out data.</strong> Keeping 87.5% of
-fields raises precision from <strong>0.906 to 0.955</strong> — the risk–coverage curve was fitted for
-95% and the held-out result landed at 95.5%.</p>
+<p><strong>Abstention, the central claim of the design, holds on held-out data.</strong> Keeping 87.8% of
+fields raises precision from <strong>0.906 to 0.958</strong> — the risk–coverage curve was fitted for
+95% and the held-out result landed at 95.8%.</p>
+<p><strong>The degraded subset barely degrades.</strong> The twelve worst scans inside <code>test</code>, tagged by
+sharpness and exposure rather than by source, score <strong>micro F1 0.897</strong> against 0.918 for
+the full set — a two-point drop — with line-item F1 <em>higher</em> at <strong>0.977</strong>. Abstention
+behaves the same way there (87.1% of fields kept, precision 0.894 → 0.948), which is what
+a confidence signal should do when the input gets harder: keep slightly less, stay
+accurate on what it keeps.</p>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">Micro F1</th>
+<th style="text-align: right;">Line-item F1</th>
+<th style="text-align: right;">Hallucination</th>
+<th style="text-align: right;">Abstention (kept @ precision)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receipts, all of <code>test</code></td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;"><strong>0.918</strong></td>
+<td style="text-align: right;">0.951</td>
+<td style="text-align: right;">0.63%</td>
+<td style="text-align: right;">87.8% @ 0.958</td>
+</tr>
+<tr>
+<td>Degraded subset</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0.897</td>
+<td style="text-align: right;"><strong>0.977</strong></td>
+<td style="text-align: right;">1.72%</td>
+<td style="text-align: right;">87.1% @ 0.948</td>
+</tr>
+<tr>
+<td>Invoices</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.800</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">4.84%</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Per field</strong> (normalised / exact F1): <code>total</code> 1.00 / 0.81, <code>date</code> 1.00 / 1.00,
 <code>currency</code> 1.00 / 1.00, <code>service_charge</code> 1.00 / 0.86, <code>subtotal</code> 0.95 / 0.64,
 <code>tax</code> 0.94 / 0.94, <code>payment_method</code> 0.83 / 0.50, <code>merchant_name</code> 0.80 / 0.70,
@@ -1201,7 +1259,91 @@ a real receipt. Two changes would make the idea testable rather than dead:</p>
 </ol>
 <p>Neither was measured, so neither is claimed. What is claimed is the negative: <strong>as
 configured, the cascade costs 17% more for no accuracy gain.</strong></p>
-<h3 id="48-statistical-honesty">4.8 Statistical honesty</h3>
+<h3 id="48-does-the-second-model-earn-its-cost">4.8 Does the second model earn its cost?</h3>
+<p>The VLM-only baseline exists so that "two models beat one" is a measurement rather than
+an assertion. Run on the same 39 documents, same labels, same token budget:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">VLM only</th>
+<th style="text-align: right;">Pipeline (VLM + LLM)</th>
+<th style="text-align: right;">Δ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Micro F1</td>
+<td style="text-align: right;">0.918</td>
+<td style="text-align: right;">0.918</td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+<tr>
+<td>Macro F1</td>
+<td style="text-align: right;">0.917</td>
+<td style="text-align: right;">0.917</td>
+<td style="text-align: right;">−0.1 pp</td>
+</tr>
+<tr>
+<td>Line-item F1</td>
+<td style="text-align: right;">0.948</td>
+<td style="text-align: right;">0.951</td>
+<td style="text-align: right;">+0.2 pp</td>
+</tr>
+<tr>
+<td>Hallucination rate</td>
+<td style="text-align: right;">0.63%</td>
+<td style="text-align: right;">0.63%</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Document accuracy</td>
+<td style="text-align: right;"><strong>40.6%</strong></td>
+<td style="text-align: right;">21.9%</td>
+<td style="text-align: right;"><strong>−18.7 pp</strong></td>
+</tr>
+<tr>
+<td>Cost per document</td>
+<td style="text-align: right;">~$0.0030</td>
+<td style="text-align: right;">$0.0063</td>
+<td style="text-align: right;"><strong>2.1×</strong></td>
+</tr>
+<tr>
+<td>Latency p50</td>
+<td style="text-align: right;">~8 s</td>
+<td style="text-align: right;">19.9 s</td>
+<td style="text-align: right;"><strong>2.5×</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Field-level accuracy is identical, and the pipeline is worse at document level.</strong> This
+is not a subtle result and it should not be buried.</p>
+<p>Two facts explain it, and they matter more than the headline:</p>
+<ol>
+<li><strong>Model B never changes the answer.</strong> By construction <code>result.document</code> is Model A's
+   extraction; Model B's re-read populates <code>document_b</code>, which exists only to produce the
+   <code>agreement</code> signal. So the second model cannot add accuracy — it was never wired to.
+   Its entire contribution is to confidence, where <code>agreement</code> carries the largest fitted
+   weight in three of five field groups (§4.2).</li>
+<li><strong>The document-accuracy gap is a prompt effect, not a model effect.</strong> The pipeline
+   asks Model A for a transcription <em>and</em> fields <em>and</em> a self-reported certainty in one
+   call; the baseline asks for fields alone. Same model, different instructions, and the
+   errors redistribute: identical micro F1 with 18.7 pp lower document accuracy means the
+   pipeline makes single-field mistakes across <em>more</em> documents while the baseline
+   concentrates its errors in fewer. At n=32, 18.7 pp is about six documents — well past
+   the 3.1 pp one-document noise floor.</li>
+</ol>
+<p><strong>What this justifies and what it does not.</strong> It justifies the second model <em>as a
+confidence signal</em>: without <code>agreement</code> the confidence model falls back to three signals,
+and <code>grounded</code> alone cannot cover fields the transcription does not constrain. It does
+<strong>not</strong> justify the second model as an accuracy mechanism, and the report should not
+claim it does.</p>
+<p><strong>The experiment this points at</strong>, not run: split the VLM call so that fields are
+extracted by a fields-only prompt (the baseline's, which scores better per document) and
+the transcription is produced separately, keeping Model B for agreement. That trades one
+extra vision call against a possible 18 pp of document accuracy. It is the obvious next
+measurement and it is cheap; it is left undone rather than guessed at.</p>
+<h3 id="49-statistical-honesty">4.9 Statistical honesty</h3>
 <ul>
 <li><strong>DAR is binary per document</strong>, so at n=39 in <code>test</code> its 95% CI is roughly ±8pp. Two
   versions differing by 3pp are not distinguishable.</li>

@@ -1,0 +1,430 @@
+{
+  "meta": {
+    "version": "vlm-only-baseline",
+    "set": "test",
+    "source": "vlm-only",
+    "confidence_model": ".cache\\confidence_model.json",
+    "threshold": 0.75,
+    "generated_at": "2026-09-19T02:47:51+00:00",
+    "fingerprint": {
+      "ground_truth": "14c89f6e57e66d78",
+      "documents": "c4751ed21c35419f",
+      "prompts": "a1e55c2e0bc1e247",
+      "models": {
+        "model_a": "gemini-3.6-flash",
+        "model_b": "openai/gpt-oss-120b",
+        "cascade_model": null
+      },
+      "threshold": 0.75,
+      "confidence_model": "26a7647897db0da8",
+      "code": "61b89c3-dirty"
+    }
+  },
+  "metrics": {
+    "n_docs": 32,
+    "document_accuracy_rate": 0.2188,
+    "micro_f1": 0.7082,
+    "macro_f1": 0.7112,
+    "line_item_f1": 0.6406,
+    "hallucination_rate": 0.0,
+    "per_field": {
+      "merchant_name": {
+        "support": 20,
+        "predicted": 12,
+        "precision": 0.75,
+        "recall": 0.45,
+        "f1": 0.5625,
+        "exact_f1": 0.5625
+      },
+      "merchant_address": {
+        "support": 13,
+        "predicted": 7,
+        "precision": 0.4286,
+        "recall": 0.2308,
+        "f1": 0.3,
+        "exact_f1": 0.3
+      },
+      "payment_method": {
+        "support": 18,
+        "predicted": 15,
+        "precision": 0.9333,
+        "recall": 0.7778,
+        "f1": 0.8485,
+        "exact_f1": 0.7879
+      },
+      "date": {
+        "support": 14,
+        "predicted": 9,
+        "precision": 1.0,
+        "recall": 0.6429,
+        "f1": 0.7826,
+        "exact_f1": 0.7826
+      },
+      "currency": {
+        "support": 15,
+        "predicted": 10,
+        "precision": 1.0,
+        "recall": 0.6667,
+        "f1": 0.8,
+        "exact_f1": 0.8
+      },
+      "subtotal": {
+        "support": 22,
+        "predicted": 12,
+        "precision": 1.0,
+        "recall": 0.5455,
+        "f1": 0.7059,
+        "exact_f1": 0.5294
+      },
+      "service_charge": {
+        "support": 7,
+        "predicted": 3,
+        "precision": 1.0,
+        "recall": 0.4286,
+        "f1": 0.6,
+        "exact_f1": 0.6
+      },
+      "discount": {
+        "support": 1,
+        "predicted": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_f1": 1.0
+      },
+      "tax": {
+        "support": 16,
+        "predicted": 9,
+        "precision": 1.0,
+        "recall": 0.5625,
+        "f1": 0.72,
+        "exact_f1": 0.72
+      },
+      "total": {
+        "support": 32,
+        "predicted": 21,
+        "precision": 1.0,
+        "recall": 0.6562,
+        "f1": 0.7925,
+        "exact_f1": 0.6415
+      }
+    },
+    "unscored_fields": {},
+    "error_taxonomy": {
+      "correct": 253,
+      "missing": 59,
+      "spurious": 0,
+      "wrong_value": 4,
+      "format_error": 4,
+      "swapped_field": 0
+    },
+    "latency": {
+      "p50_s": 6.29,
+      "p95_s": 9.778,
+      "mean_s": 4.935
+    },
+    "calibration": {
+      "available": false
+    },
+    "headline_document_type": "receipt",
+    "by_document_type": {
+      "invoice": {
+        "n_docs": 7,
+        "document_accuracy_rate": 0.0,
+        "micro_f1": 0.0,
+        "macro_f1": 0.0,
+        "line_item_f1": 0.0,
+        "hallucination_rate": 0.0,
+        "per_field": {
+          "invoice_number": {
+            "support": 5,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "purchase_order": {
+            "support": 1,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "vendor.name": {
+            "support": 7,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "vendor.address": {
+            "support": 7,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "vendor.tax_id": {
+            "support": 0,
+            "predicted": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "exact_f1": null
+          },
+          "customer.name": {
+            "support": 7,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "customer.address": {
+            "support": 5,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "customer.tax_id": {
+            "support": 0,
+            "predicted": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "exact_f1": null
+          },
+          "issue_date": {
+            "support": 5,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "due_date": {
+            "support": 2,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "currency": {
+            "support": 7,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "subtotal": {
+            "support": 3,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "tax": {
+            "support": 2,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          },
+          "total": {
+            "support": 7,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "exact_f1": 0.0
+          }
+        },
+        "unscored_fields": {},
+        "error_taxonomy": {
+          "correct": 40,
+          "missing": 58,
+          "spurious": 0,
+          "wrong_value": 0,
+          "format_error": 0,
+          "swapped_field": 0
+        },
+        "latency": {
+          "p50_s": 0.0,
+          "p95_s": 0.0,
+          "mean_s": 0.0
+        },
+        "calibration": {
+          "available": false
+        },
+        "abstention": {
+          "available": false
+        }
+      }
+    },
+    "abstention": {
+      "available": false
+    },
+    "breakdown": {
+      "degraded": {
+        "n_docs": 12,
+        "document_accuracy_rate": 0.1667,
+        "micro_f1": 0.7216,
+        "line_item_f1": 0.6667,
+        "hallucination_rate": 0.0,
+        "error_taxonomy": {
+          "missing": 19,
+          "wrong_value": 1,
+          "format_error": 3
+        }
+      },
+      "not degraded": {
+        "n_docs": 27,
+        "document_accuracy_rate": 0.1852,
+        "micro_f1": 0.5138,
+        "line_item_f1": 0.463,
+        "hallucination_rate": 0.0,
+        "error_taxonomy": {
+          "missing": 98,
+          "wrong_value": 3,
+          "format_error": 1
+        }
+      },
+      "source:cord": {
+        "n_docs": 16,
+        "document_accuracy_rate": 0.3125,
+        "micro_f1": 0.7925,
+        "line_item_f1": 0.7188,
+        "hallucination_rate": 0.0,
+        "error_taxonomy": {
+          "missing": 16,
+          "wrong_value": 2,
+          "format_error": 1
+        }
+      },
+      "source:inv": {
+        "n_docs": 7,
+        "document_accuracy_rate": 0.0,
+        "micro_f1": 0.0,
+        "line_item_f1": 0.0,
+        "hallucination_rate": 0.0,
+        "error_taxonomy": {
+          "missing": 58
+        }
+      },
+      "source:wild": {
+        "n_docs": 16,
+        "document_accuracy_rate": 0.125,
+        "micro_f1": 0.649,
+        "line_item_f1": 0.5625,
+        "hallucination_rate": 0.0,
+        "error_taxonomy": {
+          "missing": 43,
+          "wrong_value": 2,
+          "format_error": 3
+        }
+      }
+    },
+    "failed_documents": [
+      {
+        "doc_id": "cord_0011",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (82 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (82 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "cord_0013",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (59 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (59 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "cord_0018",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (57 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (57 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "cord_0023",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (244 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (244 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "inv_0001",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (52 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (52 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "inv_0002",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (56 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (56 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "inv_0003",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (56 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (56 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "inv_0004",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (54 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (54 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "inv_0005",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (53 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (53 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "inv_0009",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (380 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (380 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "inv_0010",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (53 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (53 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "wild_0002",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (54 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (54 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "wild_0008",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (107 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (107 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "wild_0011",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (53 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (53 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "wild_0016",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (56 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (56 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "wild_0019",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (56 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (56 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "wild_0022",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (57 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (57 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      },
+      {
+        "doc_id": "wild_0023",
+        "error": "TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (75 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 271, in run\n    ext = extract_one(doc_path, source, conf_model, threshold, use_cache, doc_type)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\eval\\run.py\", line 198, in extract_one\n    document = extract_vlm_only(doc_path, doc_type=doc_type)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Aditya\\Desktop\\Project\\dsaur\\extractor\\extract.py\", line 195, in extract\n    resp = provider.complete(messages, json_mode=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nextractor.provider.TruncatedResponse: model=gemini-3.6-flash hit max_tokens=1500 (75 completion tokens); output is incomplete. Raise the *_MAX_TOKENS setting.\n"
+      }
+    ]
+  }
+}

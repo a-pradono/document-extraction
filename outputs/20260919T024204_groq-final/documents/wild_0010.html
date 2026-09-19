@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8"><title>wild_0010</title><style>
+body{font:14px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #ddd;padding:.4rem .6rem;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.k{color:#555} .big{font-size:1.4rem;font-weight:700}
+.miss{color:#b45309} .spur{color:#b91c1c} .wrong{color:#b91c1c}
+.ok{color:#166534} .abst{color:#b45309;font-weight:600} .absent{color:#888}
+.chip{display:inline-block;border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .25rem .15rem 0;
+      font-size:12px;border:1px solid #ccc}
+.chip.pass{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.fail{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.chip.na{background:#f3f4f6;color:#6b7280}
+tr.sum td{border-top:2px solid #333;font-weight:700}
+details{margin:1rem 0} pre{white-space:pre-wrap;background:#f7f7f7;padding:.6rem;font-size:12px}
+</style><h1>wild_0010</h1><p class=k>receipt &middot; status: ok &middot; threshold 0.75 &middot; 1 field(s) abstained</p><h2>Fields</h2><table><tr><th>field</th><th>value</th><th>conf</th><th>status</th></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 0.50 | self_report: 0.99"><td>merchant_name</td><td>EL GRECO</td><td>0.92</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 0.50 | self_report: 0.98"><td>merchant_address</td><td>Rue Chair et Pains, 5 Grand place, 36 1000 Bruxelles</td><td>0.92</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 0.00 | validated: 1.00 | self_report: 0.99"><td>date</td><td>2016-06-23</td><td>0.86</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>currency</td><td>&mdash;</td><td>0.99</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 0.00 | self_report: 0.98"><td>subtotal</td><td>38.87</td><td>0.95</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>service_charge</td><td>&mdash;</td><td>0.93</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>discount</td><td>&mdash;</td><td>0.93</td><td class=absent>absent</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.98"><td>tax</td><td>5.63</td><td>0.96</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 1.00 | validated: 1.00 | self_report: 0.99"><td>total</td><td>44.5</td><td>0.96</td><td class=ok>ok</td></tr><tr title="agreement: 1.00 | grounded: 0.50 | validated: 0.50 | self_report: 1.00"><td>payment_method</td><td>&mdash;</td><td>0.93</td><td class=absent>absent</td></tr></table><h2>Line items</h2><p class=abst>This table was withheld: confidence fell below the threshold, so it is shown for review but not asserted.</p><table><tr><th>#</th><th>description</th><th>qty</th><th>unit price</th><th>line total</th></tr><tr><td>1</td><td>Coca cola light</td><td>4</td><td>3.25</td><td>13.0</td></tr><tr><td>2</td><td>Filet de poitrine de pou</td><td>1</td><td>&mdash;</td><td>14.5</td></tr><tr><td>3</td><td>Brochette d&#x27;agneau</td><td>1</td><td>&mdash;</td><td>17.0</td></tr><tr class=sum><td colspan=4>sum</td><td><b class=wrong>rows sum to 44.50 != 38.87 - off by 5.63</b></td></tr></table><h2>Model-free validation</h2><p class=k>Deterministic checks, independent of either model. <b>n/a</b> means the check did not apply &mdash; not that it passed.</p><span class="chip pass">subtotal_plus_tax_equals_total &#10003;</span><span class="chip fail" title="rows sum to 44.50 != 38.87 - off by 5.63">line_items_sum_to_subtotal &#10007;</span><span class="chip pass">rows_multiply_out &#10003;</span><span class="chip pass">date_parses &#10003;</span><span class="chip na">currency_is_iso n/a</span><ul><li class=wrong>line_items_sum_to_subtotal: rows sum to 44.50 != 38.87 - off by 5.63</li></ul><h2>Cost and latency</h2><p class=k>12.62s model time &middot; 4609 prompt + 1750 completion tokens &middot; $0.00393 list-price equivalent</p><table><tr><th>stage</th><th>model</th><th>prompt</th><th>completion</th><th>s</th><th>cost</th><th></th></tr><tr><td>model_a</td><td>gemini-3.6-flash</td><td>2853</td><td>928</td><td>10.05</td><td>$0.00318</td><td>cached</td></tr><tr><td>model_b</td><td>openai/gpt-oss-120b</td><td>1756</td><td>822</td><td>2.58</td><td>$0.00076</td><td>cached</td></tr></table><details><summary>Transcription (487 chars) &mdash; the grounding source</summary><pre>EL GRECO
+Rue Chair et Pains, 5 Grand place, 36
+1000 Bruxelles
+Tel: 02/511.89.82 Fax: 02/424.31.97
+ouvert 7 jours sur 7
+Maison fondée en 1973
+Info@resto.be www.deltaweb.be
+jeudi 23 juin 2016 14:42
+TABLE 6 Couvert(s) 2
+4 Coca cola light 3.25 13.00
+1 Filet de poitrine de pou 14.50
+1 Brochette d&#x27;agneau 17.00
+TOTAL 44.50
+HTVA TAXE TVAC
+TVA 21.00% BOISSONS 10.74 2.26 13.00
+TVA 12.00% CUISINE 28.12 3.38 31.50
+TOTAL 38.87 5.63 44.50
+Merci de votre visite
+Facture simplifiée (Tbl) No. : 67545</pre></details>

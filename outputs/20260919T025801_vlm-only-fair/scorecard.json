@@ -1,0 +1,346 @@
+{
+  "meta": {
+    "version": "vlm-only-fair",
+    "set": "test",
+    "source": "vlm-only",
+    "confidence_model": ".cache\\confidence_model.json",
+    "threshold": 0.75,
+    "generated_at": "2026-09-19T02:58:00+00:00",
+    "fingerprint": {
+      "ground_truth": "14c89f6e57e66d78",
+      "documents": "c4751ed21c35419f",
+      "prompts": "a1e55c2e0bc1e247",
+      "models": {
+        "model_a": "gemini-3.6-flash",
+        "model_b": "openai/gpt-oss-120b",
+        "cascade_model": null
+      },
+      "threshold": 0.75,
+      "confidence_model": "26a7647897db0da8",
+      "code": "61b89c3-dirty"
+    }
+  },
+  "metrics": {
+    "n_docs": 32,
+    "document_accuracy_rate": 0.4062,
+    "micro_f1": 0.9177,
+    "macro_f1": 0.9175,
+    "line_item_f1": 0.9481,
+    "hallucination_rate": 0.0063,
+    "per_field": {
+      "merchant_name": {
+        "support": 20,
+        "predicted": 20,
+        "precision": 0.8,
+        "recall": 0.8,
+        "f1": 0.8,
+        "exact_f1": 0.75
+      },
+      "merchant_address": {
+        "support": 13,
+        "predicted": 13,
+        "precision": 0.5385,
+        "recall": 0.5385,
+        "f1": 0.5385,
+        "exact_f1": 0.5385
+      },
+      "payment_method": {
+        "support": 18,
+        "predicted": 18,
+        "precision": 0.9444,
+        "recall": 0.9444,
+        "f1": 0.9444,
+        "exact_f1": 0.7778
+      },
+      "date": {
+        "support": 14,
+        "predicted": 14,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_f1": 1.0
+      },
+      "currency": {
+        "support": 15,
+        "predicted": 15,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_f1": 1.0
+      },
+      "subtotal": {
+        "support": 22,
+        "predicted": 22,
+        "precision": 0.9545,
+        "recall": 0.9545,
+        "f1": 0.9545,
+        "exact_f1": 0.6364
+      },
+      "service_charge": {
+        "support": 7,
+        "predicted": 7,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_f1": 0.8571
+      },
+      "discount": {
+        "support": 1,
+        "predicted": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_f1": 1.0
+      },
+      "tax": {
+        "support": 16,
+        "predicted": 16,
+        "precision": 0.9375,
+        "recall": 0.9375,
+        "f1": 0.9375,
+        "exact_f1": 0.9375
+      },
+      "total": {
+        "support": 32,
+        "predicted": 32,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_f1": 0.8125
+      }
+    },
+    "unscored_fields": {},
+    "error_taxonomy": {
+      "correct": 305,
+      "missing": 2,
+      "spurious": 1,
+      "wrong_value": 5,
+      "format_error": 6,
+      "swapped_field": 1
+    },
+    "latency": {
+      "p50_s": 8.281,
+      "p95_s": 18.728,
+      "mean_s": 9.624
+    },
+    "calibration": {
+      "available": false
+    },
+    "headline_document_type": "receipt",
+    "by_document_type": {
+      "invoice": {
+        "n_docs": 7,
+        "document_accuracy_rate": 0.1429,
+        "micro_f1": 0.8034,
+        "macro_f1": 0.8393,
+        "line_item_f1": 0.967,
+        "hallucination_rate": 0.0169,
+        "per_field": {
+          "invoice_number": {
+            "support": 5,
+            "predicted": 5,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "exact_f1": 1.0
+          },
+          "purchase_order": {
+            "support": 1,
+            "predicted": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "exact_f1": 1.0
+          },
+          "vendor.name": {
+            "support": 7,
+            "predicted": 7,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "exact_f1": 0.8571
+          },
+          "vendor.address": {
+            "support": 7,
+            "predicted": 6,
+            "precision": 0.5,
+            "recall": 0.4286,
+            "f1": 0.4615,
+            "exact_f1": 0.4615
+          },
+          "vendor.tax_id": {
+            "support": 0,
+            "predicted": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "exact_f1": null
+          },
+          "customer.name": {
+            "support": 7,
+            "predicted": 7,
+            "precision": 0.5714,
+            "recall": 0.5714,
+            "f1": 0.5714,
+            "exact_f1": 0.5714
+          },
+          "customer.address": {
+            "support": 5,
+            "predicted": 6,
+            "precision": 0.1667,
+            "recall": 0.2,
+            "f1": 0.1818,
+            "exact_f1": 0.1818
+          },
+          "customer.tax_id": {
+            "support": 0,
+            "predicted": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "exact_f1": null
+          },
+          "issue_date": {
+            "support": 5,
+            "predicted": 5,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "exact_f1": 1.0
+          },
+          "due_date": {
+            "support": 2,
+            "predicted": 2,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "exact_f1": 1.0
+          },
+          "currency": {
+            "support": 7,
+            "predicted": 7,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "exact_f1": 1.0
+          },
+          "subtotal": {
+            "support": 3,
+            "predicted": 4,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571,
+            "exact_f1": 0.2857
+          },
+          "tax": {
+            "support": 2,
+            "predicted": 2,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "exact_f1": 0.5
+          },
+          "total": {
+            "support": 7,
+            "predicted": 7,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "exact_f1": 0.4286
+          }
+        },
+        "unscored_fields": {},
+        "error_taxonomy": {
+          "correct": 85,
+          "missing": 1,
+          "spurious": 1,
+          "wrong_value": 6,
+          "format_error": 4,
+          "swapped_field": 1
+        },
+        "latency": {
+          "p50_s": 16.352,
+          "p95_s": 101.483,
+          "mean_s": 27.419
+        },
+        "calibration": {
+          "available": false
+        },
+        "abstention": {
+          "available": false
+        }
+      }
+    },
+    "abstention": {
+      "available": false
+    },
+    "breakdown": {
+      "degraded": {
+        "n_docs": 12,
+        "document_accuracy_rate": 0.4167,
+        "micro_f1": 0.9043,
+        "line_item_f1": 0.9773,
+        "hallucination_rate": 0.0,
+        "error_taxonomy": {
+          "missing": 2,
+          "wrong_value": 1,
+          "format_error": 3,
+          "swapped_field": 1
+        }
+      },
+      "not degraded": {
+        "n_docs": 27,
+        "document_accuracy_rate": 0.3333,
+        "micro_f1": 0.8805,
+        "line_item_f1": 0.94,
+        "hallucination_rate": 0.0125,
+        "error_taxonomy": {
+          "missing": 1,
+          "spurious": 2,
+          "wrong_value": 10,
+          "format_error": 7,
+          "swapped_field": 1
+        }
+      },
+      "source:cord": {
+        "n_docs": 16,
+        "document_accuracy_rate": 0.5,
+        "micro_f1": 0.9593,
+        "line_item_f1": 0.9517,
+        "hallucination_rate": 0.0161,
+        "error_taxonomy": {
+          "spurious": 1,
+          "wrong_value": 1,
+          "format_error": 1
+        }
+      },
+      "source:inv": {
+        "n_docs": 7,
+        "document_accuracy_rate": 0.1429,
+        "micro_f1": 0.8034,
+        "line_item_f1": 0.967,
+        "hallucination_rate": 0.0169,
+        "error_taxonomy": {
+          "missing": 1,
+          "spurious": 1,
+          "wrong_value": 6,
+          "format_error": 4,
+          "swapped_field": 1
+        }
+      },
+      "source:wild": {
+        "n_docs": 16,
+        "document_accuracy_rate": 0.3125,
+        "micro_f1": 0.8912,
+        "line_item_f1": 0.9444,
+        "hallucination_rate": 0.0,
+        "error_taxonomy": {
+          "missing": 2,
+          "wrong_value": 4,
+          "format_error": 5,
+          "swapped_field": 1
+        }
+      }
+    }
+  }
+}

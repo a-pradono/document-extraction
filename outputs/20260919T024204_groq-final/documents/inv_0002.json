@@ -1,0 +1,187 @@
+{
+  "doc_id": "inv_0002",
+  "status": "ok",
+  "document_type": "invoice",
+  "document": {
+    "invoice_number": "949838-1",
+    "issue_date": "2012-10-14",
+    "due_date": null,
+    "vendor": {
+      "name": "WXII",
+      "address": "700 Coliseum Drive\nWinston-Salem, NC 27106",
+      "tax_id": null
+    },
+    "customer": {
+      "name": "Crossroads Media",
+      "address": "66 Canal Center Plaza\nSuite 555\nAlexandria, VA 22314",
+      "tax_id": null
+    },
+    "currency": "USD",
+    "subtotal": "6150.0",
+    "tax": null,
+    "total": "5227.5",
+    "purchase_order": null,
+    "line_items": []
+  },
+  "confidence": {
+    "invoice_number": 0.9195,
+    "purchase_order": 0.7183,
+    "vendor.name": 0.9195,
+    "vendor.address": 0.9198,
+    "vendor.tax_id": 0.9296,
+    "customer.name": 0.9195,
+    "customer.address": 0.9198,
+    "customer.tax_id": 0.9296,
+    "issue_date": 0.8307,
+    "due_date": 0.8643,
+    "currency": 0.9964,
+    "subtotal": 0.955,
+    "tax": 0.935,
+    "total": 0.9549,
+    "line_items": 0.4329
+  },
+  "abstained": [
+    "purchase_order",
+    "line_items"
+  ],
+  "withheld": {
+    "purchase_order": "949838",
+    "line_items": "[{\"description\": \"NBC Today Show II\", \"quantity\": \"4\", \"unit_price\": \"150.0\", \"line_total\": null}, {\"description\": \"NBC Today Show II\", \"quantity\": \"1\", \"unit_price\": \"150.0\", \"line_total\": null}, {\"description\": \"DR. OZ\", \"quantity\": \"4\", \"unit_price\": \"600.0\", \"line_total\": null}, {\"description\": \"DR. OZ\", \"quantity\": \"1\", \"unit_price\": \"600.0\", \"line_total\": null}, {\"description\": \"NBC Prime\", \"quantity\": \"1\", \"unit_price\": \"2000.0\", \"line_total\": null}, {\"description\": \"Notre Dame Football\", \"quantity\": \"1\", \"unit_price\": \"400.0\", \"line_total\": null}]"
+  },
+  "signals": {
+    "invoice_number": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "purchase_order": {
+      "agreement": 0.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "vendor.name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "vendor.address": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "vendor.tax_id": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.9
+    },
+    "customer.name": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "customer.address": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "customer.tax_id": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.9
+    },
+    "issue_date": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "due_date": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.9
+    },
+    "currency": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.98
+    },
+    "subtotal": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.0,
+      "self_report": 0.98
+    },
+    "tax": {
+      "agreement": 1.0,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 0.9
+    },
+    "total": {
+      "agreement": 1.0,
+      "grounded": 1.0,
+      "validated": 0.0,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.3,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": false,
+    "line_items_sum_to_subtotal": null,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true,
+    "due_date_after_issue_date": null,
+    "vendor_differs_from_customer": true
+  },
+  "validation_notes": {
+    "subtotal_plus_tax_equals_total": "6,150.00 != 5,227.50 - off by 922.50"
+  },
+  "transcription": "--- page 1 ---\nPage 1 of 2\nDUPLICATE INVOICE\n12 WXII\nWXII\n700 Coliseum Drive\nWinston-Salem, NC 27106\nMain: (336)721-9944\nBilling: (410)338-6432\nwww.wxii12.com\nBilling Address:\nCrossroads Media\nAttention: Accounts Payable\n66 Canal Center Plaza\nSuite 555\nAlexandria, VA 22314\nSend Payment To:\nWXII\nPO Box 26888\nLehigh Valley, PA 18002-6888\nInvoice #\n949838-1\nInvoice Date\n10/14/12\nInvoice Month\nOctober 2012\nInvoice Period\n10/01/12 - 10/08/12\nStation\nWXII\nAccount Executive\nJamie Andrus\nSales Office\nEagle-Washingto\nSales Region\nNational\nAdvertiser\nAmerican Crossroads\nProduct\nAmerican Crossroads\nEstimate Number\n953\nFlight Dates\n10/02/12 - 10/08/12\nOrder #\n949838\nAlt Order #\n07901801\nBilling Calendar\nBroadcast\nBilling Type\nCash\nDeal #\nSpecial Handling\nIDB #\nAdvertiser Code\n11\nProduct Code\n27\nAgency Ref\nAdvertiser Ref\nLine Start Date End Date Description Start/End Time MTWTFSS Length Spots/ Week Rate Type\n1 10/02/12 10/05/12 NBC Today Show II 10A-12N -TWTF-- :30 4 $150.00 NM\nWeeks: Start Date End Date MTWTFSS Spots/Week Rate\n10/01/12 10/07/12 -TWTF-- 4 $150.00\nSpots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type\n2 WXII Tu 10/02/12 11:58 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM\n1 WXII W 10/03/12 11:51 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM\n4 WXII Th 10/04/12 11:27 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM\n3 WXII F 10/05/12 10:59 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM\n2 10/08/12 10/08/12 NBC Today Show II 10A-12N M------ :30 1 $150.00 NM\nWeeks: Start Date End Date MTWTFSS Spots/Week Rate\n10/08/12 10/14/12 M------ 1 $150.00\nSpots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type\n1 WXII M 10/08/12 10:59 AM NBC Today Show II 10A-12N :30 USPRTV19ACH $150.00 NM\n3 10/02/12 10/05/12 DR. OZ M-F 4-5p -TWTF-- :30 4 $600.00 NM\nWeeks: Start Date End Date MTWTFSS Spots/Week Rate\n10/01/12 10/07/12 -TWTF-- 4 $600.00\nSpots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type\n2 WXII Tu 10/02/12 4:41 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM\n3 WXII W 10/03/12 4:39 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM\n4 WXII Th 10/04/12 4:40 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM\n1 WXII F 10/05/12 4:39 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM\n4 10/08/12 10/08/12 DR. OZ M-F 4-5p M------ :30 1 $600.00 NM\nWeeks: Start Date End Date MTWTFSS Spots/Week Rate\n10/08/12 10/14/12 M------ 1 $600.00\nSpots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type\n1 WXII M 10/08/12 4:27 PM DR. OZ M-F 4-5p :30 USPRTV19ACH $600.00 NM\n5 10/05/12 10/05/12 NBC Prime 10-11pm ----F-- :30 1 $2,000.00 NM\nWeeks: Start Date End Date MTWTFSS Spots/Week Rate\n10/01/12 10/07/12 ----F-- 1 $2,000.00\nSpots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type\n1 WXII F 10/05/12 10:30 PM NBC Prime 10-11pm :30 USPRTV19ACH $2,000.00 NM\nThis invoice is subject to Hearst Television's Terms and Conditions which can be reviewed on our company website at www.hearsttelevision.com/for_advertisers\nWe warrant that the actual broadcast information shown on this invoice was taken from the program log\n--- page 2 ---\nPage 2 of 2\nDUPLICATE INVOICE\nSend Payment To:\nWXII\nPO Box 26888\nLehigh Valley, PA 18002-6888\nInvoice #\n949838-1\nInvoice Date\n10/14/12\nInvoice Month\nOctober 2012\nInvoice Period\n10/01/12 - 10/08/12\nAdvertiser\nAmerican Crossroads\nProduct\nAmerican Crossroads\nEstimate Number\n953\nwww.wxii12.com\nLine Start Date End Date Description Start/End Time MTWTFSS Length Spots/ Week Rate Type\n5 10/05/12 10/05/12 NBC Prime 10-11pm ----F-- :30 1 $2,000.00 NM\n6 10/06/12 10/06/12 Notre Dame Football ND Football -----S- :30 1 $400.00 NM\nWeeks: Start Date End Date MTWTFSS Spots/Week Rate\n10/01/12 10/07/12 -----S- 1 $400.00\nSpots: # Ch Day Air Date Air Time Description Start/End Time Length Ad-ID Rate Type\n1 WXII Sa 10/06/12 7:37 PM Notre Dame Football ND Football :30 USPRTV19ACH $400.00 NM\nTotal Spots 12\nPayment Terms 30 Days\nGross Total $6,150.00\nAgency Commission $922.50\nNet Amount Due $5,227.50\nThis invoice is subject to Hearst Television's Terms and Conditions which can be reviewed on our company website at www.hearsttelevision.com/for_advertisers\nWe warrant that the actual broadcast information shown on this invoice was taken from the program log",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 71.027,
+    "wall_s": 0.0,
+    "cost_usd": 0.0102989,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 4254,
+        "completion_tokens": 2819,
+        "latency_s": 39.938960600004066,
+        "cost_usd": 0.0083237,
+        "cached": true,
+        "priced": true
+      },
+      {
+        "stage": "model_b",
+        "model": "openai/gpt-oss-120b",
+        "prompt_tokens": 3356,
+        "completion_tokens": 2453,
+        "latency_s": 31.088244099984877,
+        "cost_usd": 0.0019752,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

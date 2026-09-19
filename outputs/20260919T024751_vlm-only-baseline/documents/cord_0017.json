@@ -1,0 +1,60 @@
+{
+  "doc_id": "cord_0017",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": "2017-10-23",
+    "currency": null,
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "74000",
+    "payment_method": "CASH",
+    "line_items": [
+      {
+        "description": "[MD] SOFT MORNING ROLL",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "18000"
+      },
+      {
+        "description": "REAL HONEY PANCAKE BREAD",
+        "quantity": "2",
+        "unit_price": null,
+        "line_total": "20000"
+      },
+      {
+        "description": "CUSTARD BRIOCHE",
+        "quantity": "4",
+        "unit_price": null,
+        "line_total": "36000"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 6.985333300021011,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

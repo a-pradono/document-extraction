@@ -1,0 +1,150 @@
+{
+  "doc_id": "wild_0011",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "ALDI STORES A LIMITED PARTNERSHIP",
+    "merchant_address": "CARINDALE",
+    "date": null,
+    "currency": "AUD",
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "37.98",
+    "payment_method": null,
+    "line_items": [
+      {
+        "description": "46199 Baby Spinach 120g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "1.79"
+      },
+      {
+        "description": "35250 Ckr Brown Rice 100g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "1.39"
+      },
+      {
+        "description": "37427 Tortilla Wraps Wholemeal",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "1.99"
+      },
+      {
+        "description": "42335 Beetroot Sliced 450g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "0.85"
+      },
+      {
+        "description": "4376 PremBakedBeansTom425g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "0.89"
+      },
+      {
+        "description": "5336 Fzr Mixed Berries 500g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "4.49"
+      },
+      {
+        "description": "36884 Ham 4x100g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "5"
+      },
+      {
+        "description": "1390 Froz Steam Veg 450g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "1.99"
+      },
+      {
+        "description": "41207 Rice Crackers 200g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "1.65"
+      },
+      {
+        "description": "76016 Pink Lady Apples per kg",
+        "quantity": "0.53",
+        "unit_price": "4.99",
+        "line_total": "2.64"
+      },
+      {
+        "description": "76113 Bananas, Caven, 750g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "2.49"
+      },
+      {
+        "description": "Price Over",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "-1"
+      },
+      {
+        "description": "76365 Grapes Thompson 1kg",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "1.75"
+      },
+      {
+        "description": "9477 Nuts Raw OSN Var",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "3.99"
+      },
+      {
+        "description": "43333 Dip Salsa 300g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "1.49"
+      },
+      {
+        "description": "3769 Mayonnaise Squeeze",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "2.59"
+      },
+      {
+        "description": "76490 Mandarins H/M, 700g",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "4.99"
+      },
+      {
+        "description": "Price Over",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "-1"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 18.728050200035796,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

@@ -1,0 +1,78 @@
+{
+  "doc_id": "cord_0004",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "\uc0bc\uc9c4\uc5b4\ubb35",
+    "merchant_address": null,
+    "date": null,
+    "currency": "IDR",
+    "subtotal": "91000",
+    "service_charge": null,
+    "discount": "0",
+    "tax": null,
+    "total": "91000",
+    "payment_method": "Debit",
+    "line_items": [
+      {
+        "description": "Goblin's Mace",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "25000"
+      },
+      {
+        "description": "Mozarella Hot Dog",
+        "quantity": "2",
+        "unit_price": null,
+        "line_total": "38000"
+      },
+      {
+        "description": "Chili Pepper Croquette",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "14000"
+      },
+      {
+        "description": "Cheese Croquette",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "14000"
+      },
+      {
+        "description": "Plastik Amook",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "0"
+      },
+      {
+        "description": "Plastik Putih Take Away",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "0"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 7.4307053000084125,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

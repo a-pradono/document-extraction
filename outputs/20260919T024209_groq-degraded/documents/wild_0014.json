@@ -1,0 +1,139 @@
+{
+  "doc_id": "wild_0014",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "Morrisons",
+    "merchant_address": "Morrisons Supermarkets plc BD3 7DL",
+    "date": null,
+    "currency": "GBP",
+    "subtotal": null,
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "2.19",
+    "payment_method": "Card",
+    "line_items": []
+  },
+  "confidence": {
+    "merchant_name": 0.8434,
+    "merchant_address": 0.8455,
+    "payment_method": 0.8439,
+    "date": 0.7385,
+    "currency": 0.9941,
+    "subtotal": 0.8894,
+    "service_charge": 0.8894,
+    "discount": 0.8894,
+    "tax": 0.8894,
+    "total": 0.9305,
+    "line_items": 0.5663
+  },
+  "abstained": [
+    "date",
+    "line_items"
+  ],
+  "withheld": {
+    "date": "2016-02-13",
+    "line_items": "[{\"description\": \"M WHOLEMEAL LOAF\", \"quantity\": \"1\", \"unit_price\": \"0.5\", \"line_total\": \"0.5\"}, {\"description\": \"M DOUBLE CREAM\", \"quantity\": \"1\", \"unit_price\": \"0.84\", \"line_total\": \"0.84\"}, {\"description\": \"M CARROTS 1KG\", \"quantity\": \"1\", \"unit_price\": \"0.47\", \"line_total\": \"0.47\"}, {\"description\": \"M BROCCOLI\", \"quantity\": \"1\", \"unit_price\": \"0.38\", \"line_total\": \"0.38\"}]"
+  },
+  "signals": {
+    "merchant_name": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "merchant_address": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.95
+    },
+    "payment_method": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.98
+    },
+    "date": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "currency": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.99
+    },
+    "subtotal": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "service_charge": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "discount": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "tax": {
+      "agreement": 0.5,
+      "grounded": 0.5,
+      "validated": 0.5,
+      "self_report": 1.0
+    },
+    "total": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 0.5,
+      "self_report": 0.99
+    },
+    "line_items": {
+      "agreement": 0.5,
+      "grounded": 1.0,
+      "validated": 1.0,
+      "self_report": 0.5
+    }
+  },
+  "validation": {
+    "subtotal_plus_tax_equals_total": null,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": true,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "Win 1 of 5 prizes of \u00a3200\nin Morrisons vouchers!\nVisit www.morrisonsislistening.co.uk\nand tell us how we did today.\nYou will need this receipt to enter.\nMorrisons\nMorrisons Supermarkets plc BD3 7DL\nHadleigh - 01473827021\nManager : David Weynan\nVAT No.343475355\nQTY DESCRIPTION PRICE AMOUNT\n1 M WHOLEMEAL LOAF \u00a30.50 \u00a30.50 F\n1 M DOUBLE CREAM \u00a30.84 \u00a30.84 D\n1 M CARROTS 1KG \u00a30.47 \u00a30.47 F\n1 M BROCCOLI \u00a30.38 \u00a30.38 F\nBALANCE DUE \u00a32.19\nCard \u00a32.19\nPAYMENT\nAID : A0000000031010\nApplication Name : Visa Credit\nPAN Number : ************0043\nStart Date : 0116\nIssue Number : 02\nData Source : ICC\nMerchant Number : 8763567\nTerminal ID : 27868524\nTransaction ID : 309873\nAuthorisation : 11 - 085257\nExp. Date : 0119\nVerified by PIN\nCHANGE \u00a30.00\nNumber of items: 4\n****************************************\nToday you could have earned 10 points\nOur Match & More Terms and Conditions have changed\nFor more details visit www.morrisons.com\n****************************************\nYour Survey Entry No:62004710170071\n13/02/2016 11:16:17 00471 017 0071 0041\nTHANK YOU FOR SHOPPING\nAT MORRISONS",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 11.969,
+    "wall_s": 0.0,
+    "cost_usd": 0.0039228,
+    "stages": [
+      {
+        "stage": "model_a",
+        "model": "gemini-3.6-flash",
+        "prompt_tokens": 2851,
+        "completion_tokens": 1227,
+        "latency_s": 11.96901279996382,
+        "cost_usd": 0.0039228,
+        "cached": true,
+        "priced": true
+      }
+    ]
+  },
+  "cascade": null,
+  "warnings": [
+    "model_b_failed: RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2tnfmkce1erqwgg3swwhjz4` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199987, Requested 2785. Please try again in 19m57.504s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  ],
+  "error": null
+}

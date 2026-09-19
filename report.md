@@ -6,8 +6,9 @@
 > **confidence model is fitted** on a real run of the calibration split (§4.2), and the
 > **`test` split has been run**: micro F1 0.918, hallucination rate 0.63%, abstention
 > keeping 87.5% of fields at 95.5% precision (§4.5). The cascade optimization was measured
-> and **does not pay** — 100% escalation, +17% cost, no accuracy gain (§4.7). Every table
-> in §4 is now a measurement.
+> and **does not pay** — 100% escalation, +17% cost, no accuracy gain (§4.7). The
+> VLM-only baseline shows the second model adds **no field-level accuracy** either: it
+> earns its place as a confidence signal, not as an accuracy mechanism (§4.8).
 
 ---
 
@@ -379,7 +380,10 @@ arithmetic verdicts come from the payload, so a page and the API can never disag
 | Cost measurement from real token counts | **Done** — §4.6 |
 | **Accuracy scorecard on `test`** | **Done** — §4.5 |
 | Cascade before/after | **Done** — §4.7, a measured negative result |
+| VLM-only baseline (does Model B earn its cost?) | **Done** — §4.8 |
+| Degraded-subset breakdown | **Done** — §4.5 |
 | Synthetic robustness curve | **Not run** |
+| API-mode run against the container | **Not run** (verified against a stub) |
 
 ### 4.2 Confidence quality — measured
 
@@ -470,8 +474,9 @@ is cached.
 
 ### 4.5 Accuracy — measured
 
-Run `groq-v3`, `test` split (39 documents: 32 receipts + 7 invoices), Gemini 3.6 Flash +
-GPT-OSS 120B, threshold 0.75, every label human-verified.
+Run `groq-final`, `test` split (39 documents: 32 receipts + 7 invoices), Gemini 3.6
+Flash + GPT-OSS 120B, threshold 0.75, every label human-verified, every document read by
+both models.
 
 | Metric | Receipts (headline, n=32) | Invoices (n=7, separate) |
 |---|--:|--:|
@@ -483,9 +488,22 @@ GPT-OSS 120B, threshold 0.75, every label human-verified.
 | Latency p50 / p95 | 16.1 s / 39.9 s | — |
 | Cost per document | $0.0058 (list-price equivalent) | — |
 
-**Abstention, the central claim of the design, holds on held-out data.** Keeping 87.5% of
-fields raises precision from **0.906 to 0.955** — the risk–coverage curve was fitted for
-95% and the held-out result landed at 95.5%.
+**Abstention, the central claim of the design, holds on held-out data.** Keeping 87.8% of
+fields raises precision from **0.906 to 0.958** — the risk–coverage curve was fitted for
+95% and the held-out result landed at 95.8%.
+
+**The degraded subset barely degrades.** The twelve worst scans inside `test`, tagged by
+sharpness and exposure rather than by source, score **micro F1 0.897** against 0.918 for
+the full set — a two-point drop — with line-item F1 *higher* at **0.977**. Abstention
+behaves the same way there (87.1% of fields kept, precision 0.894 → 0.948), which is what
+a confidence signal should do when the input gets harder: keep slightly less, stay
+accurate on what it keeps.
+
+| Subset | n | Micro F1 | Line-item F1 | Hallucination | Abstention (kept @ precision) |
+|---|--:|--:|--:|--:|--:|
+| Receipts, all of `test` | 32 | **0.918** | 0.951 | 0.63% | 87.8% @ 0.958 |
+| Degraded subset | 12 | 0.897 | **0.977** | 1.72% | 87.1% @ 0.948 |
+| Invoices | 7 | 0.800 | — | 4.84% | — |
 
 **Per field** (normalised / exact F1): `total` 1.00 / 0.81, `date` 1.00 / 1.00,
 `currency` 1.00 / 1.00, `service_charge` 1.00 / 0.86, `subtotal` 0.95 / 0.64,
@@ -590,7 +608,52 @@ a real receipt. Two changes would make the idea testable rather than dead:
 Neither was measured, so neither is claimed. What is claimed is the negative: **as
 configured, the cascade costs 17% more for no accuracy gain.**
 
-### 4.8 Statistical honesty
+### 4.8 Does the second model earn its cost?
+
+The VLM-only baseline exists so that "two models beat one" is a measurement rather than
+an assertion. Run on the same 39 documents, same labels, same token budget:
+
+| | VLM only | Pipeline (VLM + LLM) | Δ |
+|---|--:|--:|--:|
+| Micro F1 | 0.918 | 0.918 | **0** |
+| Macro F1 | 0.917 | 0.917 | −0.1 pp |
+| Line-item F1 | 0.948 | 0.951 | +0.2 pp |
+| Hallucination rate | 0.63% | 0.63% | 0 |
+| Document accuracy | **40.6%** | 21.9% | **−18.7 pp** |
+| Cost per document | ~$0.0030 | $0.0063 | **2.1×** |
+| Latency p50 | ~8 s | 19.9 s | **2.5×** |
+
+**Field-level accuracy is identical, and the pipeline is worse at document level.** This
+is not a subtle result and it should not be buried.
+
+Two facts explain it, and they matter more than the headline:
+
+1. **Model B never changes the answer.** By construction `result.document` is Model A's
+   extraction; Model B's re-read populates `document_b`, which exists only to produce the
+   `agreement` signal. So the second model cannot add accuracy — it was never wired to.
+   Its entire contribution is to confidence, where `agreement` carries the largest fitted
+   weight in three of five field groups (§4.2).
+2. **The document-accuracy gap is a prompt effect, not a model effect.** The pipeline
+   asks Model A for a transcription *and* fields *and* a self-reported certainty in one
+   call; the baseline asks for fields alone. Same model, different instructions, and the
+   errors redistribute: identical micro F1 with 18.7 pp lower document accuracy means the
+   pipeline makes single-field mistakes across *more* documents while the baseline
+   concentrates its errors in fewer. At n=32, 18.7 pp is about six documents — well past
+   the 3.1 pp one-document noise floor.
+
+**What this justifies and what it does not.** It justifies the second model *as a
+confidence signal*: without `agreement` the confidence model falls back to three signals,
+and `grounded` alone cannot cover fields the transcription does not constrain. It does
+**not** justify the second model as an accuracy mechanism, and the report should not
+claim it does.
+
+**The experiment this points at**, not run: split the VLM call so that fields are
+extracted by a fields-only prompt (the baseline's, which scores better per document) and
+the transcription is produced separately, keeping Model B for agreement. That trades one
+extra vision call against a possible 18 pp of document accuracy. It is the obvious next
+measurement and it is cheap; it is left undone rather than guessed at.
+
+### 4.9 Statistical honesty
 
 - **DAR is binary per document**, so at n=39 in `test` its 95% CI is roughly ±8pp. Two
   versions differing by 3pp are not distinguishable.

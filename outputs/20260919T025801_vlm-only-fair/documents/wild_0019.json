@@ -1,0 +1,90 @@
+{
+  "doc_id": "wild_0019",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "The Blue Ginger",
+    "merchant_address": "97 Tanjong Pagar Road",
+    "date": "2012-11-15",
+    "currency": "SGD",
+    "subtotal": "87.3",
+    "service_charge": "8.73",
+    "discount": null,
+    "tax": "6.72",
+    "total": "102.75",
+    "payment_method": null,
+    "line_items": [
+      {
+        "description": "Ayam Panggang",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "12.2"
+      },
+      {
+        "description": "Beef Rendang",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "12.9"
+      },
+      {
+        "description": "Evian",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "3.5"
+      },
+      {
+        "description": "Fish Head",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "28.3"
+      },
+      {
+        "description": "Hoegaarden Beer",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "11"
+      },
+      {
+        "description": "Kueh Pie Tee",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "7"
+      },
+      {
+        "description": "Nonya Roll",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "8"
+      },
+      {
+        "description": "Misc Charges",
+        "quantity": "2",
+        "unit_price": null,
+        "line_total": "4.4"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 11.797733000013977,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

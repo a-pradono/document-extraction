@@ -1,0 +1,102 @@
+{
+  "doc_id": "cord_0011",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": null,
+    "currency": null,
+    "subtotal": "316017",
+    "service_charge": "48982.68",
+    "discount": null,
+    "tax": null,
+    "total": "365000",
+    "payment_method": null,
+    "line_items": [
+      {
+        "description": "Chicken Maryland",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "47619"
+      },
+      {
+        "description": "Cappucino (Hot/Iced)",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "30303"
+      },
+      {
+        "description": "Naga Lychee Juice",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "34632"
+      },
+      {
+        "description": "Cafe Latte",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "30303"
+      },
+      {
+        "description": "Hot Chocolate Marshmallo",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "30303"
+      },
+      {
+        "description": "Chicken Cesar Salad",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "43290"
+      },
+      {
+        "description": "Mineral Water",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "12987"
+      },
+      {
+        "description": "Mineral Water",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "12987"
+      },
+      {
+        "description": "Lychee/Peach/Lemon/Mango",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "25974"
+      },
+      {
+        "description": "Chicken Maryland",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "47619"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": null,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 11.705731800000649,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

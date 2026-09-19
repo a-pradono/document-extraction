@@ -1,0 +1,60 @@
+{
+  "doc_id": "wild_0007",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": "PRIME BURGER BAR",
+    "merchant_address": "VIA PRIVATA DELLA PASSERELLA, 4 20122 MILANO",
+    "date": "2016-02-14",
+    "currency": "EUR",
+    "subtotal": "24.5",
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "24.5",
+    "payment_method": "cash",
+    "line_items": [
+      {
+        "description": "Coperti",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "1.5"
+      },
+      {
+        "description": "Hamburger Blue-cheddar",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "11"
+      },
+      {
+        "description": "Cannolo Venere",
+        "quantity": null,
+        "unit_price": null,
+        "line_total": "12"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": true,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": true
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 6.929834300011862,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}

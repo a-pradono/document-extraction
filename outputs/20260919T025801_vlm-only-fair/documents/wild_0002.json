@@ -1,0 +1,78 @@
+{
+  "doc_id": "wild_0002",
+  "status": "ok",
+  "document_type": "receipt",
+  "document": {
+    "merchant_name": null,
+    "merchant_address": null,
+    "date": "2015-06-28",
+    "currency": null,
+    "subtotal": "124",
+    "service_charge": null,
+    "discount": null,
+    "tax": null,
+    "total": "124",
+    "payment_method": null,
+    "line_items": [
+      {
+        "description": "XO Chicken",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "40"
+      },
+      {
+        "description": "Tom Yum Soup",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "26"
+      },
+      {
+        "description": "Prawns",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "8"
+      },
+      {
+        "description": "Salt and Pepper",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "26"
+      },
+      {
+        "description": "Chicken Wings",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": null
+      },
+      {
+        "description": "Chicken Spring Roll",
+        "quantity": "1",
+        "unit_price": null,
+        "line_total": "24"
+      }
+    ]
+  },
+  "confidence": {},
+  "abstained": [],
+  "withheld": {},
+  "signals": {},
+  "validation": {
+    "subtotal_plus_tax_equals_total": true,
+    "line_items_sum_to_subtotal": null,
+    "rows_multiply_out": null,
+    "date_parses": true,
+    "currency_is_iso": null
+  },
+  "validation_notes": {},
+  "transcription": "",
+  "threshold": 0.75,
+  "usage": {
+    "latency_s": 12.01025250001112,
+    "wall_s": 0.0,
+    "cost_usd": 0.0,
+    "stages": []
+  },
+  "cascade": null,
+  "warnings": [],
+  "error": null
+}
