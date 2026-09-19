@@ -220,17 +220,6 @@ footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);
 .topbar a{font-size:.82rem;color:var(--accent);text-decoration:none;font-weight:600}
 .topbar a:hover{text-decoration:underline}
 </style></head><body><div class=topbar><span class=name>Document Extraction — End-to-End Report</span><span class=spacer></span><a href="dashboard.html">&larr; Dashboard</a></div><article class=prose><h1 id="document-extraction-end-to-end-report">Document Extraction — End-to-End Report</h1>
-<blockquote>
-<p><strong>Status, 18 September 2026.</strong> The system is built and tested (435 unit tests, offline
-end-to-end 7/7). <strong>Ground truth is fully verified — 60 of 60 documents checked against
-their images by a human</strong>, a pass that corrected five money-field errors (§2.4). The
-<strong>confidence model is fitted</strong> on a real run of the calibration split (§4.2), and the
-<strong><code>test</code> split has been run</strong>: micro F1 0.918, hallucination rate 0.63%, abstention
-keeping 87.8% of fields at 95.8% precision (§4.5). The cascade optimization was measured
-and <strong>does not pay</strong> — 100% escalation, +17% cost, no accuracy gain (§4.7). The
-VLM-only baseline shows the second model adds <strong>no field-level accuracy</strong> either: it
-earns its place as a confidence signal, not as an accuracy mechanism (§4.8).</p>
-</blockquote>
 <hr />
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="the-problem">The problem</h3>

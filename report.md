@@ -1,15 +1,5 @@
 # Document Extraction — End-to-End Report
 
-> **Status, 18 September 2026.** The system is built and tested (435 unit tests, offline
-> end-to-end 7/7). **Ground truth is fully verified — 60 of 60 documents checked against
-> their images by a human**, a pass that corrected five money-field errors (§2.4). The
-> **confidence model is fitted** on a real run of the calibration split (§4.2), and the
-> **`test` split has been run**: micro F1 0.918, hallucination rate 0.63%, abstention
-> keeping 87.8% of fields at 95.8% precision (§4.5). The cascade optimization was measured
-> and **does not pay** — 100% escalation, +17% cost, no accuracy gain (§4.7). The
-> VLM-only baseline shows the second model adds **no field-level accuracy** either: it
-> earns its place as a confidence signal, not as an accuracy mechanism (§4.8).
-
 ---
 
 ## 1. Introduction
