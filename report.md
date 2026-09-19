@@ -693,13 +693,18 @@ measurement and it is cheap; it is left undone rather than guessed at.
 
 ## 5. What comes next
 
-| Priority | Item | Why |
+Ordered by evidence, not by appeal. The first two follow directly from measurements in
+§4 and are cheap; the rest are real work.
+
+| # | Item | Why, and what it would cost |
 |---|---|---|
-| 1 | **Verify the remaining 48 labels** | Everything in §4.5 rests on this; 14 documents carry explicit `CHECK` notes |
-| 2 | **Run `test`, then the cascade, then compare** | Produces the accuracy scorecard and the optimization result — ~40 minutes and ~$0.25 |
-| 3 | Re-run the 16 single-model documents | Restores the fourth confidence signal on those |
-| 4 | Second independent VLM on the raw image | Removes the partial-independence weakness in §3.3 |
-| 5 | Stack splitting (`POST /extract/stack`) | `inv_0006` is three documents in one PDF - the case a separate endpoint would serve, deliberately out of scope for `/extract` (`docs/OUTPUT.md` §2) |
-| 6 | Inter-annotator agreement on a 15-document subset | Quantifies label noise, currently unknown |
-| 7 | Local open-weights VLM given a GPU | Recovers the self-hosting bonus; a config change only |
-| 8 | Route abstained fields to human review | Closes the loop — abstention becomes useful, not merely honest |
+| 1 | **Split the VLM prompt: fields-only, transcription separately** | §4.8's sharpest result: asking one call for fields *and* a transcription *and* a self-report costs **18.7 pp of document accuracy** against a fields-only prompt, at identical micro F1. A second vision call is ~$0.003/doc. If the gap holds, this is the largest single improvement available, and it is one run to find out. |
+| 2 | **Separate the cascade's escalation threshold from the abstention threshold** | §4.7: the cascade escalated **100%** of documents because `CASCADE_ESCALATE_BELOW` defaults to the abstention threshold, which answers a different question. Escalating on the model-free checks alone fired on 13 documents rather than 38, so a saving plausibly exists — currently unmeasured. |
+| 3 | **Route abstained fields to human review** | Abstention is measured (87.8% kept at 95.8% precision) but nothing consumes it. A queue that shows the withheld value, its four signals and the source image turns honesty into throughput — the review server in `scripts/` is most of the UI already. |
+| 4 | **A second, independent VLM on the raw image** | §3.3's stated weakness: Model B reads Model A's transcription, so a misread digit propagates and inflates `agreement`, which the ablation shows is the signal carrying strings and dates. True reading independence would cost a second vision call and make the strongest signal trustworthy. |
+| 5 | **More invoices** | At n=7 in `test`, invoice numbers are indicative and their confidence is uncalibrated, since the model is fitted on receipts. Roughly 40 invoices would support their own fit and a reportable rate. |
+| 6 | **Inter-annotator agreement on a 15-document subset** | Ground truth is single-annotator. §2.4 found a 10% money-field error rate in one source *before* verification; the residual rate after it is unknown, and a second annotator on a subset is the only way to bound it. |
+| 7 | **The two runs marked not-run in §4.1** | The synthetic robustness curve (25 degraded copies) and an API-mode run that scores the container rather than the library. Neither is hard; both were left rather than guessed. |
+| 8 | **Stack splitting (`POST /extract/stack`)** | `inv_0006` is three documents in one PDF. The design is already written down in `docs/OUTPUT.md` §2 as a separate endpoint, specifically so it cannot break `/extract`. |
+| 9 | **A local open-weights VLM, given a GPU** | Model B (`openai/gpt-oss-120b`) is already open-weights; only Model A is tied to a hosted API. With a GPU both halves could run locally, and the provider abstraction makes it a `.env` change. |
+| 10 | **The regression gate in CI** | It exits 0/1/2 and refuses to compare across a label change, so it is ready to block a PR against a committed baseline. Nothing in the harness needs to change; it needs a workflow file. |
