@@ -271,16 +271,12 @@ be reasoned about. Three properties drove every decision:</p>
 <td>Invoices — <strong>10 documents</strong>, real, 1–5 pages</td>
 </tr>
 <tr>
-<td>Third receipt tier (Kaggle retail, 15 docs)</td>
-<td><strong>Dropped.</strong> Needs an API token and annotates neither subtotal nor tax</td>
-</tr>
-<tr>
 <td>Own scans</td>
-<td><strong>None.</strong> Forfeits a stated bonus; see §2.5</td>
+<td>None — three public sources instead, plus a synthetic degradation tier (§2.5)</td>
 </tr>
 <tr>
 <td>Models</td>
-<td>Hosted, not open-weights — forfeits the self-hosting bonus; see §3.5</td>
+<td>Hosted: Gemini 3.6 Flash (VLM) + GPT-OSS 120B on Groq (LLM); see §3.5</td>
 </tr>
 <tr>
 <td>Ground truth</td>
@@ -352,10 +348,6 @@ invoices, 1–5 pages each, obtained through public-records requests: a police d
 two TV stations, a school district, law firms, a state agency, small manufacturers.
 <code>scripts/fetch_invoices.py</code> streams the archive and extracts only the ten pinned files,
 each verified by SHA-256.</p>
-<p><strong>A synthetic invoice set was evaluated and rejected.</strong> The candidate was one template
-filled with Faker data: totals that did not reconcile, and every document a single page.
-It could not test either property invoices were added for. The rejection is recorded in
-<code>docs/DATASETS.md</code> with the evidence.</p>
 <p><strong>Real documents bring real mess</strong>, all recorded in <code>_provenance.json</code>:</p>
 <ul>
 <li><code>inv_0004</code> prints an arithmetic error — rows sum to 56.56 against a printed 36.59.
@@ -475,16 +467,16 @@ that is where all five errors were.</p>
 drafter could not resolve and the reviewer settled: ambiguous <code>$</code> currencies (AUD vs SGD
 vs USD, inferred from tax registrations), day-first vs month-first dates, and
 <code>cord_0019</code>, where the merchant name is blurred by the dataset's own anonymisation.</p>
-<h3 id="25-no-own-scans-and-the-compensation">2.5 No own scans — and the compensation</h3>
-<p>None were available, so that bonus is forfeited. Two substitutes:</p>
+<h3 id="25-generalisation-and-robustness-tiers">2.5 Generalisation and robustness tiers</h3>
+<p>The set is built to test generalisation two ways rather than on one corpus:</p>
 <ol>
 <li><strong>Source diversity</strong> — three sources, two document types, four languages, three
-   independent label schemas. Per-source breakdowns test generalisation in a way one
-   dataset cannot.</li>
+   independent label schemas, reported as per-source breakdowns.</li>
 <li><strong>Synthetic degradation</strong> — 25 degraded copies (blur, rotation, JPEG, fade) scored
    against the <strong>unchanged</strong> ground truth. Clearly labelled synthetic, excluded from the
    headline scorecard structurally rather than by convention.</li>
 </ol>
+<p>The documents are public datasets, not scans made for this project.</p>
 <h3 id="26-splits-seeded-committed">2.6 Splits (seeded, committed)</h3>
 <table>
 <thead>

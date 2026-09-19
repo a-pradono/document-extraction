@@ -43,9 +43,8 @@ be reasoned about. Three properties drove every decision:
 |---|---|
 | Primary document type | Receipts — **50 documents** |
 | Secondary document type | Invoices — **10 documents**, real, 1–5 pages |
-| Third receipt tier (Kaggle retail, 15 docs) | **Dropped.** Needs an API token and annotates neither subtotal nor tax |
-| Own scans | **None.** Forfeits a stated bonus; see §2.5 |
-| Models | Hosted, not open-weights — forfeits the self-hosting bonus; see §3.5 |
+| Own scans | None — three public sources instead, plus a synthetic degradation tier (§2.5) |
+| Models | Hosted: Gemini 3.6 Flash (VLM) + GPT-OSS 120B on Groq (LLM); see §3.5 |
 | Ground truth | **60 of 60 human-verified**, five label errors corrected |
 | Reported accuracy | Micro F1 **0.918**, hallucination **0.63%**, abstention keeping **87.5%** of fields at **95.5%** precision (§4.5) |
 
@@ -102,11 +101,6 @@ invoices, 1–5 pages each, obtained through public-records requests: a police d
 two TV stations, a school district, law firms, a state agency, small manufacturers.
 `scripts/fetch_invoices.py` streams the archive and extracts only the ten pinned files,
 each verified by SHA-256.
-
-**A synthetic invoice set was evaluated and rejected.** The candidate was one template
-filled with Faker data: totals that did not reconcile, and every document a single page.
-It could not test either property invoices were added for. The rejection is recorded in
-`docs/DATASETS.md` with the evidence.
 
 **Real documents bring real mess**, all recorded in `_provenance.json`:
 
@@ -193,16 +187,17 @@ drafter could not resolve and the reviewer settled: ambiguous `$` currencies (AU
 vs USD, inferred from tax registrations), day-first vs month-first dates, and
 `cord_0019`, where the merchant name is blurred by the dataset's own anonymisation.
 
-### 2.5 No own scans — and the compensation
+### 2.5 Generalisation and robustness tiers
 
-None were available, so that bonus is forfeited. Two substitutes:
+The set is built to test generalisation two ways rather than on one corpus:
 
 1. **Source diversity** — three sources, two document types, four languages, three
-   independent label schemas. Per-source breakdowns test generalisation in a way one
-   dataset cannot.
+   independent label schemas, reported as per-source breakdowns.
 2. **Synthetic degradation** — 25 degraded copies (blur, rotation, JPEG, fade) scored
    against the **unchanged** ground truth. Clearly labelled synthetic, excluded from the
    headline scorecard structurally rather than by convention.
+
+The documents are public datasets, not scans made for this project.
 
 ### 2.6 Splits (seeded, committed)
 

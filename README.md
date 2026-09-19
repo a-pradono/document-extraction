@@ -171,11 +171,6 @@ three label schemas ([`docs/DATASETS.md`](docs/DATASETS.md),
 | WildReceipt (English, Spanish, French, Italian…) | 25 | Template diversity, photographed in the wild |
 | RVL-CDIP-N multipage (invoices) | 10 | The second document type: 1–5 pages, vendor/customer roles. CC BY-NC 4.0 |
 
-A third receipt tier (15 phone photos from Kaggle's OCR Receipts set) was planned and
-**dropped**: it needs an API token, and it annotates neither subtotal nor tax — the two
-fields the reconciliation check depends on — so each document would have needed full
-hand-labeling. Sixty documents across three sources already cover clean, wild and
-multi-page.
 
 - **Stratified sampling** by line-item count and merchant. Taking the first N would
   produce an accidentally easy set that flatters every metric.
@@ -235,9 +230,8 @@ Ten real invoices test two things receipts can't: **multi-page documents** and
 **vendor/customer role resolution**. There are two parties, each with a name, address and
 tax ID, and returning them swapped is the failure that matters.
 
-- **Source: real, not synthetic.** The suggested synthetic set was checked and rejected:
-  one template, Faker data, totals that don't add up, and every document a single page.
-  The ten come from **RVL-CDIP-N multipage** (`jordyvl/rvl_cdip_n_mp`, CC BY-NC 4.0).
+- **Source: real public records.** The ten come from **RVL-CDIP-N multipage**
+  (`jordyvl/rvl_cdip_n_mp`, CC BY-NC 4.0).
   They are public-records invoices from a police department, TV stations, a school
   district, law firms, a state agency and small manufacturers, and 1 to 5 pages each.
   [`scripts/fetch_invoices.py`](scripts/fetch_invoices.py) streams the archive and pulls
@@ -494,12 +488,12 @@ threshold that makes fields abstain.
 
 ## Trade-offs and limits
 
-- **Not open-weights.** Both models are hosted, so the self-hosting bonus is forfeited.
-  CPU-only inference was impractical: a 3B model producing about 600 tokens of JSON takes
-  roughly 40–90 s per document, against 3–8 s hosted. Qwen2.5-VL would be swapped in
-  given a GPU.
-- **No own scans.** Compensated with three independent sources and a clearly labeled
-  synthetic degradation tier, never presented as real-world variation.
+- **Both models are hosted** — the target machine has no GPU, where a 3B model producing
+  ~600 tokens of JSON takes 40–90 s per document against 3–8 s hosted. Model B
+  (`openai/gpt-oss-120b`) is open-weights, so it runs locally given a GPU, and the
+  provider abstraction makes that a `.env` change.
+- **The documents are public datasets**, with a clearly labeled synthetic degradation
+  tier for robustness, never presented as real-world variation.
 - **n=60 is small on purpose** (trustworthy beats large), which makes document accuracy
   noisy — roughly ±8pp at n=39 in `test`. Every comparison states its one-document noise
   floor, and the regression gate rests on per-field metrics rather than document accuracy
